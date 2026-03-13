@@ -115,22 +115,22 @@
       <div class="t4-section-title">OPERACIONAL</div>
       <div class="hub-app-grid" id="hub-app-grid">
 
-        <!-- OPTIMA Equipagem -->
-        <div class="t4-app-card" data-module="optima">
+        <!-- Simulador EFVM -->
+        <div class="t4-app-card" data-module="simulador">
           <span class="t4-badge-online" style="position:absolute;top:12px;right:12px;"></span>
           <div class="t4-app-icon" style="background:rgba(0,180,216,0.12);color:var(--accent-cyan);">
-            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" width="24" height="24"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/></svg>
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" width="24" height="24"><path d="M4 15s1-1 4-1 5 2 8 2 4-1 4-1V3s-1 1-4 1-5-2-8-2-4 1-4 1z"/><line x1="4" y1="22" x2="4" y2="15"/></svg>
           </div>
-          <div class="t4-app-label">OPTIMA<br>Equipagem</div>
+          <div class="t4-app-label">Simulador<br>EFVM</div>
         </div>
 
-        <!-- Passagem de Servico -->
-        <div class="t4-app-card" data-module="vfz">
+        <!-- EFVM 360 (externo) -->
+        <div class="t4-app-card" data-module="efvm360-ext">
           <span class="t4-badge-online" style="position:absolute;top:12px;right:12px;"></span>
-          <div class="t4-app-icon" style="background:rgba(122,184,0,0.12);color:var(--accent-green);">
-            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" width="24" height="24"><path d="M16 4h2a2 2 0 0 1 2 2v14a2 2 0 0 1-2 2H6a2 2 0 0 1-2-2V6a2 2 0 0 1 2-2h2"/><rect x="8" y="2" width="8" height="4" rx="1"/><path d="M9 14l2 2 4-4"/></svg>
+          <div class="t4-app-icon" style="background:rgba(0,140,126,0.12);color:var(--accent-teal);">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" width="24" height="24"><polygon points="12 2 2 7 12 12 22 7 12 2"/><polyline points="2 17 12 22 22 17"/><polyline points="2 12 12 17 22 12"/></svg>
           </div>
-          <div class="t4-app-label">Passagem de<br>Servico</div>
+          <div class="t4-app-label">EFVM 360</div>
         </div>
 
         <!-- ROF Digital -->
@@ -142,18 +142,9 @@
           <div class="t4-app-label">ROF Digital</div>
         </div>
 
-        <!-- EFVM 360 -->
-        <div class="t4-app-card" data-module="efvm360">
-          <span class="t4-badge-online" style="position:absolute;top:12px;right:12px;"></span>
-          <div class="t4-app-icon" style="background:rgba(0,140,126,0.12);color:var(--accent-teal);">
-            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" width="24" height="24"><polygon points="12 2 2 7 12 12 22 7 12 2"/><polyline points="2 17 12 22 22 17"/><polyline points="2 12 12 17 22 12"/></svg>
-          </div>
-          <div class="t4-app-label">EFVM 360</div>
-        </div>
-
         <!-- CCQ Qualidade -->
         <div class="t4-app-card" data-module="ccq">
-          <span class="t4-badge-new">NOVO</span>
+          <span class="t4-badge-online" style="position:absolute;top:12px;right:12px;"></span>
           <div class="t4-app-icon" style="background:rgba(229,161,0,0.12);color:var(--accent-gold);">
             <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" width="24" height="24"><line x1="12" y1="20" x2="12" y2="10"/><line x1="18" y1="20" x2="18" y2="4"/><line x1="6" y1="20" x2="6" y2="16"/></svg>
           </div>
@@ -223,7 +214,7 @@
               </div>
               <span class="busca-quick-label">AdamBoot</span>
             </div>
-            <div class="busca-quick-item" data-nav-module="efvm360">
+            <div class="busca-quick-item" data-nav-module="efvm360-ext">
               <div class="t4-app-icon" style="background:rgba(0,140,126,0.12);color:var(--accent-teal);width:44px;height:44px;border-radius:12px;">
                 <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" width="22" height="22"><polygon points="12 2 2 7 12 12 22 7 12 2"/><polyline points="2 17 12 22 22 17"/><polyline points="2 12 12 17 22 12"/></svg>
               </div>
@@ -459,9 +450,9 @@
       <div class="config-section">
         <div class="config-section-title">MODULOS</div>
         <div class="config-group">
-          <div class="config-item" data-nav-module="efvm360">
+          <div class="config-item" data-nav-module="efvm360-ext">
             <div class="config-item-left">
-              <span class="config-icon" style="background:rgba(0,140,126,0.12);">&#127918;</span>
+              <span class="config-icon" style="background:rgba(0,140,126,0.12);">&#128218;</span>
               <span class="config-label">EFVM 360</span>
             </div>
             <div class="config-item-right"><span class="config-arrow">&rsaquo;</span></div>
@@ -487,17 +478,17 @@
             </div>
             <div class="config-item-right"><span class="config-arrow">&rsaquo;</span></div>
           </div>
-          <div class="config-item" data-nav-module="optima">
+          <div class="config-item" data-nav-module="simulador">
             <div class="config-item-left">
-              <span class="config-icon" style="background:rgba(0,180,216,0.12);">&#128101;</span>
-              <span class="config-label">OPTIMA Equipagem</span>
+              <span class="config-icon" style="background:rgba(0,180,216,0.12);">&#127918;</span>
+              <span class="config-label">Simulador EFVM</span>
             </div>
             <div class="config-item-right"><span class="config-arrow">&rsaquo;</span></div>
           </div>
-          <div class="config-item" data-nav-module="vfz">
+          <div class="config-item" data-nav-module="efvm360-ext">
             <div class="config-item-left">
-              <span class="config-icon" style="background:rgba(122,184,0,0.12);">&#9989;</span>
-              <span class="config-label">Passagem de Servico</span>
+              <span class="config-icon" style="background:rgba(0,140,126,0.12);">&#128218;</span>
+              <span class="config-label">EFVM 360</span>
             </div>
             <div class="config-item-right"><span class="config-arrow">&rsaquo;</span></div>
           </div>
@@ -792,37 +783,37 @@
 
       /* ======= MODULE DATA ======= */
       var MODULE_DATA = {
-        optima: {
-          name: 'OPTIMA Equipagem',
+        simulador: {
+          name: 'Simulador EFVM',
           status: 'ready',
-          statusLabel: 'Pronto',
+          statusLabel: 'Operacional',
           accent: 'var(--accent-cyan)',
           accentHex: '#00B4D8',
-          desc: 'Sistema inteligente de alocacao de equipagem ferroviaria com scoring por IA.',
+          desc: 'Simulador de conducao ferroviaria da EFVM. Treinamento completo com cenarios reais, fisica de frenagem e sistema de pontuacao.',
           features: [
-            { emoji: '\u{1F9E0}', text: 'Scoring de alocacao com IA' },
-            { emoji: '\u23F1\uFE0F', text: 'Controle de jornada 12h' },
-            { emoji: '\u{1F4CA}', text: 'Dashboard operacional em tempo real' },
-            { emoji: '\u{1F514}', text: 'Alertas de intrajornada' }
+            { emoji: '\u{1F3AE}', text: 'Simulacao realista da EFVM' },
+            { emoji: '\u{1F682}', text: 'Cenarios de trem carregado e vazio' },
+            { emoji: '\u{1F4CA}', text: 'Sistema de pontuacao' },
+            { emoji: '\u{1F393}', text: 'Treinamento operacional' }
           ],
           type: 'external',
-          url: 'https://optima.vale.com'
+          url: 'https://simulador-efvm.vercel.app/'
         },
-        vfz: {
-          name: 'Passagem de Servico',
+        'efvm360-ext': {
+          name: 'EFVM 360',
           status: 'ready',
-          statusLabel: 'Pronto',
-          accent: 'var(--accent-green)',
-          accentHex: '#7AB800',
-          desc: 'Passagem de servico digital com DSS integrado e avaliacao 5S.',
+          statusLabel: 'Operacional',
+          accent: 'var(--accent-teal)',
+          accentHex: '#008C7E',
+          desc: 'Plataforma completa EFVM 360 com Academy, Exames, ROF, Comunicacao via Radio, Performance e Assistente AdamBoot.',
           features: [
-            { emoji: '\u{1F4CB}', text: 'DSS alinhado PRO-041945 Rev.02' },
-            { emoji: '\u2705', text: 'Avaliacao 5S por PGS-007091' },
-            { emoji: '\u{1F9E9}', text: 'Quiz de confirmacao do turno' },
-            { emoji: '\u{1F4C8}', text: 'Dashboard BI+ Analytics' }
+            { emoji: '\u{1F393}', text: 'Railway Academy + Exames' },
+            { emoji: '\u{1F4D6}', text: 'ROF completo' },
+            { emoji: '\u{1F4FB}', text: 'Comunicacao via Radio' },
+            { emoji: '\u{1F916}', text: 'Assistente AdamBoot' }
           ],
           type: 'external',
-          url: 'https://vfz.vale.com'
+          url: 'https://efvm360.vercel.app/login/'
         },
         'rof-digital': {
           name: 'ROF Digital',
@@ -840,37 +831,21 @@
           type: 'internal',
           path: 'modules/rof-digital/'
         },
-        efvm360: {
-          name: 'EFVM 360',
-          status: 'ready',
-          statusLabel: 'Pronto',
-          accent: 'var(--accent-teal)',
-          accentHex: '#008C7E',
-          desc: 'Simulador ferroviario imersivo com academia de treinamento integrada.',
-          features: [
-            { emoji: '\u{1F682}', text: 'Simulacao realista da EFVM' },
-            { emoji: '\u{1F393}', text: 'Railway Academy + Exames' },
-            { emoji: '\u{1F4FB}', text: 'Treinamento de comunicacao radio' },
-            { emoji: '\u{1F916}', text: 'Assistente AdamBoot' }
-          ],
-          type: 'internal',
-          path: 'modules/efvm360/'
-        },
         ccq: {
           name: 'CCQ Qualidade',
-          status: 'building',
-          statusLabel: 'Em construcao',
+          status: 'ready',
+          statusLabel: 'Operacional',
           accent: 'var(--accent-gold)',
           accentHex: '#E5A100',
-          desc: 'Ferramentas visuais para Circulos de Controle da Qualidade.',
+          desc: 'Modulo CCQ \u2014 Circulo de Controle de Qualidade com ferramentas PDCA, Ishikawa, 5W2H e gestao de projetos.',
           features: [
-            { emoji: '\u{1F504}', text: 'Ciclo PDCA visual interativo' },
-            { emoji: '\u{1F41F}', text: 'Diagrama de Ishikawa' },
+            { emoji: '\u{1F4CB}', text: 'Ciclo PDCA visual' },
+            { emoji: '\u{1F50D}', text: 'Diagrama de Ishikawa' },
             { emoji: '\u{1F4DD}', text: 'Plano de Acao 5W2H' },
-            { emoji: '\u{1F3AC}', text: 'Gerador de apresentacao' }
+            { emoji: '\u{1F4CA}', text: 'Gestao de projetos CCQ' }
           ],
-          type: 'internal',
-          path: 'modules/ccq/'
+          type: 'external',
+          url: 'https://adamboot-mco.vercel.app/'
         },
         adamboot: {
           name: 'AdamBoot IA',
@@ -951,18 +926,16 @@
 
       /* ======= SEARCH INDEX ======= */
       var SEARCH_INDEX = [
-        { term: 'EFVM 360', cat: 'modulo', module: 'efvm360' },
-        { term: 'Simulador', cat: 'modulo', module: 'efvm360' },
+        { term: 'Simulador EFVM', cat: 'modulo', module: 'simulador' },
+        { term: 'Simulador', cat: 'modulo', module: 'simulador' },
+        { term: 'EFVM 360', cat: 'modulo', module: 'efvm360-ext' },
         { term: 'ROF Digital', cat: 'modulo', module: 'rof-digital' },
         { term: 'Regulamento', cat: 'modulo', module: 'rof-digital' },
         { term: 'CCQ', cat: 'modulo', module: 'ccq' },
         { term: 'Qualidade', cat: 'modulo', module: 'ccq' },
         { term: 'AdamBoot', cat: 'modulo', module: 'adamboot' },
         { term: 'Assistente IA', cat: 'modulo', module: 'adamboot' },
-        { term: 'OPTIMA', cat: 'modulo', module: 'optima' },
-        { term: 'Equipagem', cat: 'modulo', module: 'optima' },
-        { term: 'Passagem de Servico', cat: 'modulo', module: 'vfz' },
-        { term: 'DSS', cat: 'modulo', module: 'vfz' },
+        { term: 'Academy', cat: 'modulo', module: 'efvm360-ext' },
         { term: 'Velocidade maxima', cat: 'glossario' },
         { term: 'Sinalizacao ferroviaria', cat: 'glossario' },
         { term: 'BOLL', cat: 'glossario' },
@@ -1601,7 +1574,7 @@
           return '<div class="modal-feature"><span class="modal-feature-emoji">' + f.emoji + '</span><span>' + f.text + '</span></div>';
         }).join('');
 
-        var actionLabel = 'Abrir ' + mod.name.split(' ')[0];
+        var actionLabel = 'Abrir ' + mod.name.split(' ')[0] + (mod.type === 'external' ? ' \u2197' : '');
 
         document.getElementById('modal-content').innerHTML =
           '<div style="display:flex;align-items:center;gap:10px;margin-bottom:6px;">' +
@@ -1621,7 +1594,7 @@
         document.getElementById('modal-open-btn').addEventListener('click', function () {
           closeModal();
           if (mod.type === 'external' && mod.url) {
-            T4.router.openExternal(mod.url);
+            window.open(mod.url, '_blank');
           } else if (mod.path) {
             window.location.href = mod.path;
           } else {
