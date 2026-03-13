@@ -264,6 +264,14 @@
           <div class="t4-app-label">Avisos</div>
         </div>
 
+        <div class="t4-app-card" data-module="epi">
+          <span class="t4-badge-online" style="position:absolute;top:12px;right:12px;"></span>
+          <div class="t4-app-icon" style="background:rgba(122,184,0,0.12);color:var(--accent-green);">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" width="24" height="24"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/><polyline points="9 12 11 14 15 10"/></svg>
+          </div>
+          <div class="t4-app-label">Solicitar EPI</div>
+        </div>
+
       </div>
 
       <!-- Spacer for bottom nav -->
@@ -1145,6 +1153,22 @@
           ],
           type: 'internal',
           path: 'modules/avisos/'
+        },
+        epi: {
+          name: 'Solicitar EPI',
+          status: 'ready',
+          statusLabel: 'Disponivel',
+          accent: 'var(--accent-green)',
+          accentHex: '#7AB800',
+          desc: 'Formulario de solicitacao de Equipamentos de Protecao Individual. Solicite EPIs diretamente pelo portal Vale.',
+          features: [
+            { emoji: '\u{1F9BA}', text: 'Solicitacao de EPIs' },
+            { emoji: '\u{1F9E4}', text: 'Capacete, luva, oculos, bota' },
+            { emoji: '\u{1F4CB}', text: 'Formulario Vale oficial' },
+            { emoji: '\u2705', text: 'Aprovacao automatica' }
+          ],
+          type: 'external',
+          url: 'https://vale-forms.valeglobal.net/public?id=Ylabiry79tA%2fjLRjIfA55w%3d%3d&lang=pt-BR&need_auth=false'
         }
       };
 
