@@ -22,7 +22,7 @@
         description: 'Simulador de conducao ferroviaria',
         offlineAvailable: false
       },
-      'efvm360': {
+      'efvm360-ext': {
         name: 'EFVM 360',
         url: 'https://efvm360.vercel.app/login/',
         category: 'treinamento',
@@ -30,7 +30,7 @@
         description: 'Plataforma Academy, Exames, Performance',
         offlineAvailable: false
       },
-      'ccq-ext': {
+      'ccq': {
         name: 'CCQ Qualidade',
         url: 'https://adamboot-mco.vercel.app/',
         category: 'operacional',

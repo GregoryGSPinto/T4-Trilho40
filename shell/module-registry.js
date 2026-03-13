@@ -362,7 +362,6 @@
     { term: 'Troca de turno', cat: 'modulo', module: 'boajornada' },
     { term: 'Checklist locomotiva', cat: 'modulo', module: 'boajornada' },
     { term: 'ART', cat: 'modulo', module: 'art' },
-    { term: 'ART', cat: 'modulo', module: 'art' },
     { term: 'Analise de Risco', cat: 'modulo', module: 'art' },
     { term: 'Timer Jornada', cat: 'modulo', module: 'timerJornada' },
     { term: 'Jornada 12h', cat: 'modulo', module: 'timerJornada' },

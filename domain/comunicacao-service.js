@@ -12,7 +12,7 @@
 
     // ── Log CCO ───────────────────────────────────────────────────────
 
-    LOGCCO_KEY: 't4_logcco',
+    LOGCCO_KEY: 't4-log-cco',
 
     /**
      * Get all communication log entries for the current shift.
@@ -47,7 +47,7 @@
 
     // ── Avisos ────────────────────────────────────────────────────────
 
-    AVISOS_KEY: 't4_avisos',
+    AVISOS_KEY: 't4-avisos',
 
     /**
      * Get all operational alerts.

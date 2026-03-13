@@ -12,7 +12,7 @@
 
     // ── Contacts ──────────────────────────────────────────────────────
 
-    CONTATOS_KEY: 't4_contatos',
+    CONTATOS_KEY: 't4-contatos-custom',
 
     /**
      * Get the saved contacts list.
