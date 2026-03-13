@@ -129,7 +129,7 @@
   /* User info */
   function getUser() {
     try {
-      var session = JSON.parse(localStorage.getItem('t4_local_session'));
+      var session = JSON.parse(localStorage.getItem('t4_session'));
       if (session) {
         MATRICULA_ATUAL = session.matricula || '0001';
         return { nome: session.nome || 'Gregory', matricula: MATRICULA_ATUAL, patio: session.patio || 'VFZ' };
