@@ -701,3 +701,57 @@
   color: var(--t4-text-muted);
   max-width: 280px;
 }
+
+/* ============================================
+   RESPONSIVE — Desktop & Tablet
+   ============================================ */
+
+/* Tablet (≥768px) */
+@media (min-width: 768px) {
+  .t4-modal {
+    max-width: 540px;
+    border-radius: var(--t4-radius-xl);
+    bottom: auto;
+    top: 50%;
+    left: 50%;
+    right: auto;
+    transform: translate(-50%, -50%) scale(0.95);
+    opacity: 0;
+    max-height: 80vh;
+  }
+
+  .t4-modal.active {
+    transform: translate(-50%, -50%) scale(1);
+    opacity: 1;
+  }
+
+  .t4-bottom-nav {
+    max-width: 720px;
+  }
+
+  .t4-fab {
+    right: calc(50% - 360px + 24px);
+  }
+}
+
+/* Desktop (≥1024px) */
+@media (min-width: 1024px) {
+  .t4-bottom-nav {
+    max-width: 960px;
+  }
+
+  .t4-fab {
+    right: calc(50% - 480px + 24px);
+  }
+}
+
+/* Desktop largo (≥1200px) */
+@media (min-width: 1200px) {
+  .t4-bottom-nav {
+    max-width: 1140px;
+  }
+
+  .t4-fab {
+    right: calc(50% - 570px + 24px);
+  }
+}

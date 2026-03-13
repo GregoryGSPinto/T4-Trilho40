@@ -35,7 +35,6 @@
   </div>
 
   <!-- ==================== BACKGROUND EFFECTS ==================== -->
-  <div class="t4-bg-grid"></div>
   <div class="t4-bg-glow t4-bg-glow-teal"></div>
   <div class="t4-bg-glow t4-bg-glow-cyan"></div>
 
@@ -66,140 +65,694 @@
   <!-- ==================== HUB DASHBOARD ==================== -->
   <div id="hub-dashboard" class="t4-app" hidden>
 
-    <!-- Status bar top -->
-    <div class="hub-topbar">
-      <div class="hub-topbar-clock" id="hub-clock"></div>
-      <div class="hub-topbar-right">
-        <span class="hub-topbar-efvm">EFVM</span>
-        <span class="hub-topbar-dot"></span>
-        <span class="hub-topbar-on">ON</span>
-      </div>
-    </div>
+    <!-- ========== VIEW: HUB ========== -->
+    <section id="view-hub" class="t4-view active">
 
-    <!-- Header -->
-    <header class="hub-header-new">
-      <div class="hub-header-left">
-        <div class="t4-logo" style="font-size:32px;">T4</div>
-        <div class="t4-subtitle">TRILHO 4.0</div>
-      </div>
-      <div class="hub-header-right">
-        <div class="t4-user-badge">
-          <div class="t4-user-avatar" id="hub-user-avatar"></div>
-          <span id="hub-user-name"></span>
+      <!-- Status bar top -->
+      <div class="hub-topbar">
+        <div class="hub-topbar-clock" id="hub-clock"></div>
+        <div class="hub-topbar-right">
+          <span class="hub-topbar-efvm">EFVM</span>
+          <span class="hub-topbar-dot"></span>
+          <span class="hub-topbar-on">ON</span>
         </div>
-        <div class="t4-yard-tag" id="hub-yard-tag"></div>
       </div>
-    </header>
 
-    <!-- Quick Status Chips -->
-    <div class="hub-chips-scroll">
-      <div class="hub-chip">
-        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>
-        <span>Jornada</span> <strong>04:32</strong>
-      </div>
-      <div class="hub-chip">
-        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polygon points="12 2 2 7 12 12 22 7 12 2"/><polyline points="2 17 12 22 22 17"/><polyline points="2 12 12 17 22 12"/></svg>
-        <span>Proximo</span> <strong>M346</strong>
-      </div>
-      <div class="hub-chip hub-chip--green">
-        <span>DSS</span> <strong>OK</strong>
-      </div>
-      <div class="hub-chip hub-chip--gold">
-        <span>BOLLs</span> <strong>3</strong>
-      </div>
-    </div>
-
-    <!-- Section: OPERACIONAL -->
-    <div class="t4-section-title">OPERACIONAL</div>
-    <div class="hub-app-grid" id="hub-app-grid">
-
-      <!-- OPTIMA Equipagem -->
-      <div class="t4-app-card" data-module="optima">
-        <span class="t4-badge-online" style="position:absolute;top:12px;right:12px;"></span>
-        <div class="t4-app-icon" style="background:rgba(0,180,216,0.12);color:var(--accent-cyan);">
-          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" width="24" height="24"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/></svg>
+      <!-- Header -->
+      <header class="hub-header-new">
+        <div class="hub-header-left">
+          <div class="t4-logo" style="font-size:32px;">T4</div>
+          <div class="t4-subtitle">TRILHO 4.0</div>
         </div>
-        <div class="t4-app-label">OPTIMA<br>Equipagem</div>
-      </div>
-
-      <!-- Passagem de Servico -->
-      <div class="t4-app-card" data-module="vfz">
-        <span class="t4-badge-online" style="position:absolute;top:12px;right:12px;"></span>
-        <div class="t4-app-icon" style="background:rgba(122,184,0,0.12);color:var(--accent-green);">
-          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" width="24" height="24"><path d="M16 4h2a2 2 0 0 1 2 2v14a2 2 0 0 1-2 2H6a2 2 0 0 1-2-2V6a2 2 0 0 1 2-2h2"/><rect x="8" y="2" width="8" height="4" rx="1"/><path d="M9 14l2 2 4-4"/></svg>
+        <div class="hub-header-right">
+          <div class="t4-user-badge">
+            <div class="t4-user-avatar" id="hub-user-avatar"></div>
+            <span id="hub-user-name"></span>
+          </div>
+          <div class="t4-yard-tag" id="hub-yard-tag"></div>
         </div>
-        <div class="t4-app-label">Passagem de<br>Servico</div>
-      </div>
+      </header>
 
-      <!-- ROF Digital -->
-      <div class="t4-app-card" data-module="rof-digital">
-        <span class="t4-badge-new">NOVO</span>
-        <div class="t4-app-icon" style="background:rgba(229,161,0,0.12);color:var(--accent-gold);">
-          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" width="24" height="24"><path d="M4 19.5A2.5 2.5 0 0 1 6.5 17H20"/><path d="M6.5 2H20v20H6.5A2.5 2.5 0 0 1 4 19.5v-15A2.5 2.5 0 0 1 6.5 2z"/></svg>
+      <!-- Quick Status Chips -->
+      <div class="hub-chips-scroll">
+        <div class="hub-chip">
+          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>
+          <span>Jornada</span> <strong>04:32</strong>
         </div>
-        <div class="t4-app-label">ROF Digital</div>
-      </div>
-
-      <!-- EFVM 360 -->
-      <div class="t4-app-card" data-module="efvm360">
-        <span class="t4-badge-online" style="position:absolute;top:12px;right:12px;"></span>
-        <div class="t4-app-icon" style="background:rgba(0,140,126,0.12);color:var(--accent-teal);">
-          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" width="24" height="24"><polygon points="12 2 2 7 12 12 22 7 12 2"/><polyline points="2 17 12 22 22 17"/><polyline points="2 12 12 17 22 12"/></svg>
+        <div class="hub-chip" data-chip="trem">
+          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polygon points="12 2 2 7 12 12 22 7 12 2"/><polyline points="2 17 12 22 22 17"/><polyline points="2 12 12 17 22 12"/></svg>
+          <span>Proximo</span> <strong>M346</strong>
         </div>
-        <div class="t4-app-label">EFVM 360</div>
-      </div>
-
-      <!-- CCQ Qualidade -->
-      <div class="t4-app-card" data-module="ccq">
-        <span class="t4-badge-new">NOVO</span>
-        <div class="t4-app-icon" style="background:rgba(229,161,0,0.12);color:var(--accent-gold);">
-          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" width="24" height="24"><line x1="12" y1="20" x2="12" y2="10"/><line x1="18" y1="20" x2="18" y2="4"/><line x1="6" y1="20" x2="6" y2="16"/></svg>
+        <div class="hub-chip hub-chip--green">
+          <span>DSS</span> <strong>OK</strong>
         </div>
-        <div class="t4-app-label">CCQ<br>Qualidade</div>
-      </div>
-
-      <!-- AdamBoot IA -->
-      <div class="t4-app-card" data-module="adamboot">
-        <span class="t4-badge-online" style="position:absolute;top:12px;right:12px;"></span>
-        <div class="t4-app-icon" style="background:rgba(122,184,0,0.12);color:var(--accent-green);">
-          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" width="24" height="24"><path d="M12 3l1.5 5.5L19 10l-5.5 1.5L12 17l-1.5-5.5L5 10l5.5-1.5L12 3z"/></svg>
+        <div class="hub-chip hub-chip--gold">
+          <span>BOLLs</span> <strong>3</strong>
         </div>
-        <div class="t4-app-label">AdamBoot IA</div>
       </div>
 
-    </div>
+      <!-- Section: OPERACIONAL -->
+      <div class="t4-section-title">OPERACIONAL</div>
+      <div class="hub-app-grid" id="hub-app-grid">
 
-    <!-- Section: ASSISTENTE IA -->
-    <div class="t4-section-title" style="margin-top:24px;">ASSISTENTE IA</div>
-    <div class="hub-aura-card" id="hub-aura-card">
-      <div class="hub-aura-icon">
-        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" width="28" height="28"><path d="M12 3l1.5 5.5L19 10l-5.5 1.5L12 17l-1.5-5.5L5 10l5.5-1.5L12 3z"/></svg>
+        <!-- OPTIMA Equipagem -->
+        <div class="t4-app-card" data-module="optima">
+          <span class="t4-badge-online" style="position:absolute;top:12px;right:12px;"></span>
+          <div class="t4-app-icon" style="background:rgba(0,180,216,0.12);color:var(--accent-cyan);">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" width="24" height="24"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/></svg>
+          </div>
+          <div class="t4-app-label">OPTIMA<br>Equipagem</div>
+        </div>
+
+        <!-- Passagem de Servico -->
+        <div class="t4-app-card" data-module="vfz">
+          <span class="t4-badge-online" style="position:absolute;top:12px;right:12px;"></span>
+          <div class="t4-app-icon" style="background:rgba(122,184,0,0.12);color:var(--accent-green);">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" width="24" height="24"><path d="M16 4h2a2 2 0 0 1 2 2v14a2 2 0 0 1-2 2H6a2 2 0 0 1-2-2V6a2 2 0 0 1 2-2h2"/><rect x="8" y="2" width="8" height="4" rx="1"/><path d="M9 14l2 2 4-4"/></svg>
+          </div>
+          <div class="t4-app-label">Passagem de<br>Servico</div>
+        </div>
+
+        <!-- ROF Digital -->
+        <div class="t4-app-card" data-module="rof-digital">
+          <span class="t4-badge-new">NOVO</span>
+          <div class="t4-app-icon" style="background:rgba(229,161,0,0.12);color:var(--accent-gold);">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" width="24" height="24"><path d="M4 19.5A2.5 2.5 0 0 1 6.5 17H20"/><path d="M6.5 2H20v20H6.5A2.5 2.5 0 0 1 4 19.5v-15A2.5 2.5 0 0 1 6.5 2z"/></svg>
+          </div>
+          <div class="t4-app-label">ROF Digital</div>
+        </div>
+
+        <!-- EFVM 360 -->
+        <div class="t4-app-card" data-module="efvm360">
+          <span class="t4-badge-online" style="position:absolute;top:12px;right:12px;"></span>
+          <div class="t4-app-icon" style="background:rgba(0,140,126,0.12);color:var(--accent-teal);">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" width="24" height="24"><polygon points="12 2 2 7 12 12 22 7 12 2"/><polyline points="2 17 12 22 22 17"/><polyline points="2 12 12 17 22 12"/></svg>
+          </div>
+          <div class="t4-app-label">EFVM 360</div>
+        </div>
+
+        <!-- CCQ Qualidade -->
+        <div class="t4-app-card" data-module="ccq">
+          <span class="t4-badge-new">NOVO</span>
+          <div class="t4-app-icon" style="background:rgba(229,161,0,0.12);color:var(--accent-gold);">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" width="24" height="24"><line x1="12" y1="20" x2="12" y2="10"/><line x1="18" y1="20" x2="18" y2="4"/><line x1="6" y1="20" x2="6" y2="16"/></svg>
+          </div>
+          <div class="t4-app-label">CCQ<br>Qualidade</div>
+        </div>
+
+        <!-- AdamBoot IA -->
+        <div class="t4-app-card" data-module="adamboot">
+          <span class="t4-badge-online" style="position:absolute;top:12px;right:12px;"></span>
+          <div class="t4-app-icon" style="background:rgba(122,184,0,0.12);color:var(--accent-green);">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" width="24" height="24"><path d="M12 3l1.5 5.5L19 10l-5.5 1.5L12 17l-1.5-5.5L5 10l5.5-1.5L12 3z"/></svg>
+          </div>
+          <div class="t4-app-label">AdamBoot IA</div>
+        </div>
+
       </div>
-      <div class="hub-aura-text">
-        <div class="hub-aura-title">Aura</div>
-        <div class="hub-aura-desc">Seu assistente ferroviario inteligente</div>
+
+      <!-- Section: ASSISTENTE IA -->
+      <div class="t4-section-title" style="margin-top:24px;">ASSISTENTE IA</div>
+      <div class="hub-aura-card" id="hub-aura-card">
+        <div class="hub-aura-icon">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" width="28" height="28"><path d="M12 3l1.5 5.5L19 10l-5.5 1.5L12 17l-1.5-5.5L5 10l5.5-1.5L12 3z"/></svg>
+        </div>
+        <div class="hub-aura-text">
+          <div class="hub-aura-title">Aura</div>
+          <div class="hub-aura-desc">Seu assistente ferroviario inteligente</div>
+        </div>
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" width="20" height="20" style="opacity:0.4;flex-shrink:0;"><path d="M9 18l6-6-6-6"/></svg>
       </div>
-      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" width="20" height="20" style="opacity:0.4;flex-shrink:0;"><path d="M9 18l6-6-6-6"/></svg>
-    </div>
 
-    <!-- Spacer for bottom nav -->
-    <div style="height:80px;"></div>
+      <!-- Spacer for bottom nav -->
+      <div style="height:80px;"></div>
+    </section>
 
-    <!-- Bottom Nav -->
-    <nav class="t4-bottom-nav">
-      <button class="t4-nav-item active">
+    <!-- ========== VIEW: BUSCA ========== -->
+    <section id="view-busca" class="t4-view">
+      <div class="view-header">
+        <h2 class="view-title">Busca</h2>
+      </div>
+
+      <div class="busca-input-wrap">
+        <svg class="busca-input-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" width="20" height="20"><circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/></svg>
+        <input type="text" id="busca-input" class="busca-input" placeholder="Buscar no T4..." autocomplete="off">
+        <button class="busca-clear" id="busca-clear" hidden>&times;</button>
+      </div>
+
+      <div id="busca-results" hidden></div>
+
+      <div id="busca-default">
+        <div class="busca-section" id="busca-recentes-section" hidden>
+          <div class="config-section-title">BUSCAS RECENTES</div>
+          <div id="busca-recentes-list" class="busca-recentes-list"></div>
+        </div>
+
+        <div class="busca-section">
+          <div class="config-section-title">ACESSO RAPIDO</div>
+          <div class="busca-quick-grid">
+            <div class="busca-quick-item" data-nav-module="rof-digital">
+              <div class="t4-app-icon" style="background:rgba(229,161,0,0.12);color:var(--accent-gold);width:44px;height:44px;border-radius:12px;">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" width="22" height="22"><path d="M4 19.5A2.5 2.5 0 0 1 6.5 17H20"/><path d="M6.5 2H20v20H6.5A2.5 2.5 0 0 1 4 19.5v-15A2.5 2.5 0 0 1 6.5 2z"/></svg>
+              </div>
+              <span class="busca-quick-label">ROF Digital</span>
+            </div>
+            <div class="busca-quick-item" data-nav-module="adamboot">
+              <div class="t4-app-icon" style="background:rgba(122,184,0,0.12);color:var(--accent-green);width:44px;height:44px;border-radius:12px;">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" width="22" height="22"><path d="M12 3l1.5 5.5L19 10l-5.5 1.5L12 17l-1.5-5.5L5 10l5.5-1.5L12 3z"/></svg>
+              </div>
+              <span class="busca-quick-label">AdamBoot</span>
+            </div>
+            <div class="busca-quick-item" data-nav-module="efvm360">
+              <div class="t4-app-icon" style="background:rgba(0,140,126,0.12);color:var(--accent-teal);width:44px;height:44px;border-radius:12px;">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" width="22" height="22"><polygon points="12 2 2 7 12 12 22 7 12 2"/><polyline points="2 17 12 22 22 17"/><polyline points="2 12 12 17 22 12"/></svg>
+              </div>
+              <span class="busca-quick-label">EFVM 360</span>
+            </div>
+            <div class="busca-quick-item" data-nav-module="ccq">
+              <div class="t4-app-icon" style="background:rgba(229,161,0,0.12);color:var(--accent-gold);width:44px;height:44px;border-radius:12px;">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" width="22" height="22"><line x1="12" y1="20" x2="12" y2="10"/><line x1="18" y1="20" x2="18" y2="4"/><line x1="6" y1="20" x2="6" y2="16"/></svg>
+              </div>
+              <span class="busca-quick-label">CCQ</span>
+            </div>
+          </div>
+        </div>
+
+        <div class="busca-section">
+          <div class="config-section-title">CATEGORIAS</div>
+          <div class="busca-categories">
+            <span class="busca-category-chip">Sinalizacao</span>
+            <span class="busca-category-chip">Velocidade</span>
+            <span class="busca-category-chip">Comunicacao</span>
+            <span class="busca-category-chip">Seguranca</span>
+            <span class="busca-category-chip">Manobras</span>
+            <span class="busca-category-chip">Emergencia</span>
+            <span class="busca-category-chip">BOLL</span>
+            <span class="busca-category-chip">Equipamentos</span>
+          </div>
+        </div>
+      </div>
+
+      <div style="height:80px;"></div>
+    </section>
+
+    <!-- ========== VIEW: ALERTAS ========== -->
+    <section id="view-alertas" class="t4-view">
+      <div class="view-header">
+        <h2 class="view-title">Alertas</h2>
+        <button class="alertas-clear-btn" id="alertas-clear-all">Limpar</button>
+      </div>
+
+      <div class="alertas-filters">
+        <button class="alertas-filter active" data-filter="todos">Todos</button>
+        <button class="alertas-filter" data-filter="urgente">Urgente</button>
+        <button class="alertas-filter" data-filter="atencao">Atencao</button>
+        <button class="alertas-filter" data-filter="info">Info</button>
+      </div>
+
+      <div id="alertas-list" class="alertas-list"></div>
+
+      <div id="alertas-empty" class="alertas-empty" hidden>
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" width="48" height="48" style="opacity:0.3;"><path d="M18 8A6 6 0 0 0 6 8c0 7-3 9-3 9h18s-3-2-3-9"/><path d="M13.73 21a2 2 0 0 1-3.46 0"/></svg>
+        <p style="color:var(--text-muted);font-size:14px;margin-top:12px;">Nenhum alerta</p>
+      </div>
+
+      <div style="height:80px;"></div>
+    </section>
+
+    <!-- ========== VIEW: CONFIG ========== -->
+    <section id="view-config" class="t4-view">
+      <div class="view-header">
+        <h2 class="view-title">Configuracoes</h2>
+      </div>
+
+      <!-- Profile Card -->
+      <div class="config-profile" id="config-profile">
+        <div class="config-profile-avatar" id="config-avatar"></div>
+        <div class="config-profile-info">
+          <div class="config-profile-name" id="config-nome"></div>
+          <div class="config-profile-role" id="config-funcao"></div>
+          <div class="config-profile-mat" id="config-matricula"></div>
+        </div>
+        <span class="config-arrow">&rsaquo;</span>
+      </div>
+
+      <!-- OPERACIONAL -->
+      <div class="config-section">
+        <div class="config-section-title">OPERACIONAL</div>
+        <div class="config-group">
+          <div class="config-item" id="config-patio-item">
+            <div class="config-item-left">
+              <span class="config-icon" style="background:rgba(0,180,216,0.12);">&#127981;</span>
+              <span class="config-label">Patio Atual</span>
+            </div>
+            <div class="config-item-right">
+              <span class="config-value" id="config-patio-value">VFZ</span>
+              <span class="config-arrow">&rsaquo;</span>
+            </div>
+          </div>
+          <div class="config-item">
+            <div class="config-item-left">
+              <span class="config-icon" style="background:rgba(0,140,126,0.12);">&#128642;</span>
+              <span class="config-label">Turno Ativo</span>
+            </div>
+            <div class="config-item-right">
+              <span class="config-value" id="config-turno-value">A</span>
+            </div>
+          </div>
+          <div class="config-item">
+            <div class="config-item-left">
+              <span class="config-icon" style="background:rgba(229,161,0,0.12);">&#128203;</span>
+              <span class="config-label">Trem Escalado</span>
+            </div>
+            <div class="config-item-right">
+              <span class="config-value" id="config-trem-value">M346</span>
+            </div>
+          </div>
+          <div class="config-item">
+            <div class="config-item-left">
+              <span class="config-icon" style="background:rgba(122,184,0,0.12);">&#9201;&#65039;</span>
+              <span class="config-label">Jornada Maxima</span>
+            </div>
+            <div class="config-item-right">
+              <span class="config-value">12h</span>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- APARENCIA -->
+      <div class="config-section">
+        <div class="config-section-title">APARENCIA</div>
+        <div class="config-group">
+          <div class="config-item" id="config-tema-item">
+            <div class="config-item-left">
+              <span class="config-icon" style="background:rgba(0,140,126,0.12);">&#127912;</span>
+              <span class="config-label">Tema</span>
+            </div>
+            <div class="config-item-right">
+              <span class="config-value" id="config-tema-value">Sistema</span>
+              <span class="config-arrow">&rsaquo;</span>
+            </div>
+          </div>
+          <div class="config-item" id="config-fonte-item">
+            <div class="config-item-left">
+              <span class="config-icon" style="background:rgba(0,180,216,0.12);">&#128292;</span>
+              <span class="config-label">Tamanho da Fonte</span>
+            </div>
+            <div class="config-item-right">
+              <span class="config-value" id="config-fonte-value">Normal</span>
+              <span class="config-arrow">&rsaquo;</span>
+            </div>
+          </div>
+          <div class="config-item">
+            <div class="config-item-left">
+              <span class="config-icon" style="background:rgba(229,161,0,0.12);">&#128171;</span>
+              <span class="config-label">Animacoes</span>
+            </div>
+            <label class="config-toggle">
+              <input type="checkbox" checked data-config="animacoes">
+              <span class="config-toggle-slider"></span>
+            </label>
+          </div>
+          <div class="config-item">
+            <div class="config-item-left">
+              <span class="config-icon" style="background:rgba(122,184,0,0.12);">&#128266;</span>
+              <span class="config-label">Sons</span>
+            </div>
+            <label class="config-toggle">
+              <input type="checkbox" checked data-config="sons">
+              <span class="config-toggle-slider"></span>
+            </label>
+          </div>
+        </div>
+      </div>
+
+      <!-- NOTIFICACOES -->
+      <div class="config-section">
+        <div class="config-section-title">NOTIFICACOES</div>
+        <div class="config-group">
+          <div class="config-item">
+            <div class="config-item-left">
+              <span class="config-icon" style="background:rgba(0,140,126,0.12);">&#128276;</span>
+              <span class="config-label">Notificacoes</span>
+            </div>
+            <label class="config-toggle">
+              <input type="checkbox" checked data-config="notificacoes">
+              <span class="config-toggle-slider"></span>
+            </label>
+          </div>
+          <div class="config-item">
+            <div class="config-item-left">
+              <span class="config-icon" style="background:rgba(220,53,69,0.12);">&#128308;</span>
+              <span class="config-label">Alertas BOLL</span>
+            </div>
+            <label class="config-toggle">
+              <input type="checkbox" checked data-config="alertasBoll">
+              <span class="config-toggle-slider"></span>
+            </label>
+          </div>
+          <div class="config-item">
+            <div class="config-item-left">
+              <span class="config-icon" style="background:rgba(229,161,0,0.12);">&#9201;&#65039;</span>
+              <span class="config-label">Alerta Jornada</span>
+            </div>
+            <label class="config-toggle">
+              <input type="checkbox" checked data-config="alertaJornada">
+              <span class="config-toggle-slider"></span>
+            </label>
+          </div>
+          <div class="config-item">
+            <div class="config-item-left">
+              <span class="config-icon" style="background:rgba(122,184,0,0.12);">&#128203;</span>
+              <span class="config-label">Alertas DSS</span>
+            </div>
+            <label class="config-toggle">
+              <input type="checkbox" checked data-config="alertasDss">
+              <span class="config-toggle-slider"></span>
+            </label>
+          </div>
+          <div class="config-item">
+            <div class="config-item-left">
+              <span class="config-icon" style="background:rgba(0,180,216,0.12);">&#128202;</span>
+              <span class="config-label">Relatorios</span>
+            </div>
+            <label class="config-toggle">
+              <input type="checkbox" checked data-config="relatorios">
+              <span class="config-toggle-slider"></span>
+            </label>
+          </div>
+          <div class="config-item">
+            <div class="config-item-left">
+              <span class="config-icon" style="background:rgba(0,140,126,0.12);">&#128260;</span>
+              <span class="config-label">Atualizacoes</span>
+            </div>
+            <label class="config-toggle">
+              <input type="checkbox" checked data-config="atualizacoes">
+              <span class="config-toggle-slider"></span>
+            </label>
+          </div>
+        </div>
+      </div>
+
+      <!-- MODULOS -->
+      <div class="config-section">
+        <div class="config-section-title">MODULOS</div>
+        <div class="config-group">
+          <div class="config-item" data-nav-module="efvm360">
+            <div class="config-item-left">
+              <span class="config-icon" style="background:rgba(0,140,126,0.12);">&#127918;</span>
+              <span class="config-label">EFVM 360</span>
+            </div>
+            <div class="config-item-right"><span class="config-arrow">&rsaquo;</span></div>
+          </div>
+          <div class="config-item" data-nav-module="ccq">
+            <div class="config-item-left">
+              <span class="config-icon" style="background:rgba(229,161,0,0.12);">&#128203;</span>
+              <span class="config-label">CCQ</span>
+            </div>
+            <div class="config-item-right"><span class="config-arrow">&rsaquo;</span></div>
+          </div>
+          <div class="config-item" data-nav-module="rof-digital">
+            <div class="config-item-left">
+              <span class="config-icon" style="background:rgba(229,161,0,0.12);">&#128214;</span>
+              <span class="config-label">ROF Digital</span>
+            </div>
+            <div class="config-item-right"><span class="config-arrow">&rsaquo;</span></div>
+          </div>
+          <div class="config-item" data-nav-module="adamboot">
+            <div class="config-item-left">
+              <span class="config-icon" style="background:rgba(122,184,0,0.12);">&#129302;</span>
+              <span class="config-label">AdamBoot</span>
+            </div>
+            <div class="config-item-right"><span class="config-arrow">&rsaquo;</span></div>
+          </div>
+          <div class="config-item" data-nav-module="optima">
+            <div class="config-item-left">
+              <span class="config-icon" style="background:rgba(0,180,216,0.12);">&#128101;</span>
+              <span class="config-label">OPTIMA Equipagem</span>
+            </div>
+            <div class="config-item-right"><span class="config-arrow">&rsaquo;</span></div>
+          </div>
+          <div class="config-item" data-nav-module="vfz">
+            <div class="config-item-left">
+              <span class="config-icon" style="background:rgba(122,184,0,0.12);">&#9989;</span>
+              <span class="config-label">Passagem de Servico</span>
+            </div>
+            <div class="config-item-right"><span class="config-arrow">&rsaquo;</span></div>
+          </div>
+        </div>
+      </div>
+
+      <!-- DADOS E ARMAZENAMENTO -->
+      <div class="config-section">
+        <div class="config-section-title">DADOS E ARMAZENAMENTO</div>
+        <div class="config-group">
+          <div class="config-item">
+            <div class="config-item-left">
+              <span class="config-icon" style="background:rgba(0,180,216,0.12);">&#128190;</span>
+              <span class="config-label">Cache</span>
+            </div>
+            <div class="config-item-right">
+              <span class="config-value" id="config-cache-size">--</span>
+            </div>
+          </div>
+          <div class="config-item">
+            <div class="config-item-left">
+              <span class="config-icon" style="background:rgba(122,184,0,0.12);">&#128194;</span>
+              <span class="config-label">Dados Offline</span>
+            </div>
+            <div class="config-item-right">
+              <span class="config-value" id="config-offline-size">--</span>
+            </div>
+          </div>
+          <div class="config-item" id="config-clear-cache">
+            <div class="config-item-left">
+              <span class="config-icon" style="background:rgba(220,53,69,0.12);">&#128465;&#65039;</span>
+              <span class="config-label">Limpar Cache</span>
+            </div>
+            <div class="config-item-right"><span class="config-arrow">&rsaquo;</span></div>
+          </div>
+          <div class="config-item" id="config-export-data">
+            <div class="config-item-left">
+              <span class="config-icon" style="background:rgba(0,140,126,0.12);">&#128229;</span>
+              <span class="config-label">Exportar Dados</span>
+            </div>
+            <div class="config-item-right"><span class="config-arrow">&rsaquo;</span></div>
+          </div>
+        </div>
+      </div>
+
+      <!-- CONEXAO -->
+      <div class="config-section">
+        <div class="config-section-title">CONEXAO</div>
+        <div class="config-group">
+          <div class="config-item">
+            <div class="config-item-left">
+              <span class="config-icon" style="background:rgba(122,184,0,0.12);">&#128225;</span>
+              <span class="config-label">Status</span>
+            </div>
+            <div class="config-item-right">
+              <span class="config-value" id="config-online-status">Online</span>
+            </div>
+          </div>
+          <div class="config-item">
+            <div class="config-item-left">
+              <span class="config-icon" style="background:rgba(0,180,216,0.12);">&#128260;</span>
+              <span class="config-label">Ultima Sincronizacao</span>
+            </div>
+            <div class="config-item-right">
+              <span class="config-value" id="config-last-sync">--</span>
+            </div>
+          </div>
+          <div class="config-item">
+            <div class="config-item-left">
+              <span class="config-icon" style="background:rgba(229,161,0,0.12);">&#128246;</span>
+              <span class="config-label">Modo Offline</span>
+            </div>
+            <label class="config-toggle">
+              <input type="checkbox" data-config="modoOffline">
+              <span class="config-toggle-slider"></span>
+            </label>
+          </div>
+        </div>
+      </div>
+
+      <!-- ACESSIBILIDADE -->
+      <div class="config-section">
+        <div class="config-section-title">ACESSIBILIDADE</div>
+        <div class="config-group">
+          <div class="config-item">
+            <div class="config-item-left">
+              <span class="config-icon" style="background:rgba(0,140,126,0.12);">&#128292;</span>
+              <span class="config-label">Texto Grande</span>
+            </div>
+            <label class="config-toggle">
+              <input type="checkbox" data-config="textoGrande">
+              <span class="config-toggle-slider"></span>
+            </label>
+          </div>
+          <div class="config-item">
+            <div class="config-item-left">
+              <span class="config-icon" style="background:rgba(0,180,216,0.12);">&#128307;</span>
+              <span class="config-label">Alto Contraste</span>
+            </div>
+            <label class="config-toggle">
+              <input type="checkbox" data-config="altoContraste">
+              <span class="config-toggle-slider"></span>
+            </label>
+          </div>
+          <div class="config-item">
+            <div class="config-item-left">
+              <span class="config-icon" style="background:rgba(229,161,0,0.12);">&#128243;</span>
+              <span class="config-label">Feedback Tatil</span>
+            </div>
+            <label class="config-toggle">
+              <input type="checkbox" checked data-config="feedbackTatil">
+              <span class="config-toggle-slider"></span>
+            </label>
+          </div>
+        </div>
+      </div>
+
+      <!-- SEGURANCA -->
+      <div class="config-section">
+        <div class="config-section-title">SEGURANCA</div>
+        <div class="config-group">
+          <div class="config-item" id="config-change-pin">
+            <div class="config-item-left">
+              <span class="config-icon" style="background:rgba(0,140,126,0.12);">&#128272;</span>
+              <span class="config-label">Alterar PIN</span>
+            </div>
+            <div class="config-item-right"><span class="config-arrow">&rsaquo;</span></div>
+          </div>
+          <div class="config-item">
+            <div class="config-item-left">
+              <span class="config-icon" style="background:rgba(229,161,0,0.12);">&#128274;</span>
+              <span class="config-label">Bloqueio Automatico</span>
+            </div>
+            <label class="config-toggle">
+              <input type="checkbox" checked data-config="bloqueioAuto">
+              <span class="config-toggle-slider"></span>
+            </label>
+          </div>
+          <div class="config-item">
+            <div class="config-item-left">
+              <span class="config-icon" style="background:rgba(0,180,216,0.12);">&#9201;&#65039;</span>
+              <span class="config-label">Tempo de Bloqueio</span>
+            </div>
+            <div class="config-item-right">
+              <span class="config-value">5 min</span>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- SUPORTE -->
+      <div class="config-section">
+        <div class="config-section-title">SUPORTE</div>
+        <div class="config-group">
+          <div class="config-item">
+            <div class="config-item-left">
+              <span class="config-icon" style="background:rgba(0,180,216,0.12);">&#10067;</span>
+              <span class="config-label">Central de Ajuda</span>
+            </div>
+            <div class="config-item-right"><span class="config-arrow">&rsaquo;</span></div>
+          </div>
+          <div class="config-item">
+            <div class="config-item-left">
+              <span class="config-icon" style="background:rgba(220,53,69,0.12);">&#128027;</span>
+              <span class="config-label">Reportar Bug</span>
+            </div>
+            <div class="config-item-right"><span class="config-arrow">&rsaquo;</span></div>
+          </div>
+          <div class="config-item">
+            <div class="config-item-left">
+              <span class="config-icon" style="background:rgba(122,184,0,0.12);">&#128172;</span>
+              <span class="config-label">Feedback</span>
+            </div>
+            <div class="config-item-right"><span class="config-arrow">&rsaquo;</span></div>
+          </div>
+          <div class="config-item">
+            <div class="config-item-left">
+              <span class="config-icon" style="background:rgba(229,161,0,0.12);">&#128220;</span>
+              <span class="config-label">Termos de Uso</span>
+            </div>
+            <div class="config-item-right"><span class="config-arrow">&rsaquo;</span></div>
+          </div>
+          <div class="config-item">
+            <div class="config-item-left">
+              <span class="config-icon" style="background:rgba(0,140,126,0.12);">&#128274;</span>
+              <span class="config-label">Politica de Privacidade</span>
+            </div>
+            <div class="config-item-right"><span class="config-arrow">&rsaquo;</span></div>
+          </div>
+        </div>
+      </div>
+
+      <!-- SOBRE -->
+      <div class="config-section">
+        <div class="config-section-title">SOBRE</div>
+        <div class="config-group">
+          <div class="config-item">
+            <div class="config-item-left">
+              <span class="config-icon" style="background:rgba(0,180,216,0.12);">&#8505;&#65039;</span>
+              <span class="config-label">Versao</span>
+            </div>
+            <div class="config-item-right">
+              <span class="config-value">v1.0.0</span>
+            </div>
+          </div>
+          <div class="config-item">
+            <div class="config-item-left">
+              <span class="config-icon" style="background:rgba(0,140,126,0.12);">&#127959;&#65039;</span>
+              <span class="config-label">Build</span>
+            </div>
+            <div class="config-item-right">
+              <span class="config-value">2026.03</span>
+            </div>
+          </div>
+          <div class="config-item">
+            <div class="config-item-left">
+              <span class="config-icon" style="background:rgba(122,184,0,0.12);">&#128104;&#8205;&#128187;</span>
+              <span class="config-label">Desenvolvido por</span>
+            </div>
+            <div class="config-item-right">
+              <span class="config-value">Gregory Pinto</span>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- LOGOUT -->
+      <div class="config-logout" id="config-logout">
+        &#128682; Sair da Conta
+      </div>
+
+      <div class="config-footer">
+        T4 Trilho 4.0 &mdash; v1.0.0<br>
+        Feito com &#10084;&#65039; para a EFVM
+      </div>
+
+      <div style="height:80px;"></div>
+    </section>
+
+    <!-- ========== BOTTOM NAV (outside views) ========== -->
+    <nav class="t4-bottom-nav" id="main-bottom-nav">
+      <button class="t4-nav-item active" data-nav="hub">
         <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" width="22" height="22"><path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/><polyline points="9 22 9 12 15 12 15 22"/></svg>
         <span class="t4-nav-label">Hub</span>
       </button>
-      <button class="t4-nav-item">
+      <button class="t4-nav-item" data-nav="busca">
         <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" width="22" height="22"><circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/></svg>
         <span class="t4-nav-label">Busca</span>
       </button>
-      <button class="t4-nav-item">
+      <button class="t4-nav-item" data-nav="alertas">
         <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" width="22" height="22"><path d="M18 8A6 6 0 0 0 6 8c0 7-3 9-3 9h18s-3-2-3-9"/><path d="M13.73 21a2 2 0 0 1-3.46 0"/></svg>
         <span class="t4-nav-label">Alertas</span>
+        <span class="t4-nav-badge" id="alertBadge" hidden>0</span>
       </button>
-      <button class="t4-nav-item">
+      <button class="t4-nav-item" data-nav="config">
         <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" width="22" height="22"><circle cx="12" cy="12" r="3"/><path d="M19.4 15a1.65 1.65 0 0 0 .33 1.82l.06.06a2 2 0 0 1 0 2.83 2 2 0 0 1-2.83 0l-.06-.06a1.65 1.65 0 0 0-1.82-.33 1.65 1.65 0 0 0-1 1.51V21a2 2 0 0 1-2 2 2 2 0 0 1-2-2v-.09A1.65 1.65 0 0 0 9 19.4a1.65 1.65 0 0 0-1.82.33l-.06.06a2 2 0 0 1-2.83 0 2 2 0 0 1 0-2.83l.06-.06A1.65 1.65 0 0 0 4.68 15a1.65 1.65 0 0 0-1.51-1H3a2 2 0 0 1-2-2 2 2 0 0 1 2-2h.09A1.65 1.65 0 0 0 4.6 9a1.65 1.65 0 0 0-.33-1.82l-.06-.06a2 2 0 0 1 0-2.83 2 2 0 0 1 2.83 0l.06.06A1.65 1.65 0 0 0 9 4.68a1.65 1.65 0 0 0 1-1.51V3a2 2 0 0 1 2-2 2 2 0 0 1 2 2v.09a1.65 1.65 0 0 0 1 1.51 1.65 1.65 0 0 0 1.82-.33l.06-.06a2 2 0 0 1 2.83 0 2 2 0 0 1 0 2.83l-.06.06A1.65 1.65 0 0 0 19.4 9a1.65 1.65 0 0 0 1.51 1H21a2 2 0 0 1 2 2 2 2 0 0 1-2 2h-.09a1.65 1.65 0 0 0-1.51 1z"/></svg>
         <span class="t4-nav-label">Config</span>
       </button>
@@ -337,42 +890,123 @@
         }
       };
 
+      /* ======= CONFIG SYSTEM ======= */
+      var T4Config = {
+        _cache: null,
+        defaults: function () {
+          return {
+            patio: 'VFZ', turno: 'A', tremEscalado: 'M346', jornadaMax: 12,
+            tema: 'sistema', tamanhoFonte: 'normal', animacoes: true, sons: true,
+            notificacoes: true, alertasBoll: true, alertaJornada: true,
+            alertasDss: true, relatorios: true, atualizacoes: true,
+            modoOffline: false, textoGrande: false, altoContraste: false,
+            feedbackTatil: true, bloqueioAuto: true, tempoBloqueio: 5
+          };
+        },
+        load: function () {
+          if (this._cache) return this._cache;
+          try {
+            var saved = localStorage.getItem('t4-config');
+            this._cache = saved ? Object.assign(this.defaults(), JSON.parse(saved)) : this.defaults();
+          } catch (e) { this._cache = this.defaults(); }
+          return this._cache;
+        },
+        save: function (config) {
+          this._cache = config;
+          localStorage.setItem('t4-config', JSON.stringify(config));
+        },
+        set: function (key, value) {
+          var c = this.load(); c[key] = value; this.save(c);
+        },
+        get: function (key) { return this.load()[key]; }
+      };
+
+      /* ======= ALERTS DATA ======= */
+      var ALERTAS_KEY = 't4-alertas';
+
+      function getDefaultAlertas() {
+        var now = Date.now();
+        return [
+          { id: 1, tipo: 'urgente', titulo: 'BOLL Ativa \u2014 km 342 a 348', desc: 'Restricao de velocidade 30 km/h. Manutencao de via em andamento.', tempo: now - 2 * 3600000, lido: false },
+          { id: 2, tipo: 'atencao', titulo: 'Jornada \u2014 10h atingidas', desc: 'Limite de 12h em 2 horas. Planejar encerramento do turno.', tempo: now - 4 * 3600000, lido: false },
+          { id: 3, tipo: 'ok', titulo: 'DSS Concluido \u2014 Turno A', desc: 'Dialogo de Seguranca e Saude registrado. Patio VFZ.', tempo: now - 6 * 3600000, lido: false },
+          { id: 4, tipo: 'info', titulo: 'Atualizacao ROF Digital', desc: 'Artigo 52 \u2014 Procedimentos de cruzamento. Nova revisao disponivel.', tempo: now - 24 * 3600000, lido: true },
+          { id: 5, tipo: 'ok', titulo: 'Simulacao EFVM 360 Completa', desc: 'Cenario: Minerio VFZ\u2192VOD. Score final: 87/100. Ranking: #3 do patio.', tempo: now - 28 * 3600000, lido: true },
+          { id: 6, tipo: 'atencao', titulo: 'CCQ \u2014 Prazo do projeto', desc: 'Projeto "Reducao de tempo de manobra" fase Do vence em 3 dias.', tempo: now - 30 * 3600000, lido: true },
+          { id: 7, tipo: 'info', titulo: 'AdamBoot \u2014 Nova base de conhecimento', desc: 'Normas de transporte de produtos perigosos atualizadas.', tempo: now - 48 * 3600000, lido: true },
+          { id: 8, tipo: 'urgente', titulo: 'Restricao Temporaria \u2014 km 156', desc: 'Passagem de nivel com defeito no km 156. Velocidade maxima 10 km/h. Buzinar.', tempo: now - 50 * 3600000, lido: true }
+        ];
+      }
+
+      function loadAlertas() {
+        try {
+          var saved = localStorage.getItem(ALERTAS_KEY);
+          return saved ? JSON.parse(saved) : getDefaultAlertas();
+        } catch (e) { return getDefaultAlertas(); }
+      }
+
+      function saveAlertas(alertas) {
+        localStorage.setItem(ALERTAS_KEY, JSON.stringify(alertas));
+      }
+
+      /* ======= SEARCH INDEX ======= */
+      var SEARCH_INDEX = [
+        { term: 'EFVM 360', cat: 'modulo', module: 'efvm360' },
+        { term: 'Simulador', cat: 'modulo', module: 'efvm360' },
+        { term: 'ROF Digital', cat: 'modulo', module: 'rof-digital' },
+        { term: 'Regulamento', cat: 'modulo', module: 'rof-digital' },
+        { term: 'CCQ', cat: 'modulo', module: 'ccq' },
+        { term: 'Qualidade', cat: 'modulo', module: 'ccq' },
+        { term: 'AdamBoot', cat: 'modulo', module: 'adamboot' },
+        { term: 'Assistente IA', cat: 'modulo', module: 'adamboot' },
+        { term: 'OPTIMA', cat: 'modulo', module: 'optima' },
+        { term: 'Equipagem', cat: 'modulo', module: 'optima' },
+        { term: 'Passagem de Servico', cat: 'modulo', module: 'vfz' },
+        { term: 'DSS', cat: 'modulo', module: 'vfz' },
+        { term: 'Velocidade maxima', cat: 'glossario' },
+        { term: 'Sinalizacao ferroviaria', cat: 'glossario' },
+        { term: 'BOLL', cat: 'glossario' },
+        { term: 'Comunicacao radio', cat: 'glossario' },
+        { term: 'Passagem de nivel', cat: 'glossario' },
+        { term: 'Procedimento de emergencia', cat: 'glossario' },
+        { term: 'Manobra', cat: 'glossario' },
+        { term: 'Cruzamento', cat: 'glossario' },
+        { term: 'Licenca de via', cat: 'glossario' },
+        { term: 'EPI', cat: 'glossario' },
+        { term: 'Freio de emergencia', cat: 'glossario' },
+        { term: 'Artigo 47', cat: 'rof' },
+        { term: 'Artigo 52', cat: 'rof' },
+        { term: 'Artigo 18', cat: 'rof' },
+        { term: 'Artigo 33', cat: 'rof' },
+        { term: 'Procedimento BOLL', cat: 'rof' },
+        { term: 'Limite de velocidade', cat: 'rof' },
+        { term: 'Configuracoes', cat: 'nav', navTo: 'config' },
+        { term: 'Alertas', cat: 'nav', navTo: 'alertas' }
+      ];
+
       /* ======= SPLASH SCREEN ======= */
       var splash = document.getElementById('splash-screen');
       var splashLogo = document.getElementById('splash-logo');
       var splashSubtitle = document.getElementById('splash-subtitle');
       var splashBar = document.getElementById('splash-loader-bar');
 
-      // Trigger animations
       requestAnimationFrame(function () {
         splashLogo.classList.add('splash-logo-animate');
-        setTimeout(function () {
-          splashSubtitle.classList.add('splash-subtitle-animate');
-        }, 400);
-        setTimeout(function () {
-          splashBar.classList.add('splash-bar-animate');
-        }, 600);
+        setTimeout(function () { splashSubtitle.classList.add('splash-subtitle-animate'); }, 400);
+        setTimeout(function () { splashBar.classList.add('splash-bar-animate'); }, 600);
       });
 
-      // Fade out splash after 2s
       setTimeout(function () {
         splash.classList.add('splash-fadeout');
-        setTimeout(function () {
-          splash.style.display = 'none';
-          showAppScreen();
-        }, 500);
+        setTimeout(function () { splash.style.display = 'none'; showAppScreen(); }, 500);
       }, 2000);
 
       /* ======= INIT T4 ======= */
       T4.init('hub');
 
-      /* ======= SHOW APP SCREEN ======= */
       function showAppScreen() {
-        if (!T4.auth.isAuthenticated()) {
-          showLoginScreen();
-        } else {
-          showDashboard();
-        }
+        if (!T4.auth.isAuthenticated()) { showLoginScreen(); }
+        else { showDashboard(); }
       }
 
       /* ======= LOGIN SCREEN ======= */
@@ -406,12 +1040,8 @@
         }
 
         btnLogin.addEventListener('click', doLogin);
-        inputPin.addEventListener('keydown', function (e) {
-          if (e.key === 'Enter') doLogin();
-        });
-        inputMat.addEventListener('keydown', function (e) {
-          if (e.key === 'Enter') inputPin.focus();
-        });
+        inputPin.addEventListener('keydown', function (e) { if (e.key === 'Enter') doLogin(); });
+        inputMat.addEventListener('keydown', function (e) { if (e.key === 'Enter') inputPin.focus(); });
       }
 
       /* ======= DASHBOARD ======= */
@@ -426,32 +1056,24 @@
         var user = T4.auth.getUser();
         if (!user) return;
 
-        // User info
-        var avatarEl = document.getElementById('hub-user-avatar');
-        var nameEl = document.getElementById('hub-user-name');
-        var yardEl = document.getElementById('hub-yard-tag');
-
-        avatarEl.textContent = user.avatar || user.nome.substring(0, 2).toUpperCase();
-        nameEl.textContent = user.nome;
-        yardEl.textContent = user.patio || 'N/A';
+        document.getElementById('hub-user-avatar').textContent = user.avatar || user.nome.substring(0, 2).toUpperCase();
+        document.getElementById('hub-user-name').textContent = user.nome;
+        document.getElementById('hub-yard-tag').textContent = user.patio || 'N/A';
 
         // Clock
         function updateClock() {
           var now = new Date();
-          var h = String(now.getHours()).padStart(2, '0');
-          var m = String(now.getMinutes()).padStart(2, '0');
-          document.getElementById('hub-clock').textContent = h + ':' + m;
+          document.getElementById('hub-clock').textContent =
+            String(now.getHours()).padStart(2, '0') + ':' + String(now.getMinutes()).padStart(2, '0');
         }
         updateClock();
         setInterval(updateClock, 30000);
 
         // App card click handlers
-        var cards = document.querySelectorAll('.t4-app-card[data-module]');
-        cards.forEach(function (card) {
+        document.querySelectorAll('.t4-app-card[data-module]').forEach(function (card) {
           card.addEventListener('click', function () {
             T4.utils.vibrate(10);
-            var moduleId = card.getAttribute('data-module');
-            openModuleModal(moduleId);
+            openModuleModal(card.getAttribute('data-module'));
           });
         });
 
@@ -469,6 +1091,502 @@
 
         // Animate cards
         T4.dom.animateList('.t4-app-card', 60);
+
+        // Init subsystems
+        initNavigation();
+        initConfig(user);
+        initAlertas();
+        initBusca();
+        applyConfigEffects();
+      }
+
+      /* ======= BOTTOM NAV NAVIGATION ======= */
+      function navigateTo(viewId) {
+        document.querySelectorAll('.t4-view').forEach(function (v) { v.classList.remove('active'); });
+        var target = document.getElementById('view-' + viewId);
+        if (target) target.classList.add('active');
+
+        document.querySelectorAll('.t4-nav-item').forEach(function (n) { n.classList.remove('active'); });
+        var navItem = document.querySelector('[data-nav="' + viewId + '"]');
+        if (navItem) navItem.classList.add('active');
+
+        // Show/hide FAB only on Hub
+        var fab = document.getElementById('hub-fab');
+        if (fab) fab.style.display = viewId === 'hub' ? '' : 'none';
+
+        window.scrollTo(0, 0);
+
+        // Focus search input when navigating to busca
+        if (viewId === 'busca') {
+          setTimeout(function () {
+            var input = document.getElementById('busca-input');
+            if (input) input.focus();
+          }, 100);
+        }
+      }
+
+      function initNavigation() {
+        document.querySelectorAll('.t4-nav-item[data-nav]').forEach(function (btn) {
+          btn.addEventListener('click', function () {
+            T4.utils.vibrate(10);
+            navigateTo(btn.getAttribute('data-nav'));
+          });
+        });
+
+        // Module navigation items (config + busca quick access)
+        document.querySelectorAll('[data-nav-module]').forEach(function (el) {
+          el.addEventListener('click', function () {
+            T4.utils.vibrate(10);
+            var moduleId = el.getAttribute('data-nav-module');
+            openModuleModal(moduleId);
+          });
+        });
+      }
+
+      /* ======= CONFIG INIT ======= */
+      function initConfig(user) {
+        // Profile
+        document.getElementById('config-avatar').textContent = user.avatar || user.nome.substring(0, 2).toUpperCase();
+        document.getElementById('config-nome').textContent = user.nome;
+        document.getElementById('config-funcao').textContent = user.funcao || 'Maquinista';
+        document.getElementById('config-matricula').textContent = 'Matricula: ' + (user.matricula || '---');
+
+        var config = T4Config.load();
+
+        // Set operational values
+        document.getElementById('config-patio-value').textContent = config.patio;
+        document.getElementById('config-turno-value').textContent = config.turno;
+        document.getElementById('config-trem-value').textContent = config.tremEscalado;
+
+        // Tema display
+        var temaLabels = { sistema: 'Sistema', claro: 'Claro', escuro: 'Escuro' };
+        document.getElementById('config-tema-value').textContent = temaLabels[config.tema] || 'Sistema';
+
+        // Font display
+        var fonteLabels = { pequena: 'Pequena', normal: 'Normal', grande: 'Grande' };
+        document.getElementById('config-fonte-value').textContent = fonteLabels[config.tamanhoFonte] || 'Normal';
+
+        // Set toggle states
+        document.querySelectorAll('[data-config]').forEach(function (input) {
+          var key = input.getAttribute('data-config');
+          if (config[key] !== undefined) input.checked = config[key];
+        });
+
+        // Toggle change handlers
+        document.querySelectorAll('[data-config]').forEach(function (input) {
+          input.addEventListener('change', function () {
+            var key = input.getAttribute('data-config');
+            T4Config.set(key, input.checked);
+            applyConfigEffects();
+          });
+        });
+
+        // Patio selector
+        document.getElementById('config-patio-item').addEventListener('click', function () {
+          showConfigModal('patio');
+        });
+
+        // Tema selector
+        document.getElementById('config-tema-item').addEventListener('click', function () {
+          showConfigModal('tema');
+        });
+
+        // Font selector
+        document.getElementById('config-fonte-item').addEventListener('click', function () {
+          showConfigModal('fonte');
+        });
+
+        // Clear cache
+        document.getElementById('config-clear-cache').addEventListener('click', function () {
+          if (confirm('Limpar todos os dados em cache?')) {
+            caches.keys().then(function (names) {
+              names.forEach(function (n) { caches.delete(n); });
+            });
+            alert('Cache limpo com sucesso!');
+          }
+        });
+
+        // Export data
+        document.getElementById('config-export-data').addEventListener('click', function () {
+          var data = { config: T4Config.load(), alertas: loadAlertas() };
+          var blob = new Blob([JSON.stringify(data, null, 2)], { type: 'application/json' });
+          var a = document.createElement('a');
+          a.href = URL.createObjectURL(blob);
+          a.download = 't4-backup-' + new Date().toISOString().slice(0, 10) + '.json';
+          a.click();
+        });
+
+        // Logout
+        document.getElementById('config-logout').addEventListener('click', function () {
+          if (confirm('Tem certeza que deseja sair?')) {
+            T4.auth.logout();
+          }
+        });
+
+        // Online status
+        function updateOnlineStatus() {
+          document.getElementById('config-online-status').textContent = navigator.onLine ? 'Online' : 'Offline';
+        }
+        updateOnlineStatus();
+        window.addEventListener('online', updateOnlineStatus);
+        window.addEventListener('offline', updateOnlineStatus);
+
+        // Last sync
+        var now = new Date();
+        document.getElementById('config-last-sync').textContent =
+          String(now.getHours()).padStart(2, '0') + ':' + String(now.getMinutes()).padStart(2, '0');
+
+        // Storage estimate
+        if (navigator.storage && navigator.storage.estimate) {
+          navigator.storage.estimate().then(function (est) {
+            var usedMB = ((est.usage || 0) / 1024 / 1024).toFixed(1);
+            document.getElementById('config-cache-size').textContent = usedMB + ' MB';
+            document.getElementById('config-offline-size').textContent = ((est.usage || 0) * 0.4 / 1024 / 1024).toFixed(1) + ' MB';
+          });
+        }
+      }
+
+      function applyConfigEffects() {
+        var config = T4Config.load();
+
+        // Tema
+        document.documentElement.removeAttribute('data-theme');
+        if (config.tema === 'claro') document.documentElement.setAttribute('data-theme', 'light');
+        if (config.tema === 'escuro') document.documentElement.setAttribute('data-theme', 'dark');
+
+        // Animacoes
+        document.body.classList.toggle('t4-no-animations', !config.animacoes);
+
+        // Texto grande
+        document.documentElement.style.fontSize = config.textoGrande ? '18px' : '';
+
+        // Alto contraste
+        document.body.classList.toggle('t4-high-contrast', config.altoContraste);
+      }
+
+      /* ======= CONFIG MODALS (patio, tema, fonte) ======= */
+      function showConfigModal(type) {
+        var modalOverlay = document.getElementById('module-modal');
+        var modalContent = document.getElementById('modal-content');
+        var config = T4Config.load();
+        var html = '';
+
+        if (type === 'patio') {
+          var patios = [
+            { code: 'VOD', name: 'Vitoria / Oficinas Dique' },
+            { code: 'VCS', name: 'Vitoria / Costa' },
+            { code: 'VFZ', name: 'Vitoria / Fazendinha' },
+            { code: 'TO', name: 'Tubarao Oficinas' },
+            { code: 'VBR', name: 'Vitoria / Barreiros' }
+          ];
+          html = '<h3 style="font-size:18px;font-weight:700;margin-bottom:16px;">Selecionar Patio</h3>';
+          html += '<div class="config-group">';
+          patios.forEach(function (p) {
+            var active = config.patio === p.code;
+            html += '<div class="config-item config-select-item" data-select-value="' + p.code + '">' +
+              '<div class="config-item-left"><span class="config-label">' + p.code + '</span>' +
+              '<span style="font-size:12px;color:var(--text-muted);margin-left:8px;">' + p.name + '</span></div>' +
+              (active ? '<span style="color:var(--accent-teal);font-weight:700;">&#10003;</span>' : '') +
+              '</div>';
+          });
+          html += '</div>';
+          html += '<button class="t4-btn-secondary" id="modal-close-btn" style="width:100%;justify-content:center;margin-top:16px;">Fechar</button>';
+        } else if (type === 'tema') {
+          var temas = [
+            { val: 'sistema', label: 'Automatico (Sistema)' },
+            { val: 'claro', label: 'Modo Claro' },
+            { val: 'escuro', label: 'Modo Escuro' }
+          ];
+          html = '<h3 style="font-size:18px;font-weight:700;margin-bottom:16px;">Tema</h3>';
+          html += '<div class="config-group">';
+          temas.forEach(function (t) {
+            var active = config.tema === t.val;
+            html += '<div class="config-item config-select-item" data-select-value="' + t.val + '">' +
+              '<div class="config-item-left"><span class="config-label">' + t.label + '</span></div>' +
+              (active ? '<span style="color:var(--accent-teal);font-weight:700;">&#10003;</span>' : '') +
+              '</div>';
+          });
+          html += '</div>';
+          html += '<button class="t4-btn-secondary" id="modal-close-btn" style="width:100%;justify-content:center;margin-top:16px;">Fechar</button>';
+        } else if (type === 'fonte') {
+          var fontes = [
+            { val: 'pequena', label: 'Pequena' },
+            { val: 'normal', label: 'Normal' },
+            { val: 'grande', label: 'Grande' }
+          ];
+          html = '<h3 style="font-size:18px;font-weight:700;margin-bottom:16px;">Tamanho da Fonte</h3>';
+          html += '<div class="config-group">';
+          fontes.forEach(function (f) {
+            var active = config.tamanhoFonte === f.val;
+            html += '<div class="config-item config-select-item" data-select-value="' + f.val + '">' +
+              '<div class="config-item-left"><span class="config-label">' + f.label + '</span></div>' +
+              (active ? '<span style="color:var(--accent-teal);font-weight:700;">&#10003;</span>' : '') +
+              '</div>';
+          });
+          html += '</div>';
+          html += '<button class="t4-btn-secondary" id="modal-close-btn" style="width:100%;justify-content:center;margin-top:16px;">Fechar</button>';
+        }
+
+        modalContent.innerHTML = html;
+        modalOverlay.classList.add('active');
+
+        // Bind select items
+        modalContent.querySelectorAll('.config-select-item').forEach(function (item) {
+          item.addEventListener('click', function () {
+            var val = item.getAttribute('data-select-value');
+            if (type === 'patio') {
+              T4Config.set('patio', val);
+              document.getElementById('config-patio-value').textContent = val;
+              var yardEl = document.getElementById('hub-yard-tag');
+              if (yardEl) yardEl.textContent = val;
+              T4.auth.updatePatio(val);
+            } else if (type === 'tema') {
+              T4Config.set('tema', val);
+              var temaLabels = { sistema: 'Sistema', claro: 'Claro', escuro: 'Escuro' };
+              document.getElementById('config-tema-value').textContent = temaLabels[val];
+              applyConfigEffects();
+            } else if (type === 'fonte') {
+              T4Config.set('tamanhoFonte', val);
+              var fonteLabels = { pequena: 'Pequena', normal: 'Normal', grande: 'Grande' };
+              document.getElementById('config-fonte-value').textContent = fonteLabels[val];
+              var sizes = { pequena: '14px', normal: '', grande: '18px' };
+              document.documentElement.style.fontSize = sizes[val] || '';
+            }
+            closeModal();
+          });
+        });
+
+        document.getElementById('modal-close-btn').addEventListener('click', closeModal);
+        modalOverlay.addEventListener('click', function handler(e) {
+          if (e.target === modalOverlay) { closeModal(); modalOverlay.removeEventListener('click', handler); }
+        });
+      }
+
+      /* ======= ALERTAS SYSTEM ======= */
+      function initAlertas() {
+        var alertas = loadAlertas();
+        renderAlertas(alertas);
+        updateAlertBadge(alertas);
+
+        // Filter buttons
+        document.querySelectorAll('.alertas-filter').forEach(function (btn) {
+          btn.addEventListener('click', function () {
+            document.querySelectorAll('.alertas-filter').forEach(function (b) { b.classList.remove('active'); });
+            btn.classList.add('active');
+            var filter = btn.getAttribute('data-filter');
+            var alertas = loadAlertas();
+            var filtered = filter === 'todos' ? alertas : alertas.filter(function (a) { return a.tipo === filter; });
+            renderAlertas(filtered);
+          });
+        });
+
+        // Clear all
+        document.getElementById('alertas-clear-all').addEventListener('click', function () {
+          var alertas = loadAlertas();
+          alertas.forEach(function (a) { a.lido = true; });
+          saveAlertas(alertas);
+          renderAlertas(alertas);
+          updateAlertBadge(alertas);
+        });
+      }
+
+      function renderAlertas(alertas) {
+        var list = document.getElementById('alertas-list');
+        var empty = document.getElementById('alertas-empty');
+
+        if (!alertas.length) {
+          list.innerHTML = '';
+          empty.removeAttribute('hidden');
+          return;
+        }
+        empty.setAttribute('hidden', '');
+
+        // Group by day
+        var groups = {};
+        var now = new Date();
+        var today = new Date(now.getFullYear(), now.getMonth(), now.getDate()).getTime();
+        var yesterday = today - 86400000;
+
+        alertas.forEach(function (a) {
+          var label;
+          if (a.tempo >= today) label = 'Hoje';
+          else if (a.tempo >= yesterday) label = 'Ontem';
+          else label = 'Anterior';
+          if (!groups[label]) groups[label] = [];
+          groups[label].push(a);
+        });
+
+        var html = '';
+        ['Hoje', 'Ontem', 'Anterior'].forEach(function (label) {
+          if (!groups[label]) return;
+          html += '<div class="alertas-day-label">' + label + '</div>';
+          groups[label].forEach(function (a) {
+            var dotColors = { urgente: 'var(--status-danger)', atencao: 'var(--accent-gold)', ok: 'var(--accent-green)', info: 'var(--accent-cyan)' };
+            var dotColor = dotColors[a.tipo] || 'var(--text-muted)';
+            var opacity = a.lido ? '0.5' : '1';
+            var timeAgo = formatTimeAgo(a.tempo);
+            html += '<div class="alerta-item" style="opacity:' + opacity + ';" data-alerta-id="' + a.id + '">' +
+              '<div class="alerta-dot" style="background:' + dotColor + ';"></div>' +
+              '<div class="alerta-content">' +
+                '<div class="alerta-titulo">' + a.titulo + '</div>' +
+                '<div class="alerta-desc">' + a.desc + '</div>' +
+                '<div class="alerta-time">' + timeAgo + '</div>' +
+              '</div>' +
+              (!a.lido ? '<button class="alerta-mark-read" data-mark-id="' + a.id + '" title="Marcar como lido">&#10003;</button>' : '') +
+            '</div>';
+          });
+        });
+
+        list.innerHTML = html;
+
+        // Mark as read handlers
+        list.querySelectorAll('.alerta-mark-read').forEach(function (btn) {
+          btn.addEventListener('click', function (e) {
+            e.stopPropagation();
+            var id = parseInt(btn.getAttribute('data-mark-id'));
+            var alertas = loadAlertas();
+            var al = alertas.find(function (a) { return a.id === id; });
+            if (al) { al.lido = true; saveAlertas(alertas); }
+            renderAlertas(alertas);
+            updateAlertBadge(alertas);
+          });
+        });
+      }
+
+      function updateAlertBadge(alertas) {
+        if (!alertas) alertas = loadAlertas();
+        var unread = alertas.filter(function (a) { return !a.lido; }).length;
+        var badge = document.getElementById('alertBadge');
+        if (unread > 0) {
+          badge.textContent = unread;
+          badge.removeAttribute('hidden');
+        } else {
+          badge.setAttribute('hidden', '');
+        }
+      }
+
+      function formatTimeAgo(timestamp) {
+        var diff = Date.now() - timestamp;
+        var mins = Math.floor(diff / 60000);
+        if (mins < 60) return 'Ha ' + mins + ' min';
+        var hours = Math.floor(mins / 60);
+        if (hours < 24) return 'Ha ' + hours + 'h';
+        var days = Math.floor(hours / 24);
+        return 'Ha ' + days + ' dia' + (days > 1 ? 's' : '');
+      }
+
+      /* ======= BUSCA SYSTEM ======= */
+      function initBusca() {
+        var input = document.getElementById('busca-input');
+        var clearBtn = document.getElementById('busca-clear');
+        var resultsDiv = document.getElementById('busca-results');
+        var defaultDiv = document.getElementById('busca-default');
+
+        loadRecentSearches();
+
+        input.addEventListener('input', function () {
+          var q = input.value.trim().toLowerCase();
+          clearBtn.hidden = !q;
+
+          if (!q) {
+            resultsDiv.hidden = true;
+            defaultDiv.hidden = false;
+            return;
+          }
+
+          var matches = SEARCH_INDEX.filter(function (item) {
+            return item.term.toLowerCase().indexOf(q) !== -1;
+          });
+
+          if (matches.length) {
+            defaultDiv.hidden = true;
+            resultsDiv.hidden = false;
+            var html = '<div class="config-section-title" style="margin-top:8px;">RESULTADOS</div>';
+            html += '<div class="config-group">';
+            matches.forEach(function (m) {
+              var catLabels = { modulo: 'Modulo', glossario: 'Glossario', rof: 'ROF', nav: 'Navegacao' };
+              html += '<div class="config-item busca-result-item" data-result-term="' + m.term + '"' +
+                (m.module ? ' data-nav-module="' + m.module + '"' : '') +
+                (m.navTo ? ' data-nav-to="' + m.navTo + '"' : '') + '>' +
+                '<div class="config-item-left">' +
+                  '<span class="config-label">' + m.term + '</span>' +
+                '</div>' +
+                '<div class="config-item-right">' +
+                  '<span class="config-value">' + (catLabels[m.cat] || '') + '</span>' +
+                  '<span class="config-arrow">&rsaquo;</span>' +
+                '</div>' +
+              '</div>';
+            });
+            html += '</div>';
+            resultsDiv.innerHTML = html;
+
+            // Bind result clicks
+            resultsDiv.querySelectorAll('.busca-result-item').forEach(function (item) {
+              item.addEventListener('click', function () {
+                var term = item.getAttribute('data-result-term');
+                saveRecentSearch(term);
+                var moduleId = item.getAttribute('data-nav-module');
+                var navTo = item.getAttribute('data-nav-to');
+                if (moduleId) openModuleModal(moduleId);
+                else if (navTo) navigateTo(navTo);
+              });
+            });
+          } else {
+            defaultDiv.hidden = true;
+            resultsDiv.hidden = false;
+            resultsDiv.innerHTML = '<div style="text-align:center;padding:40px 0;color:var(--text-muted);font-size:14px;">Nenhum resultado para "' + input.value.trim() + '"</div>';
+          }
+        });
+
+        clearBtn.addEventListener('click', function () {
+          input.value = '';
+          clearBtn.hidden = true;
+          resultsDiv.hidden = true;
+          defaultDiv.hidden = false;
+          input.focus();
+        });
+
+        // Category chips
+        document.querySelectorAll('.busca-category-chip').forEach(function (chip) {
+          chip.addEventListener('click', function () {
+            input.value = chip.textContent;
+            input.dispatchEvent(new Event('input'));
+          });
+        });
+      }
+
+      function loadRecentSearches() {
+        try {
+          var recent = JSON.parse(localStorage.getItem('t4-recent-searches') || '[]');
+          var section = document.getElementById('busca-recentes-section');
+          var list = document.getElementById('busca-recentes-list');
+          if (recent.length) {
+            section.removeAttribute('hidden');
+            list.innerHTML = recent.map(function (t) {
+              return '<div class="busca-recent-item"><span>&#128340; ' + t + '</span></div>';
+            }).join('');
+            list.querySelectorAll('.busca-recent-item').forEach(function (item, i) {
+              item.addEventListener('click', function () {
+                var input = document.getElementById('busca-input');
+                input.value = recent[i];
+                input.dispatchEvent(new Event('input'));
+              });
+            });
+          } else {
+            section.setAttribute('hidden', '');
+          }
+        } catch (e) {}
+      }
+
+      function saveRecentSearch(term) {
+        try {
+          var recent = JSON.parse(localStorage.getItem('t4-recent-searches') || '[]');
+          recent = recent.filter(function (t) { return t !== term; });
+          recent.unshift(term);
+          if (recent.length > 10) recent = recent.slice(0, 10);
+          localStorage.setItem('t4-recent-searches', JSON.stringify(recent));
+          loadRecentSearches();
+        } catch (e) {}
       }
 
       /* ======= MODULE MODAL ======= */
@@ -500,7 +1618,6 @@
 
         modalOverlay.classList.add('active');
 
-        // Bind open
         document.getElementById('modal-open-btn').addEventListener('click', function () {
           closeModal();
           if (mod.type === 'external' && mod.url) {
@@ -512,15 +1629,9 @@
           }
         });
 
-        // Bind close
         document.getElementById('modal-close-btn').addEventListener('click', closeModal);
-
-        // Close on overlay click
         modalOverlay.addEventListener('click', function handler(e) {
-          if (e.target === modalOverlay) {
-            closeModal();
-            modalOverlay.removeEventListener('click', handler);
-          }
+          if (e.target === modalOverlay) { closeModal(); modalOverlay.removeEventListener('click', handler); }
         });
       }
 

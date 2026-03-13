@@ -147,7 +147,6 @@ T4.auth = (function () {
   /* Gera tela de login (usado por cada módulo) */
   function renderLoginScreen(container) {
     container.innerHTML = `
-      <div class="t4-bg-grid"></div>
       <div class="t4-bg-glow t4-bg-glow-teal"></div>
       <div class="t4-bg-glow t4-bg-glow-cyan"></div>
       <div style="

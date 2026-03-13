@@ -239,30 +239,6 @@ body {
 }
 
 /* === BACKGROUND EFFECTS === */
-.t4-bg-grid {
-  position: fixed;
-  inset: 0;
-  background-image:
-    linear-gradient(var(--border) 1px, transparent 1px),
-    linear-gradient(90deg, var(--border) 1px, transparent 1px);
-  background-size: 60px 60px;
-  pointer-events: none;
-  z-index: 0;
-}
-
-/* Fallback: grid via body::before para páginas que não usam .t4-bg-grid */
-body::before {
-  content: '';
-  position: fixed;
-  inset: 0;
-  background-image:
-    linear-gradient(var(--border) 1px, transparent 1px),
-    linear-gradient(90deg, var(--border) 1px, transparent 1px);
-  background-size: 60px 60px;
-  pointer-events: none;
-  z-index: 0;
-}
-
 .t4-bg-glow {
   position: fixed;
   width: 400px;
@@ -303,6 +279,46 @@ body::before {
   padding: 0 var(--space-md);
   position: relative;
   z-index: 1;
+}
+
+/* ============================================
+   RESPONSIVE — Desktop & Tablet
+   ============================================ */
+
+/* Tablet (≥768px) */
+@media (min-width: 768px) {
+  .t4-app {
+    max-width: 720px;
+    padding: 24px 32px env(safe-area-inset-bottom, 24px);
+  }
+
+  .t4-container {
+    max-width: 720px;
+  }
+}
+
+/* Desktop (≥1024px) */
+@media (min-width: 1024px) {
+  .t4-app {
+    max-width: 960px;
+    padding: 32px 40px env(safe-area-inset-bottom, 32px);
+  }
+
+  .t4-container {
+    max-width: 960px;
+  }
+}
+
+/* Desktop largo (≥1200px) */
+@media (min-width: 1200px) {
+  .t4-app {
+    max-width: 1140px;
+    padding: 32px 48px env(safe-area-inset-bottom, 32px);
+  }
+
+  .t4-container {
+    max-width: 1140px;
+  }
 }
 
 /* === TIPOGRAFIA === */
