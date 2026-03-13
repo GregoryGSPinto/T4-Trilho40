@@ -222,6 +222,22 @@
           <div class="t4-app-label">Central Info</div>
         </div>
 
+        <div class="t4-app-card" data-module="ves">
+          <span class="t4-badge-online" style="position:absolute;top:12px;right:12px;"></span>
+          <div class="t4-app-icon" style="background:rgba(0,140,126,0.12);color:var(--accent-teal);">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" width="24" height="24"><path d="M16 4h2a2 2 0 0 1 2 2v14a2 2 0 0 1-2 2H6a2 2 0 0 1-2-2V6a2 2 0 0 1 2-2h2"/><rect x="8" y="2" width="8" height="4" rx="1"/><path d="M9 14l2 2 4-4"/></svg>
+          </div>
+          <div class="t4-app-label">VES</div>
+        </div>
+
+        <div class="t4-app-card" data-module="prontidao">
+          <span class="t4-badge-online" style="position:absolute;top:12px;right:12px;"></span>
+          <div class="t4-app-icon" style="background:rgba(0,180,216,0.12);color:var(--accent-cyan);">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" width="24" height="24"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>
+          </div>
+          <div class="t4-app-label">Prontidao</div>
+        </div>
+
       </div>
 
       <!-- Spacer for bottom nav -->
@@ -1020,6 +1036,38 @@
             { emoji: '\u{1F4DC}', text: 'Normas e procedimentos' },
             { emoji: '\u{1F4E2}', text: 'Avisos importantes' },
             { emoji: '\u{1F4DA}', text: 'Base de conhecimento' }
+          ],
+          type: 'external',
+          url: '#'
+        },
+        ves: {
+          name: 'VES',
+          status: 'ready',
+          statusLabel: 'Disponivel',
+          accent: 'var(--accent-teal)',
+          accentHex: '#008C7E',
+          desc: 'VES \u2014 Verificacao de Equipamento de Seguranca. Sistema de checklist e inspecao dos equipamentos de seguranca da locomotiva e composicao.',
+          features: [
+            { emoji: '\u2705', text: 'Checklist de equipamentos' },
+            { emoji: '\u{1F682}', text: 'Inspecao de locomotiva' },
+            { emoji: '\u{1F512}', text: 'Verificacao de seguranca' },
+            { emoji: '\u{1F4CB}', text: 'Registro de conformidade' }
+          ],
+          type: 'external',
+          url: '#'
+        },
+        prontidao: {
+          name: 'Prontidao',
+          status: 'ready',
+          statusLabel: 'Disponivel',
+          accent: 'var(--accent-cyan)',
+          accentHex: '#00B4D8',
+          desc: 'Prontidao \u2014 Sistema de controle de prontidao da equipagem. Registro de disponibilidade, aptidao e confirmacao para o turno.',
+          features: [
+            { emoji: '\u23F1\uFE0F', text: 'Controle de prontidao' },
+            { emoji: '\u{1F464}', text: 'Aptidao da equipagem' },
+            { emoji: '\u2705', text: 'Confirmacao de turno' },
+            { emoji: '\u{1F4CA}', text: 'Historico de disponibilidade' }
           ],
           type: 'external',
           url: '#'
