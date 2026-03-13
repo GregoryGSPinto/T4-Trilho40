@@ -1,0 +1,32 @@
+[
+  {
+    "id": "maq001",
+    "nome": "Gregory",
+    "matricula": "0001",
+    "funcao": "Maquinista Sênior",
+    "patio": "VOD",
+    "turno": "A",
+    "avatar": "GR",
+    "pin": "1234"
+  },
+  {
+    "id": "maq002",
+    "nome": "Carlos Silva",
+    "matricula": "0002",
+    "funcao": "Maquinista",
+    "patio": "VFZ",
+    "turno": "B",
+    "avatar": "CS",
+    "pin": "5678"
+  },
+  {
+    "id": "maq003",
+    "nome": "Roberto Santos",
+    "matricula": "0003",
+    "funcao": "Maquinista Auxiliar",
+    "patio": "VCS",
+    "turno": "A",
+    "avatar": "RS",
+    "pin": "9012"
+  }
+]

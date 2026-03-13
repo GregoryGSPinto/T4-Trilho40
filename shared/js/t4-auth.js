@@ -1,75 +1,98 @@
 /* ============================================
-   T4 AUTH — Sistema de autenticação
-   Login-first com persistência local
+   T4 AUTH — Sistema de autenticacao
+   Login-first com persistencia local
+
+   Demo mode: credentials loaded from external file.
+   Production: replace with SSO/backend auth adapter.
    ============================================ */
 
 T4.auth = (function () {
-  const SESSION_KEY = 't4_session';
-  const USERS_KEY = 't4_users';
+  var SESSION_KEY = 't4_session';
+  var USERS_KEY = 't4_users';
 
-  /* Perfis de demonstração (em produção seria um backend) */
-  const DEFAULT_USERS = [
-    {
-      id: 'maq001',
-      nome: 'Gregory',
-      matricula: '0001',
-      funcao: 'Maquinista Sênior',
-      patio: 'VOD',
-      turno: 'A',
-      avatar: 'GR',
-      pin: '1234'
-    },
-    {
-      id: 'maq002',
-      nome: 'Carlos Silva',
-      matricula: '0002',
-      funcao: 'Maquinista',
-      patio: 'VFZ',
-      turno: 'B',
-      avatar: 'CS',
-      pin: '5678'
-    },
-    {
-      id: 'maq003',
-      nome: 'Roberto Santos',
-      matricula: '0003',
-      funcao: 'Maquinista Auxiliar',
-      patio: 'VCS',
-      turno: 'A',
-      avatar: 'RS',
-      pin: '9012'
-    }
-  ];
+  /**
+   * Demo mode flag.
+   * When true, authentication uses local demo users.
+   * When false, login returns error requesting backend auth.
+   * Production deployments should set this to false and
+   * implement a backend auth adapter.
+   */
+  var _demoMode = true;
+  var _demoUsersLoaded = false;
 
-  /* Inicializa usuários padrão se não existirem */
-  function initUsers() {
-    if (!T4.storage.local.has('users')) {
-      T4.storage.local.set('users', DEFAULT_USERS);
+  /* Load demo users from external file (not hardcoded) */
+  function loadDemoUsers() {
+    if (_demoUsersLoaded) return;
+    _demoUsersLoaded = true;
+
+    if (!_demoMode) return;
+
+    /* Only load if no users exist yet */
+    if (T4.storage.local.has('users')) return;
+
+    /* Fetch demo users from separate data file */
+    var basePath = '';
+    var scripts = document.getElementsByTagName('script');
+    for (var i = 0; i < scripts.length; i++) {
+      var src = scripts[i].src || '';
+      if (src.indexOf('t4-auth.js') > -1) {
+        basePath = src.substring(0, src.lastIndexOf('/js/'));
+        break;
+      }
     }
+
+    var url = (basePath ? basePath + '/data/demo-users.json' : 'shared/data/demo-users.json');
+
+    fetch(url)
+      .then(function (r) { return r.json(); })
+      .then(function (users) {
+        if (!T4.storage.local.has('users')) {
+          T4.storage.local.set('users', users);
+        }
+      })
+      .catch(function () {
+        /* Fallback: if fetch fails (offline first load), use minimal demo user */
+        if (!T4.storage.local.has('users')) {
+          T4.storage.local.set('users', [
+            { id: 'maq001', nome: 'Demo', matricula: '0001', funcao: 'Maquinista',
+              patio: 'VOD', turno: 'A', avatar: 'DM', pin: '1234' }
+          ]);
+        }
+      });
   }
 
-  /* Retorna sessão atual */
+  /* Retorna sessao atual */
   function getSession() {
     return T4.storage.local.get('session', null);
   }
 
-  /* Verifica se está logado */
+  /* Verifica se esta logado */
   function isAuthenticated() {
-    const session = getSession();
+    var session = getSession();
     return session !== null;
   }
 
-  /* Login por matrícula + PIN */
+  /* Login por matricula + PIN */
   function login(matricula, pin) {
-    initUsers();
-    const users = T4.storage.local.get('users', []);
-    const user = users.find(u => u.matricula === matricula && u.pin === pin);
-
-    if (!user) {
-      return { success: false, error: 'Matrícula ou PIN incorretos' };
+    if (!_demoMode) {
+      return { success: false, error: 'Autenticacao corporativa necessaria' };
     }
 
-    const session = {
+    loadDemoUsers();
+    var users = T4.storage.local.get('users', []);
+    var user = null;
+    for (var i = 0; i < users.length; i++) {
+      if (users[i].matricula === matricula && users[i].pin === pin) {
+        user = users[i];
+        break;
+      }
+    }
+
+    if (!user) {
+      return { success: false, error: 'Matricula ou PIN incorretos' };
+    }
+
+    var session = {
       userId: user.id,
       nome: user.nome,
       matricula: user.matricula,
@@ -90,7 +113,7 @@ T4.auth = (function () {
     });
 
     T4.events.emit('auth:login', session);
-    return { success: true, session };
+    return { success: true, session: session };
   }
 
   /* Logout */
@@ -100,9 +123,9 @@ T4.auth = (function () {
     window.location.href = T4.router.getModuleURL('hub') || '/';
   }
 
-  /* Retorna dados do usuário logado */
+  /* Retorna dados do usuario logado */
   function getUser() {
-    const session = getSession();
+    var session = getSession();
     if (!session) return null;
     return {
       id: session.userId,
@@ -115,19 +138,19 @@ T4.auth = (function () {
     };
   }
 
-  /* Atualiza pátio do usuário */
+  /* Atualiza patio do usuario */
   function updatePatio(patio) {
-    const session = getSession();
+    var session = getSession();
     if (session) {
       session.patio = patio;
       T4.storage.local.set('session', session);
-      T4.context.set({ patio });
+      T4.context.set({ patio: patio });
     }
   }
 
   /* Atualiza trem escalado */
   function setTrem(prefixo) {
-    const session = getSession();
+    var session = getSession();
     if (session) {
       session.trem = prefixo;
       T4.storage.local.set('session', session);
@@ -135,7 +158,7 @@ T4.auth = (function () {
     }
   }
 
-  /* Verifica autenticação e redireciona se necessário */
+  /* Verifica autenticacao e redireciona se necessario */
   function requireAuth() {
     if (!isAuthenticated()) {
       T4.storage.local.set('redirectAfterLogin', window.location.href);
@@ -144,82 +167,45 @@ T4.auth = (function () {
     return true;
   }
 
-  /* Gera tela de login (usado por cada módulo) */
+  /* Gera tela de login (usado por cada modulo) */
   function renderLoginScreen(container) {
-    container.innerHTML = `
-      <div class="t4-bg-glow t4-bg-glow-teal"></div>
-      <div class="t4-bg-glow t4-bg-glow-cyan"></div>
-      <div style="
-        min-height: 100dvh;
-        display: flex;
-        flex-direction: column;
-        align-items: center;
-        justify-content: center;
-        padding: 24px;
-        text-align: center;
-        position: relative;
-        z-index: 1;
-      ">
-        <div style="margin-bottom: 40px;">
-          <div class="t4-logo" style="margin-bottom: 8px;">T4</div>
-          <div class="t4-subtitle">TRILHO 4.0</div>
-        </div>
+    var demoHint = _demoMode
+      ? '<p style="color:var(--text-muted);font-size:0.6875rem;margin-top:8px;opacity:0.6;">Demo: matricula 0001 / PIN 1234</p>'
+      : '';
 
-        <div style="width: 100%; max-width: 300px;">
-          <div class="t4-input-group" style="margin-bottom: 16px;">
-            <label class="t4-label">Matrícula</label>
-            <input type="text" id="t4-login-matricula" class="t4-input"
-              placeholder="Digite sua matrícula"
-              inputmode="numeric" autocomplete="off" aria-label="Matrícula">
-          </div>
+    container.innerHTML =
+      '<div class="t4-bg-glow t4-bg-glow-teal"></div>' +
+      '<div class="t4-bg-glow t4-bg-glow-cyan"></div>' +
+      '<div style="min-height:100dvh;display:flex;flex-direction:column;align-items:center;justify-content:center;padding:24px;text-align:center;position:relative;z-index:1;">' +
+        '<div style="margin-bottom:40px;">' +
+          '<div class="t4-logo" style="margin-bottom:8px;">T4</div>' +
+          '<div class="t4-subtitle">TRILHO 4.0</div>' +
+        '</div>' +
+        '<div style="width:100%;max-width:300px;">' +
+          '<div class="t4-input-group" style="margin-bottom:16px;">' +
+            '<label class="t4-label">Matricula</label>' +
+            '<input type="text" id="t4-login-matricula" class="t4-input" placeholder="Digite sua matricula" inputmode="numeric" autocomplete="off" aria-label="Matricula">' +
+          '</div>' +
+          '<div class="t4-input-group" style="margin-bottom:24px;">' +
+            '<label class="t4-label">PIN</label>' +
+            '<input type="password" id="t4-login-pin" class="t4-input" placeholder="Digite seu PIN" inputmode="numeric" maxlength="4" autocomplete="off" aria-label="PIN">' +
+          '</div>' +
+          '<div id="t4-login-error" style="color:var(--status-danger);font-size:0.8125rem;margin-bottom:16px;display:none;"></div>' +
+          '<button id="t4-login-btn" class="t4-btn-primary" style="width:100%;">Entrar</button>' +
+          '<p style="color:var(--text-muted);font-size:0.6875rem;margin-top:32px;letter-spacing:0.5px;">Ecossistema Digital do Maquinista 4.0</p>' +
+          demoHint +
+        '</div>' +
+      '</div>';
 
-          <div class="t4-input-group" style="margin-bottom: 24px;">
-            <label class="t4-label">PIN</label>
-            <input type="password" id="t4-login-pin" class="t4-input"
-              placeholder="Digite seu PIN"
-              inputmode="numeric" maxlength="4" autocomplete="off" aria-label="PIN">
-          </div>
-
-          <div id="t4-login-error" style="
-            color: var(--status-danger);
-            font-size: 0.8125rem;
-            margin-bottom: 16px;
-            display: none;
-          "></div>
-
-          <button id="t4-login-btn" class="t4-btn-primary" style="width: 100%;">
-            Entrar
-          </button>
-
-          <p style="
-            color: var(--text-muted);
-            font-size: 0.6875rem;
-            margin-top: 32px;
-            letter-spacing: 0.5px;
-          ">
-            Ecossistema Digital do Maquinista 4.0
-          </p>
-          <p style="
-            color: var(--text-muted);
-            font-size: 0.6875rem;
-            margin-top: 8px;
-            opacity: 0.6;
-          ">
-            Demo: matrícula 0001 / PIN 1234
-          </p>
-        </div>
-      </div>
-    `;
-
-    const btnLogin = document.getElementById('t4-login-btn');
-    const inputMat = document.getElementById('t4-login-matricula');
-    const inputPin = document.getElementById('t4-login-pin');
-    const errorEl = document.getElementById('t4-login-error');
+    var btnLogin = document.getElementById('t4-login-btn');
+    var inputMat = document.getElementById('t4-login-matricula');
+    var inputPin = document.getElementById('t4-login-pin');
+    var errorEl = document.getElementById('t4-login-error');
 
     function doLogin() {
-      const result = login(inputMat.value.trim(), inputPin.value.trim());
+      var result = login(inputMat.value.trim(), inputPin.value.trim());
       if (result.success) {
-        const redirect = T4.storage.local.get('redirectAfterLogin');
+        var redirect = T4.storage.local.get('redirectAfterLogin');
         T4.storage.local.remove('redirectAfterLogin');
         window.location.reload();
       } else {
@@ -232,25 +218,27 @@ T4.auth = (function () {
     }
 
     btnLogin.addEventListener('click', doLogin);
-    inputPin.addEventListener('keydown', (e) => {
+    inputPin.addEventListener('keydown', function (e) {
       if (e.key === 'Enter') doLogin();
     });
-    inputMat.addEventListener('keydown', (e) => {
+    inputMat.addEventListener('keydown', function (e) {
       if (e.key === 'Enter') inputPin.focus();
     });
   }
 
-  initUsers();
+  loadDemoUsers();
 
   return {
-    login,
-    logout,
-    getSession,
-    getUser,
-    isAuthenticated,
-    requireAuth,
-    updatePatio,
-    setTrem,
-    renderLoginScreen
+    login: login,
+    logout: logout,
+    getSession: getSession,
+    getUser: getUser,
+    isAuthenticated: isAuthenticated,
+    requireAuth: requireAuth,
+    updatePatio: updatePatio,
+    setTrem: setTrem,
+    renderLoginScreen: renderLoginScreen,
+    /** @type {boolean} True when using demo authentication */
+    isDemoMode: function () { return _demoMode; }
   };
 })();
