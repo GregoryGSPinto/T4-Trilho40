@@ -236,20 +236,26 @@ T4.init = function (moduleName) {
   document.body.setAttribute('data-module', moduleName);
 
   /* Monitora conectividade */
+  T4.state.set('online', navigator.onLine);
+
   window.addEventListener('online', () => {
+    T4.state.set('online', true);
     T4.events.emit('connectivity', { online: true });
+    T4.events.emit('connectivity:online');
     T4.notifications.show('Conexão restabelecida', 'ok');
   });
 
   window.addEventListener('offline', () => {
+    T4.state.set('online', false);
     T4.events.emit('connectivity', { online: false });
+    T4.events.emit('connectivity:offline');
     T4.notifications.show('Sem conexão — modo offline ativo', 'warning');
   });
 
   /* Atualiza turno no contexto */
   T4.context.set({ turno: T4.context.getCurrentTurno() });
 
-  console.log(`[T4] Módulo "${moduleName}" inicializado`);
+  /* Log de inicialização removido por segurança */
 };
 
 window.T4 = T4;

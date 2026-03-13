@@ -48,7 +48,7 @@ T4.storage = (function () {
       };
 
       request.onerror = (event) => {
-        console.error('[T4 Storage] Erro ao abrir IndexedDB:', event.target.error);
+        console.error('[T4] Erro ao abrir IndexedDB:', event.target.errorCode || 'desconhecido');
         reject(event.target.error);
       };
     });
@@ -155,7 +155,7 @@ T4.storage = (function () {
         localStorage.setItem(`t4_${key}`, JSON.stringify(value));
         return true;
       } catch (e) {
-        console.error('[T4 Storage] Erro no localStorage:', e);
+        console.error('[T4] Erro no localStorage:', e.name || 'desconhecido');
         return false;
       }
     },
@@ -190,7 +190,7 @@ T4.storage = (function () {
         T4.events.emit('sync:process', item);
         await put('sync_queue', { ...item, synced: true, syncedAt: Date.now() });
       } catch (e) {
-        console.error('[T4 Storage] Erro na sincronização:', e);
+        console.error('[T4] Erro na sincronização:', e.name || 'desconhecido');
       }
     }
 
@@ -206,7 +206,7 @@ T4.storage = (function () {
 
   /* Inicializar DB ao carregar */
   openDB().catch(err => {
-    console.warn('[T4 Storage] IndexedDB indisponível, usando apenas localStorage:', err);
+    console.warn('[T4] IndexedDB indisponível, usando apenas localStorage');
   });
 
   return {
