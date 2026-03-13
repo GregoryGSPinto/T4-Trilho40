@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, viewport-fit=cover">
-  <meta name="theme-color" content="#0a0b0f">
+  <meta name="theme-color" content="#008C7E">
   <meta name="apple-mobile-web-app-capable" content="yes">
   <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
   <meta name="description" content="EFVM 360 — Simulador de condução ferroviária da Estrada de Ferro Vitória a Minas">
@@ -48,18 +48,32 @@
     }
 
     .efvm-loading-text {
-      color: var(--t4-text-secondary, #8b8fa3);
+      color: var(--text-secondary, #94a3b8);
       font-size: 0.875rem;
     }
   </style>
 </head>
 <body>
-  <!-- Container principal -->
-  <div id="app">
-    <div class="efvm-loading">
-      <div class="efvm-loading-icon">🚂</div>
-      <div class="efvm-loading-text">Carregando simulador...</div>
-      <div class="t4-loader"></div>
+  <!-- Background effects -->
+  <div class="t4-bg-grid"></div>
+  <div class="t4-bg-glow t4-bg-glow-teal"></div>
+  <div class="t4-bg-glow t4-bg-glow-cyan"></div>
+
+  <!-- App wrapper -->
+  <div class="t4-app module-efvm360">
+    <!-- Module header -->
+    <div class="t4-module-header">
+      <a href="../../index.html" class="t4-back-btn">← T4</a>
+      <h1 class="t4-module-title">EFVM 360</h1>
+    </div>
+
+    <!-- Container principal -->
+    <div id="app">
+      <div class="efvm-loading">
+        <div class="efvm-loading-icon">🚂</div>
+        <div class="efvm-loading-text">Carregando simulador...</div>
+        <div class="t4-loader"></div>
+      </div>
     </div>
   </div>
 

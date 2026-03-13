@@ -148,13 +148,14 @@ CCQ.methodology = (function () {
       project.ishikawa = { metodo: [], maquina: [], material: [], maoDeObra: [], meioAmbiente: [], medicao: [] };
     }
 
+    const goldColor = getComputedStyle(document.documentElement).getPropertyValue('--accent-gold').trim() || '#E5A100';
     const catConfig = [
       { key: 'metodo', label: 'Metodo', color: '#60a5fa' },
       { key: 'maquina', label: 'Maquina', color: '#34d399' },
       { key: 'material', label: 'Material', color: '#fbbf24' },
       { key: 'maoDeObra', label: 'Mao de Obra', color: '#f87171' },
       { key: 'meioAmbiente', label: 'Meio Ambiente', color: '#a78bfa' },
-      { key: 'medicao', label: 'Medicao', color: '#f472b6' }
+      { key: 'medicao', label: 'Medicao', color: goldColor }
     ];
 
     container.innerHTML = `
@@ -183,7 +184,8 @@ CCQ.methodology = (function () {
 
     /* Cabeca (efeito) */
     svg += `<polygon points="${headX},${spineY - 30} ${W},${spineY} ${headX},${spineY + 30}" class="ishi-head"/>`;
-    svg += `<text x="${headX - 5}" y="${spineY + 4}" text-anchor="end" font-size="10" font-weight="700" fill="#f472b6">EFEITO</text>`;
+    const accentColor = getComputedStyle(document.documentElement).getPropertyValue('--accent-gold').trim() || '#E5A100';
+    svg += `<text x="${headX - 5}" y="${spineY + 4}" text-anchor="end" font-size="10" font-weight="700" fill="${accentColor}">EFEITO</text>`;
 
     /* Ramos superiores e inferiores (6M) */
     const topCats = catConfig.slice(0, 3);

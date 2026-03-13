@@ -193,15 +193,20 @@ CCQ.app = (function () {
     if (!container) return;
 
     const phase = project ? (project.phase || 'plan') : null;
+    const styles = getComputedStyle(document.documentElement);
+    const bgPrimary = styles.getPropertyValue('--bg-primary').trim() || '#0a0e12';
+    const accentGold = styles.getPropertyValue('--accent-gold').trim() || '#E5A100';
+    const textMuted = styles.getPropertyValue('--text-muted').trim() || '#556677';
+
     container.innerHTML = `
       <svg viewBox="0 0 64 64" width="64" height="64">
         <path d="M32 2 A30 30 0 0 1 62 32 L32 32 Z" fill="${phase === 'plan' ? '#60a5fa' : 'rgba(96,165,250,0.2)'}"/>
         <path d="M62 32 A30 30 0 0 1 32 62 L32 32 Z" fill="${phase === 'do' ? '#34d399' : 'rgba(52,211,153,0.2)'}"/>
         <path d="M32 62 A30 30 0 0 1 2 32 L32 32 Z" fill="${phase === 'check' ? '#fbbf24' : 'rgba(251,191,36,0.2)'}"/>
         <path d="M2 32 A30 30 0 0 1 32 2 L32 32 Z" fill="${phase === 'act' ? '#f87171' : 'rgba(248,113,113,0.2)'}"/>
-        <circle cx="32" cy="32" r="14" fill="#0a0b0f"/>
-        <text x="32" y="28" text-anchor="middle" font-size="6" font-weight="700" fill="#f472b6" font-family="JetBrains Mono,monospace">PDCA</text>
-        <text x="32" y="38" text-anchor="middle" font-size="5" fill="#8b8fa3" font-family="Outfit,sans-serif">CCQ</text>
+        <circle cx="32" cy="32" r="14" fill="${bgPrimary}"/>
+        <text x="32" y="28" text-anchor="middle" font-size="6" font-weight="700" fill="${accentGold}" font-family="JetBrains Mono,monospace">PDCA</text>
+        <text x="32" y="38" text-anchor="middle" font-size="5" fill="${textMuted}" font-family="Outfit,sans-serif">CCQ</text>
       </svg>
     `;
   }

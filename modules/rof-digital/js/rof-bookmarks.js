@@ -18,9 +18,9 @@ const ROFBookmarks = (function () {
     bookmarks = T4.storage.local.get(BOOKMARKS_KEY, []);
     accessLog = T4.storage.local.get(ACCESS_KEY, []);
     bookmarkCategories = T4.storage.local.get(BOOKMARK_CATS_KEY, [
-      { id: 'geral', name: 'Geral', color: '#ffc72b' },
-      { id: 'importante', name: 'Importante', color: '#ef4444' },
-      { id: 'estudo', name: 'Para Estudo', color: '#3b82f6' }
+      { id: 'geral', name: 'Geral', color: 'var(--accent-gold, #E5A100)' },
+      { id: 'importante', name: 'Importante', color: 'var(--status-danger, #ef4444)' },
+      { id: 'estudo', name: 'Para Estudo', color: 'var(--accent-cyan, #00B4D8)' }
     ]);
 
     /* Persistir categorias padrao */
@@ -208,7 +208,7 @@ const ROFBookmarks = (function () {
       if (!article) return;
       const catId = bm.category || 'geral';
       if (!grouped[catId]) {
-        grouped[catId] = { category: { id: catId, name: catId, color: '#888' }, items: [] };
+        grouped[catId] = { category: { id: catId, name: catId, color: 'var(--accent-gray, #808080)' }, items: [] };
       }
       grouped[catId].items.push({ article, bookmark: bm });
     });

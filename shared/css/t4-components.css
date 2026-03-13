@@ -212,7 +212,7 @@
   align-items: center;
   justify-content: center;
   cursor: pointer;
-  box-shadow: var(--t4-shadow-lg), 0 0 20px rgba(255, 107, 43, 0.3);
+  box-shadow: var(--t4-shadow-lg), 0 0 20px var(--accent-teal-glow);
   transition: all var(--t4-transition-base);
   z-index: var(--t4-z-sticky);
 }
@@ -253,8 +253,8 @@
 }
 
 .t4-input:focus {
-  border-color: var(--t4-brand-orange);
-  box-shadow: 0 0 0 3px rgba(255, 107, 43, 0.1);
+  border-color: var(--accent-teal);
+  box-shadow: var(--shadow-glow-teal);
 }
 
 .t4-textarea {
@@ -314,9 +314,9 @@
 }
 
 .t4-chip-active {
-  background: rgba(255, 107, 43, 0.15);
-  color: var(--t4-brand-orange);
-  border-color: rgba(255, 107, 43, 0.3);
+  background: var(--accent-teal-glow);
+  color: var(--accent-teal);
+  border-color: rgba(0, 140, 126, 0.3);
 }
 
 .t4-chip-group {
@@ -342,9 +342,9 @@
   font-weight: 500;
   font-family: var(--t4-font-display);
   border-radius: var(--t4-radius-full);
-  background: rgba(43, 255, 107, 0.08);
-  color: var(--t4-status-ok);
-  border: 1px solid rgba(43, 255, 107, 0.15);
+  background: rgba(122, 184, 0, 0.08);
+  color: var(--status-ok);
+  border: 1px solid rgba(122, 184, 0, 0.15);
 }
 
 .t4-status-chip-dot {

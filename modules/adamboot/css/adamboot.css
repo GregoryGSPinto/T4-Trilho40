@@ -1,45 +1,63 @@
 /* ============================================
    ADAMBOOT — Assistente IA do Maquinista
-   Tema Esmeralda (#34d399)
+   Usa T4 Design System (--accent-green)
    ============================================ */
 
 /* === VARIÁVEIS DO MÓDULO === */
 :root {
-  --ab-accent: #34d399;
-  --ab-accent-rgb: 52, 211, 153;
-  --ab-accent-dark: #059669;
-  --ab-accent-light: #6ee7b7;
-  --ab-bubble-user: #1a3a2a;
-  --ab-bubble-bot: var(--t4-bg-card);
-  --ab-bubble-user-border: rgba(52, 211, 153, 0.2);
-  --ab-bubble-bot-border: var(--t4-border);
-  --ab-avatar-bg: rgba(52, 211, 153, 0.15);
-  --ab-avatar-color: var(--ab-accent);
-  --ab-input-bg: var(--t4-bg-secondary);
+  --ab-accent: var(--accent-green);
+  --ab-accent-rgb: 122, 184, 0;
+  --ab-accent-dark: #5a8a00;
+  --ab-accent-light: #9cd633;
+  --ab-bubble-user: var(--bg-elevated);
+  --ab-bubble-bot: var(--bg-card);
+  --ab-bubble-user-border: rgba(122, 184, 0, 0.2);
+  --ab-bubble-bot-border: var(--border);
+  --ab-avatar-bg: var(--accent-green-glow);
+  --ab-avatar-color: var(--accent-green);
+  --ab-input-bg: var(--bg-input);
+}
+
+@media (prefers-color-scheme: light) {
+  :root {
+    --ab-accent-dark: #4e7600;
+    --ab-accent-light: #8ec420;
+    --ab-bubble-user-border: rgba(122, 184, 0, 0.15);
+  }
 }
 
 /* === LAYOUT PRINCIPAL === */
 .ab-app {
   display: flex;
   flex-direction: column;
-  height: 100vh;
-  height: 100dvh;
+  height: 100%;
+  flex: 1;
   max-width: 430px;
   margin: 0 auto;
   position: relative;
-  z-index: var(--t4-z-base);
+  z-index: 1;
   overflow: hidden;
+}
+
+/* Ajuste: quando dentro de .t4-app, preencher espaço restante */
+.t4-app.module-adamboot {
+  padding-bottom: 0;
+  gap: 0;
+}
+
+.t4-app.module-adamboot .t4-module-header {
+  padding-bottom: 0;
+  flex-shrink: 0;
 }
 
 /* === HEADER === */
 .ab-header {
   display: flex;
   align-items: center;
-  gap: var(--t4-space-md);
-  padding: var(--t4-space-md);
-  padding-top: calc(var(--t4-space-md) + env(safe-area-inset-top, 0px));
-  background: var(--t4-bg-secondary);
-  border-bottom: 1px solid var(--t4-border);
+  gap: var(--space-md);
+  padding: var(--space-sm) var(--space-md);
+  background: var(--bg-secondary);
+  border-bottom: 1px solid var(--border);
   flex-shrink: 0;
   z-index: 10;
 }
@@ -52,21 +70,21 @@
   justify-content: center;
   background: none;
   border: none;
-  color: var(--t4-text-primary);
+  color: var(--text-primary);
   font-size: 1.25rem;
   cursor: pointer;
-  border-radius: var(--t4-radius-sm);
+  border-radius: var(--radius-sm);
   flex-shrink: 0;
 }
 
 .ab-header-back:active {
-  background: rgba(255, 255, 255, 0.05);
+  background: var(--bg-card-hover);
 }
 
 .ab-header-avatar {
   width: 40px;
   height: 40px;
-  border-radius: var(--t4-radius-full);
+  border-radius: var(--radius-full);
   background: var(--ab-avatar-bg);
   color: var(--ab-avatar-color);
   display: flex;
@@ -86,7 +104,7 @@
   height: 10px;
   background: var(--ab-accent);
   border-radius: 50%;
-  border: 2px solid var(--t4-bg-secondary);
+  border: 2px solid var(--bg-secondary);
 }
 
 .ab-header-info {
@@ -97,7 +115,8 @@
 .ab-header-name {
   font-size: 1rem;
   font-weight: 700;
-  color: var(--t4-text-primary);
+  font-family: var(--font-body);
+  color: var(--text-primary);
   line-height: 1.2;
 }
 
@@ -105,12 +124,13 @@
   font-size: 0.75rem;
   color: var(--ab-accent);
   font-weight: 500;
+  font-family: var(--font-display);
 }
 
 .ab-header-actions {
   display: flex;
   align-items: center;
-  gap: var(--t4-space-xs);
+  gap: var(--space-xs);
 }
 
 .ab-header-btn {
@@ -121,25 +141,25 @@
   justify-content: center;
   background: none;
   border: none;
-  color: var(--t4-text-secondary);
+  color: var(--text-secondary);
   font-size: 1.125rem;
   cursor: pointer;
-  border-radius: var(--t4-radius-sm);
+  border-radius: var(--radius-sm);
 }
 
 .ab-header-btn:active {
-  background: rgba(255, 255, 255, 0.05);
-  color: var(--t4-text-primary);
+  background: var(--bg-card-hover);
+  color: var(--text-primary);
 }
 
-/* === ÁREA DE MENSAGENS === */
+/* === AREA DE MENSAGENS === */
 .ab-messages {
   flex: 1;
   overflow-y: auto;
-  padding: var(--t4-space-md);
+  padding: var(--space-md);
   display: flex;
   flex-direction: column;
-  gap: var(--t4-space-sm);
+  gap: var(--space-sm);
   scroll-behavior: smooth;
   -webkit-overflow-scrolling: touch;
 }
@@ -149,14 +169,14 @@
 }
 
 .ab-messages::-webkit-scrollbar-thumb {
-  background: rgba(255, 255, 255, 0.1);
-  border-radius: 10px;
+  background: var(--text-muted);
+  border-radius: var(--radius-full);
 }
 
 /* === MENSAGEM — CONTAINER === */
 .ab-message {
   display: flex;
-  gap: var(--t4-space-sm);
+  gap: var(--space-sm);
   max-width: 88%;
   animation: ab-messageIn 0.3s ease forwards;
 }
@@ -174,7 +194,7 @@
 .ab-message-avatar {
   width: 32px;
   height: 32px;
-  border-radius: var(--t4-radius-full);
+  border-radius: var(--radius-full);
   background: var(--ab-avatar-bg);
   color: var(--ab-avatar-color);
   display: flex;
@@ -186,16 +206,17 @@
 }
 
 .ab-message-user .ab-message-avatar {
-  background: rgba(52, 211, 153, 0.08);
-  color: var(--t4-text-secondary);
+  background: var(--accent-green-glow);
+  color: var(--text-secondary);
 }
 
 /* === BOLHA DE MENSAGEM === */
 .ab-bubble {
   padding: 10px 14px;
-  border-radius: var(--t4-radius-lg);
+  border-radius: var(--radius-lg);
   line-height: 1.5;
   font-size: 0.9375rem;
+  font-family: var(--font-body);
   word-wrap: break-word;
   overflow-wrap: break-word;
   position: relative;
@@ -204,30 +225,30 @@
 .ab-message-bot .ab-bubble {
   background: var(--ab-bubble-bot);
   border: 1px solid var(--ab-bubble-bot-border);
-  border-bottom-left-radius: var(--t4-radius-sm);
-  color: var(--t4-text-primary);
+  border-bottom-left-radius: var(--radius-xs);
+  color: var(--text-primary);
 }
 
 .ab-message-user .ab-bubble {
   background: var(--ab-bubble-user);
   border: 1px solid var(--ab-bubble-user-border);
-  border-bottom-right-radius: var(--t4-radius-sm);
-  color: var(--t4-text-primary);
+  border-bottom-right-radius: var(--radius-xs);
+  color: var(--text-primary);
 }
 
-/* Formatação interna das mensagens do bot */
+/* Formatacao interna das mensagens do bot */
 .ab-bubble strong {
   color: var(--ab-accent);
   font-weight: 600;
 }
 
 .ab-bubble em {
-  color: var(--t4-text-secondary);
+  color: var(--text-secondary);
   font-style: italic;
 }
 
 .ab-bubble p {
-  color: var(--t4-text-primary);
+  color: var(--text-primary);
   margin-bottom: 8px;
 }
 
@@ -239,30 +260,31 @@
 .ab-bubble ul {
   margin: 8px 0;
   padding-left: 20px;
-  color: var(--t4-text-primary);
+  color: var(--text-primary);
 }
 
 .ab-bubble li {
   margin-bottom: 4px;
-  color: var(--t4-text-primary);
+  color: var(--text-primary);
   line-height: 1.5;
 }
 
 .ab-bubble code {
-  background: rgba(52, 211, 153, 0.1);
+  background: var(--accent-green-glow);
   color: var(--ab-accent);
   padding: 2px 6px;
-  border-radius: 4px;
-  font-family: var(--t4-font-display);
+  border-radius: var(--radius-xs);
+  font-family: var(--font-display);
   font-size: 0.8125rem;
 }
 
 /* === TIMESTAMP === */
 .ab-timestamp {
   font-size: 0.6875rem;
-  color: var(--t4-text-muted);
+  color: var(--text-muted);
   margin-top: 4px;
   padding: 0 4px;
+  font-family: var(--font-display);
 }
 
 .ab-message-user .ab-timestamp {
@@ -277,8 +299,8 @@
 .ab-date-separator {
   display: flex;
   align-items: center;
-  gap: var(--t4-space-md);
-  margin: var(--t4-space-md) 0;
+  gap: var(--space-md);
+  margin: var(--space-md) 0;
 }
 
 .ab-date-separator::before,
@@ -286,20 +308,21 @@
   content: '';
   flex: 1;
   height: 1px;
-  background: var(--t4-border);
+  background: var(--border);
 }
 
 .ab-date-separator span {
   font-size: 0.75rem;
-  color: var(--t4-text-muted);
+  color: var(--text-muted);
   white-space: nowrap;
   font-weight: 500;
+  font-family: var(--font-display);
 }
 
-/* === INDICADOR DE DIGITAÇÃO === */
+/* === INDICADOR DE DIGITACAO === */
 .ab-typing {
   display: flex;
-  gap: var(--t4-space-sm);
+  gap: var(--space-sm);
   align-self: flex-start;
   max-width: 88%;
   animation: ab-messageIn 0.3s ease forwards;
@@ -308,8 +331,8 @@
 .ab-typing-bubble {
   background: var(--ab-bubble-bot);
   border: 1px solid var(--ab-bubble-bot-border);
-  border-radius: var(--t4-radius-lg);
-  border-bottom-left-radius: var(--t4-radius-sm);
+  border-radius: var(--radius-lg);
+  border-bottom-left-radius: var(--radius-xs);
   padding: 12px 18px;
   display: flex;
   align-items: center;
@@ -334,17 +357,18 @@
 
 .ab-typing-label {
   font-size: 0.75rem;
-  color: var(--t4-text-muted);
+  color: var(--text-muted);
   margin-left: 4px;
   font-style: italic;
+  font-family: var(--font-body);
 }
 
-/* === SUGESTÕES / CHIPS === */
+/* === SUGESTOES / CHIPS === */
 .ab-suggestions {
   display: flex;
   flex-wrap: wrap;
-  gap: var(--t4-space-sm);
-  padding: var(--t4-space-sm) var(--t4-space-md);
+  gap: var(--space-sm);
+  padding: var(--space-sm) var(--space-md);
   animation: ab-messageIn 0.3s ease forwards;
 }
 
@@ -356,12 +380,12 @@
   font-size: 0.8125rem;
   font-weight: 500;
   color: var(--ab-accent);
-  background: rgba(52, 211, 153, 0.08);
-  border: 1px solid rgba(52, 211, 153, 0.2);
-  border-radius: var(--t4-radius-full);
+  background: var(--accent-green-glow);
+  border: 1px solid rgba(122, 184, 0, 0.2);
+  border-radius: var(--radius-full);
   cursor: pointer;
-  transition: all var(--t4-transition-fast);
-  font-family: var(--t4-font-body);
+  transition: all var(--transition-fast);
+  font-family: var(--font-body);
   min-height: 36px;
   -webkit-user-select: none;
   user-select: none;
@@ -369,16 +393,16 @@
 
 .ab-suggestion-chip:active {
   transform: scale(0.95);
-  background: rgba(52, 211, 153, 0.15);
-  border-color: rgba(52, 211, 153, 0.4);
+  background: rgba(122, 184, 0, 0.15);
+  border-color: rgba(122, 184, 0, 0.4);
 }
 
-/* === ÁREA DE INPUT === */
+/* === AREA DE INPUT === */
 .ab-input-area {
-  padding: var(--t4-space-sm) var(--t4-space-md);
-  padding-bottom: calc(var(--t4-space-sm) + env(safe-area-inset-bottom, 0px));
-  background: var(--t4-bg-secondary);
-  border-top: 1px solid var(--t4-border);
+  padding: var(--space-sm) var(--space-md);
+  padding-bottom: calc(var(--space-sm) + env(safe-area-inset-bottom, 0px));
+  background: var(--bg-secondary);
+  border-top: 1px solid var(--border);
   flex-shrink: 0;
   z-index: 10;
 }
@@ -386,7 +410,7 @@
 .ab-input-row {
   display: flex;
   align-items: flex-end;
-  gap: var(--t4-space-sm);
+  gap: var(--space-sm);
 }
 
 .ab-input-wrapper {
@@ -399,42 +423,42 @@
   min-height: 44px;
   max-height: 120px;
   padding: 10px 16px;
-  font-family: var(--t4-font-body);
+  font-family: var(--font-body);
   font-size: 0.9375rem;
-  color: var(--t4-text-primary);
-  background: var(--t4-bg-input);
-  border: 1px solid var(--t4-border);
-  border-radius: 22px;
+  color: var(--text-primary);
+  background: var(--bg-input);
+  border: 1px solid var(--border);
+  border-radius: var(--radius-full);
   outline: none;
   resize: none;
   line-height: 1.4;
-  transition: border-color var(--t4-transition-fast);
+  transition: border-color var(--transition-fast);
   overflow-y: auto;
 }
 
 .ab-input::placeholder {
-  color: var(--t4-text-muted);
+  color: var(--text-muted);
 }
 
 .ab-input:focus {
   border-color: var(--ab-accent);
-  box-shadow: 0 0 0 3px rgba(52, 211, 153, 0.1);
+  box-shadow: 0 0 0 3px var(--accent-green-glow);
 }
 
-/* === BOTÃO ENVIAR === */
+/* === BOTAO ENVIAR === */
 .ab-send-btn {
   width: 44px;
   height: 44px;
-  border-radius: var(--t4-radius-full);
+  border-radius: var(--radius-full);
   background: var(--ab-accent);
-  color: var(--t4-bg-primary);
+  color: var(--bg-primary);
   border: none;
   display: flex;
   align-items: center;
   justify-content: center;
   font-size: 1.25rem;
   cursor: pointer;
-  transition: all var(--t4-transition-fast);
+  transition: all var(--transition-fast);
   flex-shrink: 0;
 }
 
@@ -448,20 +472,20 @@
   pointer-events: none;
 }
 
-/* === BOTÃO DE VOZ === */
+/* === BOTAO DE VOZ === */
 .ab-voice-btn {
   width: 64px;
   height: 64px;
-  border-radius: var(--t4-radius-full);
-  background: rgba(52, 211, 153, 0.1);
-  border: 2px solid rgba(52, 211, 153, 0.3);
+  border-radius: var(--radius-full);
+  background: var(--accent-green-glow);
+  border: 2px solid rgba(122, 184, 0, 0.3);
   color: var(--ab-accent);
   display: flex;
   align-items: center;
   justify-content: center;
   font-size: 1.5rem;
   cursor: pointer;
-  transition: all var(--t4-transition-base);
+  transition: all var(--transition-base);
   flex-shrink: 0;
   position: relative;
   -webkit-user-select: none;
@@ -471,7 +495,7 @@
 
 .ab-voice-btn:active,
 .ab-voice-btn.ab-voice-active {
-  background: rgba(52, 211, 153, 0.2);
+  background: rgba(122, 184, 0, 0.2);
   border-color: var(--ab-accent);
   transform: scale(1.05);
 }
@@ -479,7 +503,7 @@
 .ab-voice-btn.ab-voice-recording {
   background: rgba(239, 68, 68, 0.15);
   border-color: rgba(239, 68, 68, 0.5);
-  color: var(--t4-status-danger);
+  color: var(--status-danger);
   animation: ab-voicePulse 1.5s ease-in-out infinite;
 }
 
@@ -488,7 +512,7 @@
   pointer-events: none;
 }
 
-/* Onda de animação ao redor do botão de voz */
+/* Onda de animacao ao redor do botao de voz */
 .ab-voice-btn.ab-voice-recording::before {
   content: '';
   position: absolute;
@@ -507,16 +531,17 @@
   animation: ab-voiceRipple 1.5s ease-out infinite 0.5s;
 }
 
-/* Transcrição em tempo real */
+/* Transcricao em tempo real */
 .ab-voice-transcription {
   padding: 8px 16px;
   margin-bottom: 8px;
-  background: rgba(52, 211, 153, 0.05);
-  border: 1px dashed rgba(52, 211, 153, 0.2);
-  border-radius: var(--t4-radius-md);
+  background: var(--accent-green-glow);
+  border: 1px dashed rgba(122, 184, 0, 0.2);
+  border-radius: var(--radius-md);
   font-size: 0.875rem;
-  color: var(--t4-text-secondary);
+  color: var(--text-secondary);
   font-style: italic;
+  font-family: var(--font-body);
   min-height: 36px;
   display: none;
   animation: t4-fadeIn 0.2s ease;
@@ -531,13 +556,13 @@
   display: flex;
   align-items: center;
   justify-content: center;
-  gap: var(--t4-space-sm);
+  gap: var(--space-sm);
   padding: 4px 0;
 }
 
 .ab-voice-mode-label {
   font-size: 0.6875rem;
-  color: var(--t4-text-muted);
+  color: var(--text-muted);
 }
 
 /* === WELCOME SCREEN === */
@@ -547,51 +572,53 @@
   align-items: center;
   justify-content: center;
   text-align: center;
-  padding: var(--t4-space-2xl) var(--t4-space-lg);
-  gap: var(--t4-space-md);
+  padding: var(--space-2xl) var(--space-lg);
+  gap: var(--space-md);
   flex: 1;
 }
 
 .ab-welcome-icon {
   width: 80px;
   height: 80px;
-  border-radius: var(--t4-radius-full);
+  border-radius: var(--radius-full);
   background: var(--ab-avatar-bg);
   color: var(--ab-avatar-color);
   display: flex;
   align-items: center;
   justify-content: center;
   font-size: 2.5rem;
-  margin-bottom: var(--t4-space-sm);
-  box-shadow: 0 0 30px rgba(52, 211, 153, 0.15);
+  margin-bottom: var(--space-sm);
+  box-shadow: 0 0 30px var(--accent-green-glow);
 }
 
 .ab-welcome-title {
   font-size: 1.375rem;
   font-weight: 700;
-  color: var(--t4-text-primary);
+  font-family: var(--font-body);
+  color: var(--text-primary);
 }
 
 .ab-welcome-subtitle {
   font-size: 0.9375rem;
-  color: var(--t4-text-secondary);
+  color: var(--text-secondary);
   max-width: 300px;
   line-height: 1.5;
+  font-family: var(--font-body);
 }
 
-/* === MENU DE OPÇÕES (3 pontos) === */
+/* === MENU DE OPCOES (3 pontos) === */
 .ab-options-menu {
   position: absolute;
   top: 100%;
   right: 0;
   margin-top: 4px;
-  background: var(--t4-bg-elevated);
-  border: 1px solid var(--t4-border);
-  border-radius: var(--t4-radius-md);
-  padding: var(--t4-space-xs) 0;
+  background: var(--bg-elevated);
+  border: 1px solid var(--border);
+  border-radius: var(--radius-md);
+  padding: var(--space-xs) 0;
   min-width: 200px;
-  box-shadow: var(--t4-shadow-lg);
-  z-index: var(--t4-z-dropdown);
+  box-shadow: var(--shadow-lg);
+  z-index: 100;
   display: none;
 }
 
@@ -603,39 +630,39 @@
 .ab-options-menu-item {
   display: flex;
   align-items: center;
-  gap: var(--t4-space-sm);
+  gap: var(--space-sm);
   padding: 12px 16px;
   width: 100%;
   background: none;
   border: none;
-  color: var(--t4-text-primary);
+  color: var(--text-primary);
   font-size: 0.875rem;
-  font-family: var(--t4-font-body);
+  font-family: var(--font-body);
   cursor: pointer;
   text-align: left;
-  min-height: var(--t4-touch-min);
+  min-height: 44px;
 }
 
 .ab-options-menu-item:active {
-  background: rgba(255, 255, 255, 0.05);
+  background: var(--bg-card-hover);
 }
 
 .ab-options-menu-item-icon {
   font-size: 1rem;
   width: 24px;
   text-align: center;
-  color: var(--t4-text-secondary);
+  color: var(--text-secondary);
 }
 
 .ab-options-menu-item-danger {
-  color: var(--t4-status-danger);
+  color: var(--status-danger);
 }
 
 .ab-options-menu-item-danger .ab-options-menu-item-icon {
-  color: var(--t4-status-danger);
+  color: var(--status-danger);
 }
 
-/* === ANIMAÇÕES === */
+/* === ANIMACOES === */
 @keyframes ab-messageIn {
   from {
     opacity: 0;

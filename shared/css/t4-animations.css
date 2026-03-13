@@ -100,10 +100,10 @@
 /* === GLOW PULSE (para bordas ativas) === */
 @keyframes t4-glowPulse {
   0%, 100% {
-    box-shadow: 0 0 8px rgba(255, 107, 43, 0.2);
+    box-shadow: 0 0 8px rgba(0, 140, 126, 0.2);
   }
   50% {
-    box-shadow: 0 0 20px rgba(255, 107, 43, 0.4);
+    box-shadow: 0 0 20px rgba(0, 140, 126, 0.4);
   }
 }
 

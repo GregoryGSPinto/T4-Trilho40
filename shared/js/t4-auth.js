@@ -147,28 +147,23 @@ T4.auth = (function () {
   /* Gera tela de login (usado por cada módulo) */
   function renderLoginScreen(container) {
     container.innerHTML = `
-      <div class="t4-login" style="
-        min-height: 100vh;
+      <div class="t4-bg-grid"></div>
+      <div class="t4-bg-glow t4-bg-glow-teal"></div>
+      <div class="t4-bg-glow t4-bg-glow-cyan"></div>
+      <div style="
+        min-height: 100dvh;
         display: flex;
         flex-direction: column;
         align-items: center;
         justify-content: center;
         padding: 24px;
         text-align: center;
+        position: relative;
+        z-index: 1;
       ">
-        <div style="margin-bottom: 32px;">
-          <div style="
-            font-family: var(--t4-font-display);
-            font-size: 2rem;
-            font-weight: 700;
-            background: var(--t4-brand-gradient);
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-            margin-bottom: 8px;
-          ">T4</div>
-          <p style="color: var(--t4-text-secondary); font-size: 0.875rem;">
-            Trilho 4.0 — Acesso do Maquinista
-          </p>
+        <div style="margin-bottom: 40px;">
+          <div class="t4-logo" style="margin-bottom: 8px;">T4</div>
+          <div class="t4-subtitle">TRILHO 4.0</div>
         </div>
 
         <div style="width: 100%; max-width: 300px;">
@@ -187,22 +182,31 @@ T4.auth = (function () {
           </div>
 
           <div id="t4-login-error" style="
-            color: var(--t4-status-danger);
+            color: var(--status-danger);
             font-size: 0.8125rem;
             margin-bottom: 16px;
             display: none;
           "></div>
 
-          <button id="t4-login-btn" class="t4-btn t4-btn-primary t4-btn-block t4-btn-lg">
+          <button id="t4-login-btn" class="t4-btn-primary" style="width: 100%;">
             Entrar
           </button>
 
           <p style="
-            color: var(--t4-text-muted);
-            font-size: 0.75rem;
-            margin-top: 24px;
+            color: var(--text-muted);
+            font-size: 0.6875rem;
+            margin-top: 32px;
+            letter-spacing: 0.5px;
           ">
-            Demo: Matrícula 0001 / PIN 1234
+            Ecossistema Digital do Maquinista 4.0
+          </p>
+          <p style="
+            color: var(--text-muted);
+            font-size: 0.6875rem;
+            margin-top: 8px;
+            opacity: 0.6;
+          ">
+            Demo: matrícula 0001 / PIN 1234
           </p>
         </div>
       </div>

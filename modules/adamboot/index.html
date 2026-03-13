@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, viewport-fit=cover">
-  <meta name="theme-color" content="#0a0b0f">
+  <meta name="theme-color" content="#008C7E">
   <meta name="apple-mobile-web-app-capable" content="yes">
   <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
   <title>AdamBoot — Assistente do Maquinista | T4</title>
@@ -18,11 +18,24 @@
 </head>
 <body>
 
+  <!-- Background Effects -->
+  <div class="t4-bg-grid"></div>
+  <div class="t4-bg-glow t4-bg-glow-teal"></div>
+  <div class="t4-bg-glow t4-bg-glow-cyan"></div>
+
+  <div class="t4-app module-adamboot">
+
+  <!-- Module Header -->
+  <div class="t4-module-header">
+    <a href="../../index.html" class="t4-back-btn">← T4</a>
+    <h1 class="t4-module-title">AdamBoot</h1>
+  </div>
+
   <div id="ab-app" class="ab-app">
 
     <!-- HEADER -->
     <header class="ab-header">
-      <button class="ab-header-back" id="ab-back-btn" aria-label="Voltar">
+      <button class="ab-header-back" id="ab-back-btn" aria-label="Voltar" style="display:none;">
         ←
       </button>
 
@@ -99,6 +112,8 @@
     </div>
 
   </div>
+
+  </div> <!-- /.t4-app -->
 
   <!-- Shared JS -->
   <script src="../../shared/js/t4-core.js"></script>

@@ -23,96 +23,522 @@
 </head>
 <body>
 
-  <!-- App Container -->
-  <div id="t4-app" class="t4-container t4-safe-top t4-safe-bottom">
+  <!-- ==================== SPLASH SCREEN ==================== -->
+  <div id="splash-screen" class="splash-screen">
+    <div class="splash-content">
+      <div class="splash-logo" id="splash-logo">T4</div>
+      <div class="splash-subtitle" id="splash-subtitle">TRILHO 4.0</div>
+      <div class="splash-loader">
+        <div class="splash-loader-bar" id="splash-loader-bar"></div>
+      </div>
+    </div>
+  </div>
 
-    <!-- Login screen (renderizado via JS se não autenticado) -->
-    <div id="hub-login-screen" hidden></div>
+  <!-- ==================== BACKGROUND EFFECTS ==================== -->
+  <div class="t4-bg-grid"></div>
+  <div class="t4-bg-glow t4-bg-glow-teal"></div>
+  <div class="t4-bg-glow t4-bg-glow-cyan"></div>
 
-    <!-- Dashboard (visível apenas quando autenticado) -->
-    <main id="hub-dashboard" hidden>
+  <!-- ==================== LOGIN SCREEN ==================== -->
+  <div id="login-screen" class="login-screen" hidden>
+    <div class="login-wrapper">
+      <div class="login-brand">
+        <div class="t4-logo">T4</div>
+        <div class="t4-subtitle">TRILHO 4.0</div>
+      </div>
 
-      <!-- Header: Branding + Avatar -->
-      <header id="hub-header" class="hub-header t4-fadeUp" role="banner"></header>
+      <div class="login-form">
+        <div class="login-input-group">
+          <input type="text" id="login-matricula" class="t4-input" placeholder="Matricula" inputmode="numeric" autocomplete="off" aria-label="Matricula">
+        </div>
+        <div class="login-input-group">
+          <input type="password" id="login-pin" class="t4-input" placeholder="PIN" inputmode="numeric" maxlength="4" autocomplete="off" aria-label="PIN">
+        </div>
+        <div id="login-error" class="login-error"></div>
+        <button id="login-btn" class="t4-btn-primary login-btn-full">Entrar</button>
+      </div>
 
-      <!-- Saudação contextual -->
-      <section id="hub-greeting" class="t4-fadeUp t4-fadeUp-1" aria-label="Saudação"></section>
+      <div class="login-footer-text">Ecossistema Digital do Maquinista 4.0</div>
+      <div class="login-demo-hint">matricula 0001 / PIN 1234</div>
+    </div>
+  </div>
 
-      <!-- Status: conectividade, pátio, trem -->
-      <div id="hub-status-bar" class="hub-status-bar t4-fadeUp t4-fadeUp-2" role="status" aria-label="Status operacional"></div>
+  <!-- ==================== HUB DASHBOARD ==================== -->
+  <div id="hub-dashboard" class="t4-app" hidden>
 
-      <!-- Grid de Módulos -->
-      <section class="hub-section t4-fadeUp t4-fadeUp-3" aria-label="Módulos do sistema">
-        <h2 class="hub-section-title">Módulos</h2>
-        <div id="hub-modules-grid" class="hub-modules-grid" role="navigation" aria-label="Navegação entre módulos"></div>
-      </section>
+    <!-- Status bar top -->
+    <div class="hub-topbar">
+      <div class="hub-topbar-clock" id="hub-clock"></div>
+      <div class="hub-topbar-right">
+        <span class="hub-topbar-efvm">EFVM</span>
+        <span class="hub-topbar-dot"></span>
+        <span class="hub-topbar-on">ON</span>
+      </div>
+    </div>
 
-      <!-- Ações Rápidas -->
-      <section class="hub-section t4-fadeUp t4-fadeUp-5" aria-label="Ações rápidas">
-        <h2 class="hub-section-title">Ações Rápidas</h2>
-        <div id="hub-quick-actions" class="hub-quick-actions" role="toolbar" aria-label="Atalhos"></div>
-      </section>
+    <!-- Header -->
+    <header class="hub-header-new">
+      <div class="hub-header-left">
+        <div class="t4-logo" style="font-size:32px;">T4</div>
+        <div class="t4-subtitle">TRILHO 4.0</div>
+      </div>
+      <div class="hub-header-right">
+        <div class="t4-user-badge">
+          <div class="t4-user-avatar" id="hub-user-avatar"></div>
+          <span id="hub-user-name"></span>
+        </div>
+        <div class="t4-yard-tag" id="hub-yard-tag"></div>
+      </div>
+    </header>
 
-      <!-- Logout -->
-      <div id="hub-logout" class="t4-fadeUp t4-fadeUp-7"></div>
+    <!-- Quick Status Chips -->
+    <div class="hub-chips-scroll">
+      <div class="hub-chip">
+        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>
+        <span>Jornada</span> <strong>04:32</strong>
+      </div>
+      <div class="hub-chip">
+        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polygon points="12 2 2 7 12 12 22 7 12 2"/><polyline points="2 17 12 22 22 17"/><polyline points="2 12 12 17 22 12"/></svg>
+        <span>Proximo</span> <strong>M346</strong>
+      </div>
+      <div class="hub-chip hub-chip--green">
+        <span>DSS</span> <strong>OK</strong>
+      </div>
+      <div class="hub-chip hub-chip--gold">
+        <span>BOLLs</span> <strong>3</strong>
+      </div>
+    </div>
 
-      <!-- Footer -->
-      <footer class="hub-footer t4-fadeUp t4-fadeUp-8" role="contentinfo">
-        <div class="hub-footer-version">T4 Trilho 4.0 &mdash; v1.0.0</div>
-        <div class="hub-footer-copyright">Plataforma Digital do Maquinista</div>
-      </footer>
+    <!-- Section: OPERACIONAL -->
+    <div class="t4-section-title">OPERACIONAL</div>
+    <div class="hub-app-grid" id="hub-app-grid">
 
-    </main>
+      <!-- OPTIMA Equipagem -->
+      <div class="t4-app-card" data-module="optima">
+        <span class="t4-badge-online" style="position:absolute;top:12px;right:12px;"></span>
+        <div class="t4-app-icon" style="background:rgba(0,180,216,0.12);color:var(--accent-cyan);">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" width="24" height="24"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/></svg>
+        </div>
+        <div class="t4-app-label">OPTIMA<br>Equipagem</div>
+      </div>
+
+      <!-- Passagem de Servico -->
+      <div class="t4-app-card" data-module="vfz">
+        <span class="t4-badge-online" style="position:absolute;top:12px;right:12px;"></span>
+        <div class="t4-app-icon" style="background:rgba(122,184,0,0.12);color:var(--accent-green);">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" width="24" height="24"><path d="M16 4h2a2 2 0 0 1 2 2v14a2 2 0 0 1-2 2H6a2 2 0 0 1-2-2V6a2 2 0 0 1 2-2h2"/><rect x="8" y="2" width="8" height="4" rx="1"/><path d="M9 14l2 2 4-4"/></svg>
+        </div>
+        <div class="t4-app-label">Passagem de<br>Servico</div>
+      </div>
+
+      <!-- ROF Digital -->
+      <div class="t4-app-card" data-module="rof-digital">
+        <span class="t4-badge-new">NOVO</span>
+        <div class="t4-app-icon" style="background:rgba(229,161,0,0.12);color:var(--accent-gold);">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" width="24" height="24"><path d="M4 19.5A2.5 2.5 0 0 1 6.5 17H20"/><path d="M6.5 2H20v20H6.5A2.5 2.5 0 0 1 4 19.5v-15A2.5 2.5 0 0 1 6.5 2z"/></svg>
+        </div>
+        <div class="t4-app-label">ROF Digital</div>
+      </div>
+
+      <!-- EFVM 360 -->
+      <div class="t4-app-card" data-module="efvm360">
+        <span class="t4-badge-online" style="position:absolute;top:12px;right:12px;"></span>
+        <div class="t4-app-icon" style="background:rgba(0,140,126,0.12);color:var(--accent-teal);">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" width="24" height="24"><polygon points="12 2 2 7 12 12 22 7 12 2"/><polyline points="2 17 12 22 22 17"/><polyline points="2 12 12 17 22 12"/></svg>
+        </div>
+        <div class="t4-app-label">EFVM 360</div>
+      </div>
+
+      <!-- CCQ Qualidade -->
+      <div class="t4-app-card" data-module="ccq">
+        <span class="t4-badge-new">NOVO</span>
+        <div class="t4-app-icon" style="background:rgba(229,161,0,0.12);color:var(--accent-gold);">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" width="24" height="24"><line x1="12" y1="20" x2="12" y2="10"/><line x1="18" y1="20" x2="18" y2="4"/><line x1="6" y1="20" x2="6" y2="16"/></svg>
+        </div>
+        <div class="t4-app-label">CCQ<br>Qualidade</div>
+      </div>
+
+      <!-- AdamBoot IA -->
+      <div class="t4-app-card" data-module="adamboot">
+        <span class="t4-badge-online" style="position:absolute;top:12px;right:12px;"></span>
+        <div class="t4-app-icon" style="background:rgba(122,184,0,0.12);color:var(--accent-green);">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" width="24" height="24"><path d="M12 3l1.5 5.5L19 10l-5.5 1.5L12 17l-1.5-5.5L5 10l5.5-1.5L12 3z"/></svg>
+        </div>
+        <div class="t4-app-label">AdamBoot IA</div>
+      </div>
+
+    </div>
+
+    <!-- Section: ASSISTENTE IA -->
+    <div class="t4-section-title" style="margin-top:24px;">ASSISTENTE IA</div>
+    <div class="hub-aura-card" id="hub-aura-card">
+      <div class="hub-aura-icon">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" width="28" height="28"><path d="M12 3l1.5 5.5L19 10l-5.5 1.5L12 17l-1.5-5.5L5 10l5.5-1.5L12 3z"/></svg>
+      </div>
+      <div class="hub-aura-text">
+        <div class="hub-aura-title">Aura</div>
+        <div class="hub-aura-desc">Seu assistente ferroviario inteligente</div>
+      </div>
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" width="20" height="20" style="opacity:0.4;flex-shrink:0;"><path d="M9 18l6-6-6-6"/></svg>
+    </div>
+
+    <!-- Spacer for bottom nav -->
+    <div style="height:80px;"></div>
+
+    <!-- Bottom Nav -->
+    <nav class="t4-bottom-nav">
+      <button class="t4-nav-item active">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" width="22" height="22"><path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/><polyline points="9 22 9 12 15 12 15 22"/></svg>
+        <span class="t4-nav-label">Hub</span>
+      </button>
+      <button class="t4-nav-item">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" width="22" height="22"><circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/></svg>
+        <span class="t4-nav-label">Busca</span>
+      </button>
+      <button class="t4-nav-item">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" width="22" height="22"><path d="M18 8A6 6 0 0 0 6 8c0 7-3 9-3 9h18s-3-2-3-9"/><path d="M13.73 21a2 2 0 0 1-3.46 0"/></svg>
+        <span class="t4-nav-label">Alertas</span>
+      </button>
+      <button class="t4-nav-item">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" width="22" height="22"><circle cx="12" cy="12" r="3"/><path d="M19.4 15a1.65 1.65 0 0 0 .33 1.82l.06.06a2 2 0 0 1 0 2.83 2 2 0 0 1-2.83 0l-.06-.06a1.65 1.65 0 0 0-1.82-.33 1.65 1.65 0 0 0-1 1.51V21a2 2 0 0 1-2 2 2 2 0 0 1-2-2v-.09A1.65 1.65 0 0 0 9 19.4a1.65 1.65 0 0 0-1.82.33l-.06.06a2 2 0 0 1-2.83 0 2 2 0 0 1 0-2.83l.06-.06A1.65 1.65 0 0 0 4.68 15a1.65 1.65 0 0 0-1.51-1H3a2 2 0 0 1-2-2 2 2 0 0 1 2-2h.09A1.65 1.65 0 0 0 4.6 9a1.65 1.65 0 0 0-.33-1.82l-.06-.06a2 2 0 0 1 0-2.83 2 2 0 0 1 2.83 0l.06.06A1.65 1.65 0 0 0 9 4.68a1.65 1.65 0 0 0 1-1.51V3a2 2 0 0 1 2-2 2 2 0 0 1 2 2v.09a1.65 1.65 0 0 0 1 1.51 1.65 1.65 0 0 0 1.82-.33l.06-.06a2 2 0 0 1 2.83 0 2 2 0 0 1 0 2.83l-.06.06A1.65 1.65 0 0 0 19.4 9a1.65 1.65 0 0 0 1.51 1H21a2 2 0 0 1 2 2 2 2 0 0 1-2 2h-.09a1.65 1.65 0 0 0-1.51 1z"/></svg>
+        <span class="t4-nav-label">Config</span>
+      </button>
+    </nav>
+
+    <!-- FAB Button -->
+    <button class="t4-fab" id="hub-fab" aria-label="Assistente Aura">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" width="24" height="24"><path d="M12 3l1.5 5.5L19 10l-5.5 1.5L12 17l-1.5-5.5L5 10l5.5-1.5L12 3z"/></svg>
+    </button>
 
   </div>
 
-  <!-- T4 Shared JS (ordem importa: core > storage > router > auth > notifications) -->
+  <!-- ==================== MODULE MODAL ==================== -->
+  <div class="t4-modal-overlay" id="module-modal">
+    <div class="t4-modal-drawer">
+      <div class="t4-modal-handle"></div>
+      <div id="modal-content"></div>
+    </div>
+  </div>
+
+  <!-- ==================== SCRIPTS ==================== -->
+  <!-- T4 Shared JS -->
   <script src="shared/js/t4-core.js"></script>
   <script src="shared/js/t4-storage.js"></script>
   <script src="shared/js/t4-router.js"></script>
   <script src="shared/js/t4-auth.js"></script>
   <script src="shared/js/t4-notifications.js"></script>
 
-  <!-- Hub JS -->
+  <!-- Hub JS (kept for compatibility but dashboard now self-contained) -->
   <script src="modules/hub/js/hub-dashboard.js"></script>
   <script src="modules/hub/js/hub-quick-actions.js"></script>
 
-  <!-- Inicialização -->
+  <!-- Hub Initialization -->
   <script>
     (function () {
       'use strict';
 
-      /* Inicializa módulo T4 */
+      /* ======= MODULE DATA ======= */
+      var MODULE_DATA = {
+        optima: {
+          name: 'OPTIMA Equipagem',
+          status: 'ready',
+          statusLabel: 'Pronto',
+          accent: 'var(--accent-cyan)',
+          accentHex: '#00B4D8',
+          desc: 'Sistema inteligente de alocacao de equipagem ferroviaria com scoring por IA.',
+          features: [
+            { emoji: '\u{1F9E0}', text: 'Scoring de alocacao com IA' },
+            { emoji: '\u23F1\uFE0F', text: 'Controle de jornada 12h' },
+            { emoji: '\u{1F4CA}', text: 'Dashboard operacional em tempo real' },
+            { emoji: '\u{1F514}', text: 'Alertas de intrajornada' }
+          ],
+          type: 'external',
+          url: 'https://optima.vale.com'
+        },
+        vfz: {
+          name: 'Passagem de Servico',
+          status: 'ready',
+          statusLabel: 'Pronto',
+          accent: 'var(--accent-green)',
+          accentHex: '#7AB800',
+          desc: 'Passagem de servico digital com DSS integrado e avaliacao 5S.',
+          features: [
+            { emoji: '\u{1F4CB}', text: 'DSS alinhado PRO-041945 Rev.02' },
+            { emoji: '\u2705', text: 'Avaliacao 5S por PGS-007091' },
+            { emoji: '\u{1F9E9}', text: 'Quiz de confirmacao do turno' },
+            { emoji: '\u{1F4C8}', text: 'Dashboard BI+ Analytics' }
+          ],
+          type: 'external',
+          url: 'https://vfz.vale.com'
+        },
+        'rof-digital': {
+          name: 'ROF Digital',
+          status: 'building',
+          statusLabel: 'Em construcao',
+          accent: 'var(--accent-gold)',
+          accentHex: '#E5A100',
+          desc: 'Regulamento de Operacao Ferroviaria digitalizado com busca inteligente por IA.',
+          features: [
+            { emoji: '\u{1F50D}', text: 'Busca por linguagem natural' },
+            { emoji: '\u{1F4D6}', text: 'ROF completo indexado' },
+            { emoji: '\u{1F6E4}\uFE0F', text: 'Filtro por km e trecho' },
+            { emoji: '\u26A1', text: 'Respostas instantaneas com IA' }
+          ],
+          type: 'internal',
+          path: 'modules/rof-digital/'
+        },
+        efvm360: {
+          name: 'EFVM 360',
+          status: 'ready',
+          statusLabel: 'Pronto',
+          accent: 'var(--accent-teal)',
+          accentHex: '#008C7E',
+          desc: 'Simulador ferroviario imersivo com academia de treinamento integrada.',
+          features: [
+            { emoji: '\u{1F682}', text: 'Simulacao realista da EFVM' },
+            { emoji: '\u{1F393}', text: 'Railway Academy + Exames' },
+            { emoji: '\u{1F4FB}', text: 'Treinamento de comunicacao radio' },
+            { emoji: '\u{1F916}', text: 'Assistente AdamBoot' }
+          ],
+          type: 'internal',
+          path: 'modules/efvm360/'
+        },
+        ccq: {
+          name: 'CCQ Qualidade',
+          status: 'building',
+          statusLabel: 'Em construcao',
+          accent: 'var(--accent-gold)',
+          accentHex: '#E5A100',
+          desc: 'Ferramentas visuais para Circulos de Controle da Qualidade.',
+          features: [
+            { emoji: '\u{1F504}', text: 'Ciclo PDCA visual interativo' },
+            { emoji: '\u{1F41F}', text: 'Diagrama de Ishikawa' },
+            { emoji: '\u{1F4DD}', text: 'Plano de Acao 5W2H' },
+            { emoji: '\u{1F3AC}', text: 'Gerador de apresentacao' }
+          ],
+          type: 'internal',
+          path: 'modules/ccq/'
+        },
+        adamboot: {
+          name: 'AdamBoot IA',
+          status: 'ready',
+          statusLabel: 'Pronto',
+          accent: 'var(--accent-green)',
+          accentHex: '#7AB800',
+          desc: 'Assistente de inteligencia artificial especializado em operacao ferroviaria.',
+          features: [
+            { emoji: '\u{1F4AC}', text: 'Chat com IA ferroviaria' },
+            { emoji: '\u{1F399}\uFE0F', text: 'Controle por voz' },
+            { emoji: '\u{1F4D6}', text: 'Base de conhecimento ROF' },
+            { emoji: '\u{1F504}', text: 'Contexto operacional integrado' }
+          ],
+          type: 'internal',
+          path: 'modules/adamboot/'
+        }
+      };
+
+      /* ======= SPLASH SCREEN ======= */
+      var splash = document.getElementById('splash-screen');
+      var splashLogo = document.getElementById('splash-logo');
+      var splashSubtitle = document.getElementById('splash-subtitle');
+      var splashBar = document.getElementById('splash-loader-bar');
+
+      // Trigger animations
+      requestAnimationFrame(function () {
+        splashLogo.classList.add('splash-logo-animate');
+        setTimeout(function () {
+          splashSubtitle.classList.add('splash-subtitle-animate');
+        }, 400);
+        setTimeout(function () {
+          splashBar.classList.add('splash-bar-animate');
+        }, 600);
+      });
+
+      // Fade out splash after 2s
+      setTimeout(function () {
+        splash.classList.add('splash-fadeout');
+        setTimeout(function () {
+          splash.style.display = 'none';
+          showAppScreen();
+        }, 500);
+      }, 2000);
+
+      /* ======= INIT T4 ======= */
       T4.init('hub');
 
-      var loginScreen = document.getElementById('hub-login-screen');
-      var dashboard = document.getElementById('hub-dashboard');
-
-      /* Verificação de autenticação */
-      if (!T4.auth.isAuthenticated()) {
-        T4.dom.show(loginScreen);
-        T4.dom.hide(dashboard);
-        T4.auth.renderLoginScreen(loginScreen);
-        return;
+      /* ======= SHOW APP SCREEN ======= */
+      function showAppScreen() {
+        if (!T4.auth.isAuthenticated()) {
+          showLoginScreen();
+        } else {
+          showDashboard();
+        }
       }
 
-      /* Autenticado — renderiza dashboard */
-      T4.dom.hide(loginScreen);
-      T4.dom.show(dashboard);
+      /* ======= LOGIN SCREEN ======= */
+      function showLoginScreen() {
+        var loginScreen = document.getElementById('login-screen');
+        var dashboard = document.getElementById('hub-dashboard');
+        loginScreen.removeAttribute('hidden');
+        loginScreen.style.display = '';
+        dashboard.setAttribute('hidden', '');
+        dashboard.style.display = 'none';
 
-      HubDashboard.init();
-      HubQuickActions.init();
+        var btnLogin = document.getElementById('login-btn');
+        var inputMat = document.getElementById('login-matricula');
+        var inputPin = document.getElementById('login-pin');
+        var errorEl = document.getElementById('login-error');
 
-      /* Service Worker */
+        function doLogin() {
+          var result = T4.auth.login(inputMat.value.trim(), inputPin.value.trim());
+          if (result.success) {
+            T4.storage.local.remove('redirectAfterLogin');
+            loginScreen.setAttribute('hidden', '');
+            loginScreen.style.display = 'none';
+            showDashboard();
+          } else {
+            errorEl.textContent = result.error;
+            errorEl.style.display = 'block';
+            inputPin.value = '';
+            inputPin.focus();
+            T4.utils.vibrate(50);
+          }
+        }
+
+        btnLogin.addEventListener('click', doLogin);
+        inputPin.addEventListener('keydown', function (e) {
+          if (e.key === 'Enter') doLogin();
+        });
+        inputMat.addEventListener('keydown', function (e) {
+          if (e.key === 'Enter') inputPin.focus();
+        });
+      }
+
+      /* ======= DASHBOARD ======= */
+      function showDashboard() {
+        var dashboard = document.getElementById('hub-dashboard');
+        var loginScreen = document.getElementById('login-screen');
+        loginScreen.setAttribute('hidden', '');
+        loginScreen.style.display = 'none';
+        dashboard.removeAttribute('hidden');
+        dashboard.style.display = '';
+
+        var user = T4.auth.getUser();
+        if (!user) return;
+
+        // User info
+        var avatarEl = document.getElementById('hub-user-avatar');
+        var nameEl = document.getElementById('hub-user-name');
+        var yardEl = document.getElementById('hub-yard-tag');
+
+        avatarEl.textContent = user.avatar || user.nome.substring(0, 2).toUpperCase();
+        nameEl.textContent = user.nome;
+        yardEl.textContent = user.patio || 'N/A';
+
+        // Clock
+        function updateClock() {
+          var now = new Date();
+          var h = String(now.getHours()).padStart(2, '0');
+          var m = String(now.getMinutes()).padStart(2, '0');
+          document.getElementById('hub-clock').textContent = h + ':' + m;
+        }
+        updateClock();
+        setInterval(updateClock, 30000);
+
+        // App card click handlers
+        var cards = document.querySelectorAll('.t4-app-card[data-module]');
+        cards.forEach(function (card) {
+          card.addEventListener('click', function () {
+            T4.utils.vibrate(10);
+            var moduleId = card.getAttribute('data-module');
+            openModuleModal(moduleId);
+          });
+        });
+
+        // Aura card
+        document.getElementById('hub-aura-card').addEventListener('click', function () {
+          T4.utils.vibrate(10);
+          T4.router.navigate('adamboot');
+        });
+
+        // FAB
+        document.getElementById('hub-fab').addEventListener('click', function () {
+          T4.utils.vibrate(10);
+          T4.router.navigate('adamboot');
+        });
+
+        // Animate cards
+        T4.dom.animateList('.t4-app-card', 60);
+      }
+
+      /* ======= MODULE MODAL ======= */
+      var modalOverlay = document.getElementById('module-modal');
+
+      function openModuleModal(moduleId) {
+        var mod = MODULE_DATA[moduleId];
+        if (!mod) return;
+
+        var statusDotColor = mod.status === 'ready' ? 'var(--accent-green)' : 'var(--accent-gold)';
+        var featuresHTML = mod.features.map(function (f) {
+          return '<div class="modal-feature"><span class="modal-feature-emoji">' + f.emoji + '</span><span>' + f.text + '</span></div>';
+        }).join('');
+
+        var actionLabel = 'Abrir ' + mod.name.split(' ')[0];
+
+        document.getElementById('modal-content').innerHTML =
+          '<div style="display:flex;align-items:center;gap:10px;margin-bottom:6px;">' +
+            '<h3 style="font-size:20px;font-weight:700;color:' + mod.accentHex + ';margin:0;">' + mod.name + '</h3>' +
+            '<span style="width:8px;height:8px;border-radius:50%;background:' + statusDotColor + ';display:inline-block;"></span>' +
+            '<span style="font-size:11px;color:var(--text-muted);">' + mod.statusLabel + '</span>' +
+          '</div>' +
+          '<p style="font-size:14px;color:var(--text-secondary);margin:12px 0 20px;line-height:1.6;">' + mod.desc + '</p>' +
+          '<div class="modal-features">' + featuresHTML + '</div>' +
+          '<div style="display:flex;flex-direction:column;gap:10px;margin-top:24px;">' +
+            '<button class="t4-btn-primary" id="modal-open-btn" style="width:100%;justify-content:center;">' + actionLabel + '</button>' +
+            '<button class="t4-btn-secondary" id="modal-close-btn" style="width:100%;justify-content:center;">Fechar</button>' +
+          '</div>';
+
+        modalOverlay.classList.add('active');
+
+        // Bind open
+        document.getElementById('modal-open-btn').addEventListener('click', function () {
+          closeModal();
+          if (mod.type === 'external' && mod.url) {
+            T4.router.openExternal(mod.url);
+          } else if (mod.path) {
+            window.location.href = mod.path;
+          } else {
+            T4.router.navigate(moduleId);
+          }
+        });
+
+        // Bind close
+        document.getElementById('modal-close-btn').addEventListener('click', closeModal);
+
+        // Close on overlay click
+        modalOverlay.addEventListener('click', function handler(e) {
+          if (e.target === modalOverlay) {
+            closeModal();
+            modalOverlay.removeEventListener('click', handler);
+          }
+        });
+      }
+
+      function closeModal() {
+        modalOverlay.classList.remove('active');
+      }
+
+      /* ======= SERVICE WORKER ======= */
       if ('serviceWorker' in navigator) {
         window.addEventListener('load', function () {
           navigator.serviceWorker.register('sw.js').then(function (reg) {
             console.log('[T4] Service Worker registrado:', reg.scope);
           }).catch(function (err) {
-            console.warn('[T4] Service Worker não registrado:', err);
+            console.warn('[T4] Service Worker nao registrado:', err);
           });
         });
       }
+
     })();
   </script>
 

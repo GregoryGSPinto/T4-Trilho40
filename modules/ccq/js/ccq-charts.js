@@ -7,6 +7,11 @@
 CCQ.charts = (function () {
   const STORE_KEY = 'ccq_projects';
 
+  /* === HELPER: ler cor CSS do design system === */
+  function cssVar(name) {
+    return getComputedStyle(document.documentElement).getPropertyValue(name).trim();
+  }
+
   /* ============================
      PARETO CHART
      ============================ */
@@ -48,7 +53,7 @@ CCQ.charts = (function () {
         canvas.width = canvas.offsetWidth * 2;
         canvas.height = 250 * 2;
         ctx.scale(2, 2);
-        ctx.fillStyle = '#555a6e';
+        ctx.fillStyle = cssVar('--text-muted') || '#556677';
         ctx.font = '13px Outfit, sans-serif';
         ctx.textAlign = 'center';
         ctx.fillText('Adicione dados para gerar o grafico', canvas.offsetWidth / 2, 125);
@@ -75,8 +80,14 @@ CCQ.charts = (function () {
     const barW = Math.min(40, (chartW / sorted.length) - 4);
     const gap = (chartW - barW * sorted.length) / (sorted.length + 1);
 
+    const colorAccent = cssVar('--accent-gold') || '#E5A100';
+    const colorTeal = cssVar('--accent-teal') || '#008C7E';
+    const colorMuted = cssVar('--text-muted') || '#556677';
+    const colorSecondary = cssVar('--text-secondary') || '#94a3b8';
+    const colorBorder = cssVar('--border') || 'rgba(255,255,255,0.06)';
+
     /* Eixos */
-    ctx.strokeStyle = 'rgba(255,255,255,0.1)';
+    ctx.strokeStyle = colorBorder;
     ctx.lineWidth = 1;
     ctx.beginPath();
     ctx.moveTo(padding.left, padding.top);
@@ -87,13 +98,13 @@ CCQ.charts = (function () {
     /* Linhas de grade */
     for (let i = 0; i <= 4; i++) {
       const y = padding.top + (chartH * i / 4);
-      ctx.strokeStyle = 'rgba(255,255,255,0.04)';
+      ctx.strokeStyle = colorBorder;
       ctx.beginPath();
       ctx.moveTo(padding.left, y);
       ctx.lineTo(W - padding.right, y);
       ctx.stroke();
 
-      ctx.fillStyle = '#555a6e';
+      ctx.fillStyle = colorMuted;
       ctx.font = '10px JetBrains Mono, monospace';
       ctx.textAlign = 'right';
       ctx.fillText(Math.round(maxVal * (4 - i) / 4), padding.left - 6, y + 4);
@@ -102,7 +113,7 @@ CCQ.charts = (function () {
     /* Escala % no lado direito */
     for (let p = 0; p <= 100; p += 25) {
       const y = padding.top + chartH * (1 - p / 100);
-      ctx.fillStyle = '#555a6e';
+      ctx.fillStyle = colorMuted;
       ctx.font = '10px JetBrains Mono, monospace';
       ctx.textAlign = 'left';
       ctx.fillText(p + '%', W - padding.right + 4, y + 4);
@@ -118,22 +129,22 @@ CCQ.charts = (function () {
       const y = H - padding.bottom - barH;
 
       const grad = ctx.createLinearGradient(x, y, x, H - padding.bottom);
-      grad.addColorStop(0, '#c084fc');
-      grad.addColorStop(1, '#f472b6');
+      grad.addColorStop(0, colorTeal);
+      grad.addColorStop(1, colorAccent);
       ctx.fillStyle = grad;
       ctx.beginPath();
       ctx.roundRect(x, y, barW, barH, [4, 4, 0, 0]);
       ctx.fill();
 
       /* Label */
-      ctx.fillStyle = '#8b8fa3';
+      ctx.fillStyle = colorSecondary;
       ctx.font = '9px Outfit, sans-serif';
       ctx.textAlign = 'center';
       const label = item.label.length > 8 ? item.label.substring(0, 7) + '..' : item.label;
       ctx.fillText(label, x + barW / 2, H - padding.bottom + 14);
 
       /* Valor sobre a barra */
-      ctx.fillStyle = '#f472b6';
+      ctx.fillStyle = colorAccent;
       ctx.font = 'bold 10px JetBrains Mono, monospace';
       ctx.fillText(item.value, x + barW / 2, y - 6);
 
@@ -190,8 +201,8 @@ CCQ.charts = (function () {
       data.map((d, i) => `
         <div class="t4-list-item" style="padding:8px 12px">
           <span style="flex:1;font-size:0.8125rem">${T4.utils.escapeHTML(d.label)}</span>
-          <span style="font-family:var(--t4-font-display);font-size:0.8125rem;color:var(--ccq-accent)">${d.value}</span>
-          <button class="t4-btn t4-btn-sm t4-btn-ghost" style="color:var(--t4-status-danger);min-height:28px;padding:4px" onclick="CCQ.charts.removeParetoItem(${i}, '${projectId}')">&times;</button>
+          <span style="font-family:var(--font-display);font-size:0.8125rem;color:var(--ccq-accent)">${d.value}</span>
+          <button class="t4-btn t4-btn-sm t4-btn-ghost" style="color:var(--status-danger);min-height:28px;padding:4px" onclick="CCQ.charts.removeParetoItem(${i}, '${projectId}')">&times;</button>
         </div>
       `).join('');
   }
@@ -286,8 +297,14 @@ CCQ.charts = (function () {
     const ctx = canvas.getContext('2d');
     ctx.scale(dpr, dpr);
 
+    const colorAccent = cssVar('--accent-gold') || '#E5A100';
+    const colorTeal = cssVar('--accent-teal') || '#008C7E';
+    const colorMuted = cssVar('--text-muted') || '#556677';
+    const colorSecondary = cssVar('--text-secondary') || '#94a3b8';
+    const colorBorder = cssVar('--border') || 'rgba(255,255,255,0.06)';
+
     if (rawData.length < 2) {
-      ctx.fillStyle = '#555a6e';
+      ctx.fillStyle = colorMuted;
       ctx.font = '13px Outfit, sans-serif';
       ctx.textAlign = 'center';
       ctx.fillText('Adicione pelo menos 2 valores', W / 2, H / 2);
@@ -317,7 +334,7 @@ CCQ.charts = (function () {
     const barW = chartW / numBins - 2;
 
     /* Eixos */
-    ctx.strokeStyle = 'rgba(255,255,255,0.1)';
+    ctx.strokeStyle = colorBorder;
     ctx.lineWidth = 1;
     ctx.beginPath();
     ctx.moveTo(padding.left, padding.top);
@@ -332,24 +349,24 @@ CCQ.charts = (function () {
       const y = H - padding.bottom - barH;
 
       const grad = ctx.createLinearGradient(x, y, x, H - padding.bottom);
-      grad.addColorStop(0, '#c084fc');
-      grad.addColorStop(1, '#f472b6');
+      grad.addColorStop(0, colorTeal);
+      grad.addColorStop(1, colorAccent);
       ctx.fillStyle = grad;
       ctx.fillRect(x, y, barW, barH);
 
       /* Borda */
-      ctx.strokeStyle = 'rgba(255,255,255,0.1)';
+      ctx.strokeStyle = colorBorder;
       ctx.strokeRect(x, y, barW, barH);
 
       /* Label de faixa */
-      ctx.fillStyle = '#8b8fa3';
+      ctx.fillStyle = colorSecondary;
       ctx.font = '8px JetBrains Mono, monospace';
       ctx.textAlign = 'center';
       ctx.fillText(bin.min.toFixed(1), x + barW / 2, H - padding.bottom + 12);
 
       /* Contagem */
       if (bin.count > 0) {
-        ctx.fillStyle = '#f472b6';
+        ctx.fillStyle = colorAccent;
         ctx.font = 'bold 10px JetBrains Mono, monospace';
         ctx.fillText(bin.count, x + barW / 2, y - 6);
       }
@@ -359,7 +376,7 @@ CCQ.charts = (function () {
     for (let i = 0; i <= 4; i++) {
       const val = Math.round(maxCount * (4 - i) / 4);
       const y = padding.top + chartH * i / 4;
-      ctx.fillStyle = '#555a6e';
+      ctx.fillStyle = colorMuted;
       ctx.font = '10px JetBrains Mono, monospace';
       ctx.textAlign = 'right';
       ctx.fillText(val, padding.left - 6, y + 4);
@@ -400,12 +417,12 @@ CCQ.charts = (function () {
     el.innerHTML = `
       <div class="t4-flex-between t4-mb-sm">
         <span class="ccq-detail-section-title">Valores (${data.length})</span>
-        <button class="t4-btn t4-btn-sm t4-btn-ghost" style="color:var(--t4-status-danger)" onclick="CCQ.charts.clearHistData('${projectId}')">Limpar tudo</button>
+        <button class="t4-btn t4-btn-sm t4-btn-ghost" style="color:var(--status-danger)" onclick="CCQ.charts.clearHistData('${projectId}')">Limpar tudo</button>
       </div>
       <div style="display:flex;flex-wrap:wrap;gap:4px;">
         ${data.map((v, i) => `
           <span class="ccq-member-chip" style="cursor:pointer" onclick="CCQ.charts.removeHistValue(${i}, '${projectId}')">
-            ${v.toFixed(1)} <span style="color:var(--t4-text-muted);margin-left:2px">&times;</span>
+            ${v.toFixed(1)} <span style="color:var(--text-muted);margin-left:2px">&times;</span>
           </span>
         `).join('')}
       </div>
@@ -502,8 +519,13 @@ CCQ.charts = (function () {
     const ctx = canvas.getContext('2d');
     ctx.scale(dpr, dpr);
 
+    const colorAccent = cssVar('--accent-gold') || '#E5A100';
+    const colorMuted = cssVar('--text-muted') || '#556677';
+    const colorSecondary = cssVar('--text-secondary') || '#94a3b8';
+    const colorBorder = cssVar('--border') || 'rgba(255,255,255,0.06)';
+
     if (data.length < 2) {
-      ctx.fillStyle = '#555a6e';
+      ctx.fillStyle = colorMuted;
       ctx.font = '13px Outfit, sans-serif';
       ctx.textAlign = 'center';
       ctx.fillText('Adicione pelo menos 2 amostras', W / 2, H / 2);
@@ -526,7 +548,7 @@ CCQ.charts = (function () {
     const chartH = H - padding.top - padding.bottom;
 
     /* Eixos */
-    ctx.strokeStyle = 'rgba(255,255,255,0.1)';
+    ctx.strokeStyle = colorBorder;
     ctx.lineWidth = 1;
     ctx.beginPath();
     ctx.moveTo(padding.left, padding.top);
@@ -575,7 +597,7 @@ CCQ.charts = (function () {
     ctx.setLineDash([]);
 
     /* Linha de dados */
-    ctx.strokeStyle = '#f472b6';
+    ctx.strokeStyle = colorAccent;
     ctx.lineWidth = 2;
     ctx.beginPath();
     data.forEach((d, i) => {
@@ -592,7 +614,7 @@ CCQ.charts = (function () {
       const y = yPos(d.value);
       const outOfControl = d.value > lsc || d.value < lic;
 
-      ctx.fillStyle = outOfControl ? '#f87171' : '#f472b6';
+      ctx.fillStyle = outOfControl ? '#f87171' : colorAccent;
       ctx.beginPath();
       ctx.arc(x, y, outOfControl ? 5 : 3.5, 0, Math.PI * 2);
       ctx.fill();
@@ -606,7 +628,7 @@ CCQ.charts = (function () {
       }
 
       /* Label X */
-      ctx.fillStyle = '#8b8fa3';
+      ctx.fillStyle = colorSecondary;
       ctx.font = '8px Outfit, sans-serif';
       ctx.textAlign = 'center';
       if (data.length <= 15 || i % Math.ceil(data.length / 10) === 0) {
@@ -640,10 +662,10 @@ CCQ.charts = (function () {
     el.innerHTML = '<div class="ccq-detail-section-title t4-mb-sm">Amostras</div>' +
       data.map((d, i) => `
         <div class="t4-list-item" style="padding:6px 12px">
-          <span style="font-family:var(--t4-font-display);font-size:0.75rem;color:var(--t4-text-muted);width:30px">#${i + 1}</span>
+          <span style="font-family:var(--font-display);font-size:0.75rem;color:var(--text-muted);width:30px">#${i + 1}</span>
           <span style="flex:1;font-size:0.8125rem">${T4.utils.escapeHTML(d.label || 'Amostra ' + (i + 1))}</span>
-          <span style="font-family:var(--t4-font-display);font-size:0.8125rem;color:var(--ccq-accent)">${d.value.toFixed(2)}</span>
-          <button class="t4-btn t4-btn-sm t4-btn-ghost" style="color:var(--t4-status-danger);min-height:28px;padding:4px" onclick="CCQ.charts.removeControlValue(${i}, '${projectId}')">&times;</button>
+          <span style="font-family:var(--font-display);font-size:0.8125rem;color:var(--ccq-accent)">${d.value.toFixed(2)}</span>
+          <button class="t4-btn t4-btn-sm t4-btn-ghost" style="color:var(--status-danger);min-height:28px;padding:4px" onclick="CCQ.charts.removeControlValue(${i}, '${projectId}')">&times;</button>
         </div>
       `).join('');
   }

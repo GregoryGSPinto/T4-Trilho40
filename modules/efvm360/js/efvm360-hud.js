@@ -206,9 +206,10 @@ const EFVM360HUD = (function () {
 
     /* Desenha perfil */
     ctx.beginPath();
-    ctx.strokeStyle = 'rgba(168, 85, 247, 0.4)';
+    const accentColor = getComputedStyle(document.documentElement).getPropertyValue('--accent-teal').trim() || '#008C7E';
+    ctx.strokeStyle = accentColor + '66';
     ctx.lineWidth = 1.5;
-    ctx.fillStyle = 'rgba(168, 85, 247, 0.08)';
+    ctx.fillStyle = accentColor + '14';
 
     const extensao = km_max - km_min;
 
@@ -469,12 +470,12 @@ const EFVM360HUD = (function () {
    */
   function renderizarResultados(container, resultado, sessao) {
     const corClassificacao = {
-      'S': 'var(--t4-status-ok)',
+      'S': 'var(--status-ok)',
       'A': 'var(--efvm-accent)',
-      'B': 'var(--t4-status-info)',
-      'C': 'var(--t4-status-warning)',
-      'D': 'var(--t4-status-warning)',
-      'F': 'var(--t4-status-danger)'
+      'B': 'var(--status-info)',
+      'C': 'var(--status-warning)',
+      'D': 'var(--status-warning)',
+      'F': 'var(--status-danger)'
     };
 
     const cor = corClassificacao[resultado.classificacao] || 'var(--efvm-accent)';
@@ -547,7 +548,7 @@ const EFVM360HUD = (function () {
         </div>
 
         <div class="efvm-results-actions">
-          <button class="t4-btn t4-btn-primary t4-btn-block t4-btn-lg" id="efvm-btn-retry" style="background: linear-gradient(135deg, #a855f7, #c084fc);">
+          <button class="t4-btn t4-btn-primary t4-btn-block t4-btn-lg" id="efvm-btn-retry">
             Tentar Novamente
           </button>
           <button class="t4-btn t4-btn-secondary t4-btn-block" id="efvm-btn-back-menu">

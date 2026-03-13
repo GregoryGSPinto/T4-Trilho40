@@ -37,6 +37,11 @@ CCQ.presentations = (function () {
     const phaseLabels = { plan: 'Planejar', do: 'Executar', check: 'Verificar', act: 'Agir', done: 'Concluido' };
 
     /* 1. Capa */
+    const styles = getComputedStyle(document.documentElement);
+    const bgPrimary = styles.getPropertyValue('--bg-primary').trim() || '#0a0e12';
+    const accentGold = styles.getPropertyValue('--accent-gold').trim() || '#E5A100';
+    const textMuted = styles.getPropertyValue('--text-muted').trim() || '#556677';
+
     slides.push({
       class: 'ccq-slide-cover',
       html: `
@@ -46,9 +51,9 @@ CCQ.presentations = (function () {
             <path d="M78 40 A38 38 0 0 1 40 78 L40 40 Z" fill="#34d399"/>
             <path d="M40 78 A38 38 0 0 1 2 40 L40 40 Z" fill="#fbbf24"/>
             <path d="M2 40 A38 38 0 0 1 40 2 L40 40 Z" fill="#f87171"/>
-            <circle cx="40" cy="40" r="18" fill="#0a0b0f"/>
-            <text x="40" y="38" text-anchor="middle" font-size="8" font-weight="700" fill="#f472b6" font-family="JetBrains Mono,monospace">CCQ</text>
-            <text x="40" y="48" text-anchor="middle" font-size="6" fill="#8b8fa3">PDCA</text>
+            <circle cx="40" cy="40" r="18" fill="${bgPrimary}"/>
+            <text x="40" y="38" text-anchor="middle" font-size="8" font-weight="700" fill="${accentGold}" font-family="JetBrains Mono,monospace">CCQ</text>
+            <text x="40" y="48" text-anchor="middle" font-size="6" fill="${textMuted}">PDCA</text>
           </svg>
         </div>
         <div class="ccq-slide-title">${esc(project.name)}</div>
@@ -130,7 +135,7 @@ CCQ.presentations = (function () {
         };
         const catColors = {
           metodo: '#60a5fa', maquina: '#34d399', material: '#fbbf24',
-          maoDeObra: '#f87171', meioAmbiente: '#a78bfa', medicao: '#f472b6'
+          maoDeObra: '#f87171', meioAmbiente: '#a78bfa', medicao: accentGold
         };
 
         slides.push({
@@ -140,7 +145,7 @@ CCQ.presentations = (function () {
               <p class="t4-text-sm t4-text-muted t4-mb-md">${totalCauses} causas mapeadas nos 6Ms</p>
               ${Object.entries(project.ishikawa).filter(([, arr]) => arr && arr.length > 0).map(([key, arr]) => `
                 <div class="t4-mb-md">
-                  <div style="font-size:0.8125rem;font-weight:700;color:${catColors[key] || '#f472b6'};margin-bottom:4px;">${catLabels[key] || key}</div>
+                  <div style="font-size:0.8125rem;font-weight:700;color:${catColors[key] || accentGold};margin-bottom:4px;">${catLabels[key] || key}</div>
                   <div style="display:flex;flex-wrap:wrap;gap:4px;">
                     ${arr.map(c => `<span class="ccq-member-chip" style="cursor:default;font-size:0.6875rem">${esc(c.text)}</span>`).join('')}
                   </div>
@@ -373,20 +378,20 @@ CCQ.presentations = (function () {
 <title>CCQ - ${esc(project.name)}</title>
 <style>
 *{margin:0;padding:0;box-sizing:border-box}
-body{font-family:'Outfit',sans-serif;background:#0a0b0f;color:#f0f1f5;overflow:hidden}
+body{font-family:'Outfit',sans-serif;background:#0a0e12;color:#f0f2f5;overflow:hidden}
 .slide{width:100vw;height:100vh;display:none;flex-direction:column;align-items:center;justify-content:center;padding:32px;text-align:center}
 .slide.active{display:flex}
 .slide h2{font-size:1.5rem;margin-bottom:16px}
-.slide p{color:#8b8fa3;margin-bottom:8px}
+.slide p{color:#94a3b8;margin-bottom:8px}
 .nav{position:fixed;bottom:16px;left:50%;transform:translateX(-50%);display:flex;gap:12px}
-.nav button{background:rgba(255,255,255,0.1);border:none;color:#f0f1f5;padding:8px 16px;border-radius:8px;cursor:pointer}
+.nav button{background:rgba(255,255,255,0.1);border:none;color:#f0f2f5;padding:8px 16px;border-radius:8px;cursor:pointer}
 </style>
 </head>
 <body>
 ${slides.map((s, i) => `<div class="slide ${i === 0 ? 'active' : ''}" data-i="${i}">${s.html}</div>`).join('\n')}
 <div class="nav">
 <button onclick="go(-1)">Anterior</button>
-<span id="cnt" style="color:#8b8fa3;align-self:center">1/${slides.length}</span>
+<span id="cnt" style="color:#94a3b8;align-self:center">1/${slides.length}</span>
 <button onclick="go(1)">Proximo</button>
 </div>
 <script>
