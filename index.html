@@ -115,6 +115,24 @@
       <div class="t4-section-title">OPERACIONAL</div>
       <div class="hub-app-grid" id="hub-app-grid">
 
+        <!-- Boa Jornada -->
+        <div class="t4-app-card" data-module="boajornada">
+          <span class="t4-badge-new">NOVO</span>
+          <div class="t4-app-icon" style="background:rgba(0,140,126,0.12);color:var(--accent-teal);">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" width="24" height="24"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/><line x1="16" y1="13" x2="8" y2="13"/><line x1="16" y1="17" x2="8" y2="17"/><polyline points="10 9 9 9 8 9"/></svg>
+          </div>
+          <div class="t4-app-label">Boa Jornada</div>
+        </div>
+
+        <!-- Pense no Risco -->
+        <div class="t4-app-card" data-module="penseNoRisco">
+          <span class="t4-badge-new">NOVO</span>
+          <div class="t4-app-icon" style="background:rgba(229,161,0,0.12);color:var(--accent-gold);">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" width="24" height="24"><path d="M10.29 3.86L1.82 18a2 2 0 0 0 1.71 3h16.94a2 2 0 0 0 1.71-3L13.71 3.86a2 2 0 0 0-3.42 0z"/><line x1="12" y1="9" x2="12" y2="13"/><line x1="12" y1="17" x2="12.01" y2="17"/></svg>
+          </div>
+          <div class="t4-app-label">Pense no<br>Risco</div>
+        </div>
+
         <!-- Simulador EFVM -->
         <div class="t4-app-card" data-module="simulador">
           <span class="t4-badge-online" style="position:absolute;top:12px;right:12px;"></span>
@@ -856,6 +874,38 @@
 
       /* ======= MODULE DATA ======= */
       var MODULE_DATA = {
+        boajornada: {
+          name: 'Boa Jornada',
+          status: 'ready',
+          statusLabel: 'Operacional',
+          accent: 'var(--accent-teal)',
+          accentHex: '#008C7E',
+          desc: 'Formulario digital de troca de turno. Preencha os dados da composicao, checklist da locomotiva e observacoes da viagem.',
+          features: [
+            { emoji: '\u{1F4CB}', text: 'Formulario completo de turno' },
+            { emoji: '\u{1F682}', text: 'Checklist da locomotiva' },
+            { emoji: '\u{1F4F8}', text: 'Anexar foto ou documento' },
+            { emoji: '\u{1F4BE}', text: 'Salvar e consultar historico' }
+          ],
+          type: 'internal',
+          path: 'modules/boa-jornada/'
+        },
+        penseNoRisco: {
+          name: 'Pense no Risco',
+          status: 'ready',
+          statusLabel: 'Operacional',
+          accent: 'var(--accent-gold)',
+          accentHex: '#E5A100',
+          desc: 'ART \u2014 Analise de Risco da Tarefa. Formulario obrigatorio de seguranca antes de executar qualquer atividade na EFVM.',
+          features: [
+            { emoji: '\u26A0\uFE0F', text: 'Avaliacao 360\u00B0 de seguranca' },
+            { emoji: '\u{1F6E1}\uFE0F', text: 'Matriz de decisao de risco' },
+            { emoji: '\u{1F4CB}', text: 'Registro de eventos indesejados' },
+            { emoji: '\u{1F4F8}', text: 'Anexar foto ou documento' }
+          ],
+          type: 'internal',
+          path: 'modules/pense-no-risco/'
+        },
         simulador: {
           name: 'Simulador EFVM',
           status: 'ready',
@@ -1159,6 +1209,12 @@
 
       /* ======= SEARCH INDEX ======= */
       var SEARCH_INDEX = [
+        { term: 'Boa Jornada', cat: 'modulo', module: 'boajornada' },
+        { term: 'Troca de turno', cat: 'modulo', module: 'boajornada' },
+        { term: 'Checklist locomotiva', cat: 'modulo', module: 'boajornada' },
+        { term: 'Pense no Risco', cat: 'modulo', module: 'penseNoRisco' },
+        { term: 'ART', cat: 'modulo', module: 'penseNoRisco' },
+        { term: 'Analise de Risco', cat: 'modulo', module: 'penseNoRisco' },
         { term: 'Simulador EFVM', cat: 'modulo', module: 'simulador' },
         { term: 'Simulador', cat: 'modulo', module: 'simulador' },
         { term: 'EFVM 360', cat: 'modulo', module: 'efvm360-ext' },
@@ -1248,6 +1304,15 @@
         btnLogin.addEventListener('click', doLogin);
         inputPin.addEventListener('keydown', function (e) { if (e.key === 'Enter') doLogin(); });
         inputMat.addEventListener('keydown', function (e) { if (e.key === 'Enter') inputPin.focus(); });
+
+        // Scroll button into view when mobile keyboard opens
+        function scrollLoginBtn() {
+          setTimeout(function () {
+            btnLogin.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
+          }, 350);
+        }
+        inputMat.addEventListener('focus', scrollLoginBtn);
+        inputPin.addEventListener('focus', scrollLoginBtn);
       }
 
       /* ======= DASHBOARD ======= */
