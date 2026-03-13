@@ -1,0 +1,82 @@
+[
+  {
+    "id": "sinalizacao",
+    "name": "Sinalizacao Ferroviaria",
+    "icon": "🚦",
+    "description": "Aspectos de sinais, significados e procedimentos diante de cada sinalizacao",
+    "color": "#ef4444",
+    "article_count": 5
+  },
+  {
+    "id": "velocidade",
+    "name": "Limites de Velocidade",
+    "icon": "⚡",
+    "description": "Velocidades maximas por tipo de trem, trecho, curvas, pontes e tuneis",
+    "color": "#f59e0b",
+    "article_count": 5
+  },
+  {
+    "id": "comunicacao",
+    "name": "Comunicacao via Radio",
+    "icon": "📡",
+    "description": "Procedimentos de comunicacao, protocolos e falhas de radio",
+    "color": "#3b82f6",
+    "article_count": 2
+  },
+  {
+    "id": "cruzamento",
+    "name": "Procedimentos de Cruzamento",
+    "icon": "🔀",
+    "description": "Regras para cruzamento de trens em patios e linha principal",
+    "color": "#8b5cf6",
+    "article_count": 1
+  },
+  {
+    "id": "manobras",
+    "name": "Manobras em Patio",
+    "icon": "🔧",
+    "description": "Regras gerais de manobra, sinais manuais e uso de bandeirista",
+    "color": "#6366f1",
+    "article_count": 2
+  },
+  {
+    "id": "emergencia",
+    "name": "Procedimentos de Emergencia",
+    "icon": "🆘",
+    "description": "Obstaculos na via, descarrilamento, incendio e composicao partida",
+    "color": "#dc2626",
+    "article_count": 4
+  },
+  {
+    "id": "passagem_nivel",
+    "name": "Passagem de Nivel",
+    "icon": "🚧",
+    "description": "Procedimentos ao cruzar passagens de nivel com e sem cancela",
+    "color": "#ea580c",
+    "article_count": 1
+  },
+  {
+    "id": "perigosos",
+    "name": "Transporte de Produtos Perigosos",
+    "icon": "☢️",
+    "description": "Classificacao de produtos perigosos, restricoes e procedimentos",
+    "color": "#eab308",
+    "article_count": 2
+  },
+  {
+    "id": "circulacao",
+    "name": "Normas de Circulacao",
+    "icon": "🚂",
+    "description": "Teste de freio, circulacao noturna, frenagem, licenciamento e inspecao",
+    "color": "#22c55e",
+    "article_count": 6
+  },
+  {
+    "id": "manutencao",
+    "name": "Manutencao de Via",
+    "icon": "🛤️",
+    "description": "Comunicacao com equipes de via e cuidados ao passar por trechos em manutencao",
+    "color": "#14b8a6",
+    "article_count": 1
+  }
+]

@@ -1,0 +1,49 @@
+{
+  "name": "T4 — Trilho 4.0",
+  "short_name": "T4",
+  "description": "Ecossistema mobile-first para o maquinista ferroviário 4.0",
+  "start_url": "/index.html",
+  "display": "standalone",
+  "orientation": "portrait",
+  "background_color": "#0a0b0f",
+  "theme_color": "#ff6b2b",
+  "lang": "pt-BR",
+  "scope": "/",
+  "categories": ["productivity", "utilities", "education"],
+  "icons": [
+    {
+      "src": "shared/icons/t4-icon-192.png",
+      "sizes": "192x192",
+      "type": "image/png",
+      "purpose": "any maskable"
+    },
+    {
+      "src": "shared/icons/t4-icon-512.png",
+      "sizes": "512x512",
+      "type": "image/png",
+      "purpose": "any maskable"
+    }
+  ],
+  "shortcuts": [
+    {
+      "name": "EFVM 360 — Simulador",
+      "url": "/modules/efvm360/index.html",
+      "description": "Simulador ferroviário completo"
+    },
+    {
+      "name": "ROF Digital",
+      "url": "/modules/rof-digital/index.html",
+      "description": "Regulamento de Operação Ferroviária"
+    },
+    {
+      "name": "AdamBoot",
+      "url": "/modules/adamboot/index.html",
+      "description": "Assistente IA do Maquinista"
+    },
+    {
+      "name": "CCQ",
+      "url": "/modules/ccq/index.html",
+      "description": "Círculo de Controle de Qualidade"
+    }
+  ]
+}

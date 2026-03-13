@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, viewport-fit=cover">
+  <meta name="theme-color" content="#0a0b0f">
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+  <meta name="description" content="T4 Trilho 4.0 — Plataforma digital para maquinistas da EFVM">
+  <title>T4 — Trilho 4.0</title>
+
+  <!-- PWA Manifest -->
+  <link rel="manifest" href="manifest.json">
+  <link rel="apple-touch-icon" href="shared/icons/t4-icon-192.png">
+
+  <!-- T4 Design System -->
+  <link rel="stylesheet" href="shared/css/t4-design-system.css">
+  <link rel="stylesheet" href="shared/css/t4-components.css">
+  <link rel="stylesheet" href="shared/css/t4-animations.css">
+
+  <!-- Hub-specific styles -->
+  <link rel="stylesheet" href="modules/hub/css/hub-specific.css">
+</head>
+<body>
+
+  <!-- App Container -->
+  <div id="t4-app" class="t4-container t4-safe-top t4-safe-bottom">
+
+    <!-- Login screen (renderizado via JS se não autenticado) -->
+    <div id="hub-login-screen" hidden></div>
+
+    <!-- Dashboard (visível apenas quando autenticado) -->
+    <main id="hub-dashboard" hidden>
+
+      <!-- Header: Branding + Avatar -->
+      <header id="hub-header" class="hub-header t4-fadeUp" role="banner"></header>
+
+      <!-- Saudação contextual -->
+      <section id="hub-greeting" class="t4-fadeUp t4-fadeUp-1" aria-label="Saudação"></section>
+
+      <!-- Status: conectividade, pátio, trem -->
+      <div id="hub-status-bar" class="hub-status-bar t4-fadeUp t4-fadeUp-2" role="status" aria-label="Status operacional"></div>
+
+      <!-- Grid de Módulos -->
+      <section class="hub-section t4-fadeUp t4-fadeUp-3" aria-label="Módulos do sistema">
+        <h2 class="hub-section-title">Módulos</h2>
+        <div id="hub-modules-grid" class="hub-modules-grid" role="navigation" aria-label="Navegação entre módulos"></div>
+      </section>
+
+      <!-- Ações Rápidas -->
+      <section class="hub-section t4-fadeUp t4-fadeUp-5" aria-label="Ações rápidas">
+        <h2 class="hub-section-title">Ações Rápidas</h2>
+        <div id="hub-quick-actions" class="hub-quick-actions" role="toolbar" aria-label="Atalhos"></div>
+      </section>
+
+      <!-- Logout -->
+      <div id="hub-logout" class="t4-fadeUp t4-fadeUp-7"></div>
+
+      <!-- Footer -->
+      <footer class="hub-footer t4-fadeUp t4-fadeUp-8" role="contentinfo">
+        <div class="hub-footer-version">T4 Trilho 4.0 &mdash; v1.0.0</div>
+        <div class="hub-footer-copyright">Plataforma Digital do Maquinista</div>
+      </footer>
+
+    </main>
+
+  </div>
+
+  <!-- T4 Shared JS (ordem importa: core > storage > router > auth > notifications) -->
+  <script src="shared/js/t4-core.js"></script>
+  <script src="shared/js/t4-storage.js"></script>
+  <script src="shared/js/t4-router.js"></script>
+  <script src="shared/js/t4-auth.js"></script>
+  <script src="shared/js/t4-notifications.js"></script>
+
+  <!-- Hub JS -->
+  <script src="modules/hub/js/hub-dashboard.js"></script>
+  <script src="modules/hub/js/hub-quick-actions.js"></script>
+
+  <!-- Inicialização -->
+  <script>
+    (function () {
+      'use strict';
+
+      /* Inicializa módulo T4 */
+      T4.init('hub');
+
+      var loginScreen = document.getElementById('hub-login-screen');
+      var dashboard = document.getElementById('hub-dashboard');
+
+      /* Verificação de autenticação */
+      if (!T4.auth.isAuthenticated()) {
+        T4.dom.show(loginScreen);
+        T4.dom.hide(dashboard);
+        T4.auth.renderLoginScreen(loginScreen);
+        return;
+      }
+
+      /* Autenticado — renderiza dashboard */
+      T4.dom.hide(loginScreen);
+      T4.dom.show(dashboard);
+
+      HubDashboard.init();
+      HubQuickActions.init();
+
+      /* Service Worker */
+      if ('serviceWorker' in navigator) {
+        window.addEventListener('load', function () {
+          navigator.serviceWorker.register('sw.js').then(function (reg) {
+            console.log('[T4] Service Worker registrado:', reg.scope);
+          }).catch(function (err) {
+            console.warn('[T4] Service Worker não registrado:', err);
+          });
+        });
+      }
+    })();
+  </script>
+
+</body>
+</html>

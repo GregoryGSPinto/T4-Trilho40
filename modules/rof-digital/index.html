@@ -1,0 +1,243 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, viewport-fit=cover">
+  <meta name="theme-color" content="#0a0b0f">
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+  <title>ROF Digital — Trilho 4.0</title>
+
+  <!-- Shared CSS -->
+  <link rel="stylesheet" href="../../shared/css/t4-design-system.css">
+  <link rel="stylesheet" href="../../shared/css/t4-components.css">
+  <link rel="stylesheet" href="../../shared/css/t4-animations.css">
+
+  <!-- Module CSS -->
+  <link rel="stylesheet" href="css/rof-digital.css">
+</head>
+<body data-module="rof-digital">
+
+  <div class="t4-container t4-safe-top" id="rof-app">
+
+    <!-- ========== TELA: HOME ========== -->
+    <div class="rof-screen active" id="screen-home">
+
+      <!-- Header -->
+      <div class="rof-header">
+        <div>
+          <div class="rof-header-subtitle">ROF DIGITAL</div>
+          <div class="rof-header-title">Regulamento de Operacao</div>
+        </div>
+        <div class="rof-header-actions">
+          <button class="rof-header-back" onclick="ROFApp.showScreen('ai')" aria-label="Assistente">
+            💬
+          </button>
+          <button class="rof-header-back" onclick="T4.router.goHome()" aria-label="Voltar ao Hub">
+            🏠
+          </button>
+        </div>
+      </div>
+
+      <!-- Barra de Busca -->
+      <div class="rof-search-wrapper">
+        <div class="rof-search-bar">
+          <input type="text" id="rof-search-input"
+            placeholder="Buscar artigo, tema ou km..."
+            autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false"
+            aria-label="Buscar no ROF">
+          <span class="rof-search-bar-icon">🔍</span>
+          <button class="rof-search-bar-clear" id="rof-search-clear" aria-label="Limpar busca">✕</button>
+          <div class="rof-autocomplete" id="rof-autocomplete"></div>
+        </div>
+      </div>
+
+      <!-- Filtros -->
+      <div class="rof-filters" id="rof-filters">
+        <button class="rof-filter-chip active" data-filter="all">Todos</button>
+        <button class="rof-filter-chip" data-applicability="carregado">Carregado</button>
+        <button class="rof-filter-chip" data-applicability="vazio">Vazio</button>
+        <button class="rof-filter-chip" data-applicability="passageiros">Passageiros</button>
+      </div>
+
+      <!-- Historico de Busca -->
+      <div class="rof-history-section" id="rof-history-section" style="display:none;">
+        <div class="rof-history-header">
+          <span class="rof-history-title">Buscas recentes</span>
+          <button class="rof-history-clear" onclick="ROFSearch.clearHistory()">Limpar</button>
+        </div>
+        <div id="rof-history-list"></div>
+      </div>
+
+      <!-- Categorias -->
+      <div class="rof-section-subtitle">CATEGORIAS</div>
+      <div class="rof-categories-grid" id="rof-categories-grid"></div>
+
+      <!-- Mais Consultados -->
+      <div id="rof-most-consulted" style="display:none;">
+        <div class="rof-section-subtitle">MAIS CONSULTADOS</div>
+        <div class="rof-recent-list" id="rof-most-consulted-list"></div>
+      </div>
+
+      <!-- Recentes -->
+      <div id="rof-recent-section" style="display:none;">
+        <div class="rof-section-subtitle" style="margin-top: var(--t4-space-lg);">ACESSADOS RECENTEMENTE</div>
+        <div class="rof-recent-list" id="rof-recent-list"></div>
+      </div>
+    </div>
+
+    <!-- ========== TELA: RESULTADOS ========== -->
+    <div class="rof-screen" id="screen-results">
+      <div class="rof-header">
+        <div class="rof-header-left">
+          <button class="rof-header-back" onclick="ROFApp.showScreen('home')" aria-label="Voltar">←</button>
+          <div class="rof-header-title">Resultados</div>
+        </div>
+      </div>
+
+      <div class="rof-results-header" id="rof-results-header"></div>
+
+      <!-- Filtros de categoria nos resultados -->
+      <div class="rof-filters" id="rof-results-filters"></div>
+
+      <div id="rof-results-list"></div>
+
+      <div class="t4-empty" id="rof-results-empty" style="display:none;">
+        <div class="t4-empty-icon">🔍</div>
+        <div class="t4-empty-title">Nenhum artigo encontrado</div>
+        <div class="t4-empty-desc">Tente termos diferentes ou remova os filtros</div>
+      </div>
+    </div>
+
+    <!-- ========== TELA: ARTIGO ========== -->
+    <div class="rof-screen" id="screen-article">
+      <div class="rof-header">
+        <div class="rof-header-left">
+          <button class="rof-header-back" id="rof-article-back" aria-label="Voltar">←</button>
+          <div class="rof-header-title" id="rof-article-header-title">Artigo</div>
+        </div>
+        <div class="rof-font-control">
+          <button class="rof-font-btn" onclick="ROFViewer.setFontSize('sm')" aria-label="Fonte pequena">A</button>
+          <button class="rof-font-btn active" onclick="ROFViewer.setFontSize('md')" aria-label="Fonte media">A</button>
+          <button class="rof-font-btn" onclick="ROFViewer.setFontSize('lg')" aria-label="Fonte grande" style="font-size:1.125rem;">A</button>
+        </div>
+      </div>
+
+      <div class="rof-article-view" id="rof-article-content"></div>
+
+      <div class="rof-article-actions" id="rof-article-actions">
+        <button id="rof-article-bookmark-btn" onclick="ROFViewer.toggleBookmark()">
+          <span class="icon">☆</span>
+          <span>Salvar</span>
+        </button>
+        <button onclick="ROFViewer.shareArticle()">
+          <span class="icon">↗</span>
+          <span>Compartilhar</span>
+        </button>
+        <button onclick="ROFViewer.copyArticle()">
+          <span class="icon">📋</span>
+          <span>Copiar</span>
+        </button>
+      </div>
+    </div>
+
+    <!-- ========== TELA: QUIZ ========== -->
+    <div class="rof-screen" id="screen-quiz">
+      <div class="rof-header">
+        <div class="rof-header-left">
+          <button class="rof-header-back" onclick="ROFQuiz.exitQuiz()" aria-label="Voltar">←</button>
+          <div class="rof-header-title">Quiz ROF</div>
+        </div>
+        <div id="rof-quiz-timer-container"></div>
+      </div>
+
+      <div id="rof-quiz-content"></div>
+    </div>
+
+    <!-- ========== TELA: FAVORITOS ========== -->
+    <div class="rof-screen" id="screen-bookmarks">
+      <div class="rof-header">
+        <div>
+          <div class="rof-header-subtitle">FAVORITOS</div>
+          <div class="rof-header-title">Artigos Salvos</div>
+        </div>
+      </div>
+
+      <div class="rof-bookmarks-tabs">
+        <button class="rof-bookmarks-tab active" data-tab="saved" onclick="ROFBookmarks.switchTab('saved')">Salvos</button>
+        <button class="rof-bookmarks-tab" data-tab="recent" onclick="ROFBookmarks.switchTab('recent')">Recentes</button>
+        <button class="rof-bookmarks-tab" data-tab="most" onclick="ROFBookmarks.switchTab('most')">Mais Vistos</button>
+      </div>
+
+      <div id="rof-bookmarks-content"></div>
+
+      <div class="t4-empty" id="rof-bookmarks-empty" style="display:none;">
+        <div class="t4-empty-icon">⭐</div>
+        <div class="t4-empty-title">Nenhum artigo salvo</div>
+        <div class="t4-empty-desc">Toque na estrela nos artigos para salvar aqui</div>
+      </div>
+    </div>
+
+    <!-- ========== TELA: ASSISTENTE IA ========== -->
+    <div class="rof-screen" id="screen-ai">
+      <div class="rof-header">
+        <div class="rof-header-left">
+          <button class="rof-header-back" onclick="ROFApp.showScreen('home')" aria-label="Voltar">←</button>
+          <div>
+            <div class="rof-header-title">Assistente ROF</div>
+            <div style="font-size:0.6875rem; color: var(--t4-text-muted);">Pergunte sobre o regulamento</div>
+          </div>
+        </div>
+      </div>
+
+      <div class="rof-ai-container" id="rof-ai-container"></div>
+
+      <div class="rof-ai-input-wrapper">
+        <div class="rof-ai-input-bar">
+          <textarea class="rof-ai-input" id="rof-ai-input"
+            placeholder="Pergunte sobre o regulamento..."
+            rows="1" aria-label="Sua pergunta"></textarea>
+          <button class="rof-ai-send-btn" id="rof-ai-send" onclick="ROFAssistant.sendQuestion()" disabled aria-label="Enviar">
+            ➤
+          </button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Bottom Navigation -->
+  <nav class="rof-bottom-nav" id="rof-bottom-nav">
+    <button class="rof-nav-item active" data-screen="home" onclick="ROFApp.showScreen('home')">
+      <span class="rof-nav-item-icon">🏠</span>
+      <span>Inicio</span>
+    </button>
+    <button class="rof-nav-item" data-screen="quiz" onclick="ROFApp.showScreen('quiz')">
+      <span class="rof-nav-item-icon">📝</span>
+      <span>Quiz</span>
+    </button>
+    <button class="rof-nav-item" data-screen="ai" onclick="ROFApp.showScreen('ai')">
+      <span class="rof-nav-item-icon">💬</span>
+      <span>Assistente</span>
+    </button>
+    <button class="rof-nav-item" data-screen="bookmarks" onclick="ROFApp.showScreen('bookmarks')">
+      <span class="rof-nav-item-icon">⭐</span>
+      <span>Favoritos</span>
+    </button>
+  </nav>
+
+  <!-- Shared JS -->
+  <script src="../../shared/js/t4-core.js"></script>
+  <script src="../../shared/js/t4-storage.js"></script>
+  <script src="../../shared/js/t4-router.js"></script>
+  <script src="../../shared/js/t4-auth.js"></script>
+  <script src="../../shared/js/t4-notifications.js"></script>
+
+  <!-- Module JS -->
+  <script src="js/rof-search.js"></script>
+  <script src="js/rof-viewer.js"></script>
+  <script src="js/rof-bookmarks.js"></script>
+  <script src="js/rof-quiz.js"></script>
+  <script src="js/rof-ai-assistant.js"></script>
+  <script src="js/rof-app.js"></script>
+</body>
+</html>

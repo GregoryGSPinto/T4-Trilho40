@@ -1,0 +1,141 @@
+{
+  "ferrovia": "EFVM",
+  "restricoes": [
+    {
+      "km_inicio": 0,
+      "km_fim": 5,
+      "velocidade_max": 30,
+      "motivo": "Pátio de Tubarão - Área de manobras",
+      "direcao": "ambos",
+      "permanente": true
+    },
+    {
+      "km_inicio": 5,
+      "km_fim": 15,
+      "velocidade_max": 50,
+      "motivo": "Travessia urbana - Vitória / Serra",
+      "direcao": "ambos",
+      "permanente": true
+    },
+    {
+      "km_inicio": 23,
+      "km_fim": 27,
+      "velocidade_max": 30,
+      "motivo": "Estação Pedro Nolasco - Embarque de passageiros",
+      "direcao": "ambos",
+      "permanente": true
+    },
+    {
+      "km_inicio": 28,
+      "km_fim": 35,
+      "velocidade_max": 40,
+      "motivo": "Travessia urbana - Cariacica",
+      "direcao": "ambos",
+      "permanente": true
+    },
+    {
+      "km_inicio": 55,
+      "km_fim": 75,
+      "velocidade_max": 45,
+      "motivo": "Curvas acentuadas - Serra do ES",
+      "direcao": "ambos",
+      "permanente": true
+    },
+    {
+      "km_inicio": 165,
+      "km_fim": 175,
+      "velocidade_max": 40,
+      "motivo": "Travessia urbana - Colatina",
+      "direcao": "ambos",
+      "permanente": true
+    },
+    {
+      "km_inicio": 275,
+      "km_fim": 285,
+      "velocidade_max": 35,
+      "motivo": "Travessia urbana - Governador Valadares",
+      "direcao": "ambos",
+      "permanente": true
+    },
+    {
+      "km_inicio": 310,
+      "km_fim": 325,
+      "velocidade_max": 45,
+      "motivo": "Trecho sinuoso - Engenheiro Caldas",
+      "direcao": "ambos",
+      "permanente": true
+    },
+    {
+      "km_inicio": 425,
+      "km_fim": 445,
+      "velocidade_max": 35,
+      "motivo": "Travessia urbana - Ipatinga / Coronel Fabriciano",
+      "direcao": "ambos",
+      "permanente": true
+    },
+    {
+      "km_inicio": 530,
+      "km_fim": 545,
+      "velocidade_max": 30,
+      "motivo": "Travessia urbana - João Monlevade",
+      "direcao": "ambos",
+      "permanente": true
+    },
+    {
+      "km_inicio": 570,
+      "km_fim": 610,
+      "velocidade_max": 35,
+      "motivo": "Subida íngreme - Serra (rampa > 0.4%)",
+      "direcao": "ambos",
+      "permanente": true
+    },
+    {
+      "km_inicio": 620,
+      "km_fim": 640,
+      "velocidade_max": 30,
+      "motivo": "Travessia urbana - Santa Bárbara",
+      "direcao": "ambos",
+      "permanente": true
+    },
+    {
+      "km_inicio": 680,
+      "km_fim": 700,
+      "velocidade_max": 25,
+      "motivo": "Serra do Caraça - Rampa crítica (0.6%)",
+      "direcao": "ambos",
+      "permanente": true
+    },
+    {
+      "km_inicio": 860,
+      "km_fim": 880,
+      "velocidade_max": 30,
+      "motivo": "Descida para Itabira - Controle de velocidade obrigatório",
+      "direcao": "ambos",
+      "permanente": true
+    },
+    {
+      "km_inicio": 895,
+      "km_fim": 905,
+      "velocidade_max": 20,
+      "motivo": "Pátio de Itabira (VFZ) - Área de manobras e carregamento",
+      "direcao": "ambos",
+      "permanente": true
+    },
+    {
+      "km_inicio": 100,
+      "km_fim": 115,
+      "velocidade_max": 40,
+      "motivo": "Manutenção de via - Troca de dormentes",
+      "direcao": "ambos",
+      "permanente": false
+    },
+    {
+      "km_inicio": 480,
+      "km_fim": 490,
+      "velocidade_max": 30,
+      "motivo": "Obra em ponte - Reforço estrutural",
+      "direcao": "ambos",
+      "permanente": false
+    }
+  ]
+}

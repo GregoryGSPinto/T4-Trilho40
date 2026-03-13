@@ -1,0 +1,164 @@
+{
+  "faqs": [
+    {
+      "id": "faq001",
+      "question": "Qual a velocidade máxima para trem carregado?",
+      "answer": "A Velocidade Máxima Autorizada (VMA) para trem carregado na EFVM varia conforme o trecho e as condições da via. Em geral, para trens carregados de minério, a VMA é de **60 km/h** em via principal e pode ser reduzida para **40 km/h** ou menos em trechos com restrição, curvas acentuadas ou pátios. Sempre verifique o BOLL (Boletim de Linha) atualizado para o trecho que vai percorrer, pois restrições temporárias podem reduzir a VMA. Em caso de dúvida, consulte o CCO para confirmar a velocidade autorizada para seu prefixo.",
+      "keywords": ["velocidade", "máxima", "VMA", "carregado", "km/h", "limite", "trem carregado", "velocidade máxima"],
+      "category": "operacao",
+      "relatedArticles": ["art47", "art52"]
+    },
+    {
+      "id": "faq002",
+      "question": "O que fazer em caso de avistamento na via?",
+      "answer": "Em caso de avistamento de pessoa, animal ou obstáculo na via, o procedimento é:\n\n1. **Acione imediatamente a buzina** com toques longos e repetidos conforme o ROF\n2. **Inicie a frenagem** — aplique o freio dinâmico e, se necessário, o freio pneumático de emergência\n3. **Comunique o CCO** informando a localização (km), o tipo de avistamento e se houve ou não colisão\n4. **Mantenha a calma** e siga as orientações do despachador\n5. **Não abandone a locomotiva** sem autorização do CCO\n6. **Registre tudo** no diário de bordo com horário, km e descrição do ocorrido\n\nSe houver acidente com vítima, não movimente o trem até autorização do CCO e das autoridades competentes.",
+      "keywords": ["avistamento", "via", "pessoa", "animal", "obstáculo", "invasão", "abalroamento", "atropelamento"],
+      "category": "seguranca",
+      "relatedArticles": ["art89", "art90", "art91"]
+    },
+    {
+      "id": "faq003",
+      "question": "Como proceder em falha de rádio?",
+      "answer": "Em caso de falha no sistema de rádio comunicação:\n\n1. **Tente todas as frequências** disponíveis no equipamento\n2. **Verifique as conexões** — cabo de antena, alimentação do rádio, fusível\n3. **Tente contato via celular corporativo** com o CCO ou despachador da região\n4. **Reduza a velocidade para 30 km/h** até restabelecer a comunicação\n5. Se não conseguir nenhuma forma de contato, **pare o trem em local seguro** (fora de túnel, ponte ou passagem de nível)\n6. **Aguarde contato** do CCO, que perceberá a ausência de comunicação no sistema\n7. **Registre a falha** com horário e localização no diário de bordo\n\nNunca continue a viagem em velocidade normal sem comunicação com o CCO.",
+      "keywords": ["rádio", "falha", "comunicação", "sem rádio", "radio", "sem comunicação", "contato"],
+      "category": "procedimento",
+      "relatedArticles": ["art33", "art34"]
+    },
+    {
+      "id": "faq004",
+      "question": "Qual o procedimento de cruzamento?",
+      "answer": "O procedimento de cruzamento entre trens segue as regras do ROF:\n\n1. **O CCO autoriza o cruzamento** informando o pátio e o prefixo do trem que cruzará\n2. **O trem que deve ceder** a via é direcionado para a linha de cruzamento pelo despachador\n3. **Verifique a posição dos AMVs** (Aparelhos de Mudança de Via) antes de entrar no pátio\n4. **Respeite a sinalização** — sinais de entrada e saída do pátio\n5. **Reduza a velocidade** conforme VMA do pátio (geralmente 20-30 km/h)\n6. **Confirme com o CCO** quando estiver posicionado na linha de cruzamento\n7. **Aguarde autorização** para retomar a via principal após a passagem do outro trem\n8. **Verifique a composição** toda antes de sair — não deixe vagões soltos na linha\n\nEm pátios com sinalização automática, respeite rigorosamente os aspectos dos sinais.",
+      "keywords": ["cruzamento", "cruzar", "pátio", "encontro", "dois trens", "ceder via", "linha de cruzamento"],
+      "category": "operacao",
+      "relatedArticles": ["art55", "art56", "art57"]
+    },
+    {
+      "id": "faq005",
+      "question": "Explica o artigo 47 do ROF",
+      "answer": "O **Artigo 47 do ROF** trata das **velocidades máximas autorizadas** para a circulação de trens:\n\n• Define que a VMA (Velocidade Máxima Autorizada) é estabelecida pela engenharia da via conforme as condições do trecho\n• A VMA pode ser diferente para trens carregados e vazios\n• Restrições temporárias de velocidade devem ser publicadas no BOLL\n• O maquinista é **responsável por não exceder a VMA** em nenhuma circunstância\n• Em caso de má visibilidade (neblina, chuva forte), o maquinista deve reduzir a velocidade por conta própria\n• A VMA em pátios é sempre inferior à VMA da via principal\n• Velocidades de manobra não devem exceder 20 km/h, salvo autorização específica",
+      "keywords": ["artigo 47", "art 47", "velocidade", "VMA", "ROF", "regulamento", "velocidade máxima autorizada"],
+      "category": "rof",
+      "relatedArticles": ["art48", "art49", "art52"]
+    },
+    {
+      "id": "faq006",
+      "question": "Qual o tempo de intrajornada?",
+      "answer": "Conforme a regulamentação trabalhista ferroviária:\n\n• O **intervalo intrajornada** para refeição e descanso é de **no mínimo 1 hora** e no máximo 2 horas para jornadas superiores a 6 horas\n• Para jornadas de até 6 horas, o intervalo é de **15 minutos**\n• O intervalo deve ser concedido preferencialmente em pátios com infraestrutura adequada\n• O maquinista deve comunicar ao CCO quando iniciar e encerrar o intervalo\n• **A jornada máxima** do maquinista é de **8 horas**, podendo ser estendida para até 10 horas em situações excepcionais, com comunicação ao CCO\n• O **interjornada** (descanso entre jornadas) deve ser de no mínimo **11 horas consecutivas**\n\nEm caso de extrapolação de jornada, comunique imediatamente seu supervisor.",
+      "keywords": ["intrajornada", "intervalo", "descanso", "refeição", "jornada", "horas", "trabalho", "turno", "interjornada"],
+      "category": "procedimento",
+      "relatedArticles": []
+    },
+    {
+      "id": "faq007",
+      "question": "O que é BOLL?",
+      "answer": "**BOLL** significa **Boletim de Linha** (ou Boletim de Ocupação de Linha e Liberação).\n\nÉ o documento oficial que contém:\n\n• **Restrições de velocidade** temporárias em trechos da via\n• **Condições especiais** de circulação (obras, manutenção na via)\n• **Interdições** totais ou parciais de trechos\n• **Informações sobre sinalização** fora de serviço\n• **Desvios** e rotas alternativas\n• **Condições de AMVs** com restrição\n\nO BOLL é atualizado diariamente e o maquinista **deve consultar o BOLL antes de cada viagem**. As informações do BOLL prevalecem sobre a sinalização fixa quando houver restrição. É emitido pela equipe de Controle Operacional e disponibilizado nos terminais e pátios.",
+      "keywords": ["BOLL", "boletim", "linha", "boletim de linha", "restrição", "ocupação"],
+      "category": "glossario",
+      "relatedArticles": ["art30", "art31"]
+    },
+    {
+      "id": "faq008",
+      "question": "Qual o procedimento de emergência para descarrilamento?",
+      "answer": "Em caso de descarrilamento, siga o procedimento de emergência:\n\n1. **Pare o trem imediatamente** — corte a tração e aplique freio de emergência\n2. **Proteja a composição** — acione as luzes de emergência\n3. **Comunique o CCO imediatamente** informando:\n   - Localização exata (km, referência)\n   - Número de veículos descarrilados\n   - Se há vazamento de carga\n   - Se há vítimas\n   - Condições do local (curva, reta, ponte, túnel)\n4. **Sinalize a via** com bandeiras vermelhas ou lanternas a pelo menos 800m nos dois sentidos\n5. **Evacue a locomotiva** se houver risco (incêndio, vazamento perigoso)\n6. **Não tente recolocar** veículos nos trilhos por conta própria\n7. **Aguarde a equipe de socorro** e o inspetor de via\n8. **Preserve o local** — não mexa em nada até a chegada da perícia\n9. **Registre tudo** detalhadamente no relatório de ocorrência",
+      "keywords": ["descarrilamento", "descarrilar", "saiu do trilho", "emergência", "acidente", "socorro"],
+      "category": "seguranca",
+      "relatedArticles": ["art92", "art93", "art94"]
+    },
+    {
+      "id": "faq009",
+      "question": "Como funciona o freio dinâmico?",
+      "answer": "O **freio dinâmico** é um sistema de frenagem que utiliza os motores de tração da locomotiva como geradores elétricos para desacelerar o trem:\n\n• **Princípio**: ao acionar o freio dinâmico, os motores de tração são convertidos em geradores. A energia cinética do trem é transformada em energia elétrica\n• **Dissipação**: a energia elétrica gerada é dissipada em forma de calor através de resistores (grades de resistência) no teto da locomotiva\n• **Quando usar**: é o **freio principal de operação** para controle de velocidade em descidas e desacelerações\n• **Vantagem**: reduz o desgaste das sapatas de freio e evita o aquecimento das rodas\n• **Limitação**: perde eficiência em velocidades muito baixas (abaixo de 10-15 km/h)\n• **Complemento**: deve ser complementado pelo freio pneumático para parada completa\n• **Monitoramento**: observe o amperímetro — corrente excessiva pode danificar os resistores\n\nNunca dependa exclusivamente do freio dinâmico para parada de emergência.",
+      "keywords": ["freio dinâmico", "frenagem", "freio", "dinâmico", "motor", "gerador", "resistor", "desacelerar"],
+      "category": "operacao",
+      "relatedArticles": ["art63", "art64"]
+    },
+    {
+      "id": "faq010",
+      "question": "Qual a distância de frenagem para trem carregado?",
+      "answer": "A **distância de frenagem** para trem carregado depende de vários fatores:\n\n• **Trem carregado de minério (típico EFVM)**: a distância de frenagem pode variar de **800m a 2.000m** dependendo da velocidade e perfil da via\n• **Fatores que influenciam**:\n  - Velocidade no momento da frenagem\n  - Peso total da composição\n  - Perfil da via (aclive, declive, plano)\n  - Condições dos freios (pneumático, dinâmico)\n  - Condições climáticas (trilho molhado aumenta a distância)\n  - Tipo de carga\n• **Regra prática**: considere que a cada 10 km/h, a distância de parada aumenta exponencialmente\n• **A 60 km/h** em plano, um trem carregado pode precisar de **1.200 a 1.500m** para parar completamente\n• Em **declive**, essa distância pode **dobrar ou triplicar**\n\nPor isso, o maquinista deve sempre manter velocidade compatível com a distância de visibilidade e as condições do trecho. Antecipe a frenagem!",
+      "keywords": ["distância", "frenagem", "parada", "frear", "metros", "parar", "distância de frenagem"],
+      "category": "operacao",
+      "relatedArticles": ["art47", "art63"]
+    },
+    {
+      "id": "faq011",
+      "question": "O que fazer quando o sinal está vermelho?",
+      "answer": "O **sinal vermelho** (aspecto fechado) significa **PARE** obrigatoriamente:\n\n1. **Inicie a frenagem** com antecedência suficiente para parar antes do sinal\n2. **Pare o trem completamente** antes de ultrapassar o sinal\n3. **Comunique o CCO** informando sua posição e o sinal fechado\n4. **Aguarde autorização** — o CCO poderá:\n   - Liberar o sinal remotamente\n   - Autorizar a passagem com restrição (geralmente 20 km/h)\n   - Informar o motivo do bloqueio\n5. **Nunca ultrapasse sinal vermelho** sem autorização expressa do CCO\n6. Se autorizado a prosseguir, avance com **velocidade reduzida** (máximo 20 km/h) até o próximo sinal\n\nA ultrapassagem de sinal vermelho sem autorização é uma **falta gravíssima** e pode resultar em acidente.",
+      "keywords": ["sinal vermelho", "sinal fechado", "pare", "parar", "sinal", "vermelho", "aspecto"],
+      "category": "seguranca",
+      "relatedArticles": ["art40", "art41", "art42"]
+    },
+    {
+      "id": "faq012",
+      "question": "Qual o procedimento para teste de freio?",
+      "answer": "O **teste de freio** é obrigatório antes de iniciar a viagem:\n\n**Teste de freio completo:**\n1. Carregue o encanamento geral até a pressão de trabalho (normalmente 90 PSI)\n2. Verifique se não há vazamentos audíveis\n3. Aplique uma redução de 10-15 PSI no encanamento geral\n4. Aguarde a aplicação dos freios em toda a composição\n5. Percorra a composição verificando se todos os freios aplicaram\n6. Alivie os freios e verifique se todos soltaram completamente\n7. Registre o resultado no diário de bordo\n\n**Teste de freio reduzido (em pátios intermediários):**\n1. Aplique uma redução de 10 PSI\n2. Verifique a aplicação nos últimos vagões\n3. Alivie e confirme\n\nSe algum vagão não frear, comunique ao CCO e ao inspetor de vagões. Não viaje com freios defeituosos sem autorização.",
+      "keywords": ["teste de freio", "freio", "teste", "encanamento", "PSI", "pressão", "teste completo", "teste reduzido"],
+      "category": "procedimento",
+      "relatedArticles": ["art65", "art66", "art67"]
+    },
+    {
+      "id": "faq013",
+      "question": "O que é DSS?",
+      "answer": "**DSS** significa **Diálogo Semanal de Segurança**.\n\nÉ uma prática de segurança obrigatória que consiste em:\n\n• **Reunião semanal** de curta duração (15-30 minutos) com a equipe\n• **Temas abordados**: segurança no trabalho, prevenção de acidentes, relatos de quase-acidentes, boas práticas operacionais\n• **Participação obrigatória** de todos os membros da equipagem\n• **Registro em ata** com assinatura dos participantes\n• **Objetivo**: manter a cultura de segurança viva e atualizada\n• **Temas típicos**: uso de EPIs, procedimentos de emergência, lições aprendidas de ocorrências recentes\n\nO DSS faz parte do programa de segurança da empresa e é um dos pilares para manter a equipe alinhada com as práticas de segurança operacional.",
+      "keywords": ["DSS", "diálogo", "segurança", "semanal", "reunião", "diálogo semanal", "diálogo de segurança"],
+      "category": "seguranca",
+      "relatedArticles": []
+    },
+    {
+      "id": "faq014",
+      "question": "Como funciona o sistema de sinalização?",
+      "answer": "O **sistema de sinalização ferroviária** da EFVM utiliza sinais luminosos com os seguintes aspectos:\n\n• **Verde (via livre)**: prossiga na VMA do trecho\n• **Amarelo (atenção)**: reduza a velocidade, o próximo sinal pode estar fechado. Prepare-se para parar\n• **Vermelho (pare)**: pare obrigatoriamente antes do sinal. Não ultrapasse sem autorização do CCO\n• **Apagado**: trate como sinal vermelho — pare e comunique o CCO\n• **Amarelo intermitente**: velocidade reduzida, restrição à frente\n\n**Tipos de sinal:**\n• **Sinal de entrada**: controla a entrada no pátio\n• **Sinal de saída**: autoriza a saída do pátio para a via principal\n• **Sinal intermediário**: controla blocos na via principal\n• **Sinal de manobra**: autoriza movimentos dentro do pátio\n\nSempre respeite a sinalização. Sinal apagado = sinal fechado.",
+      "keywords": ["sinalização", "sinal", "verde", "amarelo", "vermelho", "apagado", "aspecto", "semáforo", "luz"],
+      "category": "operacao",
+      "relatedArticles": ["art38", "art39", "art40", "art41"]
+    },
+    {
+      "id": "faq015",
+      "question": "O que fazer em caso de incêndio na locomotiva?",
+      "answer": "Em caso de incêndio na locomotiva, siga este procedimento de emergência:\n\n1. **Corte a tração** imediatamente — desligue os motores\n2. **Pare o trem** em local seguro (evite túneis, pontes e áreas com vegetação seca)\n3. **Acione o sistema de combate a incêndio** da locomotiva (extintor fixo ou portátil)\n4. **Comunique o CCO** com urgência, informando:\n   - Localização exata\n   - Tipo e extensão do incêndio\n   - Se há risco para a carga ou composição\n5. **Desconecte a locomotiva** da composição se possível e seguro\n6. **Evacue a cabine** se o fogo não for controlável\n7. **Use o extintor portátil** correto para o tipo de fogo\n8. **Afaste-se** se houver risco de explosão (tanque de combustível)\n9. **Sinalize a via** para outros trens\n10. **Aguarde o socorro** — corpo de bombeiros e equipe de emergência\n\nNunca use água em incêndios elétricos.",
+      "keywords": ["incêndio", "fogo", "incendio", "queimando", "fumaça", "chama", "extintor", "locomotiva"],
+      "category": "seguranca",
+      "relatedArticles": ["art95", "art96"]
+    },
+    {
+      "id": "faq016",
+      "question": "Qual o procedimento de acoplamento de locomotivas?",
+      "answer": "O **procedimento de acoplamento** de locomotivas segue estas etapas:\n\n1. **Comunicação prévia** entre os maquinistas das duas locomotivas\n2. **Velocidade de acoplamento**: máximo **5 km/h** (passo de homem)\n3. **Verificação visual** do engate — assegure que está na posição correta\n4. **Aproxime lentamente** até o acoplamento mecânico\n5. **Confirme o acoplamento** — verifique se o engate travou corretamente\n6. **Conecte as mangueiras** de ar (encanamento geral)\n7. **Conecte os cabos elétricos** (MU — Multiple Unit) se aplicável\n8. **Abra as torneiras** de ar entre as locomotivas\n9. **Faça o teste de freio** em conjunto\n10. **Teste a comunicação** entre as cabines\n\n**Nunca** fique entre as locomotivas durante o acoplamento. O auxiliar deve ficar ao lado, em posição segura, orientando o maquinista por rádio ou sinal manual.",
+      "keywords": ["acoplamento", "acoplar", "engate", "engatar", "locomotiva", "juntar", "unir", "MU"],
+      "category": "procedimento",
+      "relatedArticles": ["art70", "art71"]
+    },
+    {
+      "id": "faq017",
+      "question": "O que é AMV e como funciona?",
+      "answer": "**AMV** significa **Aparelho de Mudança de Via**, também conhecido como chave de desvio.\n\nÉ o dispositivo mecânico que permite direcionar o trem de uma via para outra:\n\n• **Componentes**: agulhas (lâminas móveis), contratrilhos, jacaré (ponta de cruzamento)\n• **Posições**: normal (via principal) e reversa (via de desvio)\n• **Tipos de controle**:\n  - Manual (operado localmente por chave)\n  - Elétrico (operado remotamente pelo CCO)\n  - CTC (Controle de Tráfego Centralizado)\n• **Velocidade**: respeite a VMA indicada para o AMV (normalmente 20-30 km/h em posição reversa)\n• **Verificação**: antes de passar por um AMV, verifique visualmente se as agulhas estão na posição correta e encostadas\n• **Cadeado**: AMVs manuais devem estar cadeados na posição após o uso\n\n**Nunca** passe por um AMV sem verificar sua posição. Agulhas mal posicionadas causam descarrilamento.",
+      "keywords": ["AMV", "aparelho de mudança de via", "chave", "desvio", "agulha", "agulhas", "chave de desvio"],
+      "category": "glossario",
+      "relatedArticles": ["art35", "art36", "art37"]
+    },
+    {
+      "id": "faq018",
+      "question": "Quais são os EPIs obrigatórios para o maquinista?",
+      "answer": "Os **Equipamentos de Proteção Individual** obrigatórios para o maquinista incluem:\n\n• **Capacete** — obrigatório ao sair da cabine\n• **Óculos de proteção** — ao sair da cabine e em manobras\n• **Botina de segurança** — com biqueira de aço, uso contínuo\n• **Luva de segurança** — ao manusear equipamentos, mangueiras de ar, engates\n• **Protetor auricular** — em áreas de ruído elevado (casa de máquinas)\n• **Colete refletivo** — obrigatório ao caminhar na via ou no pátio\n• **Lanterna** — para inspeções noturnas e sinalização\n• **Protetor solar** — recomendado em operações diurnas\n\nO uso do EPI é **obrigatório e fiscalizado**. A falta de uso pode resultar em advertência e é considerada ato inseguro. Antes de iniciar o turno, verifique se todos os seus EPIs estão em bom estado de conservação.",
+      "keywords": ["EPI", "equipamento", "proteção", "capacete", "botina", "luva", "colete", "óculos", "proteção individual"],
+      "category": "seguranca",
+      "relatedArticles": []
+    },
+    {
+      "id": "faq019",
+      "question": "Como funciona a escala de serviço do maquinista?",
+      "answer": "A **escala de serviço** do maquinista na EFVM funciona da seguinte forma:\n\n• **Turnos**: divididos em três turnos principais:\n  - **Turno A** (manhã): das 06:00 às 14:00\n  - **Turno B** (tarde): das 14:00 às 22:00\n  - **Turno C** (noite): das 22:00 às 06:00\n• **Escala**: normalmente em regime de revezamento\n• **Folgas**: conforme escala pré-definida e legislação ferroviária\n• **Convocação**: pode ocorrer convocação extraordinária, sempre respeitando o interjornada mínimo de 11 horas\n• **Apresentação**: apresentar-se no pátio de origem com antecedência mínima de 30 minutos para briefing e verificação\n• **Rendição**: a troca de equipagem deve ocorrer em pátio autorizado, com passagem de serviço formal\n\nVerifique sua escala regularmente e comunique qualquer impedimento ao supervisor com antecedência.",
+      "keywords": ["escala", "turno", "serviço", "horário", "jornada", "folga", "rendição", "trabalho", "revezamento"],
+      "category": "procedimento",
+      "relatedArticles": []
+    },
+    {
+      "id": "faq020",
+      "question": "O que é o procedimento de licenciamento?",
+      "answer": "O **licenciamento** é o procedimento que autoriza a circulação do trem em um determinado trecho:\n\n• **Definição**: é a autorização formal concedida pelo CCO (Centro de Controle Operacional) para o trem circular entre dois pontos\n• **Tipos**:\n  - **Licença CTC**: emitida automaticamente pelo sistema de controle de tráfego\n  - **Licença verbal**: concedida pelo despachador via rádio quando o CTC não está disponível\n  - **Licença escrita**: documento físico em situações excepcionais\n• **Informações da licença**:\n  - Trecho autorizado (de/para)\n  - Prefixo do trem\n  - Condições especiais (restrições de velocidade, cruzamentos)\n  - Validade\n• **Regra fundamental**: nenhum trem circula sem licença válida\n• **O maquinista deve repetir** a licença verbal para o despachador confirmar\n\nCircular sem licença é **infração gravíssima** e coloca vidas em risco.",
+      "keywords": ["licenciamento", "licença", "autorização", "circular", "CTC", "despachador", "licenciar", "permissão"],
+      "category": "operacao",
+      "relatedArticles": ["art25", "art26", "art27", "art28"]
+    }
+  ]
+}

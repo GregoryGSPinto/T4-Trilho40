@@ -1,0 +1,247 @@
+/* ============================================
+   T4 ANIMAÇÕES E TRANSIÇÕES
+   Animações padrão do ecossistema T4
+   ============================================ */
+
+/* === FADE UP — Entrada padrão === */
+@keyframes t4-fadeUp {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.t4-fadeUp {
+  animation: t4-fadeUp 0.5s ease forwards;
+}
+
+/* Delay incremental para listas */
+.t4-fadeUp-1 { animation-delay: 0.05s; opacity: 0; }
+.t4-fadeUp-2 { animation-delay: 0.1s; opacity: 0; }
+.t4-fadeUp-3 { animation-delay: 0.15s; opacity: 0; }
+.t4-fadeUp-4 { animation-delay: 0.2s; opacity: 0; }
+.t4-fadeUp-5 { animation-delay: 0.25s; opacity: 0; }
+.t4-fadeUp-6 { animation-delay: 0.3s; opacity: 0; }
+.t4-fadeUp-7 { animation-delay: 0.35s; opacity: 0; }
+.t4-fadeUp-8 { animation-delay: 0.4s; opacity: 0; }
+
+/* === FADE IN === */
+@keyframes t4-fadeIn {
+  from { opacity: 0; }
+  to { opacity: 1; }
+}
+
+.t4-fadeIn {
+  animation: t4-fadeIn 0.3s ease forwards;
+}
+
+/* === SCALE IN === */
+@keyframes t4-scaleIn {
+  from {
+    opacity: 0;
+    transform: scale(0.9);
+  }
+  to {
+    opacity: 1;
+    transform: scale(1);
+  }
+}
+
+.t4-scaleIn {
+  animation: t4-scaleIn 0.3s ease forwards;
+}
+
+/* === SLIDE IN (da direita) === */
+@keyframes t4-slideInRight {
+  from {
+    opacity: 0;
+    transform: translateX(30px);
+  }
+  to {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+
+.t4-slideInRight {
+  animation: t4-slideInRight 0.4s ease forwards;
+}
+
+/* === SLIDE IN (de baixo - modal) === */
+@keyframes t4-slideUp {
+  from { transform: translateY(100%); }
+  to { transform: translateY(0); }
+}
+
+.t4-slideUp {
+  animation: t4-slideUp 0.4s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+}
+
+/* === PULSO (para indicadores de status) === */
+@keyframes t4-pulse {
+  0%, 100% {
+    opacity: 1;
+    transform: scale(1);
+  }
+  50% {
+    opacity: 0.6;
+    transform: scale(0.95);
+  }
+}
+
+.t4-pulse {
+  animation: t4-pulse 2s ease-in-out infinite;
+}
+
+/* === GLOW PULSE (para bordas ativas) === */
+@keyframes t4-glowPulse {
+  0%, 100% {
+    box-shadow: 0 0 8px rgba(255, 107, 43, 0.2);
+  }
+  50% {
+    box-shadow: 0 0 20px rgba(255, 107, 43, 0.4);
+  }
+}
+
+.t4-glowPulse {
+  animation: t4-glowPulse 2s ease-in-out infinite;
+}
+
+/* === SPIN (loading) === */
+@keyframes t4-spin {
+  from { transform: rotate(0deg); }
+  to { transform: rotate(360deg); }
+}
+
+.t4-spin {
+  animation: t4-spin 1s linear infinite;
+}
+
+/* === BOUNCE (notificação nova) === */
+@keyframes t4-bounce {
+  0%, 100% { transform: translateY(0); }
+  30% { transform: translateY(-8px); }
+  60% { transform: translateY(-4px); }
+}
+
+.t4-bounce {
+  animation: t4-bounce 0.5s ease;
+}
+
+/* === SHAKE (erro) === */
+@keyframes t4-shake {
+  0%, 100% { transform: translateX(0); }
+  20% { transform: translateX(-6px); }
+  40% { transform: translateX(6px); }
+  60% { transform: translateX(-4px); }
+  80% { transform: translateX(4px); }
+}
+
+.t4-shake {
+  animation: t4-shake 0.4s ease;
+}
+
+/* === INDICADOR DE CARREGAMENTO === */
+.t4-loader {
+  width: 32px;
+  height: 32px;
+  border: 3px solid var(--t4-border);
+  border-top-color: var(--t4-brand-orange);
+  border-radius: 50%;
+  animation: t4-spin 0.8s linear infinite;
+}
+
+.t4-loader-sm {
+  width: 20px;
+  height: 20px;
+  border-width: 2px;
+}
+
+.t4-loader-lg {
+  width: 48px;
+  height: 48px;
+  border-width: 4px;
+}
+
+/* Loader com pontos */
+.t4-loader-dots {
+  display: flex;
+  gap: 6px;
+  align-items: center;
+}
+
+.t4-loader-dots span {
+  width: 8px;
+  height: 8px;
+  background: var(--t4-brand-orange);
+  border-radius: 50%;
+  animation: t4-dotBounce 1.2s ease-in-out infinite;
+}
+
+.t4-loader-dots span:nth-child(2) { animation-delay: 0.15s; }
+.t4-loader-dots span:nth-child(3) { animation-delay: 0.3s; }
+
+@keyframes t4-dotBounce {
+  0%, 80%, 100% {
+    opacity: 0.3;
+    transform: scale(0.8);
+  }
+  40% {
+    opacity: 1;
+    transform: scale(1);
+  }
+}
+
+/* === NÚMERO ANIMADO (contador) === */
+.t4-counter {
+  display: inline-block;
+  transition: all 0.5s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+/* === TRANSIÇÃO DE PÁGINA === */
+.t4-page-enter {
+  animation: t4-fadeUp 0.4s ease forwards;
+}
+
+.t4-page-exit {
+  animation: t4-fadeOut 0.2s ease forwards;
+}
+
+@keyframes t4-fadeOut {
+  from { opacity: 1; }
+  to { opacity: 0; }
+}
+
+/* === PREFERÊNCIA DE MOVIMENTO REDUZIDO === */
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+
+  .t4-fadeUp,
+  .t4-fadeIn,
+  .t4-scaleIn,
+  .t4-slideInRight,
+  .t4-slideUp {
+    opacity: 1;
+    transform: none;
+  }
+}
+
+/* === TRANSIÇÃO PARA TEMAS DE COR DO MÓDULO === */
+.t4-theme-transition {
+  transition:
+    background-color var(--t4-transition-base),
+    border-color var(--t4-transition-base),
+    color var(--t4-transition-base),
+    box-shadow var(--t4-transition-base);
+}

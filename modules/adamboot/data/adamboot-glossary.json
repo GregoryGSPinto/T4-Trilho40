@@ -1,0 +1,250 @@
+{
+  "glossary": [
+    {
+      "term": "BOLL",
+      "definition": "Boletim de Linha — documento oficial que contém restrições de velocidade, interdições e condições especiais de circulação em trechos da via. Deve ser consultado obrigatoriamente antes de cada viagem.",
+      "category": "documentos",
+      "relatedTerms": ["VMA", "CCO", "Licença"]
+    },
+    {
+      "term": "DSS",
+      "definition": "Diálogo Semanal de Segurança — reunião semanal obrigatória com a equipe para tratar de temas de segurança no trabalho, prevenção de acidentes e boas práticas operacionais.",
+      "category": "seguranca",
+      "relatedTerms": ["5S", "EPI"]
+    },
+    {
+      "term": "ROF",
+      "definition": "Regulamento de Operação Ferroviária — documento que estabelece as regras e procedimentos para a operação segura de trens. É o regulamento principal que rege toda a circulação ferroviária.",
+      "category": "documentos",
+      "relatedTerms": ["BOLL", "CCO", "Licença"]
+    },
+    {
+      "term": "5S",
+      "definition": "Programa de qualidade baseado em cinco princípios japoneses: Seiri (utilização), Seiton (organização), Seiso (limpeza), Seiketsu (padronização) e Shitsuke (disciplina). Aplicado na manutenção da cabine e áreas de trabalho.",
+      "category": "seguranca",
+      "relatedTerms": ["DSS", "PDCA"]
+    },
+    {
+      "term": "CCQ",
+      "definition": "Círculo de Controle de Qualidade — grupo de colaboradores que se reúne voluntariamente para identificar e resolver problemas relacionados ao trabalho, propondo melhorias nos processos operacionais.",
+      "category": "qualidade",
+      "relatedTerms": ["PDCA", "5S"]
+    },
+    {
+      "term": "PDCA",
+      "definition": "Ciclo de melhoria contínua composto por quatro etapas: Plan (Planejar), Do (Executar), Check (Verificar) e Act (Agir). Usado nos projetos de CCQ e na gestão de processos operacionais.",
+      "category": "qualidade",
+      "relatedTerms": ["CCQ", "5S"]
+    },
+    {
+      "term": "Pátio",
+      "definition": "Área ferroviária equipada com múltiplas vias, AMVs e sinalização, destinada a operações de cruzamento, manobra, formação e desmembramento de trens. Exemplos: Pátio de Tubarão, Pátio de Itabira.",
+      "category": "infraestrutura",
+      "relatedTerms": ["AMV", "Manobra", "Cruzamento"]
+    },
+    {
+      "term": "Prefixo",
+      "definition": "Código alfanumérico que identifica um trem em circulação. Contém informações sobre o tipo de trem, origem, destino e sequência. Exemplo: 'HFE-123' identifica um trem de minério.",
+      "category": "operacao",
+      "relatedTerms": ["Licença", "CCO", "Equipagem"]
+    },
+    {
+      "term": "Equipagem",
+      "definition": "Equipe responsável pela condução do trem, composta pelo maquinista (responsável pela operação) e o auxiliar de maquinista. A equipagem é responsável pela condução segura da composição.",
+      "category": "operacao",
+      "relatedTerms": ["Maquinista", "Auxiliar", "Escala"]
+    },
+    {
+      "term": "Escala",
+      "definition": "Programação de trabalho dos maquinistas e auxiliares, definindo turnos, folgas e locais de apresentação. A escala é organizada em turnos A (manhã), B (tarde) e C (noite).",
+      "category": "operacao",
+      "relatedTerms": ["Equipagem", "Maquinista", "Rendição"]
+    },
+    {
+      "term": "Freio Dinâmico",
+      "definition": "Sistema de frenagem que utiliza os motores de tração como geradores elétricos para desacelerar o trem. A energia cinética é convertida em energia elétrica e dissipada em forma de calor nas grades de resistência.",
+      "category": "mecanica",
+      "relatedTerms": ["Freio Pneumático", "Reostático"]
+    },
+    {
+      "term": "Freio Pneumático",
+      "definition": "Sistema de frenagem que utiliza ar comprimido para aplicar as sapatas de freio contra as rodas. É o sistema de freio de emergência e de estacionamento. Opera através do encanamento geral.",
+      "category": "mecanica",
+      "relatedTerms": ["Freio Dinâmico", "Encanamento Geral"]
+    },
+    {
+      "term": "Reostático",
+      "definition": "Tipo de frenagem elétrica semelhante ao freio dinâmico, onde a energia gerada pelos motores de tração é dissipada em resistores (reostatos). Termo muitas vezes usado como sinônimo de freio dinâmico.",
+      "category": "mecanica",
+      "relatedTerms": ["Freio Dinâmico", "Freio Pneumático"]
+    },
+    {
+      "term": "Maquinista",
+      "definition": "Profissional habilitado e responsável pela operação e condução da locomotiva e do trem. É o comandante da composição e responsável pela segurança da viagem.",
+      "category": "operacao",
+      "relatedTerms": ["Auxiliar", "Equipagem", "Escala"]
+    },
+    {
+      "term": "Auxiliar",
+      "definition": "Auxiliar de Maquinista — profissional que acompanha o maquinista na cabine, auxiliando nas comunicações, verificações de sinalização, inspeções e procedimentos operacionais.",
+      "category": "operacao",
+      "relatedTerms": ["Maquinista", "Equipagem"]
+    },
+    {
+      "term": "CCO",
+      "definition": "Centro de Controle Operacional — central que monitora e gerencia toda a circulação de trens na malha ferroviária. O CCO emite licenças, gerencia cruzamentos e coordena a operação.",
+      "category": "operacao",
+      "relatedTerms": ["Despachador", "Licença", "CTC"]
+    },
+    {
+      "term": "Despachador",
+      "definition": "Operador do CCO responsável por um trecho da via, que autoriza a circulação de trens, emite licenças e coordena cruzamentos e manobras na sua área de atuação.",
+      "category": "operacao",
+      "relatedTerms": ["CCO", "Licença", "Cruzamento"]
+    },
+    {
+      "term": "Sinal Vermelho",
+      "definition": "Aspecto de sinalização que indica PARE obrigatoriamente. O trem deve parar antes do sinal e aguardar autorização do CCO para prosseguir. Ultrapassar sinal vermelho sem autorização é falta gravíssima.",
+      "category": "sinalizacao",
+      "relatedTerms": ["Sinal Amarelo", "Sinal Verde", "Sinal Apagado"]
+    },
+    {
+      "term": "Sinal Amarelo",
+      "definition": "Aspecto de sinalização que indica ATENÇÃO — reduza a velocidade e prepare-se para parar no próximo sinal. Indica que o trecho à frente pode estar ocupado ou o próximo sinal pode estar fechado.",
+      "category": "sinalizacao",
+      "relatedTerms": ["Sinal Vermelho", "Sinal Verde"]
+    },
+    {
+      "term": "Sinal Verde",
+      "definition": "Aspecto de sinalização que indica VIA LIVRE — prossiga na Velocidade Máxima Autorizada do trecho. O caminho à frente está desimpedido.",
+      "category": "sinalizacao",
+      "relatedTerms": ["Sinal Amarelo", "Sinal Vermelho", "VMA"]
+    },
+    {
+      "term": "Sinal Apagado",
+      "definition": "Sinal que não apresenta nenhum aspecto luminoso. Deve ser tratado como SINAL VERMELHO — pare imediatamente e comunique o CCO. Indica possível falha no sistema de sinalização.",
+      "category": "sinalizacao",
+      "relatedTerms": ["Sinal Vermelho", "CCO"]
+    },
+    {
+      "term": "Cruzamento",
+      "definition": "Operação em que dois trens que circulam em sentidos opostos se encontram em um pátio, onde um deles desvia para a linha de cruzamento para permitir a passagem do outro.",
+      "category": "operacao",
+      "relatedTerms": ["Pátio", "AMV", "Licença"]
+    },
+    {
+      "term": "Manobra",
+      "definition": "Movimento de locomotivas e vagões dentro de um pátio para formação, desmembramento ou reorganização de trens. A velocidade de manobra é limitada a 20 km/h.",
+      "category": "operacao",
+      "relatedTerms": ["Pátio", "AMV", "Acoplamento"]
+    },
+    {
+      "term": "Licença",
+      "definition": "Autorização formal emitida pelo CCO para um trem circular em um determinado trecho da via. Nenhum trem pode circular sem licença válida. Pode ser emitida via CTC, verbalmente ou por escrito.",
+      "category": "operacao",
+      "relatedTerms": ["CCO", "Despachador", "CTC"]
+    },
+    {
+      "term": "AMV",
+      "definition": "Aparelho de Mudança de Via — dispositivo mecânico instalado nos trilhos que permite direcionar o trem de uma via para outra. Composto por agulhas, contratrilhos e jacaré.",
+      "category": "infraestrutura",
+      "relatedTerms": ["Pátio", "Agulha", "Manobra"]
+    },
+    {
+      "term": "VMA",
+      "definition": "Velocidade Máxima Autorizada — velocidade limite estabelecida para cada trecho da via, considerando as condições da infraestrutura, curvas, pontes e demais características do trecho.",
+      "category": "operacao",
+      "relatedTerms": ["BOLL", "Artigo 47", "Velocidade"]
+    },
+    {
+      "term": "CTC",
+      "definition": "Controle de Tráfego Centralizado — sistema que permite ao CCO controlar remotamente sinais e AMVs, gerenciando a circulação de trens de forma centralizada e automatizada.",
+      "category": "operacao",
+      "relatedTerms": ["CCO", "AMV", "Sinalização"]
+    },
+    {
+      "term": "Encanamento Geral",
+      "definition": "Tubulação de ar comprimido que percorre toda a composição, conectando a locomotiva a todos os vagões. É o sistema principal de transmissão de ar para os freios pneumáticos.",
+      "category": "mecanica",
+      "relatedTerms": ["Freio Pneumático", "Teste de Freio"]
+    },
+    {
+      "term": "Composição",
+      "definition": "Conjunto formado pela(s) locomotiva(s) e os vagões que formam um trem. A composição é identificada pelo prefixo e pode ter centenas de vagões na EFVM.",
+      "category": "operacao",
+      "relatedTerms": ["Prefixo", "Locomotiva", "Vagão"]
+    },
+    {
+      "term": "Locomotiva",
+      "definition": "Veículo ferroviário com motor próprio utilizado para tracionar os vagões. Na EFVM são utilizadas locomotivas diesel-elétricas de grande porte como as séries AC44i e ES43BBi.",
+      "category": "mecanica",
+      "relatedTerms": ["Composição", "Motor de Tração", "Freio Dinâmico"]
+    },
+    {
+      "term": "Vagão",
+      "definition": "Veículo ferroviário sem motor próprio, destinado ao transporte de carga. Na EFVM, os principais tipos são os vagões GDE (gôndola para minério) e os vagões-tanque.",
+      "category": "mecanica",
+      "relatedTerms": ["Composição", "Locomotiva", "GDE"]
+    },
+    {
+      "term": "Rendição",
+      "definition": "Troca de equipagem durante a viagem, realizada em pátios autorizados. O maquinista que sai deve fazer a passagem de serviço ao maquinista que assume, informando todas as condições do trem e da via.",
+      "category": "operacao",
+      "relatedTerms": ["Equipagem", "Escala", "Passagem de Serviço"]
+    },
+    {
+      "term": "Via Permanente",
+      "definition": "Infraestrutura fixa da ferrovia composta por trilhos, dormentes, lastro, sublastro e plataforma. A manutenção da via permanente é essencial para a segurança da circulação.",
+      "category": "infraestrutura",
+      "relatedTerms": ["Trilho", "Dormente", "Lastro"]
+    },
+    {
+      "term": "Passagem de Nível",
+      "definition": "Cruzamento em nível entre a via férrea e uma via rodoviária. Local de alto risco que exige atenção redobrada do maquinista, com acionamento obrigatório da buzina ao se aproximar.",
+      "category": "infraestrutura",
+      "relatedTerms": ["Buzina", "Sinalização", "VMA"]
+    },
+    {
+      "term": "Bitola",
+      "definition": "Distância entre as faces internas dos trilhos. Na EFVM, a bitola utilizada é a métrica (1.000 mm). A bitola deve ser verificada regularmente para garantir a segurança da circulação.",
+      "category": "infraestrutura",
+      "relatedTerms": ["Via Permanente", "Trilho"]
+    },
+    {
+      "term": "Tração",
+      "definition": "Força aplicada pela locomotiva para movimentar a composição. A tração é gerada pelos motores elétricos de tração alimentados pelo gerador principal da locomotiva.",
+      "category": "mecanica",
+      "relatedTerms": ["Locomotiva", "Motor de Tração", "Freio Dinâmico"]
+    },
+    {
+      "term": "EPI",
+      "definition": "Equipamento de Proteção Individual — itens de segurança obrigatórios: capacete, óculos, botina com biqueira de aço, luvas, colete refletivo e protetor auricular.",
+      "category": "seguranca",
+      "relatedTerms": ["DSS", "5S"]
+    },
+    {
+      "term": "GDE",
+      "definition": "Gôndola para minério — tipo de vagão aberto utilizado para transporte de minério de ferro na EFVM. É o vagão mais comum na operação de minério entre Itabira e Tubarão.",
+      "category": "mecanica",
+      "relatedTerms": ["Vagão", "Composição"]
+    },
+    {
+      "term": "Acoplamento",
+      "definition": "Operação de conexão mecânica e pneumática entre locomotivas ou entre locomotiva e vagões. Deve ser feita a velocidade máxima de 5 km/h e com comunicação constante entre a equipe.",
+      "category": "operacao",
+      "relatedTerms": ["Engate", "Manobra", "Encanamento Geral"]
+    },
+    {
+      "term": "Agulha",
+      "definition": "Peça móvel do AMV (Aparelho de Mudança de Via) que direciona as rodas do trem para uma via ou outra. Agulhas mal posicionadas são causa frequente de descarrilamentos.",
+      "category": "infraestrutura",
+      "relatedTerms": ["AMV", "Jacaré", "Contratrilho"]
+    },
+    {
+      "term": "Jacaré",
+      "definition": "Peça do AMV localizada no ponto de cruzamento dos trilhos, onde as rodas transitam de uma via para outra. Recebe esse nome pela semelhança de sua forma com a boca de um jacaré.",
+      "category": "infraestrutura",
+      "relatedTerms": ["AMV", "Agulha"]
+    }
+  ]
+}

@@ -1,0 +1,280 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, viewport-fit=cover">
+  <meta name="theme-color" content="#0a0b0f">
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+  <title>CCQ — Trilho 4.0</title>
+
+  <!-- Shared CSS -->
+  <link rel="stylesheet" href="../../shared/css/t4-design-system.css">
+  <link rel="stylesheet" href="../../shared/css/t4-components.css">
+  <link rel="stylesheet" href="../../shared/css/t4-animations.css">
+
+  <!-- Module CSS -->
+  <link rel="stylesheet" href="css/ccq.css">
+</head>
+<body data-module="ccq">
+
+  <div id="ccq-app" class="t4-container t4-safe-top t4-safe-bottom">
+
+    <!-- ========== TELA: DASHBOARD ========== -->
+    <section id="screen-dashboard" class="ccq-screen active">
+      <header class="t4-header">
+        <button class="t4-header-back" onclick="T4.router.goHome()" aria-label="Voltar ao Hub">
+          <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M15 18l-6-6 6-6"/></svg>
+        </button>
+        <h1 class="t4-header-title ccq-title-gradient">CCQ</h1>
+        <button class="t4-btn-icon t4-btn-ghost" id="btn-user-info" aria-label="Perfil">
+          <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="8" r="4"/><path d="M4 20c0-4 4-7 8-7s8 3 8 7"/></svg>
+        </button>
+      </header>
+
+      <div class="ccq-hero t4-fadeUp">
+        <div class="ccq-pdca-mini" id="pdca-dashboard"></div>
+        <div>
+          <h2 class="ccq-hero-title">Circulo de Controle de Qualidade</h2>
+          <p class="t4-text-sm t4-text-secondary">Metodologia PDCA para melhoria continua</p>
+        </div>
+      </div>
+
+      <div class="ccq-stats t4-grid-3 t4-fadeUp t4-fadeUp-2">
+        <div class="ccq-stat-card">
+          <span class="ccq-stat-value" id="stat-total">0</span>
+          <span class="ccq-stat-label">Projetos</span>
+        </div>
+        <div class="ccq-stat-card">
+          <span class="ccq-stat-value" id="stat-active">0</span>
+          <span class="ccq-stat-label">Ativos</span>
+        </div>
+        <div class="ccq-stat-card">
+          <span class="ccq-stat-value" id="stat-done">0</span>
+          <span class="ccq-stat-label">Concluidos</span>
+        </div>
+      </div>
+
+      <div class="t4-flex-between t4-mt-lg t4-mb-md t4-fadeUp t4-fadeUp-3">
+        <h3>Meus Projetos</h3>
+        <button class="t4-btn t4-btn-sm ccq-btn-accent" id="btn-new-project">+ Novo</button>
+      </div>
+
+      <div id="projects-list" class="ccq-projects-list t4-fadeUp t4-fadeUp-4"></div>
+
+      <div class="t4-flex-between t4-mt-lg t4-mb-md t4-fadeUp t4-fadeUp-5">
+        <h3>Modelos</h3>
+      </div>
+      <div id="templates-list" class="ccq-templates-list t4-fadeUp t4-fadeUp-6"></div>
+    </section>
+
+    <!-- ========== TELA: CRIAR/EDITAR PROJETO ========== -->
+    <section id="screen-create" class="ccq-screen">
+      <header class="t4-header">
+        <button class="t4-header-back" onclick="CCQ.app.showScreen('dashboard')" aria-label="Voltar">
+          <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M15 18l-6-6 6-6"/></svg>
+        </button>
+        <h1 class="t4-header-title">Novo Projeto CCQ</h1>
+        <div style="width:44px"></div>
+      </header>
+
+      <form id="form-project" class="ccq-form" autocomplete="off">
+        <div class="t4-input-group t4-mb-md">
+          <label class="t4-label" for="proj-name">Nome do Projeto *</label>
+          <input type="text" id="proj-name" class="t4-input" placeholder="Ex: Reducao de avarias em vagoes" required>
+        </div>
+
+        <div class="t4-input-group t4-mb-md">
+          <label class="t4-label" for="proj-area">Area / Patio *</label>
+          <select id="proj-area" class="t4-input t4-select" required>
+            <option value="">Selecione a area</option>
+            <option value="VOD">Patio VOD - Vitoria</option>
+            <option value="VFZ">Patio VFZ - Fazendao</option>
+            <option value="VCS">Patio VCS - Colatina</option>
+            <option value="VGS">Patio VGS - Gov. Valadares</option>
+            <option value="VCO">Patio VCO - Coronel Fabriciano</option>
+            <option value="VIA">Patio VIA - Ipatinga</option>
+            <option value="VTU">Patio VTU - Tumiritinga</option>
+            <option value="VDL">Patio VDL - Des. Drummond</option>
+            <option value="VPC">Patio VPC - Pedro Nolasco</option>
+            <option value="Via Permanente">Via Permanente</option>
+            <option value="Oficina">Oficina de Locomotivas</option>
+            <option value="CCO">CCO - Centro de Controle</option>
+            <option value="Outro">Outra Area</option>
+          </select>
+        </div>
+
+        <div class="t4-input-group t4-mb-md">
+          <label class="t4-label" for="proj-problem">Descricao do Problema *</label>
+          <textarea id="proj-problem" class="t4-input t4-textarea" placeholder="Descreva o problema identificado..." required></textarea>
+        </div>
+
+        <div class="t4-input-group t4-mb-md">
+          <label class="t4-label" for="proj-goal">Meta SMART</label>
+          <textarea id="proj-goal" class="t4-input t4-textarea" placeholder="Especifica, Mensuravel, Atingivel, Relevante, Temporal" style="min-height:80px"></textarea>
+        </div>
+
+        <div class="t4-input-group t4-mb-md">
+          <label class="t4-label">Membros da Equipe</label>
+          <div id="team-members-container" class="ccq-team-members"></div>
+          <div class="t4-flex t4-gap-sm t4-mt-sm">
+            <input type="text" id="member-name" class="t4-input" placeholder="Nome do membro" style="flex:1">
+            <input type="text" id="member-role" class="t4-input" placeholder="Funcao" style="flex:1">
+            <button type="button" class="t4-btn t4-btn-sm ccq-btn-accent" id="btn-add-member">+</button>
+          </div>
+        </div>
+
+        <div class="t4-input-group t4-mb-md">
+          <label class="t4-label" for="proj-photo-before">Foto Antes (Evidencia)</label>
+          <input type="file" id="proj-photo-before" accept="image/*" capture="environment" class="ccq-file-input">
+          <label for="proj-photo-before" class="ccq-file-label">
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="3" width="18" height="18" rx="2"/><circle cx="8.5" cy="8.5" r="1.5"/><path d="M21 15l-5-5L5 21"/></svg>
+            <span>Selecionar imagem</span>
+          </label>
+          <div id="preview-before" class="ccq-photo-preview"></div>
+        </div>
+
+        <button type="submit" class="t4-btn t4-btn-lg t4-btn-block ccq-btn-accent-full t4-mt-lg">
+          Criar Projeto
+        </button>
+      </form>
+    </section>
+
+    <!-- ========== TELA: DETALHE DO PROJETO ========== -->
+    <section id="screen-detail" class="ccq-screen">
+      <header class="t4-header">
+        <button class="t4-header-back" onclick="CCQ.app.showScreen('dashboard')" aria-label="Voltar">
+          <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M15 18l-6-6 6-6"/></svg>
+        </button>
+        <h1 class="t4-header-title" id="detail-title">Projeto</h1>
+        <button class="t4-btn-icon t4-btn-ghost" id="btn-delete-project" aria-label="Excluir projeto">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#ef4444" stroke-width="2"><path d="M3 6h18M8 6V4a2 2 0 012-2h4a2 2 0 012 2v2m3 0v14a2 2 0 01-2 2H7a2 2 0 01-2-2V6h14"/></svg>
+        </button>
+      </header>
+
+      <div id="detail-pdca" class="ccq-pdca-container t4-fadeUp"></div>
+
+      <div class="ccq-phase-selector t4-fadeUp t4-fadeUp-1">
+        <button class="ccq-phase-btn active" data-phase="plan">P - Planejar</button>
+        <button class="ccq-phase-btn" data-phase="do">D - Executar</button>
+        <button class="ccq-phase-btn" data-phase="check">C - Verificar</button>
+        <button class="ccq-phase-btn" data-phase="act">A - Agir</button>
+      </div>
+
+      <div id="detail-content" class="ccq-detail-content t4-fadeUp t4-fadeUp-2"></div>
+
+      <div class="ccq-tools-grid t4-fadeUp t4-fadeUp-3" id="tools-grid">
+        <button class="ccq-tool-card" data-tool="brainstorming">
+          <div class="ccq-tool-icon">
+            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><path d="M8 12h8M12 8v8"/></svg>
+          </div>
+          <span class="ccq-tool-name">Brainstorming</span>
+        </button>
+        <button class="ccq-tool-card" data-tool="ishikawa">
+          <div class="ccq-tool-icon">
+            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M2 12h20M22 12l-4-4M22 12l-4 4M6 4l4 8-4 8M10 4l4 8-4 8M14 4l4 8"/></svg>
+          </div>
+          <span class="ccq-tool-name">Ishikawa</span>
+        </button>
+        <button class="ccq-tool-card" data-tool="5porques">
+          <div class="ccq-tool-icon">
+            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><path d="M9 9a3 3 0 115.12 2.12c-.58.59-1.62 1.38-2.12 2.38V16M12 19h.01"/></svg>
+          </div>
+          <span class="ccq-tool-name">5 Porques</span>
+        </button>
+        <button class="ccq-tool-card" data-tool="5w2h">
+          <div class="ccq-tool-icon">
+            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="3" width="18" height="18" rx="2"/><path d="M3 9h18M9 3v18"/></svg>
+          </div>
+          <span class="ccq-tool-name">5W2H</span>
+        </button>
+        <button class="ccq-tool-card" data-tool="gut">
+          <div class="ccq-tool-icon">
+            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 3v18h18"/><rect x="7" y="13" width="3" height="5" fill="currentColor" opacity="0.3"/><rect x="12" y="9" width="3" height="9" fill="currentColor" opacity="0.5"/><rect x="17" y="5" width="3" height="13" fill="currentColor" opacity="0.7"/></svg>
+          </div>
+          <span class="ccq-tool-name">Matriz GUT</span>
+        </button>
+        <button class="ccq-tool-card" data-tool="pareto">
+          <div class="ccq-tool-icon">
+            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 3v18h18"/><rect x="6" y="8" width="3" height="10" fill="currentColor" opacity="0.5"/><rect x="11" y="11" width="3" height="7" fill="currentColor" opacity="0.4"/><rect x="16" y="14" width="3" height="4" fill="currentColor" opacity="0.3"/><path d="M7 7l5 3 5 3" stroke-width="2"/></svg>
+          </div>
+          <span class="ccq-tool-name">Pareto</span>
+        </button>
+        <button class="ccq-tool-card" data-tool="histogram">
+          <div class="ccq-tool-icon">
+            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 3v18h18"/><rect x="5" y="12" width="2" height="6" fill="currentColor" opacity="0.3"/><rect x="8" y="8" width="2" height="10" fill="currentColor" opacity="0.5"/><rect x="11" y="5" width="2" height="13" fill="currentColor" opacity="0.7"/><rect x="14" y="9" width="2" height="9" fill="currentColor" opacity="0.5"/><rect x="17" y="13" width="2" height="5" fill="currentColor" opacity="0.3"/></svg>
+          </div>
+          <span class="ccq-tool-name">Histograma</span>
+        </button>
+        <button class="ccq-tool-card" data-tool="controle">
+          <div class="ccq-tool-icon">
+            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 3v18h18"/><path d="M4 8h17" stroke-dasharray="3,3" opacity="0.4"/><path d="M4 16h17" stroke-dasharray="3,3" opacity="0.4"/><path d="M4 12h17" opacity="0.3"/><path d="M5 11l3 2 3-4 3 3 3-1 3-2"/></svg>
+          </div>
+          <span class="ccq-tool-name">Carta Controle</span>
+        </button>
+        <button class="ccq-tool-card" data-tool="timeline">
+          <div class="ccq-tool-icon">
+            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 2v20M5 6h4M15 10h4M7 14h4M15 18h4"/><circle cx="12" cy="6" r="2" fill="currentColor"/><circle cx="12" cy="10" r="2"/><circle cx="12" cy="14" r="2"/><circle cx="12" cy="18" r="2"/></svg>
+          </div>
+          <span class="ccq-tool-name">Cronograma</span>
+        </button>
+        <button class="ccq-tool-card" data-tool="presentation">
+          <div class="ccq-tool-icon">
+            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="2" y="3" width="20" height="14" rx="2"/><path d="M8 21l4-4 4 4"/></svg>
+          </div>
+          <span class="ccq-tool-name">Apresentacao</span>
+        </button>
+        <button class="ccq-tool-card" data-tool="photos">
+          <div class="ccq-tool-icon">
+            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="3" width="18" height="18" rx="2"/><circle cx="8.5" cy="8.5" r="1.5"/><path d="M21 15l-5-5L5 21"/></svg>
+          </div>
+          <span class="ccq-tool-name">Antes/Depois</span>
+        </button>
+      </div>
+    </section>
+
+    <!-- ========== TELA: FERRAMENTAS ========== -->
+    <section id="screen-tools" class="ccq-screen">
+      <header class="t4-header">
+        <button class="t4-header-back" id="btn-tools-back" aria-label="Voltar">
+          <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M15 18l-6-6 6-6"/></svg>
+        </button>
+        <h1 class="t4-header-title" id="tools-title">Ferramenta</h1>
+        <div style="width:44px"></div>
+      </header>
+      <div id="tool-content" class="ccq-tool-content"></div>
+    </section>
+
+    <!-- ========== TELA: APRESENTACAO ========== -->
+    <section id="screen-presentation" class="ccq-screen">
+      <div id="presentation-container" class="ccq-presentation-container"></div>
+      <div class="ccq-presentation-controls" id="presentation-controls">
+        <button class="t4-btn t4-btn-icon t4-btn-ghost" id="pres-exit" aria-label="Sair">
+          <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M18 6L6 18M6 6l12 12"/></svg>
+        </button>
+        <span class="ccq-slide-counter" id="slide-counter">1 / 1</span>
+        <button class="t4-btn t4-btn-icon t4-btn-ghost" id="pres-fullscreen" aria-label="Tela cheia">
+          <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M8 3H5a2 2 0 00-2 2v3m18 0V5a2 2 0 00-2-2h-3m0 18h3a2 2 0 002-2v-3M3 16v3a2 2 0 002 2h3"/></svg>
+        </button>
+      </div>
+    </section>
+
+  </div>
+
+  <!-- Shared JS -->
+  <script src="../../shared/js/t4-core.js"></script>
+  <script src="../../shared/js/t4-storage.js"></script>
+  <script src="../../shared/js/t4-router.js"></script>
+  <script src="../../shared/js/t4-auth.js"></script>
+  <script src="../../shared/js/t4-notifications.js"></script>
+
+  <!-- Module JS -->
+  <script src="js/ccq-app.js"></script>
+  <script src="js/ccq-projects.js"></script>
+  <script src="js/ccq-methodology.js"></script>
+  <script src="js/ccq-charts.js"></script>
+  <script src="js/ccq-presentations.js"></script>
+  <script src="js/ccq-timeline.js"></script>
+
+</body>
+</html>

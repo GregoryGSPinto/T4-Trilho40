@@ -1,0 +1,18 @@
+{
+  "optima": {
+    "name": "OPTIMA WORK AI",
+    "description": "PWA de alocação de equipagem ferroviária",
+    "url": "https://optima-work-ai.vercel.app",
+    "deepLink": "optima://",
+    "icon": "⚙️",
+    "status": "active"
+  },
+  "vfz": {
+    "name": "VFZ Passagem de Serviço",
+    "description": "PWA de passagem de serviço ferroviário",
+    "url": "https://vfz-passagem-servico.vercel.app",
+    "deepLink": "vfz://",
+    "icon": "📝",
+    "status": "active"
+  }
+}

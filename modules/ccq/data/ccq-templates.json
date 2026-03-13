@@ -1,0 +1,169 @@
+{
+  "templates": [
+    {
+      "id": "tpl-avarias-vagoes",
+      "name": "Reducao de Avarias em Vagoes",
+      "description": "Projeto CCQ focado na reducao do indice de avarias em vagoes durante operacoes de carga, descarga e manobra em patios ferroviarios.",
+      "area": "Oficina",
+      "icon": "wagon",
+      "suggestedTeamRoles": [
+        { "role": "Lider", "description": "Maquinista Senior" },
+        { "role": "Vice-lider", "description": "Inspetor de Vagoes" },
+        { "role": "Secretario", "description": "Tecnico de Manutencao" },
+        { "role": "Membro", "description": "Operador de Patio" },
+        { "role": "Membro", "description": "Maquinista" },
+        { "role": "Membro", "description": "Auxiliar de Manutencao" }
+      ],
+      "sampleBrainstorming": [
+        { "text": "Impacto excessivo durante engate", "category": "Metodo" },
+        { "text": "Desgaste de truques e rodeiros", "category": "Maquina" },
+        { "text": "Qualidade do material rodante antigo", "category": "Material" },
+        { "text": "Falta de treinamento em operacao de engate", "category": "Mao de obra" },
+        { "text": "Condicoes da via permanente no patio", "category": "Meio ambiente" },
+        { "text": "Ausencia de indicador de forca de impacto", "category": "Medicao" },
+        { "text": "Velocidade de acoplamento nao padronizada", "category": "Metodo" },
+        { "text": "Engates desgastados nao substituidos", "category": "Maquina" },
+        { "text": "Chapas de desgaste fora de especificacao", "category": "Material" },
+        { "text": "Rotatividade de equipe de patio", "category": "Mao de obra" }
+      ],
+      "sample5W2H": [
+        {
+          "what": "Padronizar velocidade maxima de acoplamento em 5 km/h",
+          "why": "Reduzir avarias por impacto excessivo durante engate",
+          "where": "Patios de manobra EFVM",
+          "when": "Implementar em 30 dias",
+          "who": "Supervisao de operacoes e maquinistas",
+          "how": "Treinamento pratico com simulacao e sinalizacao nos patios",
+          "howMuch": "R$ 2.500 (sinalizacao) + R$ 5.000 (treinamento)"
+        },
+        {
+          "what": "Implantar checklist de inspecao pre-engate",
+          "why": "Identificar engates desgastados antes da operacao",
+          "where": "Todos os patios de manobra",
+          "when": "Implementar em 15 dias",
+          "who": "Inspetores de vagoes e maquinistas",
+          "how": "Checklist digital no tablet com registro fotografico",
+          "howMuch": "R$ 1.200 (desenvolvimento do checklist digital)"
+        }
+      ]
+    },
+    {
+      "id": "tpl-combustivel",
+      "name": "Otimizacao do Consumo de Combustivel",
+      "description": "Projeto CCQ para reducao do consumo de diesel em locomotivas da EFVM atraves de tecnicas de conducao economica e manutencao preventiva.",
+      "area": "Via Permanente",
+      "icon": "fuel",
+      "suggestedTeamRoles": [
+        { "role": "Lider", "description": "Maquinista Senior" },
+        { "role": "Vice-lider", "description": "Engenheiro de Tracao" },
+        { "role": "Secretario", "description": "Analista de Performance" },
+        { "role": "Membro", "description": "Maquinista" },
+        { "role": "Membro", "description": "Tecnico de Manutencao de Locomotivas" },
+        { "role": "Membro", "description": "Operador do CCO" }
+      ],
+      "sampleBrainstorming": [
+        { "text": "Aceleracao brusca em saidas de patio", "category": "Metodo" },
+        { "text": "Injetores de combustivel descalibrados", "category": "Maquina" },
+        { "text": "Qualidade do diesel variavel entre fornecedores", "category": "Material" },
+        { "text": "Falta de capacitacao em conducao economica", "category": "Mao de obra" },
+        { "text": "Rampas acentuadas no trecho serra", "category": "Meio ambiente" },
+        { "text": "Medidores de consumo com leitura imprecisa", "category": "Medicao" },
+        { "text": "Tempo excessivo em marcha lenta nos patios", "category": "Metodo" },
+        { "text": "Sistema de refrigeracao da locomotiva com vazamento", "category": "Maquina" }
+      ],
+      "sample5W2H": [
+        {
+          "what": "Programa de conducao economica para maquinistas",
+          "why": "Reduzir consumo de diesel em 8% no trecho plano",
+          "where": "EFVM trecho Vitoria-Governador Valadares",
+          "when": "Treinamento em 45 dias, monitoramento continuo",
+          "who": "Gerencia de operacoes e equipe de treinamento",
+          "how": "Curso teorico-pratico com simulador e acompanhamento em viagem",
+          "howMuch": "R$ 15.000 (treinamento) — economia estimada R$ 200.000/ano"
+        }
+      ]
+    },
+    {
+      "id": "tpl-radio",
+      "name": "Melhoria na Comunicacao Via Radio",
+      "description": "Projeto CCQ para melhoria da qualidade e confiabilidade da comunicacao via radio entre maquinistas, CCO e equipes de patio na EFVM.",
+      "area": "CCO",
+      "icon": "radio",
+      "suggestedTeamRoles": [
+        { "role": "Lider", "description": "Operador do CCO" },
+        { "role": "Vice-lider", "description": "Maquinista Senior" },
+        { "role": "Secretario", "description": "Tecnico de Telecomunicacoes" },
+        { "role": "Membro", "description": "Maquinista" },
+        { "role": "Membro", "description": "Operador de Patio" },
+        { "role": "Membro", "description": "Eletricista de Comunicacoes" }
+      ],
+      "sampleBrainstorming": [
+        { "text": "Procedimento de comunicacao nao padronizado", "category": "Metodo" },
+        { "text": "Radios com bateria insuficiente para o turno", "category": "Maquina" },
+        { "text": "Antenas danificadas por intemperies", "category": "Material" },
+        { "text": "Uso de linguagem nao tecnica no radio", "category": "Mao de obra" },
+        { "text": "Zonas de sombra de radio no trecho da serra", "category": "Meio ambiente" },
+        { "text": "Sem registro automatico de comunicacoes", "category": "Medicao" },
+        { "text": "Interferencia entre canais de comunicacao", "category": "Maquina" },
+        { "text": "Atraso na troca de informacoes de manobra", "category": "Metodo" }
+      ],
+      "sample5W2H": [
+        {
+          "what": "Padronizar protocolo de comunicacao via radio",
+          "why": "Eliminar falhas de comunicacao que geram atrasos operacionais",
+          "where": "Toda a malha EFVM",
+          "when": "Implementar em 60 dias",
+          "who": "Gerencia de operacoes, CCO e equipe de treinamento",
+          "how": "Manual de comunicacao padrao + treinamento obrigatorio + auditoria mensal",
+          "howMuch": "R$ 8.000 (material didatico e treinamento)"
+        }
+      ]
+    },
+    {
+      "id": "tpl-manobra-patio",
+      "name": "Reducao de Tempo de Manobra em Patio",
+      "description": "Projeto CCQ para otimizar o tempo de manobras ferroviarias nos patios da EFVM, aumentando a produtividade e reduzindo o tempo de permanencia de composicoes.",
+      "area": "VOD",
+      "icon": "clock",
+      "suggestedTeamRoles": [
+        { "role": "Lider", "description": "Supervisor de Patio" },
+        { "role": "Vice-lider", "description": "Maquinista de Manobra" },
+        { "role": "Secretario", "description": "Programador de Trens" },
+        { "role": "Membro", "description": "Operador de Patio" },
+        { "role": "Membro", "description": "Maquinista" },
+        { "role": "Membro", "description": "Agente de Patio" }
+      ],
+      "sampleBrainstorming": [
+        { "text": "Sequenciamento de manobras nao otimizado", "category": "Metodo" },
+        { "text": "AMVs (aparelhos de mudanca de via) com defeito", "category": "Maquina" },
+        { "text": "Dormentes deteriorados nas linhas de manobra", "category": "Material" },
+        { "text": "Equipe reduzida no turno noturno", "category": "Mao de obra" },
+        { "text": "Iluminacao insuficiente no patio noturno", "category": "Meio ambiente" },
+        { "text": "Sem indicador de tempo medio de manobra", "category": "Medicao" },
+        { "text": "Comunicacao deficiente entre CCO e patio", "category": "Metodo" },
+        { "text": "Composicoes bloqueando linhas de manobra", "category": "Meio ambiente" },
+        { "text": "Falta de planejamento previo de manobra", "category": "Metodo" }
+      ],
+      "sample5W2H": [
+        {
+          "what": "Implantar planejamento previo de manobras por turno",
+          "why": "Reduzir tempo medio de manobra em 20%",
+          "where": "Patio VOD - Vitoria",
+          "when": "Piloto em 30 dias, expansao em 90 dias",
+          "who": "Supervisao de patio e programacao de trens",
+          "how": "Reuniao pre-turno com plano de manobras + painel visual de sequenciamento",
+          "howMuch": "R$ 3.000 (painel visual) + R$ 2.000 (treinamento)"
+        },
+        {
+          "what": "Programa de manutencao preventiva de AMVs",
+          "why": "Eliminar paradas por falha em aparelhos de mudanca de via",
+          "where": "Patio VOD - linhas de manobra 1 a 12",
+          "when": "Inicio imediato, ciclo mensal",
+          "who": "Equipe de manutencao de via permanente",
+          "how": "Checklist semanal + lubrificacao programada + troca preventiva de componentes",
+          "howMuch": "R$ 12.000/mes (pecas e mao de obra)"
+        }
+      ]
+    }
+  ]
+}

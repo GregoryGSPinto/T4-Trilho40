@@ -1,0 +1,937 @@
+/* ============================================
+   EFVM 360 — Simulador de Condução
+   Estilos do módulo
+   ============================================ */
+
+/* === VARIÁVEIS DO MÓDULO === */
+:root {
+  --efvm-accent: var(--t4-accent-simulador, #a855f7);
+  --efvm-accent-dim: rgba(168, 85, 247, 0.15);
+  --efvm-accent-glow: rgba(168, 85, 247, 0.3);
+  --efvm-speed-ok: var(--t4-status-ok);
+  --efvm-speed-warn: var(--t4-status-warning);
+  --efvm-speed-danger: var(--t4-status-danger);
+  --efvm-hud-bg: rgba(10, 11, 15, 0.92);
+  --efvm-gauge-size: 180px;
+  --efvm-lever-width: 60px;
+  --efvm-lever-height: 200px;
+}
+
+/* === TELA DE MENU (Seleção de cenário) === */
+.efvm-menu {
+  min-height: 100vh;
+  min-height: 100dvh;
+  padding-bottom: var(--t4-space-2xl);
+}
+
+.efvm-menu-header {
+  text-align: center;
+  padding: var(--t4-space-xl) 0 var(--t4-space-lg);
+}
+
+.efvm-menu-icon {
+  width: 64px;
+  height: 64px;
+  border-radius: var(--t4-radius-lg);
+  background: var(--efvm-accent-dim);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin: 0 auto var(--t4-space-md);
+  font-size: 2rem;
+}
+
+.efvm-menu-title {
+  font-size: 1.5rem;
+  font-weight: 700;
+  margin-bottom: var(--t4-space-xs);
+}
+
+.efvm-menu-subtitle {
+  color: var(--t4-text-secondary);
+  font-size: 0.875rem;
+}
+
+/* Cards de cenário */
+.efvm-scenarios {
+  display: flex;
+  flex-direction: column;
+  gap: var(--t4-space-md);
+}
+
+.efvm-scenario-card {
+  background: var(--t4-bg-card);
+  border: 1px solid var(--t4-border);
+  border-radius: var(--t4-radius-lg);
+  padding: var(--t4-space-lg);
+  cursor: pointer;
+  transition: all var(--t4-transition-base);
+  position: relative;
+  overflow: hidden;
+  -webkit-user-select: none;
+  user-select: none;
+}
+
+.efvm-scenario-card::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 4px;
+  height: 100%;
+  background: var(--efvm-accent);
+  border-radius: 0 var(--t4-radius-sm) var(--t4-radius-sm) 0;
+}
+
+.efvm-scenario-card:active {
+  transform: scale(0.97);
+  border-color: var(--efvm-accent);
+}
+
+.efvm-scenario-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: var(--t4-space-sm);
+}
+
+.efvm-scenario-name {
+  font-size: 1rem;
+  font-weight: 600;
+}
+
+.efvm-scenario-difficulty {
+  font-size: 0.6875rem;
+  font-weight: 600;
+  padding: 2px 10px;
+  border-radius: var(--t4-radius-full);
+  font-family: var(--t4-font-display);
+}
+
+.efvm-diff-iniciante {
+  background: rgba(43, 255, 107, 0.1);
+  color: var(--t4-status-ok);
+}
+
+.efvm-diff-intermediario {
+  background: rgba(43, 138, 255, 0.1);
+  color: var(--t4-status-info);
+}
+
+.efvm-diff-avancado {
+  background: rgba(255, 199, 43, 0.1);
+  color: var(--t4-status-warning);
+}
+
+.efvm-diff-realista {
+  background: rgba(239, 68, 68, 0.1);
+  color: var(--t4-status-danger);
+}
+
+.efvm-scenario-desc {
+  color: var(--t4-text-secondary);
+  font-size: 0.8125rem;
+  line-height: 1.5;
+  margin-bottom: var(--t4-space-md);
+}
+
+.efvm-scenario-meta {
+  display: flex;
+  gap: var(--t4-space-md);
+  flex-wrap: wrap;
+}
+
+.efvm-scenario-meta-item {
+  display: flex;
+  align-items: center;
+  gap: var(--t4-space-xs);
+  font-size: 0.75rem;
+  color: var(--t4-text-muted);
+  font-family: var(--t4-font-display);
+}
+
+.efvm-scenario-meta-item span:first-child {
+  font-size: 0.875rem;
+}
+
+/* Seletor de dificuldade */
+.efvm-difficulty-section {
+  margin-top: var(--t4-space-xl);
+  margin-bottom: var(--t4-space-lg);
+}
+
+.efvm-difficulty-label {
+  font-size: 0.875rem;
+  font-weight: 600;
+  margin-bottom: var(--t4-space-sm);
+}
+
+.efvm-difficulty-chips {
+  display: flex;
+  gap: var(--t4-space-sm);
+  overflow-x: auto;
+  scrollbar-width: none;
+  -webkit-overflow-scrolling: touch;
+}
+
+.efvm-difficulty-chips::-webkit-scrollbar { display: none; }
+
+.efvm-difficulty-chip {
+  padding: 8px 16px;
+  font-size: 0.8125rem;
+  font-weight: 500;
+  border-radius: var(--t4-radius-full);
+  background: var(--t4-bg-elevated);
+  color: var(--t4-text-secondary);
+  border: 1px solid var(--t4-border);
+  cursor: pointer;
+  transition: all var(--t4-transition-fast);
+  white-space: nowrap;
+  min-height: 36px;
+}
+
+.efvm-difficulty-chip.active {
+  background: var(--efvm-accent-dim);
+  color: var(--efvm-accent);
+  border-color: var(--efvm-accent-glow);
+}
+
+/* === TELA HUD (Cabine de condução) === */
+.efvm-hud {
+  position: fixed;
+  inset: 0;
+  background: var(--t4-bg-primary);
+  z-index: var(--t4-z-modal);
+  display: flex;
+  flex-direction: column;
+  max-width: 430px;
+  margin: 0 auto;
+  overflow: hidden;
+}
+
+.efvm-hud-topbar {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: var(--t4-space-sm) var(--t4-space-md);
+  padding-top: calc(var(--t4-space-sm) + env(safe-area-inset-top, 0px));
+  background: var(--efvm-hud-bg);
+  border-bottom: 1px solid var(--t4-border);
+  min-height: 48px;
+  flex-shrink: 0;
+}
+
+.efvm-hud-topbar-left {
+  display: flex;
+  align-items: center;
+  gap: var(--t4-space-sm);
+}
+
+.efvm-hud-timer {
+  font-family: var(--t4-font-display);
+  font-size: 0.875rem;
+  font-weight: 600;
+  color: var(--efvm-accent);
+}
+
+.efvm-hud-km {
+  font-family: var(--t4-font-display);
+  font-size: 0.8125rem;
+  color: var(--t4-text-secondary);
+}
+
+.efvm-hud-btn-exit {
+  width: 36px;
+  height: 36px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: rgba(239, 68, 68, 0.15);
+  border: none;
+  border-radius: var(--t4-radius-sm);
+  color: var(--t4-status-danger);
+  font-size: 1.125rem;
+  cursor: pointer;
+}
+
+/* Área central do HUD */
+.efvm-hud-main {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  padding: var(--t4-space-md);
+  gap: var(--t4-space-md);
+  overflow-y: auto;
+}
+
+/* === VELOCÍMETRO CIRCULAR === */
+.efvm-speedometer {
+  position: relative;
+  width: var(--efvm-gauge-size);
+  height: var(--efvm-gauge-size);
+  flex-shrink: 0;
+}
+
+.efvm-speedometer svg {
+  width: 100%;
+  height: 100%;
+  transform: rotate(-135deg);
+}
+
+.efvm-speedometer-bg {
+  fill: none;
+  stroke: var(--t4-bg-elevated);
+  stroke-width: 10;
+  stroke-linecap: round;
+}
+
+.efvm-speedometer-limit {
+  fill: none;
+  stroke: rgba(255, 199, 43, 0.25);
+  stroke-width: 10;
+  stroke-linecap: round;
+  transition: stroke-dashoffset 0.3s ease;
+}
+
+.efvm-speedometer-value {
+  fill: none;
+  stroke: var(--efvm-speed-ok);
+  stroke-width: 10;
+  stroke-linecap: round;
+  transition: stroke-dashoffset 0.3s ease, stroke 0.3s ease;
+  filter: drop-shadow(0 0 6px rgba(43, 255, 107, 0.4));
+}
+
+.efvm-speedometer-value.warn {
+  stroke: var(--efvm-speed-warn);
+  filter: drop-shadow(0 0 6px rgba(255, 199, 43, 0.4));
+}
+
+.efvm-speedometer-value.danger {
+  stroke: var(--efvm-speed-danger);
+  filter: drop-shadow(0 0 8px rgba(239, 68, 68, 0.5));
+}
+
+.efvm-speedometer-center {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  text-align: center;
+}
+
+.efvm-speedometer-speed {
+  font-family: var(--t4-font-display);
+  font-size: 2.5rem;
+  font-weight: 700;
+  line-height: 1;
+  color: var(--t4-text-primary);
+}
+
+.efvm-speedometer-unit {
+  font-family: var(--t4-font-display);
+  font-size: 0.6875rem;
+  color: var(--t4-text-muted);
+  margin-top: 2px;
+}
+
+.efvm-speedometer-limit-text {
+  font-family: var(--t4-font-display);
+  font-size: 0.75rem;
+  color: var(--t4-status-warning);
+  margin-top: 4px;
+}
+
+/* === PAINEL DE INDICADORES === */
+.efvm-indicators {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: var(--t4-space-sm);
+  width: 100%;
+}
+
+.efvm-indicator {
+  background: var(--t4-bg-card);
+  border: 1px solid var(--t4-border);
+  border-radius: var(--t4-radius-md);
+  padding: var(--t4-space-sm);
+  text-align: center;
+}
+
+.efvm-indicator-label {
+  font-size: 0.625rem;
+  color: var(--t4-text-muted);
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  margin-bottom: 2px;
+}
+
+.efvm-indicator-value {
+  font-family: var(--t4-font-display);
+  font-size: 0.875rem;
+  font-weight: 600;
+  color: var(--t4-text-primary);
+}
+
+.efvm-indicator-value.ok { color: var(--t4-status-ok); }
+.efvm-indicator-value.warn { color: var(--t4-status-warning); }
+.efvm-indicator-value.danger { color: var(--t4-status-danger); }
+.efvm-indicator-value.accent { color: var(--efvm-accent); }
+
+/* === SINAIS E BOLL === */
+.efvm-signals-row {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: var(--t4-space-lg);
+  width: 100%;
+  padding: var(--t4-space-sm) 0;
+}
+
+.efvm-signal {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 4px;
+}
+
+.efvm-signal-light {
+  width: 24px;
+  height: 24px;
+  border-radius: 50%;
+  border: 2px solid var(--t4-border);
+  transition: all var(--t4-transition-fast);
+}
+
+.efvm-signal-light.verde {
+  background: var(--t4-status-ok);
+  border-color: var(--t4-status-ok);
+  box-shadow: 0 0 10px rgba(43, 255, 107, 0.5);
+}
+
+.efvm-signal-light.amarelo {
+  background: var(--t4-status-warning);
+  border-color: var(--t4-status-warning);
+  box-shadow: 0 0 10px rgba(255, 199, 43, 0.5);
+}
+
+.efvm-signal-light.vermelho {
+  background: var(--t4-status-danger);
+  border-color: var(--t4-status-danger);
+  box-shadow: 0 0 10px rgba(239, 68, 68, 0.5);
+}
+
+.efvm-signal-light.apagado {
+  background: var(--t4-bg-elevated);
+  border-color: var(--t4-text-muted);
+}
+
+.efvm-signal-label {
+  font-size: 0.5625rem;
+  color: var(--t4-text-muted);
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+}
+
+.efvm-boll {
+  display: flex;
+  align-items: center;
+  gap: var(--t4-space-xs);
+  padding: 4px 12px;
+  border-radius: var(--t4-radius-full);
+  font-family: var(--t4-font-display);
+  font-size: 0.6875rem;
+  font-weight: 600;
+}
+
+.efvm-boll.ativo {
+  background: rgba(43, 255, 107, 0.1);
+  color: var(--t4-status-ok);
+  border: 1px solid rgba(43, 255, 107, 0.2);
+}
+
+.efvm-boll.alerta {
+  background: rgba(255, 199, 43, 0.1);
+  color: var(--t4-status-warning);
+  border: 1px solid rgba(255, 199, 43, 0.2);
+  animation: t4-pulse 1.5s ease-in-out infinite;
+}
+
+.efvm-boll.violacao {
+  background: rgba(239, 68, 68, 0.1);
+  color: var(--t4-status-danger);
+  border: 1px solid rgba(239, 68, 68, 0.2);
+  animation: t4-shake 0.4s ease;
+}
+
+/* === MINI PERFIL DE VIA === */
+.efvm-track-profile {
+  width: 100%;
+  height: 60px;
+  background: var(--t4-bg-card);
+  border: 1px solid var(--t4-border);
+  border-radius: var(--t4-radius-md);
+  position: relative;
+  overflow: hidden;
+  padding: var(--t4-space-xs);
+}
+
+.efvm-track-profile-canvas {
+  width: 100%;
+  height: 100%;
+}
+
+.efvm-track-profile-position {
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  width: 2px;
+  background: var(--efvm-accent);
+  box-shadow: 0 0 6px var(--efvm-accent-glow);
+  transition: left 0.5s ease;
+}
+
+.efvm-track-profile-labels {
+  display: flex;
+  justify-content: space-between;
+  padding: 0 var(--t4-space-xs);
+  margin-top: 2px;
+}
+
+.efvm-track-profile-label {
+  font-size: 0.5625rem;
+  color: var(--t4-text-muted);
+  font-family: var(--t4-font-display);
+}
+
+/* === ALAVANCA DE TRAÇÃO/FREIO === */
+.efvm-lever-container {
+  display: flex;
+  align-items: center;
+  gap: var(--t4-space-lg);
+  width: 100%;
+  justify-content: center;
+}
+
+.efvm-lever {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: var(--t4-space-xs);
+}
+
+.efvm-lever-track {
+  width: var(--efvm-lever-width);
+  height: var(--efvm-lever-height);
+  background: var(--t4-bg-card);
+  border: 1px solid var(--t4-border);
+  border-radius: var(--t4-radius-md);
+  position: relative;
+  overflow: hidden;
+}
+
+.efvm-lever-fill {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  transition: height 0.2s ease;
+  border-radius: 0 0 var(--t4-radius-md) var(--t4-radius-md);
+}
+
+.efvm-lever-fill.tracao {
+  background: linear-gradient(to top, rgba(43, 255, 107, 0.3), rgba(43, 255, 107, 0.1));
+  border-top: 2px solid var(--t4-status-ok);
+}
+
+.efvm-lever-fill.freio-dinamico {
+  background: linear-gradient(to top, rgba(255, 199, 43, 0.3), rgba(255, 199, 43, 0.1));
+  border-top: 2px solid var(--t4-status-warning);
+}
+
+.efvm-lever-fill.freio-pneumatico {
+  background: linear-gradient(to top, rgba(239, 68, 68, 0.3), rgba(239, 68, 68, 0.1));
+  border-top: 2px solid var(--t4-status-danger);
+}
+
+.efvm-lever-notch {
+  position: absolute;
+  left: 0;
+  right: 0;
+  height: 1px;
+  background: var(--t4-border);
+}
+
+.efvm-lever-label {
+  font-size: 0.6875rem;
+  font-weight: 600;
+  color: var(--t4-text-secondary);
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+}
+
+.efvm-lever-value {
+  font-family: var(--t4-font-display);
+  font-size: 1rem;
+  font-weight: 700;
+  color: var(--t4-text-primary);
+}
+
+/* === CONTROLES (BOTÕES DE TOQUE) === */
+.efvm-controls {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: var(--t4-space-sm);
+  width: 100%;
+  padding: 0 var(--t4-space-sm);
+  padding-bottom: calc(var(--t4-space-md) + env(safe-area-inset-bottom, 0px));
+  flex-shrink: 0;
+}
+
+.efvm-control-group {
+  display: flex;
+  flex-direction: column;
+  gap: var(--t4-space-xs);
+}
+
+.efvm-control-group-label {
+  font-size: 0.625rem;
+  color: var(--t4-text-muted);
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  text-align: center;
+}
+
+.efvm-control-buttons {
+  display: flex;
+  gap: var(--t4-space-xs);
+}
+
+.efvm-ctrl-btn {
+  flex: 1;
+  min-height: 52px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 2px;
+  border: 1px solid var(--t4-border);
+  border-radius: var(--t4-radius-md);
+  background: var(--t4-bg-card);
+  color: var(--t4-text-primary);
+  font-family: var(--t4-font-body);
+  font-size: 0.75rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all var(--t4-transition-fast);
+  -webkit-user-select: none;
+  user-select: none;
+  touch-action: manipulation;
+}
+
+.efvm-ctrl-btn:active {
+  transform: scale(0.93);
+}
+
+.efvm-ctrl-btn-icon {
+  font-size: 1.25rem;
+}
+
+.efvm-ctrl-btn.tracao-up {
+  border-color: rgba(43, 255, 107, 0.2);
+  background: rgba(43, 255, 107, 0.05);
+}
+
+.efvm-ctrl-btn.tracao-up:active {
+  background: rgba(43, 255, 107, 0.15);
+  border-color: var(--t4-status-ok);
+}
+
+.efvm-ctrl-btn.tracao-down {
+  border-color: rgba(43, 255, 107, 0.15);
+}
+
+.efvm-ctrl-btn.tracao-down:active {
+  background: rgba(43, 255, 107, 0.1);
+}
+
+.efvm-ctrl-btn.freio-apply {
+  border-color: rgba(239, 68, 68, 0.2);
+  background: rgba(239, 68, 68, 0.05);
+}
+
+.efvm-ctrl-btn.freio-apply:active {
+  background: rgba(239, 68, 68, 0.15);
+  border-color: var(--t4-status-danger);
+}
+
+.efvm-ctrl-btn.freio-release {
+  border-color: rgba(255, 199, 43, 0.15);
+}
+
+.efvm-ctrl-btn.freio-release:active {
+  background: rgba(255, 199, 43, 0.1);
+}
+
+.efvm-ctrl-btn.emergencia {
+  background: rgba(239, 68, 68, 0.15);
+  border-color: rgba(239, 68, 68, 0.3);
+  color: var(--t4-status-danger);
+  grid-column: span 2;
+}
+
+.efvm-ctrl-btn.emergencia:active {
+  background: rgba(239, 68, 68, 0.3);
+}
+
+/* Próxima estação/restrição */
+.efvm-next-info {
+  display: flex;
+  gap: var(--t4-space-sm);
+  width: 100%;
+}
+
+.efvm-next-card {
+  flex: 1;
+  background: var(--t4-bg-card);
+  border: 1px solid var(--t4-border);
+  border-radius: var(--t4-radius-sm);
+  padding: var(--t4-space-sm);
+}
+
+.efvm-next-card-label {
+  font-size: 0.5625rem;
+  color: var(--t4-text-muted);
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  margin-bottom: 2px;
+}
+
+.efvm-next-card-value {
+  font-size: 0.75rem;
+  font-weight: 600;
+  color: var(--t4-text-primary);
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.efvm-next-card-sub {
+  font-family: var(--t4-font-display);
+  font-size: 0.6875rem;
+  color: var(--t4-text-secondary);
+}
+
+/* Gradiente atual */
+.efvm-gradient-bar {
+  width: 100%;
+  display: flex;
+  align-items: center;
+  gap: var(--t4-space-sm);
+  padding: var(--t4-space-xs) var(--t4-space-sm);
+  background: var(--t4-bg-card);
+  border: 1px solid var(--t4-border);
+  border-radius: var(--t4-radius-sm);
+}
+
+.efvm-gradient-icon {
+  font-size: 1rem;
+  flex-shrink: 0;
+}
+
+.efvm-gradient-icon.subida { color: var(--t4-status-danger); }
+.efvm-gradient-icon.descida { color: var(--t4-status-ok); }
+.efvm-gradient-icon.plano { color: var(--t4-text-muted); }
+
+.efvm-gradient-text {
+  font-family: var(--t4-font-display);
+  font-size: 0.75rem;
+  color: var(--t4-text-secondary);
+}
+
+.efvm-gradient-value {
+  font-family: var(--t4-font-display);
+  font-size: 0.875rem;
+  font-weight: 600;
+  color: var(--t4-text-primary);
+  margin-left: auto;
+}
+
+/* === PONTUAÇÃO EM TEMPO REAL === */
+.efvm-score-display {
+  display: flex;
+  align-items: center;
+  gap: var(--t4-space-xs);
+  padding: 4px 12px;
+  background: var(--efvm-accent-dim);
+  border-radius: var(--t4-radius-full);
+  border: 1px solid rgba(168, 85, 247, 0.2);
+}
+
+.efvm-score-star {
+  font-size: 0.75rem;
+}
+
+.efvm-score-value {
+  font-family: var(--t4-font-display);
+  font-size: 0.875rem;
+  font-weight: 700;
+  color: var(--efvm-accent);
+}
+
+/* === TELA DE RESULTADOS === */
+.efvm-results {
+  min-height: 100vh;
+  min-height: 100dvh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: var(--t4-space-xl) var(--t4-space-md);
+  gap: var(--t4-space-lg);
+}
+
+.efvm-results-header {
+  text-align: center;
+}
+
+.efvm-results-title {
+  font-size: 1.25rem;
+  font-weight: 700;
+  margin-bottom: var(--t4-space-xs);
+}
+
+.efvm-results-subtitle {
+  font-size: 0.875rem;
+  color: var(--t4-text-secondary);
+}
+
+/* Nota final grande */
+.efvm-results-score {
+  width: 140px;
+  height: 140px;
+  border-radius: 50%;
+  border: 4px solid var(--efvm-accent);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  box-shadow: 0 0 30px var(--efvm-accent-glow);
+}
+
+.efvm-results-score-num {
+  font-family: var(--t4-font-display);
+  font-size: 3rem;
+  font-weight: 700;
+  line-height: 1;
+  color: var(--efvm-accent);
+}
+
+.efvm-results-score-label {
+  font-size: 0.75rem;
+  color: var(--t4-text-secondary);
+}
+
+/* Detalhes dos resultados */
+.efvm-results-details {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  gap: var(--t4-space-sm);
+}
+
+.efvm-results-row {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: var(--t4-space-md);
+  background: var(--t4-bg-card);
+  border: 1px solid var(--t4-border);
+  border-radius: var(--t4-radius-md);
+}
+
+.efvm-results-row-label {
+  display: flex;
+  align-items: center;
+  gap: var(--t4-space-sm);
+  font-size: 0.875rem;
+  color: var(--t4-text-secondary);
+}
+
+.efvm-results-row-value {
+  font-family: var(--t4-font-display);
+  font-size: 0.9375rem;
+  font-weight: 600;
+}
+
+.efvm-results-row-value.bonus {
+  color: var(--t4-status-ok);
+}
+
+.efvm-results-row-value.penalty {
+  color: var(--t4-status-danger);
+}
+
+.efvm-results-row-value.neutral {
+  color: var(--t4-text-primary);
+}
+
+.efvm-results-actions {
+  display: flex;
+  flex-direction: column;
+  gap: var(--t4-space-sm);
+  width: 100%;
+  margin-top: var(--t4-space-md);
+}
+
+/* === ANIMAÇÕES ESPECÍFICAS === */
+@keyframes efvm-needle-bounce {
+  0%, 100% { transform: rotate(var(--needle-angle)); }
+  50% { transform: rotate(calc(var(--needle-angle) + 2deg)); }
+}
+
+@keyframes efvm-speed-flash {
+  0%, 100% { opacity: 1; }
+  50% { opacity: 0.5; }
+}
+
+.efvm-speed-flashing {
+  animation: efvm-speed-flash 0.5s ease-in-out infinite;
+}
+
+/* === RESPONSIVIDADE === */
+@media (max-height: 700px) {
+  :root {
+    --efvm-gauge-size: 140px;
+    --efvm-lever-height: 150px;
+  }
+
+  .efvm-hud-main {
+    gap: var(--t4-space-sm);
+    padding: var(--t4-space-sm);
+  }
+
+  .efvm-speedometer-speed {
+    font-size: 2rem;
+  }
+}
+
+@media (max-height: 600px) {
+  :root {
+    --efvm-gauge-size: 120px;
+    --efvm-lever-height: 120px;
+  }
+
+  .efvm-indicators {
+    grid-template-columns: repeat(4, 1fr);
+  }
+
+  .efvm-track-profile {
+    height: 40px;
+  }
+
+  .efvm-ctrl-btn {
+    min-height: 44px;
+  }
+}

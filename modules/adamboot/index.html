@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, viewport-fit=cover">
+  <meta name="theme-color" content="#0a0b0f">
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+  <title>AdamBoot — Assistente do Maquinista | T4</title>
+
+  <!-- Shared CSS -->
+  <link rel="stylesheet" href="../../shared/css/t4-design-system.css">
+  <link rel="stylesheet" href="../../shared/css/t4-components.css">
+  <link rel="stylesheet" href="../../shared/css/t4-animations.css">
+
+  <!-- Module CSS -->
+  <link rel="stylesheet" href="css/adamboot.css">
+</head>
+<body>
+
+  <div id="ab-app" class="ab-app">
+
+    <!-- HEADER -->
+    <header class="ab-header">
+      <button class="ab-header-back" id="ab-back-btn" aria-label="Voltar">
+        ←
+      </button>
+
+      <div class="ab-header-avatar" aria-hidden="true">
+        🤖
+      </div>
+
+      <div class="ab-header-info">
+        <div class="ab-header-name">AdamBoot</div>
+        <div class="ab-header-status" id="ab-header-status">Online</div>
+      </div>
+
+      <div class="ab-header-actions" style="position: relative;">
+        <button class="ab-header-btn" id="ab-options-btn" aria-label="Opções">
+          ⋮
+        </button>
+
+        <!-- Menu de opções -->
+        <div class="ab-options-menu" id="ab-options-menu">
+          <button class="ab-options-menu-item" id="ab-tts-btn">
+            <span class="ab-options-menu-item-icon">🔊</span>
+            <span id="ab-tts-label">Ativar voz nas respostas</span>
+          </button>
+          <button class="ab-options-menu-item" id="ab-voice-mode-btn">
+            <span class="ab-options-menu-item-icon">🎙️</span>
+            <span id="ab-voice-mode-label">Modo: segurar para falar</span>
+          </button>
+          <button class="ab-options-menu-item ab-options-menu-item-danger" id="ab-clear-btn">
+            <span class="ab-options-menu-item-icon">🗑️</span>
+            <span>Limpar conversa</span>
+          </button>
+        </div>
+      </div>
+    </header>
+
+    <!-- ÁREA DE MENSAGENS -->
+    <div class="ab-messages" id="ab-messages" role="log" aria-live="polite" aria-label="Mensagens do chat">
+    </div>
+
+    <!-- SUGESTÕES -->
+    <div class="ab-suggestions" id="ab-suggestions" style="display: none;" aria-label="Sugestões de perguntas">
+    </div>
+
+    <!-- ÁREA DE INPUT -->
+    <div class="ab-input-area">
+      <!-- Transcrição de voz em tempo real -->
+      <div class="ab-voice-transcription" id="ab-voice-transcription"></div>
+
+      <div class="ab-input-row">
+        <!-- Botão de voz -->
+        <button class="ab-voice-btn" id="ab-voice-btn" aria-label="Segurar para falar">
+          🎙️
+        </button>
+
+        <!-- Campo de texto -->
+        <div class="ab-input-wrapper">
+          <textarea
+            class="ab-input"
+            id="ab-input"
+            placeholder="Digite sua dúvida..."
+            rows="1"
+            aria-label="Mensagem"
+            autocomplete="off"
+            autocorrect="on"
+            spellcheck="true"
+          ></textarea>
+        </div>
+
+        <!-- Botão enviar -->
+        <button class="ab-send-btn" id="ab-send-btn" disabled aria-label="Enviar mensagem">
+          ➤
+        </button>
+      </div>
+    </div>
+
+  </div>
+
+  <!-- Shared JS -->
+  <script src="../../shared/js/t4-core.js"></script>
+  <script src="../../shared/js/t4-storage.js"></script>
+  <script src="../../shared/js/t4-router.js"></script>
+  <script src="../../shared/js/t4-auth.js"></script>
+  <script src="../../shared/js/t4-notifications.js"></script>
+
+  <!-- Module JS (order matters: dependencies first) -->
+  <script src="js/adamboot-personality.js"></script>
+  <script src="js/adamboot-context.js"></script>
+  <script src="js/adamboot-knowledge.js"></script>
+  <script src="js/adamboot-voice.js"></script>
+  <script src="js/adamboot-chat.js"></script>
+  <script src="js/adamboot-app.js"></script>
+
+</body>
+</html>
