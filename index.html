@@ -68,246 +68,192 @@
     <!-- ========== VIEW: HUB ========== -->
     <section id="view-hub" class="t4-view active">
 
-      <!-- Status bar top -->
-      <div class="hub-topbar">
-        <div class="hub-topbar-clock" id="hub-clock"></div>
-        <div class="hub-topbar-right">
-          <span class="hub-topbar-efvm">EFVM</span>
-          <span class="hub-topbar-dot"></span>
-          <span class="hub-topbar-on">ON</span>
+      <!-- Compact Cockpit Header -->
+      <header class="hub-cockpit-header">
+        <div class="hub-cockpit-header-left">
+          <div class="t4-logo" style="font-size:24px;">T4</div>
+          <span class="hub-cockpit-title">TRILHO 4.0</span>
         </div>
-      </div>
-
-      <!-- Header -->
-      <header class="hub-header-new">
-        <div class="hub-header-left">
-          <div class="t4-logo" style="font-size:32px;">T4</div>
-          <div class="t4-subtitle">TRILHO 4.0</div>
-        </div>
-        <div class="hub-header-right">
-          <div class="t4-user-badge">
-            <div class="t4-user-avatar" id="hub-user-avatar"></div>
-            <span id="hub-user-name"></span>
-          </div>
-          <div class="t4-yard-tag" id="hub-yard-tag"></div>
+        <div class="hub-cockpit-header-right">
+          <div class="t4-user-avatar hub-cockpit-avatar" id="hub-user-avatar"></div>
+          <span class="hub-cockpit-username" id="hub-user-name"></span>
+          <span class="hub-cockpit-chevron">&#9662;</span>
         </div>
       </header>
 
-      <!-- Quick Status Chips -->
-      <div class="hub-chips-scroll">
-        <div class="hub-chip" id="hub-chip-jornada">
-          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>
-          <span>Jornada</span> <strong id="hub-chip-jornada-val">--:--</strong>
-        </div>
-        <div class="hub-chip" data-chip="trem">
-          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polygon points="12 2 2 7 12 12 22 7 12 2"/><polyline points="2 17 12 22 22 17"/><polyline points="2 12 12 17 22 12"/></svg>
-          <span>Proximo</span> <strong>M346</strong>
-        </div>
-        <div class="hub-chip hub-chip--green">
-          <span>DSS</span> <strong>OK</strong>
-        </div>
-        <div class="hub-chip hub-chip--gold">
-          <span>BOLLs</span> <strong>3</strong>
-        </div>
+      <!-- Status Bar Operacional -->
+      <div class="hub-status-row">
+        <span class="hub-status-clock" id="hub-clock"></span>
+        <span class="hub-status-chip">EFVM</span>
+        <span class="hub-status-sep">&#183;</span>
+        <span class="hub-status-chip" id="hub-yard-tag">VFZ</span>
+        <span class="hub-status-sep">&#183;</span>
+        <span class="hub-status-chip">Turno <span id="hub-status-turno">A</span></span>
+        <span class="hub-status-sep">&#183;</span>
+        <span class="hub-status-online" id="hub-status-online">
+          <span class="hub-status-dot"></span> Online
+        </span>
       </div>
 
-      <!-- Section: OPERACIONAL -->
-      <div class="t4-section-title">OPERACIONAL</div>
-      <div class="hub-app-grid" id="hub-app-grid">
+      <!-- PAINEL OPERACIONAL -->
+      <div class="hub-section-header">
+        <span>PAINEL OPERACIONAL</span>
+      </div>
+      <div id="hub-ops-panel"></div>
 
-        <!-- Boa Jornada -->
-        <div class="t4-app-card" data-module="boajornada">
-          <span class="t4-badge-new">NOVO</span>
-          <div class="t4-app-icon" style="background:rgba(0,140,126,0.12);color:var(--accent-teal);">
-            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" width="24" height="24"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/><line x1="16" y1="13" x2="8" y2="13"/><line x1="16" y1="17" x2="8" y2="17"/><polyline points="10 9 9 9 8 9"/></svg>
+      <!-- Acoes Rapidas -->
+      <div class="hub-quick-actions" id="hub-quick-actions">
+        <button class="hub-qa-btn hub-qa-btn--red" data-qa="emergencia">
+          <span class="hub-qa-icon">&#128680;</span>
+          <span class="hub-qa-label">Emergencia</span>
+        </button>
+        <button class="hub-qa-btn hub-qa-btn--gold" data-qa="logcco">
+          <span class="hub-qa-icon">&#128251;</span>
+          <span class="hub-qa-label">Log CCO</span>
+        </button>
+        <button class="hub-qa-btn hub-qa-btn--gold" data-qa="art">
+          <span class="hub-qa-icon">&#9888;&#65039;</span>
+          <span class="hub-qa-label">ART</span>
+        </button>
+        <button class="hub-qa-btn hub-qa-btn--teal" data-qa="boajornada">
+          <span class="hub-qa-icon">&#128203;</span>
+          <span class="hub-qa-label">Boa Jornada</span>
+        </button>
+      </div>
+
+      <!-- Avisos Recentes -->
+      <div class="hub-section-header">
+        <span>AVISOS RECENTES</span>
+        <button class="hub-section-link" id="hub-ver-alertas">Ver todos</button>
+      </div>
+      <div id="hub-alerts-preview" class="hub-alerts-preview"></div>
+
+      <!-- FERRAMENTAS -->
+      <div class="hub-section-header" style="margin-top:20px;">
+        <span>FERRAMENTAS</span>
+      </div>
+      <div class="hub-tools-grid">
+        <div class="t4-app-card hub-tool-card" data-module="timerJornada">
+          <div class="t4-app-icon hub-tool-icon" style="background:rgba(0,180,216,0.12);color:var(--accent-cyan);">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" width="22" height="22"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>
           </div>
-          <div class="t4-app-label">Boa Jornada</div>
+          <div class="t4-app-label">Timer</div>
         </div>
-
-        <!-- ART -->
-        <div class="t4-app-card" data-module="art">
-          <span class="t4-badge-new">NOVO</span>
-          <div class="t4-app-icon" style="background:rgba(229,161,0,0.12);color:var(--accent-gold);">
-            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" width="24" height="24"><path d="M10.29 3.86L1.82 18a2 2 0 0 0 1.71 3h16.94a2 2 0 0 0 1.71-3L13.71 3.86a2 2 0 0 0-3.42 0z"/><line x1="12" y1="9" x2="12" y2="13"/><line x1="12" y1="17" x2="12.01" y2="17"/></svg>
-          </div>
-          <div class="t4-app-label">ART</div>
-        </div>
-
-        <!-- Timer Jornada -->
-        <div class="t4-app-card" data-module="timerJornada">
-          <span class="t4-badge-new">NOVO</span>
-          <div class="t4-app-icon" style="background:rgba(0,180,216,0.12);color:var(--accent-cyan);">
-            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" width="24" height="24"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>
-          </div>
-          <div class="t4-app-label">Timer<br>Jornada</div>
-        </div>
-
-        <!-- Log CCO -->
-        <div class="t4-app-card" data-module="logCco">
-          <span class="t4-badge-new">NOVO</span>
-          <div class="t4-app-icon" style="background:rgba(229,161,0,0.12);color:var(--accent-gold);">
-            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" width="24" height="24"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/></svg>
-          </div>
-          <div class="t4-app-label">Log CCO</div>
-        </div>
-
-        <!-- Calculadora Ferroviária -->
-        <div class="t4-app-card" data-module="calculadora">
-          <span class="t4-badge-new">NOVO</span>
-          <div class="t4-app-icon" style="background:rgba(0,140,126,0.12);color:var(--accent-teal);">
-            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" width="24" height="24"><rect x="4" y="2" width="16" height="20" rx="2"/><line x1="8" y1="6" x2="16" y2="6"/><line x1="8" y1="10" x2="10" y2="10"/><line x1="14" y1="10" x2="16" y2="10"/><line x1="8" y1="14" x2="10" y2="14"/><line x1="14" y1="14" x2="16" y2="14"/><line x1="8" y1="18" x2="16" y2="18"/></svg>
-          </div>
-          <div class="t4-app-label">Calculadora</div>
-        </div>
-
-        <!-- Contatos Rápidos -->
-        <div class="t4-app-card" data-module="contatos">
-          <span class="t4-badge-new">NOVO</span>
-          <div class="t4-app-icon" style="background:rgba(122,184,0,0.12);color:var(--accent-green);">
-            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" width="24" height="24"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72c.127.96.361 1.903.7 2.81a2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0 1 22 16.92z"/></svg>
+        <div class="t4-app-card hub-tool-card" data-module="contatos">
+          <div class="t4-app-icon hub-tool-icon" style="background:rgba(122,184,0,0.12);color:var(--accent-green);">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" width="22" height="22"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72c.127.96.361 1.903.7 2.81a2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0 1 22 16.92z"/></svg>
           </div>
           <div class="t4-app-label">Contatos</div>
         </div>
-
-        <!-- Simulador EFVM -->
-        <div class="t4-app-card" data-module="simulador">
-          <span class="t4-badge-online" style="position:absolute;top:12px;right:12px;"></span>
-          <div class="t4-app-icon" style="background:rgba(0,180,216,0.12);color:var(--accent-cyan);">
-            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" width="24" height="24"><path d="M4 15s1-1 4-1 5 2 8 2 4-1 4-1V3s-1 1-4 1-5-2-8-2-4 1-4 1z"/><line x1="4" y1="22" x2="4" y2="15"/></svg>
+        <div class="t4-app-card hub-tool-card" data-module="calculadora">
+          <div class="t4-app-icon hub-tool-icon" style="background:rgba(0,140,126,0.12);color:var(--accent-teal);">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" width="22" height="22"><rect x="4" y="2" width="16" height="20" rx="2"/><line x1="8" y1="6" x2="16" y2="6"/><line x1="8" y1="10" x2="10" y2="10"/><line x1="14" y1="10" x2="16" y2="10"/><line x1="8" y1="14" x2="10" y2="14"/><line x1="14" y1="14" x2="16" y2="14"/><line x1="8" y1="18" x2="16" y2="18"/></svg>
           </div>
-          <div class="t4-app-label">Simulador<br>EFVM</div>
+          <div class="t4-app-label">Calculadora</div>
         </div>
-
-        <!-- EFVM 360 (externo) -->
-        <div class="t4-app-card" data-module="efvm360-ext">
-          <span class="t4-badge-online" style="position:absolute;top:12px;right:12px;"></span>
-          <div class="t4-app-icon" style="background:rgba(0,140,126,0.12);color:var(--accent-teal);">
-            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" width="24" height="24"><polygon points="12 2 2 7 12 12 22 7 12 2"/><polyline points="2 17 12 22 22 17"/><polyline points="2 12 12 17 22 12"/></svg>
+        <div class="t4-app-card hub-tool-card" data-module="rof-digital">
+          <div class="t4-app-icon hub-tool-icon" style="background:rgba(229,161,0,0.12);color:var(--accent-gold);">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" width="22" height="22"><path d="M4 19.5A2.5 2.5 0 0 1 6.5 17H20"/><path d="M6.5 2H20v20H6.5A2.5 2.5 0 0 1 4 19.5v-15A2.5 2.5 0 0 1 6.5 2z"/></svg>
+          </div>
+          <div class="t4-app-label">ROF</div>
+        </div>
+        <div class="t4-app-card hub-tool-card" data-module="adamboot">
+          <div class="t4-app-icon hub-tool-icon" style="background:rgba(122,184,0,0.12);color:var(--accent-green);">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" width="22" height="22"><path d="M12 3l1.5 5.5L19 10l-5.5 1.5L12 17l-1.5-5.5L5 10l5.5-1.5L12 3z"/></svg>
+          </div>
+          <div class="t4-app-label">AdamBoot</div>
+        </div>
+        <div class="t4-app-card hub-tool-card" data-module="simulador">
+          <div class="t4-app-icon hub-tool-icon" style="background:rgba(0,180,216,0.12);color:var(--accent-cyan);">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" width="22" height="22"><path d="M4 15s1-1 4-1 5 2 8 2 4-1 4-1V3s-1 1-4 1-5-2-8-2-4 1-4 1z"/><line x1="4" y1="22" x2="4" y2="15"/></svg>
+          </div>
+          <div class="t4-app-label">Simulador</div>
+        </div>
+        <div class="t4-app-card hub-tool-card" data-module="ccq">
+          <div class="t4-app-icon hub-tool-icon" style="background:rgba(229,161,0,0.12);color:var(--accent-gold);">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" width="22" height="22"><line x1="12" y1="20" x2="12" y2="10"/><line x1="18" y1="20" x2="18" y2="4"/><line x1="6" y1="20" x2="6" y2="16"/></svg>
+          </div>
+          <div class="t4-app-label">CCQ</div>
+        </div>
+        <div class="t4-app-card hub-tool-card" data-module="efvm360-ext">
+          <div class="t4-app-icon hub-tool-icon" style="background:rgba(0,140,126,0.12);color:var(--accent-teal);">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" width="22" height="22"><polygon points="12 2 2 7 12 12 22 7 12 2"/><polyline points="2 17 12 22 22 17"/><polyline points="2 12 12 17 22 12"/></svg>
           </div>
           <div class="t4-app-label">EFVM 360</div>
         </div>
-
-        <!-- ROF Digital -->
-        <div class="t4-app-card" data-module="rof-digital">
-          <span class="t4-badge-new">NOVO</span>
-          <div class="t4-app-icon" style="background:rgba(229,161,0,0.12);color:var(--accent-gold);">
-            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" width="24" height="24"><path d="M4 19.5A2.5 2.5 0 0 1 6.5 17H20"/><path d="M6.5 2H20v20H6.5A2.5 2.5 0 0 1 4 19.5v-15A2.5 2.5 0 0 1 6.5 2z"/></svg>
-          </div>
-          <div class="t4-app-label">ROF Digital</div>
-        </div>
-
-        <!-- CCQ Qualidade -->
-        <div class="t4-app-card" data-module="ccq">
-          <span class="t4-badge-online" style="position:absolute;top:12px;right:12px;"></span>
-          <div class="t4-app-icon" style="background:rgba(229,161,0,0.12);color:var(--accent-gold);">
-            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" width="24" height="24"><line x1="12" y1="20" x2="12" y2="10"/><line x1="18" y1="20" x2="18" y2="4"/><line x1="6" y1="20" x2="6" y2="16"/></svg>
-          </div>
-          <div class="t4-app-label">CCQ<br>Qualidade</div>
-        </div>
-
-        <!-- AdamBoot IA -->
-        <div class="t4-app-card" data-module="adamboot">
-          <span class="t4-badge-online" style="position:absolute;top:12px;right:12px;"></span>
-          <div class="t4-app-icon" style="background:rgba(122,184,0,0.12);color:var(--accent-green);">
-            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" width="24" height="24"><path d="M12 3l1.5 5.5L19 10l-5.5 1.5L12 17l-1.5-5.5L5 10l5.5-1.5L12 3z"/></svg>
-          </div>
-          <div class="t4-app-label">AdamBoot IA</div>
-        </div>
-
       </div>
 
-      <!-- Section: SISTEMAS CORPORATIVOS -->
-      <div class="t4-section-title" style="margin-top:24px;">SISTEMAS CORPORATIVOS</div>
-      <div class="hub-app-grid">
-
-        <div class="t4-app-card" data-module="gdb">
-          <span class="t4-badge-online" style="position:absolute;top:12px;right:12px;"></span>
-          <div class="t4-app-icon" style="background:rgba(0,180,216,0.12);color:var(--accent-cyan);">
-            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" width="24" height="24"><ellipse cx="12" cy="5" rx="9" ry="3"/><path d="M21 12c0 1.66-4 3-9 3s-9-1.34-9-3"/><path d="M3 5v14c0 1.66 4 3 9 3s9-1.34 9-3V5"/></svg>
+      <!-- SISTEMAS CORPORATIVOS -->
+      <div class="hub-section-header" style="margin-top:20px;">
+        <span>SISTEMAS CORPORATIVOS</span>
+      </div>
+      <div class="hub-corp-grid">
+        <div class="t4-app-card hub-corp-card" data-module="gdb">
+          <div class="t4-app-icon hub-corp-icon" style="background:rgba(0,180,216,0.12);color:var(--accent-cyan);">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" width="20" height="20"><ellipse cx="12" cy="5" rx="9" ry="3"/><path d="M21 12c0 1.66-4 3-9 3s-9-1.34-9-3"/><path d="M3 5v14c0 1.66 4 3 9 3s9-1.34 9-3V5"/></svg>
           </div>
           <div class="t4-app-label">GDB</div>
         </div>
-
-        <div class="t4-app-card" data-module="edados">
-          <span class="t4-badge-online" style="position:absolute;top:12px;right:12px;"></span>
-          <div class="t4-app-icon" style="background:rgba(122,184,0,0.12);color:var(--accent-green);">
-            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" width="24" height="24"><line x1="18" y1="20" x2="18" y2="10"/><line x1="12" y1="20" x2="12" y2="4"/><line x1="6" y1="20" x2="6" y2="14"/><line x1="2" y1="20" x2="22" y2="20"/></svg>
+        <div class="t4-app-card hub-corp-card" data-module="edados">
+          <div class="t4-app-icon hub-corp-icon" style="background:rgba(122,184,0,0.12);color:var(--accent-green);">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" width="20" height="20"><line x1="18" y1="20" x2="18" y2="10"/><line x1="12" y1="20" x2="12" y2="4"/><line x1="6" y1="20" x2="6" y2="14"/><line x1="2" y1="20" x2="22" y2="20"/></svg>
           </div>
           <div class="t4-app-label">eDados</div>
         </div>
-
-        <div class="t4-app-card" data-module="equipfer">
-          <span class="t4-badge-online" style="position:absolute;top:12px;right:12px;"></span>
-          <div class="t4-app-icon" style="background:rgba(229,161,0,0.12);color:var(--accent-gold);">
-            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" width="24" height="24"><path d="M14.7 6.3a1 1 0 0 0 0 1.4l1.6 1.6a1 1 0 0 0 1.4 0l3.77-3.77a6 6 0 0 1-7.94 7.94l-6.91 6.91a2.12 2.12 0 0 1-3-3l6.91-6.91a6 6 0 0 1 7.94-7.94l-3.76 3.76z"/></svg>
-          </div>
-          <div class="t4-app-label">Equipfer</div>
-        </div>
-
-        <div class="t4-app-card" data-module="cco">
-          <span class="t4-badge-online" style="position:absolute;top:12px;right:12px;"></span>
-          <div class="t4-app-icon" style="background:rgba(0,140,126,0.12);color:var(--accent-teal);">
-            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" width="24" height="24"><rect x="2" y="3" width="20" height="14" rx="2" ry="2"/><line x1="8" y1="21" x2="16" y2="21"/><line x1="12" y1="17" x2="12" y2="21"/></svg>
-          </div>
-          <div class="t4-app-label">Painel CCO</div>
-        </div>
-
-        <div class="t4-app-card" data-module="convocacao">
-          <span class="t4-badge-online" style="position:absolute;top:12px;right:12px;"></span>
-          <div class="t4-app-icon" style="background:rgba(0,180,216,0.12);color:var(--accent-cyan);">
-            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" width="24" height="24"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72c.127.96.361 1.903.7 2.81a2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0 1 22 16.92z"/></svg>
-          </div>
-          <div class="t4-app-label">Convocacao</div>
-        </div>
-
-        <div class="t4-app-card" data-module="iris">
-          <span class="t4-badge-online" style="position:absolute;top:12px;right:12px;"></span>
-          <div class="t4-app-icon" style="background:rgba(122,184,0,0.12);color:var(--accent-green);">
-            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" width="24" height="24"><path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"/><circle cx="12" cy="12" r="3"/></svg>
-          </div>
-          <div class="t4-app-label">IRIS</div>
-        </div>
-
-        <div class="t4-app-card" data-module="central">
-          <span class="t4-badge-online" style="position:absolute;top:12px;right:12px;"></span>
-          <div class="t4-app-icon" style="background:rgba(229,161,0,0.12);color:var(--accent-gold);">
-            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" width="24" height="24"><circle cx="12" cy="12" r="10"/><line x1="12" y1="16" x2="12" y2="12"/><line x1="12" y1="8" x2="12.01" y2="8"/></svg>
-          </div>
-          <div class="t4-app-label">Central Info</div>
-        </div>
-
-        <div class="t4-app-card" data-module="ves">
-          <span class="t4-badge-online" style="position:absolute;top:12px;right:12px;"></span>
-          <div class="t4-app-icon" style="background:rgba(0,140,126,0.12);color:var(--accent-teal);">
-            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" width="24" height="24"><path d="M16 4h2a2 2 0 0 1 2 2v14a2 2 0 0 1-2 2H6a2 2 0 0 1-2-2V6a2 2 0 0 1 2-2h2"/><rect x="8" y="2" width="8" height="4" rx="1"/><path d="M9 14l2 2 4-4"/></svg>
+        <div class="t4-app-card hub-corp-card" data-module="ves">
+          <div class="t4-app-icon hub-corp-icon" style="background:rgba(0,140,126,0.12);color:var(--accent-teal);">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" width="20" height="20"><path d="M16 4h2a2 2 0 0 1 2 2v14a2 2 0 0 1-2 2H6a2 2 0 0 1-2-2V6a2 2 0 0 1 2-2h2"/><rect x="8" y="2" width="8" height="4" rx="1"/><path d="M9 14l2 2 4-4"/></svg>
           </div>
           <div class="t4-app-label">VES</div>
         </div>
-
-        <div class="t4-app-card" data-module="prontidao">
-          <span class="t4-badge-online" style="position:absolute;top:12px;right:12px;"></span>
-          <div class="t4-app-icon" style="background:rgba(0,180,216,0.12);color:var(--accent-cyan);">
-            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" width="24" height="24"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>
+        <div class="t4-app-card hub-corp-card" data-module="epi">
+          <div class="t4-app-icon hub-corp-icon" style="background:rgba(122,184,0,0.12);color:var(--accent-green);">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" width="20" height="20"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/><polyline points="9 12 11 14 15 10"/></svg>
           </div>
-          <div class="t4-app-label">Prontidao</div>
+          <div class="t4-app-label">EPI</div>
         </div>
-
-        <div class="t4-app-card" data-module="avisos">
-          <span class="t4-badge-online" style="position:absolute;top:12px;right:12px;"></span>
-          <div class="t4-app-icon" style="background:rgba(220,53,69,0.12);color:var(--status-danger);">
-            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" width="24" height="24"><path d="M10.29 3.86L1.82 18a2 2 0 0 0 1.71 3h16.94a2 2 0 0 0 1.71-3L13.71 3.86a2 2 0 0 0-3.42 0z"/><line x1="12" y1="9" x2="12" y2="13"/><line x1="12" y1="17" x2="12.01" y2="17"/></svg>
+        <div class="t4-app-card hub-corp-card" data-module="cco">
+          <div class="t4-app-icon hub-corp-icon" style="background:rgba(0,140,126,0.12);color:var(--accent-teal);">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" width="20" height="20"><rect x="2" y="3" width="20" height="14" rx="2" ry="2"/><line x1="8" y1="21" x2="16" y2="21"/><line x1="12" y1="17" x2="12" y2="21"/></svg>
+          </div>
+          <div class="t4-app-label">Painel CCO</div>
+        </div>
+        <div class="t4-app-card hub-corp-card" data-module="iris">
+          <div class="t4-app-icon hub-corp-icon" style="background:rgba(122,184,0,0.12);color:var(--accent-green);">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" width="20" height="20"><path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"/><circle cx="12" cy="12" r="3"/></svg>
+          </div>
+          <div class="t4-app-label">IRIS</div>
+        </div>
+        <div class="t4-app-card hub-corp-card" data-module="avisos">
+          <div class="t4-app-icon hub-corp-icon" style="background:rgba(220,53,69,0.12);color:var(--status-danger);">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" width="20" height="20"><path d="M10.29 3.86L1.82 18a2 2 0 0 0 1.71 3h16.94a2 2 0 0 0 1.71-3L13.71 3.86a2 2 0 0 0-3.42 0z"/><line x1="12" y1="9" x2="12" y2="13"/><line x1="12" y1="17" x2="12.01" y2="17"/></svg>
           </div>
           <div class="t4-app-label">Avisos</div>
         </div>
-
-        <div class="t4-app-card" data-module="epi">
-          <span class="t4-badge-online" style="position:absolute;top:12px;right:12px;"></span>
-          <div class="t4-app-icon" style="background:rgba(122,184,0,0.12);color:var(--accent-green);">
-            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" width="24" height="24"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/><polyline points="9 12 11 14 15 10"/></svg>
+        <div class="t4-app-card hub-corp-card" data-module="prontidao">
+          <div class="t4-app-icon hub-corp-icon" style="background:rgba(0,180,216,0.12);color:var(--accent-cyan);">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" width="20" height="20"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>
           </div>
-          <div class="t4-app-label">Solicitar EPI</div>
+          <div class="t4-app-label">Prontidao</div>
         </div>
-
+        <div class="t4-app-card hub-corp-card" data-module="convocacao">
+          <div class="t4-app-icon hub-corp-icon" style="background:rgba(0,180,216,0.12);color:var(--accent-cyan);">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" width="20" height="20"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72c.127.96.361 1.903.7 2.81a2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0 1 22 16.92z"/></svg>
+          </div>
+          <div class="t4-app-label">Convocacao</div>
+        </div>
+        <div class="t4-app-card hub-corp-card" data-module="equipfer">
+          <div class="t4-app-icon hub-corp-icon" style="background:rgba(229,161,0,0.12);color:var(--accent-gold);">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" width="20" height="20"><path d="M14.7 6.3a1 1 0 0 0 0 1.4l1.6 1.6a1 1 0 0 0 1.4 0l3.77-3.77a6 6 0 0 1-7.94 7.94l-6.91 6.91a2.12 2.12 0 0 1-3-3l6.91-6.91a6 6 0 0 1 7.94-7.94l-3.76 3.76z"/></svg>
+          </div>
+          <div class="t4-app-label">Equipfer</div>
+        </div>
+        <div class="t4-app-card hub-corp-card" data-module="central">
+          <div class="t4-app-icon hub-corp-icon" style="background:rgba(229,161,0,0.12);color:var(--accent-gold);">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" width="20" height="20"><circle cx="12" cy="12" r="10"/><line x1="12" y1="16" x2="12" y2="12"/><line x1="12" y1="8" x2="12.01" y2="8"/></svg>
+          </div>
+          <div class="t4-app-label">Central Info</div>
+        </div>
       </div>
 
       <!-- Spacer for bottom nav -->
@@ -1379,7 +1325,15 @@
         { term: 'Procedimento BOLL', cat: 'rof' },
         { term: 'Limite de velocidade', cat: 'rof' },
         { term: 'Configuracoes', cat: 'nav', navTo: 'config' },
-        { term: 'Alertas', cat: 'nav', navTo: 'alertas' }
+        { term: 'Alertas', cat: 'nav', navTo: 'alertas' },
+        { term: 'Emergência', cat: 'modulo', module: 'contatos' },
+        { term: 'Ligar CCO', cat: 'modulo', module: 'contatos' },
+        { term: 'Intrajornada', cat: 'modulo', module: 'timerJornada' },
+        { term: 'Acréscimo 10psi', cat: 'modulo', module: 'calculadora' },
+        { term: 'Gradiente compensado', cat: 'modulo', module: 'calculadora' },
+        { term: 'Exportar log', cat: 'modulo', module: 'logCco' },
+        { term: 'Registro rádio CCO', cat: 'modulo', module: 'logCco' },
+        { term: 'Avisos operacionais', cat: 'modulo', module: 'avisos' }
       ];
 
       /* ======= SPLASH SCREEN ======= */
@@ -1465,9 +1419,27 @@
         var user = T4.auth.getUser();
         if (!user) return;
 
+        var config = T4Config.load();
+
+        // Cockpit header
         document.getElementById('hub-user-avatar').textContent = user.avatar || user.nome.substring(0, 2).toUpperCase();
         document.getElementById('hub-user-name').textContent = user.nome;
-        document.getElementById('hub-yard-tag').textContent = user.patio || 'N/A';
+        document.getElementById('hub-yard-tag').textContent = config.patio || user.patio || 'N/A';
+
+        // Status row
+        var turnoEl = document.getElementById('hub-status-turno');
+        if (turnoEl) turnoEl.textContent = config.turno || 'A';
+
+        // Online/offline status
+        function updateHubOnline() {
+          var el = document.getElementById('hub-status-online');
+          if (el) el.innerHTML = navigator.onLine
+            ? '<span class="hub-status-dot"></span> Online'
+            : '<span class="hub-status-dot hub-status-dot--off"></span> Offline';
+        }
+        updateHubOnline();
+        window.addEventListener('online', updateHubOnline);
+        window.addEventListener('offline', updateHubOnline);
 
         // Clock
         function updateClock() {
@@ -1478,38 +1450,124 @@
         updateClock();
         setInterval(updateClock, 30000);
 
-        // Jornada chip — mostra tempo real se houver jornada ativa
-        function atualizarChipJornada() {
+        // ===== Operational Panel (Jornada) =====
+        function renderOpsPanel() {
+          var panel = document.getElementById('hub-ops-panel');
+          if (!panel) return;
           try {
             var jornada = JSON.parse(localStorage.getItem('t4-jornada-ativa'));
-            var chip = document.getElementById('hub-chip-jornada');
-            var val = document.getElementById('hub-chip-jornada-val');
             if (jornada && jornada.ativa) {
               var elapsed = Date.now() - new Date(jornada.inicio).getTime();
               var hours = Math.floor(elapsed / 3600000);
               var mins = Math.floor((elapsed % 3600000) / 60000);
-              val.textContent = String(hours).padStart(2, '0') + ':' + String(mins).padStart(2, '0');
-              chip.classList.remove('hub-chip--green', 'hub-chip--gold', 'hub-chip--red');
-              if (hours >= 11) chip.classList.add('hub-chip--red');
-              else if (hours >= 10) chip.classList.add('hub-chip--gold');
-              else chip.classList.add('hub-chip--green');
-            } else {
-              val.textContent = '--:--';
-            }
-          } catch (e) {}
-        }
-        atualizarChipJornada();
-        setInterval(atualizarChipJornada, 30000);
+              var totalMins = hours * 60 + mins;
+              var maxMins = 12 * 60;
+              var pct = Math.min(100, Math.round((totalMins / maxMins) * 100));
+              var timeStr = String(hours).padStart(2, '0') + ':' + String(mins).padStart(2, '0');
+              var phaseClass = hours >= 11 ? 'hub-ops-phase--red' : (hours >= 10 ? 'hub-ops-phase--gold' : 'hub-ops-phase--green');
 
-        // App card click handlers
+              var inicioDate = new Date(jornada.inicio);
+              var inicioStr = String(inicioDate.getHours()).padStart(2, '0') + ':' + String(inicioDate.getMinutes()).padStart(2, '0');
+
+              var nextAlert = '';
+              if (hours < 10) nextAlert = 'Prox alerta: 10h';
+              else if (hours < 11) nextAlert = 'Prox alerta: 11h';
+              else if (hours < 11.5) nextAlert = 'Prox alerta: 11h30';
+              else nextAlert = 'LIMITE PROXIMO';
+
+              panel.innerHTML =
+                '<div class="hub-ops-card ' + phaseClass + '">' +
+                  '<div class="hub-ops-top">' +
+                    '<div class="hub-ops-icon">&#9201;&#65039;</div>' +
+                    '<div class="hub-ops-title">JORNADA</div>' +
+                    '<div class="hub-ops-time">' + timeStr + ' / 12:00</div>' +
+                  '</div>' +
+                  '<div class="hub-ops-bar-wrap">' +
+                    '<div class="hub-ops-bar" style="width:' + pct + '%;"></div>' +
+                  '</div>' +
+                  '<div class="hub-ops-pct">' + pct + '%</div>' +
+                  '<div class="hub-ops-info">Inicio: ' + inicioStr + ' &middot; ' + nextAlert + '</div>' +
+                '</div>';
+            } else {
+              panel.innerHTML =
+                '<div class="hub-ops-card hub-ops-card--cta" id="hub-ops-cta">' +
+                  '<div class="hub-ops-icon">&#9201;&#65039;</div>' +
+                  '<div class="hub-ops-cta-text">' +
+                    '<div class="hub-ops-title">INICIAR JORNADA</div>' +
+                    '<div class="hub-ops-info">Nenhuma jornada ativa. Toque para iniciar o timer.</div>' +
+                  '</div>' +
+                '</div>';
+              var cta = document.getElementById('hub-ops-cta');
+              if (cta) cta.addEventListener('click', function () {
+                T4.utils.vibrate(10);
+                openModuleModal('timerJornada');
+              });
+            }
+          } catch (e) {
+            panel.innerHTML =
+              '<div class="hub-ops-card hub-ops-card--cta" id="hub-ops-cta">' +
+                '<div class="hub-ops-icon">&#9201;&#65039;</div>' +
+                '<div class="hub-ops-cta-text">' +
+                  '<div class="hub-ops-title">INICIAR JORNADA</div>' +
+                  '<div class="hub-ops-info">Nenhuma jornada ativa. Toque para iniciar o timer.</div>' +
+                '</div>' +
+              '</div>';
+          }
+        }
+        renderOpsPanel();
+        setInterval(renderOpsPanel, 30000);
+
+        // ===== Alerts Preview =====
+        function renderAlertsPreview() {
+          var container = document.getElementById('hub-alerts-preview');
+          if (!container) return;
+          var alertas = loadAlertas();
+          var unread = alertas.filter(function (a) { return !a.lido; }).slice(0, 3);
+          if (!unread.length) {
+            container.innerHTML = '<div class="hub-alert-empty">Nenhum aviso recente</div>';
+            return;
+          }
+          var html = '';
+          unread.forEach(function (a) {
+            var dotColors = { urgente: 'var(--status-danger)', atencao: 'var(--accent-gold)', ok: 'var(--accent-green)', info: 'var(--accent-cyan)' };
+            var dotColor = dotColors[a.tipo] || 'var(--text-muted)';
+            html += '<div class="hub-alert-item">' +
+              '<div class="hub-alert-dot" style="background:' + dotColor + ';"></div>' +
+              '<div class="hub-alert-text">' + a.titulo + '</div>' +
+            '</div>';
+          });
+          container.innerHTML = html;
+        }
+        renderAlertsPreview();
+
+        // ===== Quick Actions =====
+        document.querySelectorAll('.hub-qa-btn[data-qa]').forEach(function (btn) {
+          btn.addEventListener('click', function () {
+            T4.utils.vibrate(10);
+            var action = btn.getAttribute('data-qa');
+            if (action === 'emergencia') openModuleModal('contatos');
+            else if (action === 'logcco') openModuleModal('logCco');
+            else if (action === 'art') openModuleModal('art');
+            else if (action === 'boajornada') openModuleModal('boajornada');
+          });
+        });
+
+        // ===== Ver todos alertas =====
+        var verAlertasBtn = document.getElementById('hub-ver-alertas');
+        if (verAlertasBtn) {
+          verAlertasBtn.addEventListener('click', function () {
+            T4.utils.vibrate(10);
+            navigateTo('alertas');
+          });
+        }
+
+        // App card click handlers (tools + corp grids)
         document.querySelectorAll('.t4-app-card[data-module]').forEach(function (card) {
           card.addEventListener('click', function () {
             T4.utils.vibrate(10);
             openModuleModal(card.getAttribute('data-module'));
           });
         });
-
-        // Aura card
 
         // FAB
         document.getElementById('hub-fab').addEventListener('click', function () {
@@ -1518,7 +1576,7 @@
         });
 
         // Animate cards
-        T4.dom.animateList('.t4-app-card', 60);
+        T4.dom.animateList('.hub-tool-card, .hub-corp-card', 40);
 
         // Init subsystems
         initNavigation();
@@ -1922,8 +1980,18 @@
             return;
           }
 
+          function normalizeSearch(str) {
+            return str.toLowerCase().normalize('NFD').replace(/[\u0300-\u036f]/g, '');
+          }
+          var qn = normalizeSearch(q);
           var matches = SEARCH_INDEX.filter(function (item) {
-            return item.term.toLowerCase().indexOf(q) !== -1;
+            return normalizeSearch(item.term).indexOf(qn) !== -1;
+          }).sort(function (a, b) {
+            var an = normalizeSearch(a.term);
+            var bn = normalizeSearch(b.term);
+            var aExact = an === qn ? 0 : an.indexOf(qn) === 0 ? 1 : 2;
+            var bExact = bn === qn ? 0 : bn.indexOf(qn) === 0 ? 1 : 2;
+            return aExact - bExact;
           });
 
           if (matches.length) {
