@@ -44,6 +44,16 @@
       "name": "CCQ",
       "url": "/modules/ccq/index.html",
       "description": "Círculo de Controle de Qualidade"
+    },
+    {
+      "name": "Timer Jornada",
+      "url": "/modules/timer-jornada/index.html",
+      "description": "Controle de jornada 12h"
+    },
+    {
+      "name": "Contatos Rápidos",
+      "url": "/modules/contatos/index.html",
+      "description": "Contatos de emergência e operacionais"
     }
   ]
 }

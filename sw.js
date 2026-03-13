@@ -2,7 +2,7 @@
    T4 SERVICE WORKER — Cache e offline
    ============================================ */
 
-const CACHE_NAME = 't4-trilho40-v1';
+const CACHE_NAME = 'T4-v2';
 
 const PRECACHE_URLS = [
   '/',
@@ -17,7 +17,35 @@ const PRECACHE_URLS = [
   'shared/js/t4-auth.js',
   'shared/js/t4-notifications.js',
   'modules/hub/js/hub-dashboard.js',
-  'modules/hub/js/hub-quick-actions.js'
+  'modules/hub/js/hub-quick-actions.js',
+  /* Boa Jornada */
+  'modules/boa-jornada/index.html',
+  'modules/boa-jornada/css/boa-jornada.css',
+  'modules/boa-jornada/js/boa-jornada-app.js',
+  /* ART */
+  'modules/art/index.html',
+  'modules/art/css/art.css',
+  'modules/art/js/art-app.js',
+  /* Timer Jornada */
+  'modules/timer-jornada/index.html',
+  'modules/timer-jornada/css/timer-jornada.css',
+  'modules/timer-jornada/js/timer-jornada-app.js',
+  /* Log CCO */
+  'modules/log-cco/index.html',
+  'modules/log-cco/css/log-cco.css',
+  'modules/log-cco/js/log-cco-app.js',
+  /* Calculadora */
+  'modules/calculadora/index.html',
+  'modules/calculadora/css/calculadora.css',
+  'modules/calculadora/js/calculadora-app.js',
+  /* Contatos */
+  'modules/contatos/index.html',
+  'modules/contatos/css/contatos.css',
+  'modules/contatos/js/contatos-app.js',
+  /* Avisos */
+  'modules/avisos/index.html',
+  'modules/avisos/css/avisos.css',
+  'modules/avisos/js/avisos-app.js'
 ];
 
 /* Instalação — pré-cacheia recursos essenciais */
