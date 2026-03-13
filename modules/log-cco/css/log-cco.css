@@ -1,0 +1,568 @@
+/* ============================================
+   LOG CCO — Centro de Controle Operacional
+   Communications Log Styles
+   ============================================ */
+
+/* Header */
+.lc-header {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  padding: 16px 0 12px;
+  position: sticky;
+  top: 0;
+  z-index: 50;
+  background: var(--bg-primary);
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
+  border-bottom: 1px solid var(--border);
+  margin: 0 -16px;
+  padding-left: 16px;
+  padding-right: 16px;
+}
+
+.lc-back {
+  width: 40px;
+  height: 40px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: none;
+  border: none;
+  color: var(--text-primary);
+  cursor: pointer;
+  border-radius: var(--radius-sm);
+  flex-shrink: 0;
+}
+
+.lc-back:active { background: var(--bg-card); }
+
+.lc-title {
+  font-size: 20px;
+  font-weight: 700;
+  color: var(--text-primary);
+  flex: 1;
+}
+
+/* ============================================
+   TURNO SUMMARY CARD
+   ============================================ */
+.lc-turno-card {
+  background: var(--bg-card);
+  border: 1px solid var(--border);
+  border-radius: var(--radius-lg);
+  padding: 16px;
+  margin-bottom: 16px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+}
+
+.lc-turno-info {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+
+.lc-turno-date {
+  font-family: var(--font-display);
+  font-size: 15px;
+  font-weight: 600;
+  color: var(--text-primary);
+}
+
+.lc-turno-count {
+  font-size: 13px;
+  color: var(--text-secondary);
+}
+
+.lc-turno-badge {
+  background: var(--accent-teal-glow);
+  color: var(--accent-teal);
+  font-family: var(--font-display);
+  font-size: 22px;
+  font-weight: 700;
+  width: 48px;
+  height: 48px;
+  border-radius: var(--radius-md);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+}
+
+/* ============================================
+   NEW REGISTRO BUTTON
+   ============================================ */
+.lc-new-btn {
+  width: 100%;
+  padding: 16px;
+  background: linear-gradient(135deg, var(--accent-teal), var(--accent-cyan));
+  border: none;
+  border-radius: var(--radius-lg);
+  color: white;
+  font-size: 15px;
+  font-weight: 700;
+  font-family: var(--font-body);
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  margin-bottom: 16px;
+  transition: transform 0.2s ease;
+  box-shadow: var(--shadow-md);
+}
+
+.lc-new-btn:active { transform: scale(0.98); }
+
+/* ============================================
+   QUICK REGISTRATION CHIPS
+   ============================================ */
+.lc-chips-row {
+  display: flex;
+  gap: 8px;
+  overflow-x: auto;
+  padding-bottom: 8px;
+  margin-bottom: 16px;
+  -webkit-overflow-scrolling: touch;
+  scrollbar-width: none;
+}
+
+.lc-chips-row::-webkit-scrollbar { display: none; }
+
+.lc-chip {
+  flex-shrink: 0;
+  padding: 10px 14px;
+  background: var(--bg-card);
+  border: 1px solid var(--border);
+  border-radius: var(--radius-full);
+  color: var(--text-secondary);
+  font-size: 13px;
+  font-weight: 500;
+  font-family: var(--font-body);
+  cursor: pointer;
+  transition: all 0.2s ease;
+  white-space: nowrap;
+  display: flex;
+  align-items: center;
+  gap: 6px;
+}
+
+.lc-chip:active {
+  transform: scale(0.96);
+  background: var(--bg-card-hover);
+  border-color: var(--border-active);
+  color: var(--text-primary);
+}
+
+/* ============================================
+   SECTION LABEL
+   ============================================ */
+.lc-section-label {
+  font-size: 11px;
+  font-weight: 700;
+  letter-spacing: 2px;
+  text-transform: uppercase;
+  color: var(--text-muted);
+  margin-bottom: 12px;
+}
+
+/* ============================================
+   LOG ENTRY CARDS
+   ============================================ */
+.lc-entry {
+  background: var(--bg-card);
+  border: 1px solid var(--border);
+  border-radius: var(--radius-lg);
+  padding: 14px 16px;
+  margin-bottom: 10px;
+  transition: all 0.2s ease;
+  border-left: 4px solid var(--accent-teal);
+}
+
+.lc-entry:active { transform: scale(0.98); }
+
+.lc-entry-top {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  margin-bottom: 6px;
+}
+
+.lc-entry-icon {
+  font-size: 18px;
+  flex-shrink: 0;
+  width: 28px;
+  text-align: center;
+}
+
+.lc-entry-categoria {
+  font-size: 13px;
+  font-weight: 600;
+  color: var(--text-primary);
+  flex: 1;
+  min-width: 0;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.lc-entry-hora {
+  font-family: var(--font-display);
+  font-size: 13px;
+  font-weight: 600;
+  color: var(--accent-cyan);
+  flex-shrink: 0;
+}
+
+.lc-entry-desc {
+  font-size: 13px;
+  color: var(--text-secondary);
+  line-height: 1.5;
+  margin-bottom: 8px;
+  padding-left: 38px;
+}
+
+.lc-entry-bottom {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding-left: 38px;
+}
+
+.lc-dir-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 4px;
+  padding: 3px 10px;
+  border-radius: var(--radius-full);
+  font-size: 11px;
+  font-weight: 600;
+  font-family: var(--font-display);
+}
+
+.lc-dir-badge.ccoEu {
+  background: var(--accent-cyan-glow);
+  color: var(--accent-cyan);
+}
+
+.lc-dir-badge.euCco {
+  background: var(--accent-green-glow);
+  color: var(--accent-green);
+}
+
+.lc-dir-badge.ambos {
+  background: var(--accent-gold-glow);
+  color: var(--accent-gold);
+}
+
+.lc-entry-despachador {
+  font-size: 11px;
+  color: var(--text-muted);
+}
+
+/* Entry color accents by category */
+.lc-entry[data-cat="emergencia"] { border-left-color: var(--status-danger); }
+.lc-entry[data-cat="restricao"] { border-left-color: var(--status-warning); }
+.lc-entry[data-cat="autorizacao"] { border-left-color: var(--accent-green); }
+.lc-entry[data-cat="info"] { border-left-color: var(--accent-cyan); }
+
+/* Delete button on entry */
+.lc-entry-delete {
+  background: none;
+  border: none;
+  color: var(--text-muted);
+  cursor: pointer;
+  padding: 4px;
+  border-radius: var(--radius-xs);
+  font-size: 14px;
+  opacity: 0.6;
+  transition: opacity 0.2s;
+}
+
+.lc-entry-delete:active {
+  opacity: 1;
+  color: var(--status-danger);
+}
+
+/* ============================================
+   EXPORT BUTTON
+   ============================================ */
+.lc-export-btn {
+  width: 100%;
+  padding: 14px;
+  background: var(--bg-card);
+  border: 1px solid var(--border);
+  border-radius: var(--radius-lg);
+  color: var(--text-secondary);
+  font-size: 14px;
+  font-weight: 600;
+  font-family: var(--font-body);
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  margin-top: 20px;
+  transition: all 0.2s ease;
+}
+
+.lc-export-btn:active {
+  transform: scale(0.98);
+  border-color: var(--border-active);
+  color: var(--text-primary);
+}
+
+/* ============================================
+   EMPTY STATE
+   ============================================ */
+.lc-empty {
+  text-align: center;
+  padding: 48px 20px;
+  color: var(--text-muted);
+}
+
+.lc-empty-icon {
+  font-size: 48px;
+  margin-bottom: 12px;
+  opacity: 0.5;
+}
+
+.lc-empty-text {
+  font-size: 14px;
+}
+
+/* ============================================
+   DRAWER OVERLAY
+   ============================================ */
+.lc-overlay {
+  position: fixed;
+  inset: 0;
+  background: rgba(0, 0, 0, 0.6);
+  z-index: 100;
+  opacity: 0;
+  transition: opacity 0.3s ease;
+  pointer-events: none;
+}
+
+.lc-overlay.active {
+  opacity: 1;
+  pointer-events: auto;
+}
+
+/* ============================================
+   DRAWER FORM
+   ============================================ */
+.lc-drawer {
+  position: fixed;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  z-index: 110;
+  background: var(--bg-elevated);
+  border-top-left-radius: var(--radius-lg);
+  border-top-right-radius: var(--radius-lg);
+  padding: 20px 16px;
+  padding-bottom: calc(20px + env(safe-area-inset-bottom, 0px));
+  transform: translateY(100%);
+  transition: transform 0.35s cubic-bezier(0.32, 0.72, 0, 1);
+  max-height: 85vh;
+  overflow-y: auto;
+  box-shadow: var(--shadow-lg);
+}
+
+.lc-drawer.active {
+  transform: translateY(0);
+}
+
+.lc-drawer-handle {
+  width: 36px;
+  height: 4px;
+  background: var(--text-muted);
+  border-radius: 2px;
+  margin: 0 auto 16px;
+  opacity: 0.4;
+}
+
+.lc-drawer-title {
+  font-size: 17px;
+  font-weight: 700;
+  color: var(--text-primary);
+  margin-bottom: 20px;
+}
+
+/* Form fields */
+.lc-field {
+  margin-bottom: 16px;
+}
+
+.lc-field-label {
+  display: block;
+  font-size: 12px;
+  font-weight: 600;
+  color: var(--text-secondary);
+  margin-bottom: 6px;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+}
+
+.lc-field-input,
+.lc-field-select,
+.lc-field-textarea {
+  width: 100%;
+  padding: 12px 14px;
+  background: var(--bg-input);
+  border: 1px solid var(--border);
+  border-radius: var(--radius-sm);
+  color: var(--text-primary);
+  font-family: var(--font-body);
+  font-size: 15px;
+  outline: none;
+  transition: border-color 0.2s ease;
+  box-sizing: border-box;
+  -webkit-appearance: none;
+  appearance: none;
+}
+
+.lc-field-input:focus,
+.lc-field-select:focus,
+.lc-field-textarea:focus {
+  border-color: var(--border-active);
+}
+
+.lc-field-select {
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='12' viewBox='0 0 24 24' fill='none' stroke='%2394a3b8' stroke-width='2'%3E%3Cpath d='M6 9l6 6 6-6'/%3E%3C/svg%3E");
+  background-repeat: no-repeat;
+  background-position: right 12px center;
+  padding-right: 36px;
+}
+
+.lc-field-textarea {
+  min-height: 80px;
+  resize: vertical;
+  line-height: 1.5;
+}
+
+/* Direction selector */
+.lc-dir-selector {
+  display: flex;
+  gap: 8px;
+}
+
+.lc-dir-btn {
+  flex: 1;
+  padding: 10px 8px;
+  background: var(--bg-input);
+  border: 1px solid var(--border);
+  border-radius: var(--radius-sm);
+  color: var(--text-secondary);
+  font-size: 12px;
+  font-weight: 600;
+  font-family: var(--font-display);
+  cursor: pointer;
+  transition: all 0.2s ease;
+  text-align: center;
+}
+
+.lc-dir-btn.active {
+  border-color: var(--accent-teal);
+  background: var(--accent-teal-glow);
+  color: var(--accent-teal);
+}
+
+.lc-dir-btn:active { transform: scale(0.96); }
+
+/* Submit button */
+.lc-submit-btn {
+  width: 100%;
+  padding: 16px;
+  background: linear-gradient(135deg, var(--accent-teal), var(--accent-cyan));
+  border: none;
+  border-radius: var(--radius-md);
+  color: white;
+  font-size: 15px;
+  font-weight: 700;
+  font-family: var(--font-body);
+  cursor: pointer;
+  margin-top: 8px;
+  transition: transform 0.2s ease;
+}
+
+.lc-submit-btn:active { transform: scale(0.98); }
+
+.lc-submit-btn:disabled {
+  opacity: 0.5;
+  pointer-events: none;
+}
+
+/* Cancel link */
+.lc-cancel-btn {
+  width: 100%;
+  padding: 12px;
+  background: none;
+  border: none;
+  color: var(--text-muted);
+  font-size: 14px;
+  font-family: var(--font-body);
+  cursor: pointer;
+  margin-top: 4px;
+}
+
+/* ============================================
+   TOAST
+   ============================================ */
+.lc-toast {
+  position: fixed;
+  bottom: 80px;
+  left: 50%;
+  transform: translateX(-50%) translateY(20px);
+  background: var(--bg-elevated);
+  border: 1px solid var(--border);
+  border-radius: var(--radius-md);
+  padding: 12px 20px;
+  color: var(--text-primary);
+  font-size: 14px;
+  font-weight: 500;
+  box-shadow: var(--shadow-lg);
+  z-index: 200;
+  opacity: 0;
+  transition: all 0.3s ease;
+  pointer-events: none;
+  white-space: nowrap;
+}
+
+.lc-toast.show {
+  opacity: 1;
+  transform: translateX(-50%) translateY(0);
+}
+
+/* ============================================
+   RESPONSIVE / LIGHT MODE
+   ============================================ */
+@media (prefers-color-scheme: light) {
+  .lc-header {
+    background: var(--bg-primary);
+  }
+
+  .lc-drawer {
+    background: var(--bg-elevated);
+  }
+
+  .lc-overlay.active {
+    background: rgba(0, 0, 0, 0.35);
+  }
+}
+
+@media (min-width: 480px) {
+  .lc-drawer {
+    max-width: 420px;
+    left: 50%;
+    transform: translateX(-50%) translateY(100%);
+  }
+
+  .lc-drawer.active {
+    transform: translateX(-50%) translateY(0);
+  }
+}
