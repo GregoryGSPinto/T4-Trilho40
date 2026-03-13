@@ -1,0 +1,557 @@
+/* ============================================
+   AVISOS OPERACIONAIS — Styles
+   ============================================ */
+
+/* Header */
+.avisos-header {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  padding: 16px 0 20px;
+}
+
+.avisos-back {
+  width: 40px;
+  height: 40px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: none;
+  border: none;
+  color: var(--text-primary);
+  font-size: 1.25rem;
+  cursor: pointer;
+  border-radius: var(--radius-sm);
+}
+
+.avisos-back:active {
+  background: var(--bg-card);
+}
+
+.avisos-title {
+  font-size: 20px;
+  font-weight: 700;
+  color: var(--text-primary);
+  flex: 1;
+}
+
+.avisos-count {
+  font-family: var(--font-display);
+  font-size: 12px;
+  font-weight: 700;
+  color: white;
+  background: var(--status-danger);
+  padding: 2px 8px;
+  border-radius: 10px;
+  min-width: 20px;
+  text-align: center;
+}
+
+/* Filters */
+.aviso-filtros {
+  display: flex;
+  gap: 8px;
+  margin-bottom: 20px;
+  overflow-x: auto;
+  scrollbar-width: none;
+  -webkit-overflow-scrolling: touch;
+}
+
+.aviso-filtros::-webkit-scrollbar { display: none; }
+
+.aviso-filtro {
+  flex-shrink: 0;
+  padding: 8px 16px;
+  background: var(--bg-card);
+  border: 1px solid var(--border);
+  border-radius: 20px;
+  font-size: 12px;
+  font-weight: 600;
+  color: var(--text-secondary);
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+
+.aviso-filtro.active {
+  background: rgba(0, 140, 126, 0.12);
+  border-color: var(--accent-teal);
+  color: var(--accent-teal);
+}
+
+/* Aviso Card */
+.aviso-card {
+  background: var(--bg-card);
+  border: 1px solid var(--border);
+  border-radius: var(--radius-lg);
+  padding: 16px;
+  margin-bottom: 12px;
+  border-left: 4px solid transparent;
+  transition: all 0.2s ease;
+}
+
+.aviso-card.urgente { border-left-color: var(--status-danger); }
+.aviso-card.atencao { border-left-color: var(--accent-gold); }
+.aviso-card.info { border-left-color: var(--accent-green); }
+
+.aviso-card.expirado {
+  opacity: 0.45;
+}
+
+.aviso-card-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 6px;
+}
+
+.aviso-badge-tipo {
+  display: inline-flex;
+  align-items: center;
+  gap: 4px;
+  font-size: 10px;
+  font-weight: 700;
+  letter-spacing: 1px;
+  text-transform: uppercase;
+  padding: 3px 8px;
+  border-radius: 6px;
+}
+
+.aviso-badge-tipo.urgente {
+  background: rgba(220, 53, 69, 0.12);
+  color: var(--status-danger);
+}
+
+.aviso-badge-tipo.atencao {
+  background: rgba(229, 161, 0, 0.12);
+  color: var(--accent-gold);
+}
+
+.aviso-badge-tipo.info {
+  background: rgba(122, 184, 0, 0.12);
+  color: var(--accent-green);
+}
+
+.aviso-categoria {
+  font-size: 13px;
+  font-weight: 600;
+  color: var(--text-primary);
+}
+
+.aviso-localizacao {
+  font-family: var(--font-display);
+  font-size: 11px;
+  color: var(--text-secondary);
+  margin-top: 4px;
+  display: flex;
+  align-items: center;
+  gap: 4px;
+}
+
+.aviso-descricao {
+  font-size: 14px;
+  color: var(--text-primary);
+  line-height: 1.5;
+  margin: 8px 0;
+}
+
+.aviso-footer {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-top: 10px;
+  font-size: 11px;
+  color: var(--text-muted);
+}
+
+.aviso-autor {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  min-width: 0;
+  overflow: hidden;
+}
+
+.aviso-autor span {
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.aviso-confirmar {
+  display: flex;
+  align-items: center;
+  gap: 4px;
+  background: var(--bg-elevated, #1a1f26);
+  border: 1px solid var(--border);
+  border-radius: 20px;
+  padding: 4px 10px;
+  font-size: 11px;
+  color: var(--text-secondary);
+  cursor: pointer;
+  transition: all 0.2s ease;
+  flex-shrink: 0;
+}
+
+.aviso-confirmar.confirmado {
+  background: rgba(0, 140, 126, 0.12);
+  border-color: var(--accent-teal);
+  color: var(--accent-teal);
+}
+
+.aviso-confirmar:active {
+  transform: scale(0.95);
+}
+
+/* Empty state */
+.avisos-empty {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: 60px 0;
+  color: var(--text-muted);
+  font-size: 14px;
+  text-align: center;
+}
+
+/* FAB */
+.aviso-fab {
+  position: fixed;
+  bottom: calc(24px + env(safe-area-inset-bottom, 0px));
+  right: 20px;
+  width: 56px;
+  height: 56px;
+  border-radius: 50%;
+  background: linear-gradient(135deg, #dc3545, #ff6b6b);
+  border: none;
+  color: white;
+  font-size: 28px;
+  cursor: pointer;
+  box-shadow: 0 4px 20px rgba(220, 53, 69, 0.35);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 100;
+  transition: all 0.2s ease;
+}
+
+.aviso-fab:active { transform: scale(0.9); }
+
+@media (min-width: 768px) {
+  .aviso-fab {
+    bottom: 32px;
+    right: 32px;
+    width: 64px;
+    height: 64px;
+  }
+}
+
+/* ============================================
+   MODAL — Novo Aviso
+   ============================================ */
+.aviso-modal-overlay {
+  position: fixed;
+  inset: 0;
+  background: rgba(0, 0, 0, 0.7);
+  backdrop-filter: blur(4px);
+  z-index: 200;
+  opacity: 0;
+  visibility: hidden;
+  transition: all 0.3s ease;
+}
+
+.aviso-modal-overlay.active {
+  opacity: 1;
+  visibility: visible;
+}
+
+.aviso-modal-drawer {
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  max-width: 540px;
+  margin: 0 auto;
+  background: var(--bg-secondary, #111820);
+  border-radius: var(--radius-xl, 16px) var(--radius-xl, 16px) 0 0;
+  padding: 20px 20px calc(20px + env(safe-area-inset-bottom, 0px));
+  z-index: 201;
+  transform: translateY(100%);
+  transition: transform 0.35s cubic-bezier(0.16, 1, 0.3, 1);
+  max-height: 90vh;
+  overflow-y: auto;
+}
+
+.aviso-modal-overlay.active .aviso-modal-drawer {
+  transform: translateY(0);
+}
+
+@media (min-width: 768px) {
+  .aviso-modal-drawer {
+    border-radius: var(--radius-xl, 16px);
+    bottom: auto;
+    top: 50%;
+    left: 50%;
+    right: auto;
+    transform: translate(-50%, -50%) scale(0.95);
+    opacity: 0;
+    max-height: 85vh;
+    width: 90%;
+  }
+
+  .aviso-modal-overlay.active .aviso-modal-drawer {
+    transform: translate(-50%, -50%) scale(1);
+    opacity: 1;
+  }
+}
+
+.aviso-modal-handle {
+  width: 36px;
+  height: 4px;
+  background: var(--text-muted);
+  border-radius: 4px;
+  margin: 0 auto 16px;
+  opacity: 0.4;
+}
+
+.aviso-modal-title {
+  font-size: 18px;
+  font-weight: 700;
+  color: var(--text-primary);
+  margin-bottom: 20px;
+}
+
+/* Form sections */
+.aviso-form-section {
+  margin-bottom: 20px;
+}
+
+.aviso-form-label {
+  font-size: 11px;
+  letter-spacing: 2px;
+  text-transform: uppercase;
+  color: var(--text-muted);
+  font-weight: 600;
+  margin-bottom: 10px;
+  display: block;
+}
+
+/* Tipo selector */
+.aviso-tipo-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 8px;
+}
+
+.aviso-tipo-btn {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 6px;
+  padding: 14px 8px;
+  background: var(--bg-card);
+  border: 2px solid var(--border);
+  border-radius: var(--radius-lg, 12px);
+  cursor: pointer;
+  transition: all 0.2s ease;
+  font-size: 12px;
+  font-weight: 600;
+  color: var(--text-secondary);
+}
+
+.aviso-tipo-btn .tipo-dot {
+  width: 14px;
+  height: 14px;
+  border-radius: 50%;
+}
+
+.aviso-tipo-btn[data-tipo="urgente"] .tipo-dot { background: var(--status-danger); }
+.aviso-tipo-btn[data-tipo="atencao"] .tipo-dot { background: var(--accent-gold); }
+.aviso-tipo-btn[data-tipo="info"] .tipo-dot { background: var(--accent-green); }
+
+.aviso-tipo-btn.selected {
+  border-color: var(--accent-teal);
+  background: rgba(0, 140, 126, 0.08);
+}
+
+/* Select / Input */
+.aviso-select,
+.aviso-input {
+  width: 100%;
+  padding: 12px 14px;
+  background: var(--bg-card);
+  border: 1px solid var(--border);
+  border-radius: var(--radius-lg, 12px);
+  color: var(--text-primary);
+  font-size: 14px;
+  font-family: inherit;
+  outline: none;
+  transition: border-color 0.2s ease;
+  box-sizing: border-box;
+  -webkit-appearance: none;
+}
+
+.aviso-select:focus,
+.aviso-input:focus,
+.aviso-textarea:focus {
+  border-color: var(--accent-teal);
+}
+
+.aviso-select {
+  cursor: pointer;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='12' viewBox='0 0 24 24' fill='none' stroke='%2394a3b8' stroke-width='2'%3E%3Cpath d='M6 9l6 6 6-6'/%3E%3C/svg%3E");
+  background-repeat: no-repeat;
+  background-position: right 12px center;
+  padding-right: 36px;
+}
+
+.aviso-select option {
+  background: var(--bg-secondary, #111820);
+  color: var(--text-primary);
+}
+
+/* Location toggle */
+.aviso-loc-toggle {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 8px;
+  margin-bottom: 12px;
+}
+
+.aviso-loc-btn {
+  padding: 10px;
+  background: var(--bg-card);
+  border: 2px solid var(--border);
+  border-radius: var(--radius-lg, 12px);
+  text-align: center;
+  font-size: 13px;
+  font-weight: 600;
+  color: var(--text-secondary);
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+
+.aviso-loc-btn.selected {
+  border-color: var(--accent-teal);
+  background: rgba(0, 140, 126, 0.08);
+  color: var(--accent-teal);
+}
+
+.aviso-km-row {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 8px;
+  margin-bottom: 8px;
+}
+
+/* Textarea */
+.aviso-textarea {
+  width: 100%;
+  min-height: 100px;
+  padding: 12px 14px;
+  background: var(--bg-card);
+  border: 1px solid var(--border);
+  border-radius: var(--radius-lg, 12px);
+  color: var(--text-primary);
+  font-size: 14px;
+  font-family: inherit;
+  outline: none;
+  resize: vertical;
+  transition: border-color 0.2s ease;
+  box-sizing: border-box;
+}
+
+/* Checkboxes */
+.aviso-check-list {
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+}
+
+.aviso-check-item {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  padding: 10px 12px;
+  cursor: pointer;
+  border-radius: 8px;
+  transition: background 0.15s ease;
+}
+
+.aviso-check-item:active {
+  background: var(--bg-card);
+}
+
+.aviso-check-item input[type="checkbox"] {
+  width: 18px;
+  height: 18px;
+  accent-color: var(--accent-teal);
+  cursor: pointer;
+}
+
+.aviso-check-item label {
+  font-size: 14px;
+  color: var(--text-primary);
+  cursor: pointer;
+}
+
+/* Validade grid */
+.aviso-validade-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 8px;
+}
+
+.aviso-validade-btn {
+  padding: 10px;
+  background: var(--bg-card);
+  border: 2px solid var(--border);
+  border-radius: var(--radius-lg, 12px);
+  text-align: center;
+  font-size: 13px;
+  font-weight: 600;
+  color: var(--text-secondary);
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+
+.aviso-validade-btn.selected {
+  border-color: var(--accent-teal);
+  background: rgba(0, 140, 126, 0.08);
+  color: var(--accent-teal);
+}
+
+/* Submit */
+.aviso-submit-btn {
+  width: 100%;
+  padding: 16px;
+  background: linear-gradient(135deg, #dc3545, #ff6b6b);
+  border: none;
+  border-radius: var(--radius-lg, 12px);
+  color: white;
+  font-size: 15px;
+  font-weight: 700;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+}
+
+.aviso-submit-btn:active {
+  transform: scale(0.98);
+}
+
+.aviso-cancel-btn {
+  width: 100%;
+  padding: 14px;
+  background: var(--bg-card);
+  border: 1px solid var(--border);
+  border-radius: var(--radius-lg, 12px);
+  color: var(--text-secondary);
+  font-size: 14px;
+  font-weight: 600;
+  cursor: pointer;
+  margin-top: 8px;
+}

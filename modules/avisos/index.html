@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, viewport-fit=cover">
+  <meta name="theme-color" content="#0a0b0f">
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <title>T4 — Avisos Operacionais</title>
+
+  <!-- T4 Design System -->
+  <link rel="stylesheet" href="../../shared/css/t4-design-system.css">
+  <link rel="stylesheet" href="../../shared/css/t4-components.css">
+  <link rel="stylesheet" href="../../shared/css/t4-animations.css">
+
+  <!-- Module CSS -->
+  <link rel="stylesheet" href="css/avisos.css">
+</head>
+<body>
+
+  <!-- Background Effects -->
+  <div class="t4-bg-glow t4-bg-glow-teal"></div>
+  <div class="t4-bg-glow t4-bg-glow-cyan"></div>
+
+  <div class="t4-app">
+
+    <!-- Header -->
+    <div class="avisos-header">
+      <button class="avisos-back" id="avisos-back" aria-label="Voltar">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" width="22" height="22"><path d="M15 18l-6-6 6-6"/></svg>
+      </button>
+      <h1 class="avisos-title">Avisos Operacionais</h1>
+      <span class="avisos-count" id="avisos-active-count">0</span>
+    </div>
+
+    <!-- Filters -->
+    <div class="aviso-filtros">
+      <button class="aviso-filtro active" data-filter="todos">Todos</button>
+      <button class="aviso-filtro" data-filter="via">Via</button>
+      <button class="aviso-filtro" data-filter="patio">Patio</button>
+      <button class="aviso-filtro" data-filter="meus">Meus</button>
+    </div>
+
+    <!-- Feed -->
+    <div id="avisos-feed"></div>
+
+    <!-- Spacer -->
+    <div style="height:80px;"></div>
+
+  </div>
+
+  <!-- FAB -->
+  <button class="aviso-fab" id="aviso-fab" aria-label="Novo Aviso">
+    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" width="26" height="26"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg>
+  </button>
+
+  <!-- Modal: Novo Aviso -->
+  <div class="aviso-modal-overlay" id="aviso-modal-overlay">
+    <div class="aviso-modal-drawer" id="aviso-modal-content"></div>
+  </div>
+
+  <!-- Scripts -->
+  <script src="js/avisos-app.js"></script>
+
+</body>
+</html>
