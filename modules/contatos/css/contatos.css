@@ -1,0 +1,519 @@
+/* ===== Contatos Rápidos — T4 Module ===== */
+
+/* Header */
+.ct-header {
+  position: sticky;
+  top: 0;
+  z-index: 100;
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  padding: 16px 20px;
+  background: color-mix(in srgb, var(--bg-primary) 80%, transparent);
+  backdrop-filter: blur(20px) saturate(1.4);
+  -webkit-backdrop-filter: blur(20px) saturate(1.4);
+  border-bottom: 1px solid var(--border);
+}
+
+.ct-back {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 38px;
+  height: 38px;
+  border: 1px solid var(--border);
+  border-radius: var(--radius-sm);
+  background: var(--bg-card);
+  color: var(--text-secondary);
+  cursor: pointer;
+  transition: all 0.2s ease;
+  flex-shrink: 0;
+}
+
+.ct-back:hover {
+  background: var(--bg-card-hover);
+  border-color: var(--border-hover);
+  color: var(--text-primary);
+}
+
+.ct-back:active {
+  transform: scale(0.92);
+}
+
+.ct-title {
+  font-family: var(--font-display);
+  font-size: 1.15rem;
+  font-weight: 700;
+  color: var(--text-primary);
+  letter-spacing: -0.02em;
+  margin: 0;
+}
+
+/* Search */
+.ct-search-wrap {
+  padding: 12px 20px 4px;
+}
+
+.ct-search {
+  width: 100%;
+  padding: 12px 16px 12px 42px;
+  font-family: var(--font-body);
+  font-size: 0.95rem;
+  color: var(--text-primary);
+  background: var(--bg-input);
+  border: 1px solid var(--border);
+  border-radius: var(--radius-md);
+  outline: none;
+  transition: border-color 0.2s ease, box-shadow 0.2s ease;
+  box-sizing: border-box;
+}
+
+.ct-search::placeholder {
+  color: var(--text-muted);
+}
+
+.ct-search:focus {
+  border-color: var(--border-active);
+  box-shadow: 0 0 0 3px color-mix(in srgb, var(--accent-teal) 15%, transparent);
+}
+
+.ct-search-wrap {
+  position: relative;
+}
+
+.ct-search-icon {
+  position: absolute;
+  left: 34px;
+  top: 50%;
+  transform: translateY(-50%);
+  color: var(--text-muted);
+  pointer-events: none;
+  display: flex;
+  align-items: center;
+}
+
+/* Emergency Highlight Button */
+.ct-emergency-btn {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  margin: 16px 20px 8px;
+  padding: 16px 18px;
+  background: color-mix(in srgb, var(--accent-red) 10%, var(--bg-card));
+  border: 1.5px solid color-mix(in srgb, var(--accent-red) 40%, transparent);
+  border-radius: var(--radius-md);
+  cursor: pointer;
+  text-decoration: none;
+  color: inherit;
+  transition: all 0.2s ease;
+  box-shadow: 0 0 20px color-mix(in srgb, var(--accent-red) 12%, transparent);
+}
+
+.ct-emergency-btn:hover {
+  background: color-mix(in srgb, var(--accent-red) 18%, var(--bg-card));
+  border-color: color-mix(in srgb, var(--accent-red) 60%, transparent);
+  box-shadow: 0 0 30px color-mix(in srgb, var(--accent-red) 20%, transparent);
+}
+
+.ct-emergency-btn:active {
+  transform: scale(0.98);
+}
+
+.ct-emergency-icon {
+  width: 48px;
+  height: 48px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 1.6rem;
+  background: color-mix(in srgb, var(--accent-red) 20%, transparent);
+  border-radius: 14px;
+  flex-shrink: 0;
+}
+
+.ct-emergency-info {
+  flex: 1;
+  min-width: 0;
+}
+
+.ct-emergency-name {
+  font-family: var(--font-display);
+  font-size: 1rem;
+  font-weight: 700;
+  color: var(--text-primary);
+  margin-bottom: 2px;
+}
+
+.ct-emergency-tel {
+  font-family: var(--font-display);
+  font-size: 0.85rem;
+  color: var(--accent-red);
+  letter-spacing: 0.04em;
+}
+
+.ct-emergency-call {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 44px;
+  height: 44px;
+  background: var(--accent-red);
+  border-radius: var(--radius-sm);
+  color: #fff;
+  flex-shrink: 0;
+  transition: transform 0.15s ease;
+}
+
+.ct-emergency-call:active {
+  transform: scale(0.9);
+}
+
+/* Sections */
+.ct-section {
+  margin: 20px 20px 0;
+}
+
+.ct-section-title {
+  font-family: var(--font-display);
+  font-size: 0.7rem;
+  font-weight: 700;
+  color: var(--text-muted);
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+  margin-bottom: 8px;
+  padding-left: 4px;
+}
+
+/* Card Group */
+.ct-group {
+  border-radius: var(--radius-md);
+  overflow: hidden;
+  border: 1px solid var(--border);
+}
+
+/* Contact Card */
+.ct-card {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  padding: 14px 14px;
+  background: var(--bg-card);
+  transition: background 0.15s ease;
+}
+
+.ct-card + .ct-card {
+  border-top: 1px solid var(--border);
+}
+
+.ct-card:hover {
+  background: var(--bg-card-hover);
+}
+
+/* Icon */
+.ct-icon {
+  width: 40px;
+  height: 40px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 1.15rem;
+  border-radius: 12px;
+  flex-shrink: 0;
+}
+
+.ct-icon--emergencia {
+  background: color-mix(in srgb, var(--accent-red) 18%, transparent);
+  box-shadow: 0 0 12px color-mix(in srgb, var(--accent-red) 10%, transparent);
+}
+
+.ct-icon--operacional {
+  background: color-mix(in srgb, var(--accent-teal) 18%, transparent);
+  box-shadow: 0 0 12px color-mix(in srgb, var(--accent-teal) 10%, transparent);
+}
+
+.ct-icon--apoio {
+  background: color-mix(in srgb, var(--accent-gold) 18%, transparent);
+  box-shadow: 0 0 12px color-mix(in srgb, var(--accent-gold) 10%, transparent);
+}
+
+.ct-icon--custom {
+  background: color-mix(in srgb, var(--accent-cyan) 18%, transparent);
+  box-shadow: 0 0 12px color-mix(in srgb, var(--accent-cyan) 10%, transparent);
+}
+
+/* Card Info */
+.ct-info {
+  flex: 1;
+  min-width: 0;
+}
+
+.ct-name {
+  font-family: var(--font-body);
+  font-size: 0.92rem;
+  font-weight: 600;
+  color: var(--text-primary);
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.ct-tel {
+  font-family: var(--font-display);
+  font-size: 0.78rem;
+  color: var(--text-secondary);
+  letter-spacing: 0.03em;
+  margin-top: 1px;
+}
+
+.ct-extra {
+  font-family: var(--font-body);
+  font-size: 0.72rem;
+  color: var(--text-muted);
+  margin-top: 2px;
+}
+
+/* Action Buttons */
+.ct-actions {
+  display: flex;
+  gap: 8px;
+  flex-shrink: 0;
+}
+
+.ct-btn {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 36px;
+  height: 36px;
+  border-radius: var(--radius-sm);
+  border: 1px solid var(--border);
+  background: var(--bg-surface);
+  color: var(--text-secondary);
+  cursor: pointer;
+  text-decoration: none;
+  transition: all 0.15s ease;
+}
+
+.ct-btn:hover {
+  background: var(--bg-card-hover);
+  border-color: var(--border-hover);
+  color: var(--text-primary);
+}
+
+.ct-btn:active {
+  transform: scale(0.9);
+}
+
+.ct-btn--call {
+  color: var(--accent-green);
+  border-color: color-mix(in srgb, var(--accent-green) 30%, var(--border));
+}
+
+.ct-btn--call:hover {
+  background: color-mix(in srgb, var(--accent-green) 12%, var(--bg-card));
+  border-color: var(--accent-green);
+}
+
+.ct-btn--whatsapp {
+  color: #25d366;
+  border-color: color-mix(in srgb, #25d366 30%, var(--border));
+}
+
+.ct-btn--whatsapp:hover {
+  background: color-mix(in srgb, #25d366 12%, var(--bg-card));
+  border-color: #25d366;
+}
+
+.ct-btn--delete {
+  color: var(--accent-red);
+  border-color: color-mix(in srgb, var(--accent-red) 25%, var(--border));
+}
+
+.ct-btn--delete:hover {
+  background: color-mix(in srgb, var(--accent-red) 12%, var(--bg-card));
+  border-color: var(--accent-red);
+}
+
+/* Add Contact Button */
+.ct-add-btn {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  width: 100%;
+  padding: 14px;
+  margin-top: 12px;
+  font-family: var(--font-body);
+  font-size: 0.9rem;
+  font-weight: 600;
+  color: var(--accent-teal);
+  background: color-mix(in srgb, var(--accent-teal) 6%, var(--bg-card));
+  border: 1.5px dashed color-mix(in srgb, var(--accent-teal) 30%, transparent);
+  border-radius: var(--radius-md);
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+
+.ct-add-btn:hover {
+  background: color-mix(in srgb, var(--accent-teal) 12%, var(--bg-card));
+  border-color: var(--accent-teal);
+}
+
+.ct-add-btn:active {
+  transform: scale(0.97);
+}
+
+/* Drawer Overlay */
+.ct-overlay {
+  position: fixed;
+  inset: 0;
+  z-index: 200;
+  background: rgba(0, 0, 0, 0.55);
+  backdrop-filter: blur(4px);
+  -webkit-backdrop-filter: blur(4px);
+  opacity: 0;
+  visibility: hidden;
+  transition: opacity 0.25s ease, visibility 0.25s ease;
+}
+
+.ct-overlay--active {
+  opacity: 1;
+  visibility: visible;
+}
+
+/* Add Contact Drawer */
+.ct-drawer {
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  z-index: 210;
+  background: var(--bg-elevated);
+  border-top: 1px solid var(--border);
+  border-radius: var(--radius-lg) var(--radius-lg) 0 0;
+  padding: 24px 20px calc(env(safe-area-inset-bottom, 16px) + 20px);
+  transform: translateY(100%);
+  transition: transform 0.3s cubic-bezier(0.32, 0.72, 0, 1);
+}
+
+.ct-drawer--active {
+  transform: translateY(0);
+}
+
+.ct-drawer-handle {
+  width: 36px;
+  height: 4px;
+  background: var(--border);
+  border-radius: 2px;
+  margin: 0 auto 20px;
+}
+
+.ct-drawer-title {
+  font-family: var(--font-display);
+  font-size: 1.05rem;
+  font-weight: 700;
+  color: var(--text-primary);
+  margin-bottom: 20px;
+}
+
+.ct-field {
+  margin-bottom: 14px;
+}
+
+.ct-label {
+  display: block;
+  font-family: var(--font-body);
+  font-size: 0.78rem;
+  font-weight: 600;
+  color: var(--text-secondary);
+  margin-bottom: 6px;
+  text-transform: uppercase;
+  letter-spacing: 0.04em;
+}
+
+.ct-input {
+  width: 100%;
+  padding: 12px 14px;
+  font-family: var(--font-body);
+  font-size: 0.95rem;
+  color: var(--text-primary);
+  background: var(--bg-input);
+  border: 1px solid var(--border);
+  border-radius: var(--radius-sm);
+  outline: none;
+  transition: border-color 0.2s ease;
+  box-sizing: border-box;
+}
+
+.ct-input:focus {
+  border-color: var(--border-active);
+}
+
+.ct-input::placeholder {
+  color: var(--text-muted);
+}
+
+.ct-save-btn {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+  padding: 14px;
+  margin-top: 20px;
+  font-family: var(--font-body);
+  font-size: 0.95rem;
+  font-weight: 700;
+  color: #fff;
+  background: var(--accent-teal);
+  border: none;
+  border-radius: var(--radius-sm);
+  cursor: pointer;
+  transition: opacity 0.15s ease, transform 0.15s ease;
+}
+
+.ct-save-btn:hover {
+  opacity: 0.9;
+}
+
+.ct-save-btn:active {
+  transform: scale(0.97);
+}
+
+/* Empty State */
+.ct-empty {
+  text-align: center;
+  padding: 40px 20px;
+  color: var(--text-muted);
+  font-family: var(--font-body);
+  font-size: 0.9rem;
+}
+
+.ct-empty-icon {
+  font-size: 2rem;
+  margin-bottom: 8px;
+}
+
+/* No results */
+.ct-no-results {
+  text-align: center;
+  padding: 32px 20px;
+  color: var(--text-muted);
+  font-family: var(--font-body);
+  font-size: 0.9rem;
+}
+
+/* Animation */
+@keyframes ct-fadeIn {
+  from { opacity: 0; transform: translateY(8px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+.ct-section {
+  animation: ct-fadeIn 0.35s ease both;
+}
+
+.ct-section:nth-child(2) { animation-delay: 0.05s; }
+.ct-section:nth-child(3) { animation-delay: 0.1s; }
+.ct-section:nth-child(4) { animation-delay: 0.15s; }
+.ct-section:nth-child(5) { animation-delay: 0.2s; }
+.ct-section:nth-child(6) { animation-delay: 0.25s; }
