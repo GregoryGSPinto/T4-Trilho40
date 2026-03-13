@@ -1,7 +1,7 @@
 (function () {
   'use strict';
 
-  var STORAGE_PREFIX = 't4-pense-risco-';
+  var STORAGE_PREFIX = 't4-art-';
   var EVENTOS_COMUNS = [
     'Atropelamento', 'Queda', 'Choque eletrico', 'Prensamento',
     'Descarrilamento', 'Colisao', 'Incendio', 'Exposicao quimica',
@@ -17,7 +17,7 @@
 
   var PERGUNTAS_360_KEYS = ['bemParaExecutar', 'localSeguro', 'epiDisponiveis', 'equipamentosOk'];
 
-  var container = document.getElementById('pnr-container');
+  var container = document.getElementById('art-container');
   var currentStep = 0;
   var formData = {};
   var viewingId = null;
@@ -97,7 +97,7 @@
   }
 
   /* ======= BACK ======= */
-  document.getElementById('pnr-back').addEventListener('click', function () {
+  document.getElementById('art-back').addEventListener('click', function () {
     if (currentStep === 0) {
       window.location.href = '../../';
     } else {
@@ -115,50 +115,50 @@
     var s3 = step === 3 ? 'active' : '';
     var l1 = step > 1 ? 'completed' : '';
     var l2 = step > 2 ? 'completed' : '';
-    return '<div class="pnr-progress">' +
-      '<div class="pnr-step ' + s1 + '">' + (step > 1 ? '&#10003;' : '1') + '</div>' +
-      '<div class="pnr-step-line ' + l1 + '"></div>' +
-      '<div class="pnr-step ' + s2 + '">' + (step > 2 ? '&#10003;' : '2') + '</div>' +
-      '<div class="pnr-step-line ' + l2 + '"></div>' +
-      '<div class="pnr-step ' + s3 + '">3</div>' +
+    return '<div class="art-progress">' +
+      '<div class="art-step ' + s1 + '">' + (step > 1 ? '&#10003;' : '1') + '</div>' +
+      '<div class="art-step-line ' + l1 + '"></div>' +
+      '<div class="art-step ' + s2 + '">' + (step > 2 ? '&#10003;' : '2') + '</div>' +
+      '<div class="art-step-line ' + l2 + '"></div>' +
+      '<div class="art-step ' + s3 + '">3</div>' +
     '</div>';
   }
 
   /* ======= HISTORY ======= */
   function renderHistory() {
     var saved = getAllSaved();
-    var html = '<button class="pnr-new-btn" id="pnr-new">+ Novo Pense no Risco</button>';
+    var html = '<button class="art-new-btn" id="art-new">+ Nova ART</button>';
 
     if (saved.length > 0) {
-      html += '<div class="pnr-history-title">HISTORICO</div>';
+      html += '<div class="art-history-title">HISTORICO</div>';
       saved.forEach(function (item) {
         var evtCount = (item.eventos || []).filter(function (e) { return e.numero; }).length;
         var statusClass = item.status || 'aprovado';
         var statusLabel = statusClass === 'aprovado' ? 'Aprovado' : (statusClass === 'pendente' ? 'Pendente' : 'Bloqueado');
-        html += '<div class="pnr-history-card ' + statusClass + '" data-key="' + item._key + '">' +
-          '<div class="pnr-history-top">' +
-            '<span class="pnr-history-tarefa">' + (item.tarefa || 'Sem tarefa') + '</span>' +
-            '<span class="pnr-history-date">' + formatDate(item.data) + '</span>' +
+        html += '<div class="art-history-card ' + statusClass + '" data-key="' + item._key + '">' +
+          '<div class="art-history-top">' +
+            '<span class="art-history-tarefa">' + (item.tarefa || 'Sem tarefa') + '</span>' +
+            '<span class="art-history-date">' + formatDate(item.data) + '</span>' +
           '</div>' +
-          '<div class="pnr-history-meta">' +
+          '<div class="art-history-meta">' +
             '<span>' + (item.localTarefa || '-') + '</span>' +
             '<span>' + evtCount + ' evento' + (evtCount !== 1 ? 's' : '') + '</span>' +
-            '<span class="pnr-history-status ' + statusClass + '">' + statusLabel + '</span>' +
+            '<span class="art-history-status ' + statusClass + '">' + statusLabel + '</span>' +
             '<span>' + formatTime(item.timestamp) + '</span>' +
           '</div>' +
-          '<div class="pnr-history-actions">' +
-            '<button class="pnr-history-action-btn view-btn" data-key="' + item._key + '">Visualizar</button>' +
-            '<button class="pnr-history-action-btn delete" data-key="' + item._key + '">Excluir</button>' +
+          '<div class="art-history-actions">' +
+            '<button class="art-history-action-btn view-btn" data-key="' + item._key + '">Visualizar</button>' +
+            '<button class="art-history-action-btn delete" data-key="' + item._key + '">Excluir</button>' +
           '</div>' +
         '</div>';
       });
     } else {
-      html += '<div class="pnr-empty">Nenhum Pense no Risco salvo.<br>Crie um novo para comecar.</div>';
+      html += '<div class="art-empty">Nenhuma ART salva.<br>Crie uma nova para comecar.</div>';
     }
 
     container.innerHTML = html;
 
-    document.getElementById('pnr-new').addEventListener('click', function () {
+    document.getElementById('art-new').addEventListener('click', function () {
       initFormData();
       viewingId = null;
       readOnly = false;
@@ -180,10 +180,10 @@
       });
     });
 
-    container.querySelectorAll('.pnr-history-action-btn.delete').forEach(function (btn) {
+    container.querySelectorAll('.art-history-action-btn.delete').forEach(function (btn) {
       btn.addEventListener('click', function (e) {
         e.stopPropagation();
-        if (confirm('Excluir este Pense no Risco?')) {
+        if (confirm('Excluir esta ART?')) {
           deleteForm(btn.getAttribute('data-key'));
           renderHistory();
         }
@@ -195,7 +195,7 @@
   function renderStep1() {
     var f = formData;
     var ro = readOnly ? ' readonly' : '';
-    var roClass = readOnly ? ' pnr-readonly' : '';
+    var roClass = readOnly ? ' art-readonly' : '';
 
     // Checklist 360
     var checklistHTML = '';
@@ -203,11 +203,11 @@
       var key = PERGUNTAS_360_KEYS[i];
       var val = f.avaliacao360[key];
       var isDanger = val === false;
-      checklistHTML += '<div class="pnr-question' + (isDanger ? ' danger' : '') + '" data-key="' + key + '">' +
-        '<div class="pnr-question-text">' + pergunta + '</div>' +
-        '<div class="pnr-answer-btns">' +
-          '<div class="pnr-answer-btn' + (val === true ? ' selected-sim' : '') + '" data-answer="sim">&#10003; Sim</div>' +
-          '<div class="pnr-answer-btn' + (val === false ? ' selected-nao' : '') + '" data-answer="nao">&#10005; Nao</div>' +
+      checklistHTML += '<div class="art-question' + (isDanger ? ' danger' : '') + '" data-key="' + key + '">' +
+        '<div class="art-question-text">' + pergunta + '</div>' +
+        '<div class="art-answer-btns">' +
+          '<div class="art-answer-btn' + (val === true ? ' selected-sim' : '') + '" data-answer="sim">&#10003; Sim</div>' +
+          '<div class="art-answer-btn' + (val === false ? ' selected-nao' : '') + '" data-answer="nao">&#10005; Nao</div>' +
         '</div>' +
       '</div>';
     });
@@ -216,67 +216,67 @@
     var hasNao = Object.keys(f.avaliacao360).some(function (k) { return f.avaliacao360[k] === false; });
 
     // Matriz
-    var matrizHTML = '<div class="pnr-matriz-btns">' +
-      '<div class="pnr-matriz-btn' + (f.matrizDecisao === 'realizar' ? ' selected-realizar' : '') + '" data-val="realizar">&#10003; Realizar a Atividade</div>' +
-      '<div class="pnr-matriz-btn' + (f.matrizDecisao === 'chamarLider' ? ' selected-lider' : '') + '" data-val="chamarLider">&#128680; Chamar o Lider</div>' +
+    var matrizHTML = '<div class="art-matriz-btns">' +
+      '<div class="art-matriz-btn' + (f.matrizDecisao === 'realizar' ? ' selected-realizar' : '') + '" data-val="realizar">&#10003; Realizar a Atividade</div>' +
+      '<div class="art-matriz-btn' + (f.matrizDecisao === 'chamarLider' ? ' selected-lider' : '') + '" data-val="chamarLider">&#128680; Chamar o Lider</div>' +
     '</div>';
 
     // Risco Grave
-    var riscoHTML = '<div class="pnr-risco-btns">' +
-      '<div class="pnr-risco-btn' + (f.riscoGrave === false ? ' selected-nao' : '') + '" data-val="nao">&#10003; Nao</div>' +
-      '<div class="pnr-risco-btn' + (f.riscoGrave === true ? ' selected-sim' : '') + '" data-val="sim">&#128308; SIM — Comunique e formalize a interdicao</div>' +
+    var riscoHTML = '<div class="art-risco-btns">' +
+      '<div class="art-risco-btn' + (f.riscoGrave === false ? ' selected-nao' : '') + '" data-val="nao">&#10003; Nao</div>' +
+      '<div class="art-risco-btn' + (f.riscoGrave === true ? ' selected-sim' : '') + '" data-val="sim">&#128308; SIM — Comunique e formalize a interdicao</div>' +
     '</div>';
 
     var html = progressHTML(1) +
-      '<div class="pnr-validation-msg" id="pnr-val-msg"></div>' +
+      '<div class="art-validation-msg" id="art-val-msg"></div>' +
       '<div' + roClass + '>' +
 
       // Identificacao
-      '<div class="pnr-section">' +
-        '<div class="pnr-section-title">Identificacao</div>' +
-        '<div class="pnr-field-full"><label class="pnr-label">Empresa</label><input type="text" id="pnr-empresa" class="pnr-input" value="' + esc(f.empresa) + '"' + ro + '></div>' +
-        '<div class="pnr-field-full"><label class="pnr-label">Tarefa</label><input type="text" id="pnr-tarefa" class="pnr-input" value="' + esc(f.tarefa) + '" placeholder="Descreva a tarefa a ser executada"' + ro + '></div>' +
-        '<div class="pnr-field-full"><label class="pnr-label">Local da Tarefa</label><input type="text" id="pnr-local" class="pnr-input" value="' + esc(f.localTarefa) + '" placeholder="Ex: Patio VFZ — Linha 3"' + ro + '></div>' +
+      '<div class="art-section">' +
+        '<div class="art-section-title">Identificacao</div>' +
+        '<div class="art-field-full"><label class="art-label">Empresa</label><input type="text" id="art-empresa" class="art-input" value="' + esc(f.empresa) + '"' + ro + '></div>' +
+        '<div class="art-field-full"><label class="art-label">Tarefa</label><input type="text" id="art-tarefa" class="art-input" value="' + esc(f.tarefa) + '" placeholder="Descreva a tarefa a ser executada"' + ro + '></div>' +
+        '<div class="art-field-full"><label class="art-label">Local da Tarefa</label><input type="text" id="art-local" class="art-input" value="' + esc(f.localTarefa) + '" placeholder="Ex: Patio VFZ — Linha 3"' + ro + '></div>' +
       '</div>' +
 
       // Banner 360
-      '<div class="pnr-banner pnr-banner-green">&#128260; Realize a avaliacao 360° — Observe ao redor antes de iniciar</div>' +
+      '<div class="art-banner art-banner-green">&#128260; Realize a avaliacao 360° — Observe ao redor antes de iniciar</div>' +
 
       // Checklist
-      '<div class="pnr-section">' +
-        '<div class="pnr-section-title">Checklist de Seguranca</div>' +
+      '<div class="art-section">' +
+        '<div class="art-section-title">Checklist de Seguranca</div>' +
         checklistHTML +
       '</div>' +
 
-      (hasNao ? '<div class="pnr-banner pnr-banner-red">&#9888;&#65039; Nao execute a atividade. Chame o lider.</div>' : '') +
+      (hasNao ? '<div class="art-banner art-banner-red">&#9888;&#65039; Nao execute a atividade. Chame o lider.</div>' : '') +
 
       // Matriz
-      '<div class="pnr-section">' +
-        '<div class="pnr-banner pnr-banner-gold">&#128202; Matriz de Decisao — Frequencia x Risco de Acidente</div>' +
-        '<div class="pnr-section-title">Resultado da Matriz</div>' +
+      '<div class="art-section">' +
+        '<div class="art-banner art-banner-gold">&#128202; Matriz de Decisao — Frequencia x Risco de Acidente</div>' +
+        '<div class="art-section-title">Resultado da Matriz</div>' +
         matrizHTML +
       '</div>' +
 
       // Risco Grave
-      '<div class="pnr-section">' +
-        '<div class="pnr-banner pnr-banner-red">&#128308; Existe condicao de Risco Grave e Iminente?</div>' +
+      '<div class="art-section">' +
+        '<div class="art-banner art-banner-red">&#128308; Existe condicao de Risco Grave e Iminente?</div>' +
         riscoHTML +
       '</div>' +
 
-      (f.riscoGrave === true ? '<div class="pnr-bloqueio"><div class="pnr-bloqueio-text">&#128683; PARE! Comunique imediatamente e formalize a interdicao. NAO execute a atividade.</div></div>' : '') +
+      (f.riscoGrave === true ? '<div class="art-bloqueio"><div class="art-bloqueio-text">&#128683; PARE! Comunique imediatamente e formalize a interdicao. NAO execute a atividade.</div></div>' : '') +
 
       '</div>';
 
     // Nav
     if (readOnly) {
-      html += '<div class="pnr-nav-btns">' +
-        '<button class="pnr-nav-btn pnr-nav-prev" id="pnr-back-hist">Voltar</button>' +
-        '<button class="pnr-nav-btn pnr-nav-next" id="pnr-to-step2">Eventos &rarr;</button>' +
+      html += '<div class="art-nav-btns">' +
+        '<button class="art-nav-btn art-nav-prev" id="art-back-hist">Voltar</button>' +
+        '<button class="art-nav-btn art-nav-next" id="art-to-step2">Eventos &rarr;</button>' +
       '</div>';
     } else {
-      html += '<div class="pnr-nav-btns">' +
-        '<button class="pnr-nav-btn pnr-nav-prev" id="pnr-cancel">Cancelar</button>' +
-        '<button class="pnr-nav-btn pnr-nav-next" id="pnr-to-step2">Proximo &rarr;</button>' +
+      html += '<div class="art-nav-btns">' +
+        '<button class="art-nav-btn art-nav-prev" id="art-cancel">Cancelar</button>' +
+        '<button class="art-nav-btn art-nav-next" id="art-to-step2">Proximo &rarr;</button>' +
       '</div>';
     }
 
@@ -288,15 +288,15 @@
   function collectStep1() {
     if (readOnly) return;
     var v = function (id) { var el = document.getElementById(id); return el ? el.value : ''; };
-    formData.empresa = v('pnr-empresa');
-    formData.tarefa = v('pnr-tarefa');
-    formData.localTarefa = v('pnr-local');
+    formData.empresa = v('art-empresa');
+    formData.tarefa = v('art-tarefa');
+    formData.localTarefa = v('art-local');
   }
 
   function bindStep1Events() {
     // 360 answers
-    container.querySelectorAll('.pnr-question').forEach(function (q) {
-      q.querySelectorAll('.pnr-answer-btn').forEach(function (btn) {
+    container.querySelectorAll('.art-question').forEach(function (q) {
+      q.querySelectorAll('.art-answer-btn').forEach(function (btn) {
         btn.addEventListener('click', function () {
           if (readOnly) return;
           var key = q.getAttribute('data-key');
@@ -305,13 +305,13 @@
           formData.avaliacao360[key] = answer;
 
           // Update UI
-          q.querySelectorAll('.pnr-answer-btn').forEach(function (b) { b.className = 'pnr-answer-btn'; });
+          q.querySelectorAll('.art-answer-btn').forEach(function (b) { b.className = 'art-answer-btn'; });
           btn.classList.add(answer ? 'selected-sim' : 'selected-nao');
           q.classList.toggle('danger', !answer);
 
           // Check for "Nao" warnings
           var hasNao = Object.keys(formData.avaliacao360).some(function (k) { return formData.avaliacao360[k] === false; });
-          var existing = container.querySelector('.pnr-banner-red.pnr-nao-warning');
+          var existing = container.querySelector('.art-banner-red.art-nao-warning');
           if (hasNao && !existing) {
             // Re-render to show warning
             collectStep1();
@@ -324,17 +324,17 @@
     });
 
     // Matriz
-    container.querySelectorAll('.pnr-matriz-btn').forEach(function (btn) {
+    container.querySelectorAll('.art-matriz-btn').forEach(function (btn) {
       btn.addEventListener('click', function () {
         if (readOnly) return;
         formData.matrizDecisao = btn.getAttribute('data-val');
-        container.querySelectorAll('.pnr-matriz-btn').forEach(function (b) { b.className = 'pnr-matriz-btn'; });
+        container.querySelectorAll('.art-matriz-btn').forEach(function (b) { b.className = 'art-matriz-btn'; });
         btn.classList.add(formData.matrizDecisao === 'realizar' ? 'selected-realizar' : 'selected-lider');
       });
     });
 
     // Risco Grave
-    container.querySelectorAll('.pnr-risco-btn').forEach(function (btn) {
+    container.querySelectorAll('.art-risco-btn').forEach(function (btn) {
       btn.addEventListener('click', function () {
         if (readOnly) return;
         var val = btn.getAttribute('data-val') === 'sim';
@@ -345,7 +345,7 @@
     });
 
     // Nav: cancel
-    var cancelBtn = document.getElementById('pnr-cancel');
+    var cancelBtn = document.getElementById('art-cancel');
     if (cancelBtn) {
       cancelBtn.addEventListener('click', function () {
         if (confirm('Descartar formulario?')) {
@@ -355,7 +355,7 @@
       });
     }
 
-    var backHist = document.getElementById('pnr-back-hist');
+    var backHist = document.getElementById('art-back-hist');
     if (backHist) {
       backHist.addEventListener('click', function () {
         currentStep = 0;
@@ -366,13 +366,13 @@
     }
 
     // Nav: next
-    document.getElementById('pnr-to-step2').addEventListener('click', function () {
+    document.getElementById('art-to-step2').addEventListener('click', function () {
       collectStep1();
 
       if (!readOnly) {
         // Block if risco grave
         if (formData.riscoGrave === true) {
-          var msg = document.getElementById('pnr-val-msg');
+          var msg = document.getElementById('art-val-msg');
           msg.textContent = 'Risco Grave e Iminente identificado. NAO e possivel prosseguir.';
           msg.classList.add('visible');
           window.scrollTo(0, 0);
@@ -383,10 +383,10 @@
         var errors = [];
         if (!formData.tarefa) errors.push('Tarefa');
         if (errors.length > 0) {
-          var msg2 = document.getElementById('pnr-val-msg');
+          var msg2 = document.getElementById('art-val-msg');
           msg2.textContent = 'Campos obrigatorios: ' + errors.join(', ');
           msg2.classList.add('visible');
-          if (!formData.tarefa) document.getElementById('pnr-tarefa').classList.add('error');
+          if (!formData.tarefa) document.getElementById('art-tarefa').classList.add('error');
           window.scrollTo(0, 0);
           return;
         }
@@ -407,17 +407,17 @@
   function renderStep2() {
     var f = formData;
     var ro = readOnly ? ' readonly' : '';
-    var roClass = readOnly ? ' pnr-readonly' : '';
+    var roClass = readOnly ? ' art-readonly' : '';
 
     var html = progressHTML(2) +
-      '<div class="pnr-validation-msg" id="pnr-val-msg"></div>' +
-      '<div class="pnr-banner pnr-banner-gold">&#128203; Utilize a matriz de condicao perigosa para preencher os campos abaixo</div>';
+      '<div class="art-validation-msg" id="art-val-msg"></div>' +
+      '<div class="art-banner art-banner-gold">&#128203; Utilize a matriz de condicao perigosa para preencher os campos abaixo</div>';
 
     // Chips
     if (!readOnly) {
-      html += '<div class="pnr-section"><div class="pnr-section-title">Eventos frequentes (toque para adicionar)</div><div class="pnr-chips">';
+      html += '<div class="art-section"><div class="art-section-title">Eventos frequentes (toque para adicionar)</div><div class="art-chips">';
       EVENTOS_COMUNS.forEach(function (ev) {
-        html += '<div class="pnr-chip" data-ev="' + esc(ev) + '">' + ev + '</div>';
+        html += '<div class="art-chip" data-ev="' + esc(ev) + '">' + ev + '</div>';
       });
       html += '</div></div>';
     }
@@ -426,36 +426,36 @@
 
     // Eventos
     (f.eventos || []).forEach(function (ev, i) {
-      html += '<div class="pnr-evento" data-idx="' + i + '">' +
-        '<div class="pnr-evento-header">' +
-          '<span class="pnr-evento-num">Evento #' + (i + 1) + '</span>' +
-          (readOnly ? '' : '<button class="pnr-evento-remove" data-idx="' + i + '">&#10005;</button>') +
+      html += '<div class="art-evento" data-idx="' + i + '">' +
+        '<div class="art-evento-header">' +
+          '<span class="art-evento-num">Evento #' + (i + 1) + '</span>' +
+          (readOnly ? '' : '<button class="art-evento-remove" data-idx="' + i + '">&#10005;</button>') +
         '</div>' +
-        '<div class="pnr-evento-field">' +
-          '<label class="pnr-label">Evento Indesejado</label>' +
-          '<input type="text" class="pnr-input pnr-evt-numero" value="' + esc(ev.numero) + '" placeholder="Ex: Atropelamento"' + ro + '>' +
+        '<div class="art-evento-field">' +
+          '<label class="art-label">Evento Indesejado</label>' +
+          '<input type="text" class="art-input art-evt-numero" value="' + esc(ev.numero) + '" placeholder="Ex: Atropelamento"' + ro + '>' +
         '</div>' +
-        '<div class="pnr-evento-field">' +
-          '<label class="pnr-label">Circunstancia (Quando)?</label>' +
-          '<input type="text" class="pnr-input pnr-evt-circ" value="' + esc(ev.circunstancia) + '" placeholder="Ex: Durante manobra no patio"' + ro + '>' +
+        '<div class="art-evento-field">' +
+          '<label class="art-label">Circunstancia (Quando)?</label>' +
+          '<input type="text" class="art-input art-evt-circ" value="' + esc(ev.circunstancia) + '" placeholder="Ex: Durante manobra no patio"' + ro + '>' +
         '</div>' +
-        '<div class="pnr-evento-field">' +
-          '<label class="pnr-label">Medida de Controle</label>' +
-          '<input type="text" class="pnr-input pnr-evt-medida" value="' + esc(ev.medidaControle) + '" placeholder="Ex: Sinalizacao previa via radio"' + ro + '>' +
+        '<div class="art-evento-field">' +
+          '<label class="art-label">Medida de Controle</label>' +
+          '<input type="text" class="art-input art-evt-medida" value="' + esc(ev.medidaControle) + '" placeholder="Ex: Sinalizacao previa via radio"' + ro + '>' +
         '</div>' +
       '</div>';
     });
 
     if (!readOnly) {
-      html += '<button class="pnr-add-evento-btn" id="pnr-add-evento">+ Adicionar Evento</button>';
+      html += '<button class="art-add-evento-btn" id="art-add-evento">+ Adicionar Evento</button>';
     }
 
     html += '</div>';
 
     // Nav
-    html += '<div class="pnr-nav-btns">' +
-      '<button class="pnr-nav-btn pnr-nav-prev" id="pnr-to-step1">&larr; Avaliacao</button>' +
-      '<button class="pnr-nav-btn pnr-nav-next" id="pnr-to-step3">Finalizar &rarr;</button>' +
+    html += '<div class="art-nav-btns">' +
+      '<button class="art-nav-btn art-nav-prev" id="art-to-step1">&larr; Avaliacao</button>' +
+      '<button class="art-nav-btn art-nav-next" id="art-to-step3">Finalizar &rarr;</button>' +
     '</div>';
 
     container.innerHTML = html;
@@ -466,22 +466,22 @@
   function collectStep2() {
     if (readOnly) return;
     formData.eventos = [];
-    container.querySelectorAll('.pnr-evento').forEach(function (el) {
+    container.querySelectorAll('.art-evento').forEach(function (el) {
       formData.eventos.push({
-        numero: el.querySelector('.pnr-evt-numero').value,
-        circunstancia: el.querySelector('.pnr-evt-circ').value,
-        medidaControle: el.querySelector('.pnr-evt-medida').value
+        numero: el.querySelector('.art-evt-numero').value,
+        circunstancia: el.querySelector('.art-evt-circ').value,
+        medidaControle: el.querySelector('.art-evt-medida').value
       });
     });
   }
 
   function bindStep2Events() {
     // Chips
-    container.querySelectorAll('.pnr-chip').forEach(function (chip) {
+    container.querySelectorAll('.art-chip').forEach(function (chip) {
       chip.addEventListener('click', function () {
         var ev = chip.getAttribute('data-ev');
         // Find first empty evento
-        var inputs = container.querySelectorAll('.pnr-evt-numero');
+        var inputs = container.querySelectorAll('.art-evt-numero');
         var filled = false;
         for (var i = 0; i < inputs.length; i++) {
           if (!inputs[i].value) {
@@ -499,7 +499,7 @@
     });
 
     // Remove evento
-    container.querySelectorAll('.pnr-evento-remove').forEach(function (btn) {
+    container.querySelectorAll('.art-evento-remove').forEach(function (btn) {
       btn.addEventListener('click', function () {
         collectStep2();
         var idx = parseInt(btn.getAttribute('data-idx'));
@@ -510,7 +510,7 @@
     });
 
     // Add evento
-    var addBtn = document.getElementById('pnr-add-evento');
+    var addBtn = document.getElementById('art-add-evento');
     if (addBtn) {
       addBtn.addEventListener('click', function () {
         collectStep2();
@@ -522,13 +522,13 @@
     }
 
     // Nav
-    document.getElementById('pnr-to-step1').addEventListener('click', function () {
+    document.getElementById('art-to-step1').addEventListener('click', function () {
       collectStep2();
       currentStep = 1;
       renderStep1();
     });
 
-    document.getElementById('pnr-to-step3').addEventListener('click', function () {
+    document.getElementById('art-to-step3').addEventListener('click', function () {
       collectStep2();
       currentStep = 3;
       renderStep3();
@@ -539,7 +539,7 @@
   function renderStep3() {
     var f = formData;
     var ro = readOnly ? ' readonly' : '';
-    var roClass = readOnly ? ' pnr-readonly' : '';
+    var roClass = readOnly ? ' art-readonly' : '';
 
     // Resumo
     var evtCount = (f.eventos || []).filter(function (e) { return e.numero; }).length;
@@ -551,44 +551,44 @@
     var riscoLabel = f.riscoGrave === false ? 'Nao' : (f.riscoGrave === true ? 'SIM' : '-');
 
     var html = progressHTML(3) +
-      '<div class="pnr-validation-msg" id="pnr-val-msg"></div>';
+      '<div class="art-validation-msg" id="art-val-msg"></div>';
 
     // Conclusion questions
     if (!readOnly) {
-      html += '<div class="pnr-section">' +
-        '<div class="pnr-section-title">Conclusao de Seguranca</div>' +
-        '<div class="pnr-question" data-key="riscosControlados">' +
-          '<div class="pnr-question-text">Todos os riscos estao controlados?</div>' +
-          '<div class="pnr-answer-btns">' +
-            '<div class="pnr-answer-btn conclusion-btn' + (f.riscosControlados === true ? ' selected-sim' : '') + '" data-field="riscosControlados" data-answer="sim">&#10003; Sim</div>' +
-            '<div class="pnr-answer-btn conclusion-btn' + (f.riscosControlados === false ? ' selected-nao' : '') + '" data-field="riscosControlados" data-answer="nao">&#10005; Nao</div>' +
+      html += '<div class="art-section">' +
+        '<div class="art-section-title">Conclusao de Seguranca</div>' +
+        '<div class="art-question" data-key="riscosControlados">' +
+          '<div class="art-question-text">Todos os riscos estao controlados?</div>' +
+          '<div class="art-answer-btns">' +
+            '<div class="art-answer-btn conclusion-btn' + (f.riscosControlados === true ? ' selected-sim' : '') + '" data-field="riscosControlados" data-answer="sim">&#10003; Sim</div>' +
+            '<div class="art-answer-btn conclusion-btn' + (f.riscosControlados === false ? ' selected-nao' : '') + '" data-field="riscosControlados" data-answer="nao">&#10005; Nao</div>' +
           '</div>' +
         '</div>' +
-        '<div class="pnr-question" data-key="podeExecutar">' +
-          '<div class="pnr-question-text">A atividade pode ser executada com seguranca?</div>' +
-          '<div class="pnr-answer-btns">' +
-            '<div class="pnr-answer-btn conclusion-btn' + (f.podeExecutar === true ? ' selected-sim' : '') + '" data-field="podeExecutar" data-answer="sim">&#10003; Sim</div>' +
-            '<div class="pnr-answer-btn conclusion-btn' + (f.podeExecutar === false ? ' selected-nao' : '') + '" data-field="podeExecutar" data-answer="nao">&#10005; Nao</div>' +
+        '<div class="art-question" data-key="podeExecutar">' +
+          '<div class="art-question-text">A atividade pode ser executada com seguranca?</div>' +
+          '<div class="art-answer-btns">' +
+            '<div class="art-answer-btn conclusion-btn' + (f.podeExecutar === true ? ' selected-sim' : '') + '" data-field="podeExecutar" data-answer="sim">&#10003; Sim</div>' +
+            '<div class="art-answer-btn conclusion-btn' + (f.podeExecutar === false ? ' selected-nao' : '') + '" data-field="podeExecutar" data-answer="nao">&#10005; Nao</div>' +
           '</div>' +
         '</div>' +
       '</div>';
 
       var hasConclNao = f.riscosControlados === false || f.podeExecutar === false;
       if (hasConclNao) {
-        html += '<div class="pnr-banner pnr-banner-red">&#9888;&#65039; Caso haja resposta negativa, NAO execute a atividade e chame o lider.</div>';
+        html += '<div class="art-banner art-banner-red">&#9888;&#65039; Caso haja resposta negativa, NAO execute a atividade e chame o lider.</div>';
       }
 
       // Observacoes
-      html += '<div class="pnr-section">' +
-        '<div class="pnr-section-title">Observacoes</div>' +
-        '<textarea class="pnr-textarea" id="pnr-obs" placeholder="Observacoes adicionais...">' + (f.observacoes || '') + '</textarea>' +
+      html += '<div class="art-section">' +
+        '<div class="art-section-title">Observacoes</div>' +
+        '<textarea class="art-textarea" id="art-obs" placeholder="Observacoes adicionais...">' + (f.observacoes || '') + '</textarea>' +
       '</div>';
 
       // Assinatura
-      html += '<div class="pnr-section">' +
-        '<div class="pnr-section-title">Assinatura</div>' +
-        '<div class="pnr-field-full"><label class="pnr-label">Nome Legivel</label><input type="text" id="pnr-nome" class="pnr-input" value="' + esc(f.nomeLegivel) + '"></div>' +
-        '<div class="pnr-field-full"><label class="pnr-label">Data</label><input type="date" id="pnr-data" class="pnr-input" value="' + f.data + '"></div>' +
+      html += '<div class="art-section">' +
+        '<div class="art-section-title">Assinatura</div>' +
+        '<div class="art-field-full"><label class="art-label">Nome Legivel</label><input type="text" id="art-nome" class="art-input" value="' + esc(f.nomeLegivel) + '"></div>' +
+        '<div class="art-field-full"><label class="art-label">Data</label><input type="date" id="art-data" class="art-input" value="' + f.data + '"></div>' +
       '</div>';
     }
 
@@ -597,66 +597,66 @@
     var previewContent = '';
     if (f.fotoAnexo) {
       if (f.fotoAnexo.indexOf('data:image') === 0) {
-        previewContent = '<img class="pnr-preview-img" src="' + f.fotoAnexo + '" alt="Anexo">';
+        previewContent = '<img class="art-preview-img" src="' + f.fotoAnexo + '" alt="Anexo">';
       } else {
-        previewContent = '<div class="pnr-preview-filename">' + (f.fotoNome || 'Arquivo anexado') + '</div>';
+        previewContent = '<div class="art-preview-filename">' + (f.fotoNome || 'Arquivo anexado') + '</div>';
       }
     }
 
     if (!readOnly) {
-      html += '<div class="pnr-anexo-section">' +
-        '<div class="pnr-anexo-title">Anexar Documento</div>' +
-        '<div class="pnr-anexo-desc">Se preferir, anexe uma foto do formulario preenchido em papel.</div>' +
-        '<div class="pnr-anexo-btns">' +
-          '<button class="pnr-anexo-btn" id="pnr-foto-btn">&#128247; Tirar Foto</button>' +
-          '<button class="pnr-anexo-btn" id="pnr-arq-btn">&#128193; Escolher Arquivo</button>' +
+      html += '<div class="art-anexo-section">' +
+        '<div class="art-anexo-title">Anexar Documento</div>' +
+        '<div class="art-anexo-desc">Se preferir, anexe uma foto do formulario preenchido em papel.</div>' +
+        '<div class="art-anexo-btns">' +
+          '<button class="art-anexo-btn" id="art-foto-btn">&#128247; Tirar Foto</button>' +
+          '<button class="art-anexo-btn" id="art-arq-btn">&#128193; Escolher Arquivo</button>' +
         '</div>' +
-        '<input type="file" id="pnr-foto-camera" accept="image/*" capture="environment" style="display:none">' +
-        '<input type="file" id="pnr-foto-galeria" accept="image/*,.pdf,.doc,.docx" style="display:none">' +
-        '<div class="pnr-preview-container' + previewVisible + '" id="pnr-preview">' +
+        '<input type="file" id="art-foto-camera" accept="image/*" capture="environment" style="display:none">' +
+        '<input type="file" id="art-foto-galeria" accept="image/*,.pdf,.doc,.docx" style="display:none">' +
+        '<div class="art-preview-container' + previewVisible + '" id="art-preview">' +
           previewContent +
-          '<button class="pnr-remove-anexo" id="pnr-remove-foto">Remover anexo</button>' +
+          '<button class="art-remove-anexo" id="art-remove-foto">Remover anexo</button>' +
         '</div>' +
       '</div>';
     } else if (f.fotoAnexo) {
-      html += '<div class="pnr-anexo-section">' +
-        '<div class="pnr-anexo-title">Anexo</div>' +
-        '<div class="pnr-preview-container visible">' + previewContent + '</div>' +
+      html += '<div class="art-anexo-section">' +
+        '<div class="art-anexo-title">Anexo</div>' +
+        '<div class="art-preview-container visible">' + previewContent + '</div>' +
       '</div>';
     }
 
     // Resumo card
-    html += '<div class="pnr-resumo-card">' +
-      '<div class="pnr-resumo-title">Resumo do Pense no Risco</div>' +
-      '<div class="pnr-resumo-row"><span class="pnr-resumo-label">Tarefa</span><span class="pnr-resumo-value">' + (f.tarefa || '-') + '</span></div>' +
-      '<div class="pnr-resumo-row"><span class="pnr-resumo-label">Local</span><span class="pnr-resumo-value">' + (f.localTarefa || '-') + '</span></div>' +
-      '<div class="pnr-resumo-row"><span class="pnr-resumo-label">Data</span><span class="pnr-resumo-value">' + formatDate(f.data) + '</span></div>' +
-      '<div class="pnr-resumo-row"><span class="pnr-resumo-label">Bem para executar</span><span class="pnr-resumo-value" style="' + simNaoColor(a360.bemParaExecutar) + '">' + simNao(a360.bemParaExecutar) + '</span></div>' +
-      '<div class="pnr-resumo-row"><span class="pnr-resumo-label">Local seguro</span><span class="pnr-resumo-value" style="' + simNaoColor(a360.localSeguro) + '">' + simNao(a360.localSeguro) + '</span></div>' +
-      '<div class="pnr-resumo-row"><span class="pnr-resumo-label">EPI disponiveis</span><span class="pnr-resumo-value" style="' + simNaoColor(a360.epiDisponiveis) + '">' + simNao(a360.epiDisponiveis) + '</span></div>' +
-      '<div class="pnr-resumo-row"><span class="pnr-resumo-label">Equipamentos OK</span><span class="pnr-resumo-value" style="' + simNaoColor(a360.equipamentosOk) + '">' + simNao(a360.equipamentosOk) + '</span></div>' +
-      '<div class="pnr-resumo-row"><span class="pnr-resumo-label">Matriz</span><span class="pnr-resumo-value">' + matrizLabel + '</span></div>' +
-      '<div class="pnr-resumo-row"><span class="pnr-resumo-label">Risco Grave</span><span class="pnr-resumo-value" style="' + (f.riscoGrave ? 'color:var(--status-danger)' : '') + '">' + riscoLabel + '</span></div>' +
-      '<div class="pnr-resumo-row"><span class="pnr-resumo-label">Eventos</span><span class="pnr-resumo-value">' + evtCount + '</span></div>' +
-      '<div class="pnr-resumo-row"><span class="pnr-resumo-label">Riscos controlados</span><span class="pnr-resumo-value" style="' + simNaoColor(f.riscosControlados) + '">' + simNao(f.riscosControlados) + '</span></div>' +
-      '<div class="pnr-resumo-row"><span class="pnr-resumo-label">Pode executar</span><span class="pnr-resumo-value" style="' + simNaoColor(f.podeExecutar) + '">' + simNao(f.podeExecutar) + '</span></div>' +
+    html += '<div class="art-resumo-card">' +
+      '<div class="art-resumo-title">Resumo da ART</div>' +
+      '<div class="art-resumo-row"><span class="art-resumo-label">Tarefa</span><span class="art-resumo-value">' + (f.tarefa || '-') + '</span></div>' +
+      '<div class="art-resumo-row"><span class="art-resumo-label">Local</span><span class="art-resumo-value">' + (f.localTarefa || '-') + '</span></div>' +
+      '<div class="art-resumo-row"><span class="art-resumo-label">Data</span><span class="art-resumo-value">' + formatDate(f.data) + '</span></div>' +
+      '<div class="art-resumo-row"><span class="art-resumo-label">Bem para executar</span><span class="art-resumo-value" style="' + simNaoColor(a360.bemParaExecutar) + '">' + simNao(a360.bemParaExecutar) + '</span></div>' +
+      '<div class="art-resumo-row"><span class="art-resumo-label">Local seguro</span><span class="art-resumo-value" style="' + simNaoColor(a360.localSeguro) + '">' + simNao(a360.localSeguro) + '</span></div>' +
+      '<div class="art-resumo-row"><span class="art-resumo-label">EPI disponiveis</span><span class="art-resumo-value" style="' + simNaoColor(a360.epiDisponiveis) + '">' + simNao(a360.epiDisponiveis) + '</span></div>' +
+      '<div class="art-resumo-row"><span class="art-resumo-label">Equipamentos OK</span><span class="art-resumo-value" style="' + simNaoColor(a360.equipamentosOk) + '">' + simNao(a360.equipamentosOk) + '</span></div>' +
+      '<div class="art-resumo-row"><span class="art-resumo-label">Matriz</span><span class="art-resumo-value">' + matrizLabel + '</span></div>' +
+      '<div class="art-resumo-row"><span class="art-resumo-label">Risco Grave</span><span class="art-resumo-value" style="' + (f.riscoGrave ? 'color:var(--status-danger)' : '') + '">' + riscoLabel + '</span></div>' +
+      '<div class="art-resumo-row"><span class="art-resumo-label">Eventos</span><span class="art-resumo-value">' + evtCount + '</span></div>' +
+      '<div class="art-resumo-row"><span class="art-resumo-label">Riscos controlados</span><span class="art-resumo-value" style="' + simNaoColor(f.riscosControlados) + '">' + simNao(f.riscosControlados) + '</span></div>' +
+      '<div class="art-resumo-row"><span class="art-resumo-label">Pode executar</span><span class="art-resumo-value" style="' + simNaoColor(f.podeExecutar) + '">' + simNao(f.podeExecutar) + '</span></div>' +
     '</div>';
 
     // Actions
     if (readOnly) {
-      html += '<div class="pnr-actions">' +
-        '<button class="pnr-btn-secondary" id="pnr-share-btn">Compartilhar</button>' +
-        '<button class="pnr-btn-secondary" id="pnr-back-hist2">Voltar ao Historico</button>' +
+      html += '<div class="art-actions">' +
+        '<button class="art-btn-secondary" id="art-share-btn">Compartilhar</button>' +
+        '<button class="art-btn-secondary" id="art-back-hist2">Voltar ao Historico</button>' +
       '</div>';
     } else {
-      html += '<div class="pnr-actions">' +
-        '<button class="pnr-btn-primary" id="pnr-save-btn">Salvar Pense no Risco</button>' +
-        '<button class="pnr-btn-secondary" id="pnr-share-save-btn">Salvar e Compartilhar</button>' +
-        '<button class="pnr-btn-danger" id="pnr-discard-btn">Descartar</button>' +
+      html += '<div class="art-actions">' +
+        '<button class="art-btn-primary" id="art-save-btn">Salvar ART</button>' +
+        '<button class="art-btn-secondary" id="art-share-save-btn">Salvar e Compartilhar</button>' +
+        '<button class="art-btn-danger" id="art-discard-btn">Descartar</button>' +
       '</div>';
 
-      html += '<div class="pnr-nav-btns" style="margin-top:8px;">' +
-        '<button class="pnr-nav-btn pnr-nav-prev" id="pnr-to-step2b">&larr; Eventos</button>' +
+      html += '<div class="art-nav-btns" style="margin-top:8px;">' +
+        '<button class="art-nav-btn art-nav-prev" id="art-to-step2b">&larr; Eventos</button>' +
       '</div>';
     }
 
@@ -667,11 +667,11 @@
 
   function collectStep3() {
     if (readOnly) return;
-    var obs = document.getElementById('pnr-obs');
+    var obs = document.getElementById('art-obs');
     if (obs) formData.observacoes = obs.value;
-    var nome = document.getElementById('pnr-nome');
+    var nome = document.getElementById('art-nome');
     if (nome) formData.nomeLegivel = nome.value;
-    var data = document.getElementById('pnr-data');
+    var data = document.getElementById('art-data');
     if (data) formData.data = data.value;
   }
 
@@ -691,8 +691,8 @@
         var answer = btn.getAttribute('data-answer') === 'sim';
         formData[field] = answer;
 
-        var q = btn.closest('.pnr-question');
-        q.querySelectorAll('.pnr-answer-btn').forEach(function (b) { b.className = 'pnr-answer-btn conclusion-btn'; });
+        var q = btn.closest('.art-question');
+        q.querySelectorAll('.art-answer-btn').forEach(function (b) { b.className = 'art-answer-btn conclusion-btn'; });
         btn.classList.add(answer ? 'selected-sim' : 'selected-nao');
 
         // Re-render to show/hide warning
@@ -702,10 +702,10 @@
     });
 
     // Foto
-    var fotoBtn = document.getElementById('pnr-foto-btn');
-    var arqBtn = document.getElementById('pnr-arq-btn');
-    var fotoInput = document.getElementById('pnr-foto-camera');
-    var arqInput = document.getElementById('pnr-foto-galeria');
+    var fotoBtn = document.getElementById('art-foto-btn');
+    var arqBtn = document.getElementById('art-arq-btn');
+    var fotoInput = document.getElementById('art-foto-camera');
+    var arqInput = document.getElementById('art-foto-galeria');
 
     if (fotoBtn) fotoBtn.addEventListener('click', function () { fotoInput.click(); });
     if (arqBtn) arqBtn.addEventListener('click', function () { arqInput.click(); });
@@ -732,7 +732,7 @@
     if (fotoInput) fotoInput.addEventListener('change', handleFile);
     if (arqInput) arqInput.addEventListener('change', handleFile);
 
-    var removeBtn = document.getElementById('pnr-remove-foto');
+    var removeBtn = document.getElementById('art-remove-foto');
     if (removeBtn) removeBtn.addEventListener('click', function () {
       formData.fotoAnexo = null;
       formData.fotoNome = '';
@@ -741,24 +741,24 @@
     });
 
     // Save
-    var saveBtn = document.getElementById('pnr-save-btn');
+    var saveBtn = document.getElementById('art-save-btn');
     if (saveBtn) saveBtn.addEventListener('click', function () { collectStep3(); doSave(); currentStep = 0; renderHistory(); });
 
-    var shareSaveBtn = document.getElementById('pnr-share-save-btn');
+    var shareSaveBtn = document.getElementById('art-share-save-btn');
     if (shareSaveBtn) shareSaveBtn.addEventListener('click', function () { collectStep3(); doSave(); compartilhar(formData); currentStep = 0; renderHistory(); });
 
-    var shareBtn = document.getElementById('pnr-share-btn');
+    var shareBtn = document.getElementById('art-share-btn');
     if (shareBtn) shareBtn.addEventListener('click', function () { compartilhar(formData); });
 
-    var discardBtn = document.getElementById('pnr-discard-btn');
+    var discardBtn = document.getElementById('art-discard-btn');
     if (discardBtn) discardBtn.addEventListener('click', function () {
       if (confirm('Descartar formulario?')) { currentStep = 0; renderHistory(); }
     });
 
-    var backBtn = document.getElementById('pnr-to-step2b');
+    var backBtn = document.getElementById('art-to-step2b');
     if (backBtn) backBtn.addEventListener('click', function () { collectStep3(); currentStep = 2; renderStep2(); });
 
-    var histBtn = document.getElementById('pnr-back-hist2');
+    var histBtn = document.getElementById('art-back-hist2');
     if (histBtn) histBtn.addEventListener('click', function () { currentStep = 0; viewingId = null; readOnly = false; renderHistory(); });
   }
 
@@ -779,7 +779,7 @@
     var a = d.avaliacao360 || {};
     var yn = function (v) { return v === true ? 'Sim' : (v === false ? 'Nao' : '-'); };
     var evtCount = (d.eventos || []).filter(function (e) { return e.numero; }).length;
-    return 'PENSE NO RISCO — ART\n' +
+    return 'ART — Analise de Risco da Tarefa\n' +
       'Tarefa: ' + (d.tarefa || '-') + '\n' +
       'Local: ' + (d.localTarefa || '-') + '\n' +
       'Data: ' + formatDate(d.data) + '\n\n' +
@@ -800,7 +800,7 @@
   function compartilhar(dados) {
     var texto = gerarResumo(dados);
     if (navigator.share) {
-      navigator.share({ title: 'Pense no Risco — ' + (dados.tarefa || ''), text: texto }).catch(function () {});
+      navigator.share({ title: 'ART — ' + (dados.tarefa || ''), text: texto }).catch(function () {});
     } else if (navigator.clipboard) {
       navigator.clipboard.writeText(texto).then(function () {
         alert('Resumo copiado para a area de transferencia!');

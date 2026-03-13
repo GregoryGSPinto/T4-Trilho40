@@ -1,16 +1,16 @@
 /* ============================================
-   PENSE NO RISCO (ART) — Styles
+   ART — Analise de Risco da Tarefa — Styles
    ============================================ */
 
 /* Header */
-.pnr-header {
+.art-header {
   display: flex;
   align-items: center;
   gap: 12px;
   padding: 16px 0 12px;
 }
 
-.pnr-back {
+.art-back {
   width: 40px;
   height: 40px;
   display: flex;
@@ -23,9 +23,9 @@
   border-radius: var(--radius-sm);
 }
 
-.pnr-back:active { background: var(--bg-card); }
+.art-back:active { background: var(--bg-card); }
 
-.pnr-title {
+.art-title {
   font-size: 20px;
   font-weight: 700;
   color: var(--text-primary);
@@ -35,7 +35,7 @@
 /* ============================================
    HISTORY VIEW
    ============================================ */
-.pnr-new-btn {
+.art-new-btn {
   width: 100%;
   padding: 16px;
   background: linear-gradient(135deg, var(--accent-gold), #f0b800);
@@ -53,9 +53,9 @@
   transition: transform 0.2s ease;
 }
 
-.pnr-new-btn:active { transform: scale(0.98); }
+.art-new-btn:active { transform: scale(0.98); }
 
-.pnr-history-title {
+.art-history-title {
   font-size: 11px;
   font-weight: 700;
   letter-spacing: 2px;
@@ -64,7 +64,7 @@
   margin-bottom: 12px;
 }
 
-.pnr-history-card {
+.art-history-card {
   background: var(--bg-card);
   border: 1px solid var(--border);
   border-radius: var(--radius-lg, 12px);
@@ -75,20 +75,20 @@
   border-left: 4px solid var(--accent-gold);
 }
 
-.pnr-history-card.bloqueado { border-left-color: var(--status-danger); }
-.pnr-history-card.pendente { border-left-color: var(--accent-gold); }
-.pnr-history-card.aprovado { border-left-color: var(--accent-green); }
+.art-history-card.bloqueado { border-left-color: var(--status-danger); }
+.art-history-card.pendente { border-left-color: var(--accent-gold); }
+.art-history-card.aprovado { border-left-color: var(--accent-green); }
 
-.pnr-history-card:active { transform: scale(0.98); }
+.art-history-card:active { transform: scale(0.98); }
 
-.pnr-history-top {
+.art-history-top {
   display: flex;
   align-items: center;
   justify-content: space-between;
   margin-bottom: 4px;
 }
 
-.pnr-history-tarefa {
+.art-history-tarefa {
   font-size: 14px;
   font-weight: 700;
   color: var(--text-primary);
@@ -99,14 +99,14 @@
   white-space: nowrap;
 }
 
-.pnr-history-date {
+.art-history-date {
   font-size: 12px;
   color: var(--text-muted);
   flex-shrink: 0;
   margin-left: 8px;
 }
 
-.pnr-history-meta {
+.art-history-meta {
   font-size: 12px;
   color: var(--text-secondary);
   display: flex;
@@ -114,36 +114,36 @@
   gap: 8px;
 }
 
-.pnr-history-status {
+.art-history-status {
   font-size: 11px;
   font-weight: 700;
   padding: 2px 8px;
   border-radius: 6px;
 }
 
-.pnr-history-status.aprovado {
+.art-history-status.aprovado {
   background: rgba(122, 184, 0, 0.12);
   color: var(--accent-green);
 }
 
-.pnr-history-status.pendente {
+.art-history-status.pendente {
   background: rgba(229, 161, 0, 0.12);
   color: var(--accent-gold);
 }
 
-.pnr-history-status.bloqueado {
+.art-history-status.bloqueado {
   background: rgba(220, 53, 69, 0.12);
   color: var(--status-danger);
 }
 
-.pnr-history-actions {
+.art-history-actions {
   display: flex;
   align-items: center;
   gap: 8px;
   margin-top: 8px;
 }
 
-.pnr-history-action-btn {
+.art-history-action-btn {
   padding: 4px 10px;
   background: var(--bg-elevated, #1a1f26);
   border: 1px solid var(--border);
@@ -153,14 +153,14 @@
   cursor: pointer;
 }
 
-.pnr-history-action-btn.delete {
+.art-history-action-btn.delete {
   color: var(--status-danger);
   border-color: rgba(220, 53, 69, 0.3);
 }
 
-.pnr-history-action-btn:active { transform: scale(0.95); }
+.art-history-action-btn:active { transform: scale(0.95); }
 
-.pnr-empty {
+.art-empty {
   text-align: center;
   padding: 60px 0;
   color: var(--text-muted);
@@ -170,7 +170,7 @@
 /* ============================================
    STEP PROGRESS
    ============================================ */
-.pnr-progress {
+.art-progress {
   display: flex;
   align-items: center;
   justify-content: center;
@@ -178,7 +178,7 @@
   margin-bottom: 24px;
 }
 
-.pnr-step {
+.art-step {
   width: 32px;
   height: 32px;
   border-radius: 50%;
@@ -195,48 +195,48 @@
   flex-shrink: 0;
 }
 
-.pnr-step.active {
+.art-step.active {
   background: var(--accent-gold);
   border-color: var(--accent-gold);
   color: white;
 }
 
-.pnr-step.completed {
+.art-step.completed {
   background: var(--accent-green);
   border-color: var(--accent-green);
   color: white;
 }
 
-.pnr-step-line {
+.art-step-line {
   width: 60px;
   height: 2px;
   background: var(--border);
   transition: background 0.3s ease;
 }
 
-.pnr-step-line.completed {
+.art-step-line.completed {
   background: var(--accent-green);
 }
 
 /* ============================================
    FORM SECTIONS
    ============================================ */
-.pnr-section {
+.art-section {
   margin-bottom: 24px;
 }
 
-.pnr-section-title {
+.art-section-title {
   font-size: 13px;
   font-weight: 700;
   color: var(--text-primary);
   margin-bottom: 12px;
 }
 
-.pnr-field-full {
+.art-field-full {
   margin-bottom: 10px;
 }
 
-.pnr-label {
+.art-label {
   font-size: 11px;
   font-weight: 600;
   color: var(--text-secondary);
@@ -246,8 +246,8 @@
   letter-spacing: 0.5px;
 }
 
-.pnr-input,
-.pnr-select {
+.art-input,
+.art-select {
   width: 100%;
   padding: 12px 14px;
   background: var(--bg-card);
@@ -262,15 +262,15 @@
   -webkit-appearance: none;
 }
 
-.pnr-input:focus,
-.pnr-select:focus,
-.pnr-textarea:focus {
+.art-input:focus,
+.art-select:focus,
+.art-textarea:focus {
   border-color: var(--accent-gold);
 }
 
-.pnr-input.error { border-color: var(--status-danger); }
+.art-input.error { border-color: var(--status-danger); }
 
-.pnr-textarea {
+.art-textarea {
   width: 100%;
   min-height: 100px;
   padding: 12px 14px;
@@ -289,7 +289,7 @@
 /* ============================================
    QUESTION SIM/NAO
    ============================================ */
-.pnr-question {
+.art-question {
   background: var(--bg-card);
   border: 1px solid var(--border);
   border-radius: var(--radius-md, 10px);
@@ -298,12 +298,12 @@
   transition: all 0.2s ease;
 }
 
-.pnr-question.danger {
+.art-question.danger {
   border-color: var(--status-danger);
   background: rgba(220, 53, 69, 0.05);
 }
 
-.pnr-question-text {
+.art-question-text {
   font-size: 14px;
   font-weight: 600;
   color: var(--text-primary);
@@ -311,12 +311,12 @@
   line-height: 1.4;
 }
 
-.pnr-answer-btns {
+.art-answer-btns {
   display: flex;
   gap: 10px;
 }
 
-.pnr-answer-btn {
+.art-answer-btn {
   flex: 1;
   padding: 10px;
   border-radius: 10px;
@@ -330,15 +330,15 @@
   color: var(--text-secondary);
 }
 
-.pnr-answer-btn:active { transform: scale(0.95); }
+.art-answer-btn:active { transform: scale(0.95); }
 
-.pnr-answer-btn.selected-sim {
+.art-answer-btn.selected-sim {
   background: rgba(122, 184, 0, 0.12);
   border-color: var(--accent-green);
   color: var(--accent-green);
 }
 
-.pnr-answer-btn.selected-nao {
+.art-answer-btn.selected-nao {
   background: rgba(220, 53, 69, 0.12);
   border-color: var(--status-danger);
   color: var(--status-danger);
@@ -347,7 +347,7 @@
 /* ============================================
    BANNERS
    ============================================ */
-.pnr-banner {
+.art-banner {
   padding: 12px 16px;
   border-radius: var(--radius-md, 10px);
   font-size: 13px;
@@ -359,26 +359,26 @@
   line-height: 1.4;
 }
 
-.pnr-banner-green {
+.art-banner-green {
   background: rgba(122, 184, 0, 0.08);
   color: var(--accent-green);
   border: 1px solid rgba(122, 184, 0, 0.2);
 }
 
-.pnr-banner-gold {
+.art-banner-gold {
   background: rgba(229, 161, 0, 0.08);
   color: var(--accent-gold);
   border: 1px solid rgba(229, 161, 0, 0.2);
 }
 
-.pnr-banner-red {
+.art-banner-red {
   background: rgba(220, 53, 69, 0.08);
   color: var(--status-danger);
   border: 1px solid rgba(220, 53, 69, 0.2);
 }
 
 /* Bloqueio */
-.pnr-bloqueio {
+.art-bloqueio {
   background: rgba(220, 53, 69, 0.08);
   border: 2px solid var(--status-danger);
   border-radius: var(--radius-lg, 12px);
@@ -387,7 +387,7 @@
   margin: 16px 0;
 }
 
-.pnr-bloqueio-text {
+.art-bloqueio-text {
   font-size: 15px;
   font-weight: 700;
   color: var(--status-danger);
@@ -397,13 +397,13 @@
 /* ============================================
    MATRIZ DE DECISAO
    ============================================ */
-.pnr-matriz-btns {
+.art-matriz-btns {
   display: grid;
   grid-template-columns: 1fr 1fr;
   gap: 10px;
 }
 
-.pnr-matriz-btn {
+.art-matriz-btn {
   padding: 16px 12px;
   background: var(--bg-card);
   border: 2px solid var(--border);
@@ -417,15 +417,15 @@
   line-height: 1.4;
 }
 
-.pnr-matriz-btn:active { transform: scale(0.97); }
+.art-matriz-btn:active { transform: scale(0.97); }
 
-.pnr-matriz-btn.selected-realizar {
+.art-matriz-btn.selected-realizar {
   border-color: var(--accent-green);
   background: rgba(122, 184, 0, 0.08);
   color: var(--accent-green);
 }
 
-.pnr-matriz-btn.selected-lider {
+.art-matriz-btn.selected-lider {
   border-color: var(--status-danger);
   background: rgba(220, 53, 69, 0.08);
   color: var(--status-danger);
@@ -434,13 +434,13 @@
 /* ============================================
    RISCO GRAVE
    ============================================ */
-.pnr-risco-btns {
+.art-risco-btns {
   display: grid;
   grid-template-columns: 1fr 1fr;
   gap: 10px;
 }
 
-.pnr-risco-btn {
+.art-risco-btn {
   padding: 16px 12px;
   background: var(--bg-card);
   border: 2px solid var(--border);
@@ -454,15 +454,15 @@
   line-height: 1.4;
 }
 
-.pnr-risco-btn:active { transform: scale(0.97); }
+.art-risco-btn:active { transform: scale(0.97); }
 
-.pnr-risco-btn.selected-nao {
+.art-risco-btn.selected-nao {
   border-color: var(--accent-green);
   background: rgba(122, 184, 0, 0.08);
   color: var(--accent-green);
 }
 
-.pnr-risco-btn.selected-sim {
+.art-risco-btn.selected-sim {
   border-color: var(--status-danger);
   background: rgba(220, 53, 69, 0.12);
   color: var(--status-danger);
@@ -471,7 +471,7 @@
 /* ============================================
    EVENTOS INDESEJADOS
    ============================================ */
-.pnr-evento {
+.art-evento {
   background: var(--bg-card);
   border: 1px solid var(--border);
   border-radius: var(--radius-lg, 12px);
@@ -479,14 +479,14 @@
   margin-bottom: 12px;
 }
 
-.pnr-evento-header {
+.art-evento-header {
   display: flex;
   align-items: center;
   justify-content: space-between;
   margin-bottom: 12px;
 }
 
-.pnr-evento-num {
+.art-evento-num {
   font-family: var(--font-display);
   font-size: 12px;
   font-weight: 700;
@@ -496,7 +496,7 @@
   border-radius: 8px;
 }
 
-.pnr-evento-remove {
+.art-evento-remove {
   background: none;
   border: none;
   color: var(--text-muted);
@@ -505,20 +505,20 @@
   padding: 4px;
 }
 
-.pnr-evento-remove:active { color: var(--status-danger); }
+.art-evento-remove:active { color: var(--status-danger); }
 
-.pnr-evento-field {
+.art-evento-field {
   margin-bottom: 10px;
 }
 
-.pnr-chips {
+.art-chips {
   display: flex;
   flex-wrap: wrap;
   gap: 6px;
   margin-bottom: 16px;
 }
 
-.pnr-chip {
+.art-chip {
   padding: 6px 12px;
   background: var(--bg-card);
   border: 1px solid var(--border);
@@ -530,13 +530,13 @@
   transition: all 0.2s ease;
 }
 
-.pnr-chip:active {
+.art-chip:active {
   background: rgba(229, 161, 0, 0.1);
   border-color: var(--accent-gold);
   color: var(--accent-gold);
 }
 
-.pnr-add-evento-btn {
+.art-add-evento-btn {
   width: 100%;
   padding: 10px;
   background: none;
@@ -549,12 +549,12 @@
   margin-top: 4px;
 }
 
-.pnr-add-evento-btn:active { background: rgba(229, 161, 0, 0.05); }
+.art-add-evento-btn:active { background: rgba(229, 161, 0, 0.05); }
 
 /* ============================================
    RESUMO
    ============================================ */
-.pnr-resumo-card {
+.art-resumo-card {
   background: var(--bg-card);
   border: 1px solid var(--border);
   border-radius: var(--radius-lg, 12px);
@@ -562,14 +562,14 @@
   margin-bottom: 16px;
 }
 
-.pnr-resumo-title {
+.art-resumo-title {
   font-size: 15px;
   font-weight: 700;
   color: var(--text-primary);
   margin-bottom: 12px;
 }
 
-.pnr-resumo-row {
+.art-resumo-row {
   display: flex;
   justify-content: space-between;
   padding: 6px 0;
@@ -577,13 +577,13 @@
   border-bottom: 1px solid var(--border);
 }
 
-.pnr-resumo-row:last-child { border-bottom: none; }
+.art-resumo-row:last-child { border-bottom: none; }
 
-.pnr-resumo-label { color: var(--text-secondary); }
-.pnr-resumo-value { color: var(--text-primary); font-weight: 600; }
+.art-resumo-label { color: var(--text-secondary); }
+.art-resumo-value { color: var(--text-primary); font-weight: 600; }
 
 /* Foto / Anexo */
-.pnr-anexo-section {
+.art-anexo-section {
   background: var(--bg-card);
   border: 1px solid var(--border);
   border-radius: var(--radius-lg, 12px);
@@ -591,26 +591,26 @@
   margin-bottom: 16px;
 }
 
-.pnr-anexo-title {
+.art-anexo-title {
   font-size: 14px;
   font-weight: 700;
   color: var(--text-primary);
   margin-bottom: 4px;
 }
 
-.pnr-anexo-desc {
+.art-anexo-desc {
   font-size: 12px;
   color: var(--text-muted);
   margin-bottom: 12px;
 }
 
-.pnr-anexo-btns {
+.art-anexo-btns {
   display: grid;
   grid-template-columns: 1fr 1fr;
   gap: 10px;
 }
 
-.pnr-anexo-btn {
+.art-anexo-btn {
   padding: 14px 12px;
   background: var(--bg-elevated, #1a1f26);
   border: 1px solid var(--border);
@@ -622,16 +622,16 @@
   text-align: center;
 }
 
-.pnr-anexo-btn:active { transform: scale(0.97); }
+.art-anexo-btn:active { transform: scale(0.97); }
 
-.pnr-preview-container {
+.art-preview-container {
   margin-top: 12px;
   display: none;
 }
 
-.pnr-preview-container.visible { display: block; }
+.art-preview-container.visible { display: block; }
 
-.pnr-preview-img {
+.art-preview-img {
   width: 100%;
   max-height: 300px;
   object-fit: contain;
@@ -639,14 +639,14 @@
   border: 1px solid var(--border);
 }
 
-.pnr-preview-filename {
+.art-preview-filename {
   font-size: 12px;
   color: var(--text-secondary);
   margin-top: 6px;
   text-align: center;
 }
 
-.pnr-remove-anexo {
+.art-remove-anexo {
   width: 100%;
   padding: 8px;
   background: none;
@@ -660,14 +660,14 @@
 }
 
 /* Action buttons */
-.pnr-actions {
+.art-actions {
   display: flex;
   flex-direction: column;
   gap: 10px;
   margin-top: 20px;
 }
 
-.pnr-btn-primary {
+.art-btn-primary {
   width: 100%;
   padding: 16px;
   background: linear-gradient(135deg, var(--accent-gold), #f0b800);
@@ -683,9 +683,9 @@
   gap: 8px;
 }
 
-.pnr-btn-primary:active { transform: scale(0.98); }
+.art-btn-primary:active { transform: scale(0.98); }
 
-.pnr-btn-secondary {
+.art-btn-secondary {
   width: 100%;
   padding: 14px;
   background: var(--bg-card);
@@ -701,7 +701,7 @@
   gap: 8px;
 }
 
-.pnr-btn-danger {
+.art-btn-danger {
   width: 100%;
   padding: 14px;
   background: none;
@@ -714,13 +714,13 @@
 }
 
 /* Nav buttons */
-.pnr-nav-btns {
+.art-nav-btns {
   display: flex;
   gap: 10px;
   margin-top: 24px;
 }
 
-.pnr-nav-btn {
+.art-nav-btn {
   flex: 1;
   padding: 14px;
   border-radius: var(--radius-lg, 12px);
@@ -731,22 +731,22 @@
   transition: all 0.2s ease;
 }
 
-.pnr-nav-btn:active { transform: scale(0.97); }
+.art-nav-btn:active { transform: scale(0.97); }
 
-.pnr-nav-prev {
+.art-nav-prev {
   background: var(--bg-card);
   border: 1px solid var(--border);
   color: var(--text-secondary);
 }
 
-.pnr-nav-next {
+.art-nav-next {
   background: var(--accent-gold);
   border: none;
   color: white;
 }
 
 /* Validation */
-.pnr-validation-msg {
+.art-validation-msg {
   padding: 10px 14px;
   background: rgba(220, 53, 69, 0.08);
   border: 1px solid rgba(220, 53, 69, 0.2);
@@ -757,22 +757,22 @@
   display: none;
 }
 
-.pnr-validation-msg.visible { display: block; }
+.art-validation-msg.visible { display: block; }
 
 /* Read-only */
-.pnr-readonly .pnr-input,
-.pnr-readonly .pnr-select,
-.pnr-readonly .pnr-textarea {
+.art-readonly .art-input,
+.art-readonly .art-select,
+.art-readonly .art-textarea {
   pointer-events: none;
   opacity: 0.7;
 }
 
-.pnr-readonly .pnr-answer-btn,
-.pnr-readonly .pnr-matriz-btn,
-.pnr-readonly .pnr-risco-btn,
-.pnr-readonly .pnr-chip,
-.pnr-readonly .pnr-add-evento-btn,
-.pnr-readonly .pnr-evento-remove {
+.art-readonly .art-answer-btn,
+.art-readonly .art-matriz-btn,
+.art-readonly .art-risco-btn,
+.art-readonly .art-chip,
+.art-readonly .art-add-evento-btn,
+.art-readonly .art-evento-remove {
   pointer-events: none;
   opacity: 0.7;
 }
