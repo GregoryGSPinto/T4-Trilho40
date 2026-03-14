@@ -47,7 +47,7 @@ O sistema e uma PWA (Progressive Web App) offline-first, mobile-first, construid
 │  └──────────────────────────────────────────────────────────┘   │
 │                                                                  │
 │  ┌──────────────────────────────────────────────────────────┐   │
-│  │  SERVICE WORKER (sw.js / service-worker.js)               │   │
+│  │  SERVICE WORKER (sw.js)                                    │   │
 │  │  Cache offline  |  Sync queue  |  Background sync         │   │
 │  └──────────────────────────────────────────────────────────┘   │
 └──────────────────────────────────────────────────────────────────┘
@@ -70,8 +70,7 @@ O sistema e uma PWA (Progressive Web App) offline-first, mobile-first, construid
 T4_Trilho_4.0/
 ├── index.html                          # Shell HTML principal (Hub Central)
 ├── manifest.json                       # Manifesto PWA
-├── sw.js                               # Service Worker (versao compacta)
-├── service-worker.js                   # Service Worker (versao completa com estrategias)
+├── sw.js                               # Service Worker (cache + sync strategies)
 ├── package.json                        # Metadados do projeto
 │
 ├── shell/                              # Camada de orquestracao do Shell
@@ -219,11 +218,10 @@ T4_Trilho_4.0/
 
 | Componente | Arquivo | Estrategia |
 |------------|---------|-----------|
-| SW Compacto | `sw.js` | Network-first para tudo, fallback cache |
-| SW Completo | `service-worker.js` | HTML/JSON: Network-first; CSS/JS/IMG: Cache-first (stale-while-revalidate) |
-| Pre-cache | `service-worker.js` → `CORE_ASSETS` | Assets essenciais cacheados na instalacao |
-| Modulos cache | `service-worker.js` → `MODULE_ASSETS` | Assets de modulos cacheados em background |
-| Background Sync | `service-worker.js` → evento `sync` | Processa fila quando reconecta |
+| Service Worker | `sw.js` | HTML/JSON: Network-first; CSS/JS/IMG: Cache-first (stale-while-revalidate) |
+| Pre-cache | `sw.js` → `CORE_ASSETS` | Assets essenciais cacheados na instalacao |
+| Modulos cache | `sw.js` → `MODULE_ASSETS` | Assets de modulos cacheados em background |
+| Background Sync | `sw.js` → evento `sync` | Processa fila quando reconecta |
 
 ---
 

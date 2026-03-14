@@ -28,7 +28,7 @@
 
 ### Fase D — Camada Offline (Concluida)
 
-- [x] Service Worker com estrategias diferenciadas (`service-worker.js`)
+- [x] Service Worker com estrategias diferenciadas (`sw.js`)
   - Network-first para HTML e JSON
   - Cache-first (stale-while-revalidate) para CSS, JS e imagens
 - [x] Pre-cache de assets essenciais na instalacao
