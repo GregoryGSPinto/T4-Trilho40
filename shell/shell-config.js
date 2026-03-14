@@ -205,7 +205,8 @@
         caches.keys().then(function (names) {
           names.forEach(function (n) { caches.delete(n); });
         });
-        alert('Cache limpo com sucesso!');
+        if (T4.notifications) { T4.notifications.success('Cache limpo com sucesso!'); }
+        else { alert('Cache limpo com sucesso!'); }
       }
     });
 

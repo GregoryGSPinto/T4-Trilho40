@@ -35,7 +35,7 @@ T4.router = (function () {
   function navigate(moduleName, params = {}) {
     const module = MODULES[moduleName];
     if (!module) {
-      console.error(`[T4] Módulo não encontrado: ${moduleName}`);
+      if (T4.log) { T4.log.error('[T4] Modulo nao encontrado:', moduleName); }
       return;
     }
 

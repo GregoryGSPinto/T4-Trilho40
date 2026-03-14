@@ -215,9 +215,9 @@
   if ('serviceWorker' in navigator) {
     window.addEventListener('load', function () {
       navigator.serviceWorker.register('sw.js').then(function (reg) {
-        console.log('[T4] Service Worker registrado:', reg.scope);
+        T4.log.info('[T4] Service Worker registrado:', reg.scope);
       }).catch(function (err) {
-        console.warn('[T4] Service Worker nao registrado:', err);
+        T4.log.warn('[T4] Service Worker nao registrado:', err);
       });
     });
   }

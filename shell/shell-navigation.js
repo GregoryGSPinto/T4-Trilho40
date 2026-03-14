@@ -81,7 +81,8 @@
       if (mod.type === 'external' && mod.url && mod.url !== '#') {
         window.open(mod.url, '_blank');
       } else if (mod.type === 'external' && mod.url === '#') {
-        alert('Link sera disponibilizado em breve.');
+        if (T4.notifications) { T4.notifications.warning('Link sera disponibilizado em breve.'); }
+        else { alert('Link sera disponibilizado em breve.'); }
         return;
       } else if (mod.path) {
         window.location.href = mod.path;
