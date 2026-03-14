@@ -1,4 +1,27 @@
+# OS files
 .DS_Store
+Thumbs.db
+
+# Dependencies
 node_modules/
+
+# Logs
 *.log
+
+# Environment
 .env
+.env.local
+.env.*.local
+
+# Editor / IDE
+*.swp
+*.swo
+*~
+.idea/
+.vscode/
+*.sublime-project
+*.sublime-workspace
+
+# Build
+dist/
+.cache/
