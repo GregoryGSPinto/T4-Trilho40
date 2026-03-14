@@ -19,6 +19,13 @@
     document.getElementById('hub-user-avatar').textContent = user.avatar || user.nome.substring(0, 2).toUpperCase();
     document.getElementById('hub-user-name').textContent = user.nome;
     document.getElementById('hub-yard-tag').textContent = config.patio || user.patio || 'N/A';
+    var profileTrigger = document.getElementById('hub-profile-trigger');
+    if (profileTrigger) {
+      profileTrigger.onclick = function () {
+        T4.utils.vibrate(10);
+        T4Shell.navigation.navigateTo('config');
+      };
+    }
 
     // Status row
     var turnoEl = document.getElementById('hub-status-turno');
