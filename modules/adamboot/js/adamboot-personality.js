@@ -14,7 +14,7 @@ const AdamBootPersonality = (function () {
       prompts = await response.json();
       return prompts;
     } catch (err) {
-      console.error('[AdamBoot Personality] Erro ao carregar prompts:', err);
+      if (T4.log) { T4.log.error('[AdamBoot Personality] Erro ao carregar prompts:', err); }
       prompts = getFallbackPrompts();
       return prompts;
     }

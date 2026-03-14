@@ -20,11 +20,11 @@ const AdamBootKnowledge = (function () {
     ]);
 
     isLoaded = true;
-    console.log('[AdamBoot Knowledge] Base carregada —',
+    if (T4.log) { T4.log.info('[AdamBoot Knowledge] Base carregada —',
       (faqData ? faqData.length : 0), 'FAQs,',
       (glossaryData ? glossaryData.length : 0), 'termos,',
       (rofData ? rofData.length : 0), 'artigos ROF'
-    );
+    ); }
   }
 
   /* Carrega FAQ */
@@ -34,7 +34,7 @@ const AdamBootKnowledge = (function () {
       const data = await response.json();
       faqData = data.faqs || [];
     } catch (err) {
-      console.warn('[AdamBoot Knowledge] FAQ não disponível:', err);
+      if (T4.log) { T4.log.warn('[AdamBoot Knowledge] FAQ nao disponivel:', err); }
       faqData = [];
     }
   }
@@ -46,7 +46,7 @@ const AdamBootKnowledge = (function () {
       const data = await response.json();
       glossaryData = data.glossary || [];
     } catch (err) {
-      console.warn('[AdamBoot Knowledge] Glossário não disponível:', err);
+      if (T4.log) { T4.log.warn('[AdamBoot Knowledge] Glossario nao disponivel:', err); }
       glossaryData = [];
     }
   }
@@ -59,7 +59,7 @@ const AdamBootKnowledge = (function () {
       const data = await response.json();
       rofData = data.articles || data || [];
     } catch (err) {
-      console.warn('[AdamBoot Knowledge] ROF Digital não disponível, usando base interna');
+      if (T4.log) { T4.log.warn('[AdamBoot Knowledge] ROF Digital nao disponivel, usando base interna'); }
       rofData = [];
     }
   }

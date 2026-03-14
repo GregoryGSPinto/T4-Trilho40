@@ -67,7 +67,7 @@ const ROFApp = (function () {
       /* Salvar no IndexedDB para acesso offline */
       cacheDataOffline();
     } catch (err) {
-      console.warn('[ROF] Erro ao carregar dados do servidor, tentando cache:', err);
+      if (T4.log) { T4.log.warn('[ROF] Erro ao carregar dados do servidor, tentando cache:', err); }
       await loadFromCache();
     }
   }

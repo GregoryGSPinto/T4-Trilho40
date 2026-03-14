@@ -51,7 +51,7 @@ const EFVM360App = (function () {
       _stations = await stationsRes.json();
       _dataLoaded = true;
     } catch (err) {
-      console.error('[EFVM360] Erro ao carregar dados:', err);
+      if (T4.log) { T4.log.error('[EFVM360] Erro ao carregar dados:', err); }
       T4.notifications.error('Erro ao carregar dados da ferrovia');
       _dataLoaded = false;
     }
@@ -394,7 +394,7 @@ const EFVM360App = (function () {
     try {
       await EFVM360Scoring.salvarResultado(data.resultado, data.sessao);
     } catch (err) {
-      console.error('[EFVM360] Erro ao salvar resultado:', err);
+      if (T4.log) { T4.log.error('[EFVM360] Erro ao salvar resultado:', err); }
     }
 
     /* Renderiza tela de resultados */

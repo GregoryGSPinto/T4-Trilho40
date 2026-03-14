@@ -71,7 +71,7 @@ const AdamBootApp = (function () {
     updateHeader();
 
     isInitialized = true;
-    console.log('[AdamBoot] Inicializado com sucesso');
+    if (T4.log) { T4.log.info('[AdamBoot] Inicializado com sucesso'); }
   }
 
   /* Configura todos os event listeners */
@@ -159,7 +159,7 @@ const AdamBootApp = (function () {
       await AdamBootChat.addBotMessage(result.answer, result.suggestions);
 
     } catch (err) {
-      console.error('[AdamBoot] Erro ao processar pergunta:', err);
+      if (T4.log) { T4.log.error('[AdamBoot] Erro ao processar pergunta:', err); }
       AdamBootChat.hideTyping();
 
       await AdamBootChat.addBotMessage(

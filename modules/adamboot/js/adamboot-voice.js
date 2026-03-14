@@ -35,7 +35,7 @@ const AdamBootVoice = (function () {
     transcriptionEl = options.transcriptionEl || null;
 
     if (!support.recognition) {
-      console.warn('[AdamBoot Voice] Speech Recognition não suportado neste navegador');
+      if (T4.log) { T4.log.warn('[AdamBoot Voice] Speech Recognition nao suportado neste navegador'); }
       if (voiceBtn) {
         voiceBtn.classList.add('ab-voice-unavailable');
         voiceBtn.title = 'Reconhecimento de voz não suportado neste navegador';
@@ -251,7 +251,7 @@ const AdamBootVoice = (function () {
         T4.notifications.warning('Erro de rede no reconhecimento de voz. Verifique sua conexão.');
         break;
       default:
-        console.warn('[AdamBoot Voice] Erro:', event.error);
+        if (T4.log) { T4.log.warn('[AdamBoot Voice] Erro:', event.error); }
     }
 
     onEnd();

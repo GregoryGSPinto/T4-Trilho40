@@ -47,7 +47,7 @@ const AdamBootChat = (function () {
         scrollToBottom();
       }
     } catch (err) {
-      console.warn('[AdamBoot Chat] Erro ao carregar histórico:', err);
+      if (T4.log) { T4.log.warn('[AdamBoot Chat] Erro ao carregar historico:', err); }
     }
   }
 
@@ -60,7 +60,7 @@ const AdamBootChat = (function () {
         updatedAt: Date.now()
       });
     } catch (err) {
-      console.warn('[AdamBoot Chat] Erro ao salvar histórico:', err);
+      if (T4.log) { T4.log.warn('[AdamBoot Chat] Erro ao salvar historico:', err); }
     }
   }
 
@@ -358,7 +358,7 @@ const AdamBootChat = (function () {
     try {
       await T4.storage.remove(STORE_NAME, CONVERSATION_ID);
     } catch (err) {
-      console.warn('[AdamBoot Chat] Erro ao limpar conversa:', err);
+      if (T4.log) { T4.log.warn('[AdamBoot Chat] Erro ao limpar conversa:', err); }
     }
 
     T4.notifications.success('Conversa limpa');

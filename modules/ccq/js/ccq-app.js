@@ -33,7 +33,7 @@ CCQ.app = (function () {
       const data = await resp.json();
       templates = data.templates || [];
     } catch (e) {
-      console.warn('[CCQ] Nao foi possivel carregar templates:', e);
+      if (T4.log) { T4.log.warn('[CCQ] Nao foi possivel carregar templates:', e); }
       templates = [];
     }
   }
