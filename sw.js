@@ -4,7 +4,7 @@
                Cache First para CSS/JS/assets
    ============================================ */
 
-var CACHE_NAME = 'T4-v3';
+var CACHE_NAME = 'T4-v4';
 
 /* Arquivos essenciais — cacheados no install (bloqueante) */
 var CORE_ASSETS = [
@@ -41,6 +41,10 @@ var CORE_ASSETS = [
   '/domain/operacional-service.js',
   /* Integrations */
   '/integrations/registry.js',
+  /* Icons */
+  '/shared/icons/t4-logo.svg',
+  '/shared/icons/t4-icon-192.png',
+  '/shared/icons/t4-icon-512.png',
   /* Hub */
   '/modules/hub/css/hub-specific.css',
   '/modules/hub/js/hub-dashboard.js',
