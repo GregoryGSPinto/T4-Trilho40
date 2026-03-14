@@ -930,12 +930,12 @@
       }).catch(function () {});
     } else if (navigator.clipboard) {
       navigator.clipboard.writeText(texto).then(function () {
-        alert('Resumo copiado para a area de transferencia!');
+        if (T4.notifications) { T4.notifications.success('Resumo copiado para a area de transferencia!'); }
       }).catch(function () {
-        alert(texto);
+        prompt('Copie o resumo abaixo:', texto);
       });
     } else {
-      alert(texto);
+      prompt('Copie o resumo abaixo:', texto);
     }
   }
 

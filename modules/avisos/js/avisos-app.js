@@ -400,8 +400,8 @@
     var categoria = document.getElementById('aviso-categoria').value;
     var descricao = document.getElementById('aviso-descricao').value.trim();
 
-    if (!categoria) { alert('Selecione uma categoria.'); return; }
-    if (!descricao) { alert('Preencha a descricao do aviso.'); return; }
+    if (!categoria) { if (T4.notifications) { T4.notifications.warning('Selecione uma categoria.'); } return; }
+    if (!descricao) { if (T4.notifications) { T4.notifications.warning('Preencha a descricao do aviso.'); } return; }
 
     var locTipo = document.querySelector('.aviso-loc-btn.selected');
     var locType = locTipo ? locTipo.getAttribute('data-loc') : 'km';
@@ -410,13 +410,13 @@
 
     if (locType === 'km') {
       var kmI = document.getElementById('aviso-km-inicio').value;
-      if (!kmI) { alert('Informe o km.'); return; }
+      if (!kmI) { if (T4.notifications) { T4.notifications.warning('Informe o km.'); } return; }
       localizacao.kmInicio = parseInt(kmI);
       localizacao.kmFim = parseInt(document.getElementById('aviso-km-fim').value) || localizacao.kmInicio;
       localizacao.trecho = document.getElementById('aviso-trecho').value || null;
     } else {
       var p = document.getElementById('aviso-patio').value;
-      if (!p) { alert('Selecione o patio.'); return; }
+      if (!p) { if (T4.notifications) { T4.notifications.warning('Selecione o patio.'); } return; }
       localizacao.patio = p;
     }
 
